@@ -3,13 +3,13 @@
   "platform": "Windows-11-10.0.26200-SP0",
   "random_seed": 42,
   "command_order": [
-    "rtk python src/run_full_thesis_analysis.py",
-    "rtk python src/generate_conceptual_selection_diagram.py",
-    "rtk python src/run_missingness_robustness.py",
-    "rtk python src/run_step5_ml_analysis.py",
-    "rtk python src/run_step6_additional_analysis.py",
-    "rtk python src/run_step7_master_summary.py",
-    "rtk latexmk -pdf main.tex"
+    "python src/run_full_thesis_analysis.py",
+    "python src/generate_conceptual_selection_diagram.py",
+    "python src/run_missingness_robustness.py",
+    "python src/run_step5_ml_analysis.py",
+    "python src/run_step6_additional_analysis.py",
+    "python src/run_step7_master_summary.py",
+    "latexmk -pdf main.tex"
   ],
   "package_versions": {
     "numpy": "2.4.4",

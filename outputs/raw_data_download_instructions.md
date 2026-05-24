@@ -3,7 +3,7 @@
 Run the pipeline from the project root. The first command downloads or refreshes the raw Eurostat JSON files used by the thesis:
 
 ```powershell
-rtk python src/run_full_thesis_analysis.py
+python src/run_full_thesis_analysis.py
 ```
 
 The extraction code calls the Eurostat dissemination API through `src/eurostat_api.py`. Dataset codes, filters, extraction notes, and source verification are documented in:

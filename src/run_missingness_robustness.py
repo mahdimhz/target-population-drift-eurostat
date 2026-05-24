@@ -1903,7 +1903,7 @@ def write_estimand_framework_table(target: pd.DataFrame, complete_sample: pd.Dat
             r"}",
             "",
             r"\vspace{0.2em}",
-            r"\begin{minipage}{0.96\textwidth}\scriptsize Notes: Row counts refer to the generated thesis pipeline. Balanced-outcome means balanced for the primary outcome and population weights, not for every regression covariate. MAR and MNAR imputation estimates are sensitivity estimates, not true coefficients.\end{minipage}",
+            r"\begin{minipage}{0.96\textwidth}\scriptsize Notes: Row counts refer to the generated thesis pipeline. Balanced-outcome means balanced for the primary outcome and population weights, not for every regression covariate. MAR and MNAR imputation estimates are model-based sensitivity estimates.\end{minipage}",
         ]
     )
     (TABLES / "estimand_framework.tex").write_text("\n".join(lines) + "\n", encoding="utf-8")
@@ -2338,7 +2338,7 @@ def write_main_sensitivity_ladder(
             r"}",
             "",
             r"\vspace{0.2em}",
-            r"\begin{minipage}{0.96\textwidth}\scriptsize Notes: The ladder follows the poverty/social-exclusion coefficient as the model, country universe, weighting rule, selection adjustment, and imputation assumption change. Infeasible rows are retained when fixed-effects estimation has too few rows, countries, or years. MAR and MNAR rows are model-based sensitivity estimands, not corrected truth.\end{minipage}",
+            r"\begin{minipage}{0.96\textwidth}\scriptsize Notes: The ladder follows the poverty/social-exclusion coefficient as the model, country universe, weighting rule, selection adjustment, and imputation assumption change. Infeasible rows are retained when fixed-effects estimation has too few rows, countries, or years. MAR and MNAR rows are model-based sensitivity estimands, not corrected estimates.\end{minipage}",
         ]
     )
     (TABLES / "main_sensitivity_ladder.tex").write_text("\n".join(lines) + "\n", encoding="utf-8")

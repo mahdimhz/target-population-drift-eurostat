@@ -28,8 +28,8 @@ def test_reproducibility_files_exist() -> None:
 def test_manifest_contains_command_order_hashes_and_seed() -> None:
     manifest = json.loads((ROOT / "outputs" / "reproducibility_manifest.json").read_text(encoding="utf-8"))
     assert manifest["random_seed"] == 42
-    assert "rtk python src/run_full_thesis_analysis.py" in manifest["command_order"]
-    assert "rtk python src/run_step7_master_summary.py" in manifest["command_order"]
+    assert "python src/run_full_thesis_analysis.py" in manifest["command_order"]
+    assert "python src/run_step7_master_summary.py" in manifest["command_order"]
     assert "data/processed/panel_features_v2-3.csv" in manifest["input_and_script_hashes"]
     assert "src/run_missingness_robustness.py" in manifest["input_and_script_hashes"]
     assert len(manifest["output_hashes"]) > 10

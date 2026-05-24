@@ -22,13 +22,13 @@ DATA_PROCESSED = ROOT / "data" / "processed"
 
 ERROR_LOG = OUTPUTS / "analysis_errors.log"
 COMMAND_ORDER = [
-    "rtk python src/run_full_thesis_analysis.py",
-    "rtk python src/generate_conceptual_selection_diagram.py",
-    "rtk python src/run_missingness_robustness.py",
-    "rtk python src/run_step5_ml_analysis.py",
-    "rtk python src/run_step6_additional_analysis.py",
-    "rtk python src/run_step7_master_summary.py",
-    "rtk latexmk -pdf main.tex",
+    "python src/run_full_thesis_analysis.py",
+    "python src/generate_conceptual_selection_diagram.py",
+    "python src/run_missingness_robustness.py",
+    "python src/run_step5_ml_analysis.py",
+    "python src/run_step6_additional_analysis.py",
+    "python src/run_step7_master_summary.py",
+    "latexmk -pdf main.tex",
 ]
 
 
@@ -357,7 +357,7 @@ def raw_data_download_instructions() -> None:
         "Run the pipeline from the project root. The first command downloads or refreshes the raw Eurostat JSON files used by the thesis:",
         "",
         "```powershell",
-        "rtk python src/run_full_thesis_analysis.py",
+        "python src/run_full_thesis_analysis.py",
         "```",
         "",
         "The extraction code calls the Eurostat dissemination API through `src/eurostat_api.py`. Dataset codes, filters, extraction notes, and source verification are documented in:",
