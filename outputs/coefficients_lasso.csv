@@ -1,0 +1,15 @@
+feature,coefficient
+physicians_per_100k,-1.00659449527369
+gdp_per_capita_eur,-0.7754937720404503
+gini_income,0.5733861386404182
+hospital_beds_per_100k,-0.48703233799966605
+long_term_unemployment_rate_pc,-0.4601849196939549
+unemployment_rate_change,0.36356596712359013
+poverty_or_social_exclusion_pc,0.333594337918648
+compulsory_health_financing_gdp_pc,-0.21533207949985178
+unemployment_rate_pc,-0.0820648572978759
+gdp_per_capita_growth,0.043873185911959225
+government_health_expenditure_gdp_pc,0.0
+oop_health_expenditure_share_pc,0.0
+log_gdp_per_capita,-0.0
+physicians_per_100k_lag1,-0.0

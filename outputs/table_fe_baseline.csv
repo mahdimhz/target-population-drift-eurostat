@@ -1,0 +1,6 @@
+variable,estimate,standard_error,t_stat,p_value
+log_gdp_per_capita,-1.0414,2.2015,-0.473,0.6362
+unemployment_rate_pc,-0.0337,0.0866,-0.3893,0.697
+poverty_or_social_exclusion_pc,0.1775,0.0672,2.6412,0.0083
+government_health_expenditure_gdp_pc,-0.229,0.4464,-0.513,0.608
+compulsory_health_financing_gdp_pc,0.0974,0.4441,0.2193,0.8264

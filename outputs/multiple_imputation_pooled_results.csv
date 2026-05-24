@@ -1,0 +1,2 @@
+term,pooled_coef,pooled_se,t_stat,df,p_value,imputations,mean_nobs,mean_countries
+poverty_or_social_exclusion_pc,0.00014672757540561932,0.0011567480555160449,0.12684488614952688,66.12037528452144,0.8994481233615861,10,422.0,30.0

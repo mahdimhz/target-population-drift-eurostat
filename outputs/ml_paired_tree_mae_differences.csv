@@ -1,0 +1,2 @@
+comparison,mean_mae_difference,ci_low,ci_high,interpretation
+Random Forest minus XGBoost,-0.04204955665818542,-0.0831517103345225,-0.0028696470156138274,negative favors left model; positive favors right model

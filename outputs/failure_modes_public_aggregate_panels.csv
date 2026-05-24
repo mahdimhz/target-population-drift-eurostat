@@ -1,0 +1,7 @@
+failure_mode,definition,interpretation
+Stable,Core estimand families agree in direction and IQR-scale magnitude.,A cautious aggregate coefficient interpretation is supportable.
+Target-dependent,"Observed-data estimates change materially under weighting, balanced coverage, or country-universe restriction.","The coefficient is a property of a defined target, not of Europe in general."
+Denominator-dependent,Population-denominator and need-denominator indicators support different interpretations.,The monitoring question must be restated before comparing coefficients.
+Missingness-dependent,"Complete-case, IPW, MAR MI, or MNAR targets materially disagree.",Covariate coverage and missing-data assumptions carry the empirical conclusion.
+Imputation-model-dependent,MI variants disagree strongly with each other.,The imputed estimate is a model-dependent sensitivity result.
+Non-identifiable,"Too few reliable estimand families are feasible, or estimands conflict too strongly.",The public aggregate data do not support a coefficient interpretation.

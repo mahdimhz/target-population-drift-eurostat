@@ -1,0 +1,9 @@
+Request URL: https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/hlth_silc_32?lang=en&unit=PC&age=Y_GE16&sex=T&reason=TOOEFW
+Dimensions found: freq, sex, age, citizen, reason, unit, geo, time
+Expected dimensions present: True
+Citizenship mapping used: NAT=NAT, EU_FOR=EU27_2020_FOR, NEU_FOR=NEU27_2020_FOR.
+
+Available country-year-citizenship combinations: 1612
+Year range: 2008-2025
+Countries with at least one year containing all three citizenship groups: AL, AT, BE, BG, CH, CY, CZ, DE, DK, EE, EL, ES, FI, FR, HR, HU, IE, IS, IT, LU, LV, ME, MT, NL, NO, PL, PT, RS, SE, SI, SK, TR, UK, XK
+Countries with fewer than 3 years of data: XK

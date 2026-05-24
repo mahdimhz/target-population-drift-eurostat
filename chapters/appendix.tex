@@ -1,0 +1,107 @@
+\chapter{Appendix}
+\label{ch:appendix}
+\raggedbottom
+
+\section{Regression Diagnostics}
+
+This appendix reports only supporting material that is useful for checking the main analysis without repeating the figures already discussed in the thesis chapters. Table~\ref{tab:appendix_full_pooled_regression} gives the full pooled baseline regression, including the year indicators omitted from the compact main table. The omitted year is 2015.
+
+\begin{table}[H]
+\centering
+\scriptsize
+\caption{Full pooled baseline regression with year indicators}
+\label{tab:appendix_full_pooled_regression}
+\input{tables/appendix_full_pooled_regression}
+\end{table}
+
+Table~\ref{tab:appendix_regression_vif_diagnostics} reports variance inflation factors for the baseline covariates. The diagnostics are included to document the degree of collinearity among the main regressors used in the complete-case model.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Variance inflation factors for baseline covariates}
+\label{tab:appendix_regression_vif_diagnostics}
+\input{tables/regression_vif_diagnostics}
+\end{table}
+
+\section{Missingness and Prediction Sensitivities}
+
+Table~\ref{tab:appendix_mi_variant_summary} documents the PMM multiple-imputation variants used to assess whether the main attenuation pattern depends on including the outcome, country-structure representation, lagged predictors, or the number of imputations.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Multiple-imputation variants for the poverty coefficient}
+\label{tab:appendix_mi_variant_summary}
+\input{tables/mi_variant_summary}
+\end{table}
+
+Table~\ref{tab:appendix_mnar_sensitivity_results} documents MNAR delta-shift scenarios. These scenarios shift only originally missing values after PMM imputation and are interpreted as stress tests rather than corrected estimates.
+
+\begin{table}[H]
+\centering
+\scriptsize
+\caption{MNAR delta-shift sensitivity for the poverty coefficient}
+\label{tab:appendix_mnar_sensitivity_results}
+\input{tables/mnar_sensitivity_results}
+\end{table}
+
+Table~\ref{tab:appendix_ml_naive_baselines} reports the naive prediction baselines used to decide whether flexible models add useful one-year-ahead predictive value.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Naive prediction baselines}
+\label{tab:appendix_ml_naive_baselines}
+\input{tables/ml_naive_baselines}
+\end{table}
+
+\section{Data Sources and Reproducibility}
+
+Table~\ref{tab:appendix_eurostat_sources} lists the Eurostat tables and filters used to construct the datasets. The primary outcome is hlth\_silc\_08, while hlth\_silc\_08b is used only as the robustness outcome because its denominator differs from the main population-level indicator.
+
+\begin{table}[H]
+\centering
+\scriptsize
+\caption{Eurostat source tables, filters, and extraction dates}
+\label{tab:appendix_eurostat_sources}
+\input{tables/eurostat_sources_appendix}
+\end{table}
+
+Table~\ref{tab:appendix_software_versions} records the main software environment used for data processing, modelling, and figure generation.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Python and library versions}
+\label{tab:appendix_software_versions}
+\input{tables/software_versions}
+\end{table}
+
+Table~\ref{tab:processed_data_dictionary_summary} summarises the processed data files submitted with the thesis package. The full column-level data dictionary is written to \texttt{outputs/processed\_data\_dictionary.csv}.
+
+\input{tables/processed_data_dictionary_summary}
+
+Table~\ref{tab:output_generation_map} gives a compact map from generated thesis tables and figures to their scripts and main inputs. Full paths and exact source filenames are written to \texttt{outputs/table\_figure\_generation\_map.csv}.
+
+\input{tables/output_generation_map}
+
+The computational workflow is fully scripted in the local project directory. Raw Eurostat JSON downloads are stored in \texttt{data/raw}; processed country-year files are stored in \texttt{data/processed}; generated CSV diagnostics are stored in \texttt{outputs}; generated LaTeX tables are stored in \texttt{tables}; and generated figures are stored in \texttt{figures}. The command order is:
+\begin{verbatim}
+rtk python src/run_full_thesis_analysis.py
+rtk python src/generate_conceptual_selection_diagram.py
+rtk python src/run_missingness_robustness.py
+rtk python src/run_step5_ml_analysis.py
+rtk python src/run_step6_additional_analysis.py
+rtk python src/run_step7_master_summary.py
+\end{verbatim}
+The raw-data download workflow is part of the first command: it calls the Eurostat API for the main outcome, robustness outcome, citizenship table, population weights, and control/feature covariates using the filters listed in Table~\ref{tab:appendix_eurostat_sources}. The main table and figure generation map is:
+\begin{itemize}
+    \item Step 1 builds the panel, descriptive figures, baseline regressions, population-weighted trends, and source register;
+    \item the diagram script creates the conceptual selection and estimand figure;
+    \item the missingness script creates target-population sensitivity, IPW, MI, and poverty-robustness outputs;
+    \item the prediction script creates one-year-ahead baselines, reduced benchmark-model comparisons, and country-holdout validation;
+    \item the additional-analysis script creates citizenship paired-gap checks and \texttt{hlth\_silc\_08b} denominator robustness;
+    \item the summary script creates the manifest, software versions, command order, hashes, and output checks.
+\end{itemize}
+All stochastic analyses use random seed 42 unless explicitly stated otherwise. The reproducibility manifest records Python and package versions, input and script hashes, output hashes, command order, the population-weighting source, and the machine-learning hyperparameter grids. The submitted package also includes raw-download instructions, an output hash manifest, and a reproducibility archive under \texttt{outputs}. The thesis does not cite a public code repository; reproducibility is documented through the submitted local scripts, raw downloads, processed files, generated outputs, source register, and manifest.

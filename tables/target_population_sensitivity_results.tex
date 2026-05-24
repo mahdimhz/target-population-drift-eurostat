@@ -1,0 +1,17 @@
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}lllcrrp{0.22\textwidth}lp{0.17\textwidth}@{}}
+\toprule
+Spec. & Universe & Target & Weight & Countries & Rows & Coef. [95\% CI] & p-value & Reading \\
+\midrule
+CC & Full available & Selected CC & Unweighted & 30 & 282 & 0.178 [0.046, 0.309] & 0.008 & selected panel \\
+EU-27 CC & EU-27 & Selected CC & Unweighted & 27 & 258 & 0.179 [0.034, 0.324] & 0.015 & EU-27 selected panel \\
+CC pop. & Full available & Selected CC & Population & 30 & 282 & 0.304 [-0.007, 0.615] & 0.055 & selected resident-weighted \\
+Balanced & Full available & Balanced outcome & Unweighted & 25 & 238 & 0.154 [0.060, 0.248] & 0.001 & observed-panel restriction \\
+Balanced pop. & Full available & Balanced outcome & Population & 25 & 238 & 0.147 [-0.026, 0.320] & 0.096 & weighted restriction \\
+MI full & Full available & Full observed & Unweighted & 37 & 608 & 0.014 [-0.071, 0.099] & 0.748 & model-based sensitivity \\
+\bottomrule
+\end{tabular}%
+}
+
+\vspace{0.2em}
+\begin{minipage}{0.96\textwidth}\scriptsize Notes: The coefficient is for poverty or social exclusion in country-and-year fixed-effects models with country-clustered standard errors, except the MI row, which pools fixed-effects estimates using Rubin's rules. Full available means all Eurostat-available national units in the outcome-observed panel; EU-27 restricts to current EU member states. Population weights are country-year total population from \texttt{demo\_pjan}, normalized within year.\end{minipage}

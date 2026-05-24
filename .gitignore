@@ -1,0 +1,68 @@
+# LaTeX build artifacts
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.bbl
+*.blg
+*.dvi
+*.ps
+*.nav
+*.snm
+*.vrb
+main.pdf
+main.xdv
+main.run.xml
+main.bcf
+main-blx.bib
+
+# Python artifacts
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+*.egg-info/
+dist/
+build/
+
+# Data and large files
+data/raw/*.json
+Papers/
+outputs/reproducibility_archive.zip
+thesis_overleaf_upload.zip
+outputs/primary_country_paths_dense.png
+outputs/outcome_missingness_heatmap_notebook.png
+outputs/primary_vs_08b_scatter.png
+outputs/primary_year_trend.png
+outputs/primary_latest_available_ranking.png
+outputs/advanced_ml_summary.md
+outputs/nn_models_summary.md
+outputs/table_nn_models_performance.csv
+outputs/table_all_models_performance.csv
+outputs/figures/mlp_training_loss.png
+outputs/figures/tree_pdp_*.png
+tables/ml_model_performance.tex
+notebooks/13_mlp_and_sequence_models.ipynb
+notebooks/14_model_comparison_and_summary.ipynb
+
+# Environment files
+.env
+*.env
+venv/
+.venv/
+env/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Local notebooks and editor state
+.ipynb_checkpoints/
+.vscode/
+.idea/

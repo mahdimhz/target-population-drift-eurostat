@@ -1,0 +1,6 @@
+comparison,latest_year,first_value_pc,second_value_pc,difference_pc,interpretation
+Unweighted versus resident-weighted primary indicator,2025,2.67,2.121,-0.549,Population weighting changes the monitoring estimand from average country to average resident.
+Full Eurostat-available versus EU-27 primary indicator,2025,2.67,2.767,0.097,Country-universe restriction changes the set of national units being summarized.
+Medical population denominator versus medical need denominator,2025,2.67,4.07,1.4,Need-denominator indicators answer a narrower question than population-denominator indicators.
+Medical versus dental population-denominator combined barriers,2025,2.67,3.447,0.777,Care type changes the service domain and should not be treated as the same outcome.
+"Medical barrier range: cost, waiting, distance",2025,0.157,1.63,1.473,"Barrier-specific indicators separate affordability, waiting-time, and distance mechanisms."

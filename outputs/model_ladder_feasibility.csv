@@ -1,0 +1,11 @@
+model,label,rows,countries,years,status
+A,Poverty only,375,36,11,estimated
+B,Poverty + GDP + unemployment,360,34,11,estimated
+C,B + health financing,282,30,10,estimated
+D,C + capacity,233,27,9,estimated
+E,Full theory model,231,27,9,estimated
+F,Reduced high-coverage model,358,34,11,estimated
+C-EU27,EU-27 baseline,258,27,10,estimated
+C-PW,Population-weighted baseline,282,30,10,estimated
+C-BO,Balanced-outcome baseline,238,25,10,estimated
+C-BO-PW,Balanced-outcome weighted,238,25,10,estimated

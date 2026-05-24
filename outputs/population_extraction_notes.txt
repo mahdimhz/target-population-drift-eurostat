@@ -1,0 +1,5 @@
+Eurostat population extraction for target-population sensitivity.
+Dataset: demo_pjan.
+Filter: freq=A, unit=NR, age=TOTAL, sex=T.
+Rows saved: 796.
+Years requested: 2008-2025.

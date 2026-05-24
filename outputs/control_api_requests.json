@@ -1,0 +1,32 @@
+[
+  {
+    "dataset_code": "nama_10_pc",
+    "variable_name": "gdp_per_capita_eur",
+    "api_url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nama_10_pc?lang=en&unit=CP_EUR_HAB&na_item=B1GQ&time=2008&time=2009&time=2010&time=2011&time=2012&time=2013&time=2014&time=2015&time=2016&time=2017&time=2018&time=2019&time=2020&time=2021&time=2022&time=2023&time=2024&time=2025",
+    "raw_file": "data\\raw\\control_nama_10_pc_gdp_per_capita_eur.json"
+  },
+  {
+    "dataset_code": "une_rt_a",
+    "variable_name": "unemployment_rate_pc",
+    "api_url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/une_rt_a?lang=en&unit=PC_ACT&sex=T&age=Y15-74&time=2008&time=2009&time=2010&time=2011&time=2012&time=2013&time=2014&time=2015&time=2016&time=2017&time=2018&time=2019&time=2020&time=2021&time=2022&time=2023&time=2024&time=2025",
+    "raw_file": "data\\raw\\control_une_rt_a_unemployment_rate_pc.json"
+  },
+  {
+    "dataset_code": "ilc_peps01n",
+    "variable_name": "poverty_or_social_exclusion_pc",
+    "api_url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/ilc_peps01n?lang=en&unit=PC&sex=T&age=TOTAL&time=2008&time=2009&time=2010&time=2011&time=2012&time=2013&time=2014&time=2015&time=2016&time=2017&time=2018&time=2019&time=2020&time=2021&time=2022&time=2023&time=2024&time=2025",
+    "raw_file": "data\\raw\\control_ilc_peps01n_poverty_or_social_exclusion_pc.json"
+  },
+  {
+    "dataset_code": "gov_10a_exp",
+    "variable_name": "government_health_expenditure_gdp_pc",
+    "api_url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10a_exp?lang=en&unit=PC_GDP&sector=S13&cofog99=GF07&na_item=TE&time=2008&time=2009&time=2010&time=2011&time=2012&time=2013&time=2014&time=2015&time=2016&time=2017&time=2018&time=2019&time=2020&time=2021&time=2022&time=2023&time=2024&time=2025",
+    "raw_file": "data\\raw\\control_gov_10a_exp_government_health_expenditure_gdp_pc.json"
+  },
+  {
+    "dataset_code": "hlth_sha11_hf",
+    "variable_name": "compulsory_health_financing_gdp_pc",
+    "api_url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/hlth_sha11_hf?lang=en&unit=PC_GDP&icha11_hf=HF1&time=2008&time=2009&time=2010&time=2011&time=2012&time=2013&time=2014&time=2015&time=2016&time=2017&time=2018&time=2019&time=2020&time=2021&time=2022&time=2023&time=2024&time=2025",
+    "raw_file": "data\\raw\\control_hlth_sha11_hf_compulsory_health_financing_gdp_pc.json"
+  }
+]

@@ -1,0 +1,3 @@
+model_name,n_estimators,max_depth,learning_rate,mae_test,rmse_test,r2_test
+Random Forest,300,,,1.0511622807017544,1.5717286684761915,0.573601269151764
+Gradient Boosting,100,2.0,0.1,1.1301136051844842,1.5258452438216057,0.5981335685989455

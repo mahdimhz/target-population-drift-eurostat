@@ -1,0 +1,7 @@
+Beta-convergence regression: change in unmet_need_pc on initial unmet_need_pc.
+N countries: 37
+Initial-level coefficient: -0.826163
+SE: 0.098065
+p-value: <0.001
+R2: 0.669732
+Conclusion: beta-convergence pattern.

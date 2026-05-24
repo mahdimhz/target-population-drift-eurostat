@@ -1,0 +1,11 @@
+variant,variable,lower_bound,upper_bound,imputed_n,imputed_min,imputed_max,outside_bounds
+country_dummies_pmm,log_gdp_per_capita,7.0,12.3,4,8.503094267036737,9.690294332075087,0
+country_dummies_pmm,unemployment_rate_pc,0.0,40.0,52,3.3,17.6,0
+country_dummies_pmm,poverty_or_social_exclusion_pc,0.0,60.0,233,11.6,58.5,0
+country_dummies_pmm,government_health_expenditure_gdp_pc,0.0,15.0,106,3.6,9.5,0
+country_dummies_pmm,compulsory_health_financing_gdp_pc,0.0,15.0,164,2.86,10.7,0
+country_dummies_pmm,gini_income,0.0,60.0,199,23.4,46.6,0
+country_dummies_pmm,physicians_per_100k,0.0,1000.0,177,218.08,534.5,0
+country_dummies_pmm,hospital_beds_per_100k,0.0,1500.0,86,212.18,816.07,0
+country_dummies_pmm,oop_health_expenditure_share_pc,0.0,60.0,164,8.39,44.61,0
+country_dummies_pmm,long_term_unemployment_rate_pc,0.0,30.0,54,0.4,11.4,0

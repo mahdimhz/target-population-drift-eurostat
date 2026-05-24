@@ -1,0 +1,11 @@
+matplotlib==3.10.8
+numpy==2.4.4
+pandas==3.0.3
+PyMuPDF==1.27.2.2
+pytest
+requests==2.33.1
+scikit-learn==1.7.1
+scipy==1.17.1
+seaborn==0.13.2
+statsmodels==0.14.6
+xgboost==3.2.0

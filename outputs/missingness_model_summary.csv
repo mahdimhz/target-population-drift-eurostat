@@ -1,0 +1,15 @@
+term,logit_coef
+poverty_or_social_exclusion_pc_observed,3.8364619973898852
+compulsory_health_financing_gdp_pc_observed,3.1033587318640916
+government_health_expenditure_gdp_pc_observed,2.0619680499692365
+unemployment_rate_pc_observed,0.3895053220667286
+year_centered,0.3671333565497697
+log_gdp_per_capita,0.20155839771982179
+log_gdp_per_capita_missing,0.005279920016894155
+log_gdp_per_capita_observed,-0.005279920016894014
+unmet_need_pc,-0.05072615091975122
+group_Western/Northern,-0.13322338276777787
+unemployment_rate_pc,-0.1901263513404537
+unemployment_rate_pc_missing,-0.3895053220667286
+target_rows,608.0
+complete_case_rows,282.0

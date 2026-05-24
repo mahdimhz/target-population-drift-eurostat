@@ -1,0 +1,2 @@
+term,coef,country_clustered_se,country_clustered_p_value,country_clustered_ci_low,country_clustered_ci_high,driscoll_kraay_se,driscoll_kraay_p_value,wild_cluster_p_value,wild_cluster_ci_low,wild_cluster_ci_high,bootstrap_reps_used,nobs,countries
+poverty_or_social_exclusion_pc,0.17752062443807837,0.06721106140387914,0.008260288895314718,0.04578936472376516,0.3092518841523916,0.07584812464583598,0.019259238032709847,0.004,0.05819867027301409,0.2971887758798563,499,282,30

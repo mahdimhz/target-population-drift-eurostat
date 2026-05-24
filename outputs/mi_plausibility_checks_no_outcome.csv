@@ -1,0 +1,12 @@
+variant,variable,lower_bound,upper_bound,imputed_n,imputed_min,imputed_max,outside_bounds
+no_outcome,log_gdp_per_capita,7.0,12.3,4,7.090698329227772,11.51069662097466,0
+no_outcome,gdp_per_capita_eur,0.0,150000.0,4,0.0,61191.75829937168,0
+no_outcome,unemployment_rate_pc,0.0,40.0,52,0.9465912743105935,39.789566039229875,0
+no_outcome,poverty_or_social_exclusion_pc,0.0,60.0,233,0.0,60.0,0
+no_outcome,government_health_expenditure_gdp_pc,0.0,15.0,106,0.12438953497118277,14.465487099564175,0
+no_outcome,compulsory_health_financing_gdp_pc,0.0,15.0,164,0.06741969794785962,14.976486463519995,0
+no_outcome,gini_income,0.0,60.0,199,0.0099554349975719,59.863867546470715,0
+no_outcome,physicians_per_100k,0.0,1000.0,177,5.5419861243782975,998.7011250170154,0
+no_outcome,hospital_beds_per_100k,0.0,1500.0,86,30.158004150937813,1484.4847985497977,0
+no_outcome,oop_health_expenditure_share_pc,0.0,60.0,164,0.0,59.95913971500365,0
+no_outcome,long_term_unemployment_rate_pc,0.0,30.0,54,0.0,29.610199919816967,0

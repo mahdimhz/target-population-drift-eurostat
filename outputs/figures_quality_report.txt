@@ -1,0 +1,100 @@
+Figures quality report
+Checks: PDF opens, has at least one page, has extractable English text or a descriptive filename, and is not trivially blank by file size.
+
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/08b_minus_08_difference_by_country.pdf | REVIEW | little/no extractable text
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/08b_vs_08_scatter.pdf | REVIEW | little/no extractable text
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/citizenship_gap_correlations.pdf | REVIEW | axis/title text not clearly detected as English
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/citizenship_unmet_need_comparison.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/citizenship_unmet_need_heatmap.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/citizenship_unmet_need_trend.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/complete_case_attrition_waterfall.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/conceptual_selection_estimand_diagram.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/convergence_sigma.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/descriptive_country_rankings.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/descriptive_country_rankings_latest.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/descriptive_country_year_heatmap.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/descriptive_estimand_drift_diagnostic.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/descriptive_eu_trend.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/descriptive_trend_europe.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/descriptive_trend_with_bands.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/leave_one_country_out_poverty.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/leave_one_year_out_poverty.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/mi_coefficient_distribution.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/mi_imputed_share_heatmap_baseline.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/mi_imputed_share_heatmap_baseline_m50.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/mi_imputed_share_heatmap_baseline_pmm.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/mi_imputed_share_heatmap_baseline_pmm_m50.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/mi_imputed_share_heatmap_country_dummies.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/mi_imputed_share_heatmap_country_dummies_pmm.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/mi_imputed_share_heatmap_lagged_predictors_pmm.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/mi_imputed_share_heatmap_no_outcome.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/mi_imputed_share_heatmap_no_outcome_pmm.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/mi_observed_vs_imputed_baseline.pdf | REVIEW | axis/title text not clearly detected as English
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/mi_observed_vs_imputed_baseline_m50.pdf | REVIEW | axis/title text not clearly detected as English
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/mi_observed_vs_imputed_baseline_pmm.pdf | REVIEW | axis/title text not clearly detected as English
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/mi_observed_vs_imputed_baseline_pmm_m50.pdf | REVIEW | axis/title text not clearly detected as English
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/mi_observed_vs_imputed_country_dummies.pdf | REVIEW | axis/title text not clearly detected as English
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/mi_observed_vs_imputed_country_dummies_pmm.pdf | REVIEW | axis/title text not clearly detected as English
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/mi_observed_vs_imputed_lagged_predictors_pmm.pdf | REVIEW | axis/title text not clearly detected as English
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/mi_observed_vs_imputed_no_outcome.pdf | REVIEW | axis/title text not clearly detected as English
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/mi_observed_vs_imputed_no_outcome_pmm.pdf | REVIEW | axis/title text not clearly detected as English
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/missingness_heatmap.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/missingness_heatmap_capacity.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/missingness_heatmap_financing.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/missingness_heatmap_outcome.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/missingness_heatmap_population.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/missingness_heatmap_socioeconomic.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/missingness_inclusion_probability.pdf | REVIEW | axis/title text not clearly detected as English
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/ml_actual_vs_predicted_gradient_boosting.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/ml_actual_vs_predicted_random_forest.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/ml_actual_vs_predicted_ridge.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/ml_calibration_plot.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/ml_expanding_window_validation.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/ml_importance_comparison.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/ml_importance_stability.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/ml_learning_curves.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/ml_permutation_vs_impurity_importance.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/ml_residuals_by_country_gradient_boosting.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/ml_residuals_by_country_random_forest.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/ml_residuals_by_country_ridge.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/ml_residuals_vs_predicted_gradient_boosting.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/ml_residuals_vs_predicted_random_forest.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/ml_residuals_vs_predicted_ridge.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/ml_tree_feature_importance.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/ml_validation_tuning_mae.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/mnar_tipping_point_curve.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/model_correlations_heatmap.pdf | REVIEW | little/no extractable text
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/model_ladder_coefficient_forest.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/multi_outcome_monitoring_benchmark.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/multi_outcome_primary_attrition_waterfall.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/multi_outcome_retention_heatmap.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/outcome_estimand_coefficient_stability.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/outcome_missingness_heatmap.pdf | REVIEW | little/no extractable text
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/panel_correlations_heatmap.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/panel_heterogeneity.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/panel_variable_distributions.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/population_weighted_trend.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/poverty_robustness_forest.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/regression_fe_coefficient_plot.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/regression_robustness_forest_plot.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/scatter_unmet_vs_compulsory_health_financing_gdp_pc.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/scatter_unmet_vs_gdp_per_capita_eur.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/scatter_unmet_vs_gini_income.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/scatter_unmet_vs_government_health_expenditure_gdp_pc.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/scatter_unmet_vs_hospital_beds_per_100k.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/scatter_unmet_vs_log_gdp_per_capita.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/scatter_unmet_vs_long_term_unemployment_rate_pc.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/scatter_unmet_vs_oop_health_expenditure_share_pc.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/scatter_unmet_vs_physicians_per_100k.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/scatter_unmet_vs_poverty_or_social_exclusion_pc.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/scatter_unmet_vs_unemployment_rate_pc.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/simulation_bias_by_mechanism.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/simulation_target_distance_vs_error.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/tree_feature_importance.pdf | REVIEW | little/no extractable text
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/unmet_need_trends_all_countries.pdf | REVIEW | little/no extractable text
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/unmet_need_vs_gdp_per_capita_eur_2025.pdf | REVIEW | little/no extractable text
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/unmet_need_vs_poverty_or_social_exclusion_pc_2025.pdf | REVIEW | little/no extractable text
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/unmet_need_vs_unemployment_rate_pc_2025.pdf | REVIEW | little/no extractable text
+
+Figures needing manual review:
+08b_minus_08_difference_by_country.pdf, 08b_vs_08_scatter.pdf, citizenship_gap_correlations.pdf, mi_observed_vs_imputed_baseline.pdf, mi_observed_vs_imputed_baseline_m50.pdf, mi_observed_vs_imputed_baseline_pmm.pdf, mi_observed_vs_imputed_baseline_pmm_m50.pdf, mi_observed_vs_imputed_country_dummies.pdf, mi_observed_vs_imputed_country_dummies_pmm.pdf, mi_observed_vs_imputed_lagged_predictors_pmm.pdf, mi_observed_vs_imputed_no_outcome.pdf, mi_observed_vs_imputed_no_outcome_pmm.pdf, missingness_inclusion_probability.pdf, model_correlations_heatmap.pdf, outcome_missingness_heatmap.pdf, tree_feature_importance.pdf, unmet_need_trends_all_countries.pdf, unmet_need_vs_gdp_per_capita_eur_2025.pdf, unmet_need_vs_poverty_or_social_exclusion_pc_2025.pdf, unmet_need_vs_unemployment_rate_pc_2025.pdf

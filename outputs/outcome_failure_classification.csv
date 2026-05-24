@@ -1,0 +1,8 @@
+indicator_id,indicator_label,poverty_iqr,outcome_sd,estimated_estimands,classification
+dental_need_combined,Dental need,8.525000000000002,5.897031065213497,1,non-identifiable
+dental_population_combined,Dental population,9.399999999999999,3.4951320973457656,5,target-dependent
+medical_need_combined,Medical need,8.525000000000002,4.118538388619794,1,non-identifiable
+medical_population_combined,Medical population,9.399999999999999,3.087231203884617,5,target-dependent
+medical_population_cost,Medical cost,9.399999999999999,2.210941129329737,5,target-dependent
+medical_population_distance,Medical distance,9.399999999999999,0.20426922921371454,5,target-dependent
+medical_population_waiting,Medical waiting,9.399999999999999,2.1400418807436687,5,stable

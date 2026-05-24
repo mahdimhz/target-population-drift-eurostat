@@ -1,0 +1,13 @@
+MICE-style IterativeImputer used max_iter=10 and sample_posterior=True with random seeds 42-51.
+Outcome, country identifiers, and year identifiers were not overwritten.
+Saved imputed panels:
+data\processed\panel_features_v2-3_imputed_1.csv
+data\processed\panel_features_v2-3_imputed_2.csv
+data\processed\panel_features_v2-3_imputed_3.csv
+data\processed\panel_features_v2-3_imputed_4.csv
+data\processed\panel_features_v2-3_imputed_5.csv
+data\processed\panel_features_v2-3_imputed_6.csv
+data\processed\panel_features_v2-3_imputed_7.csv
+data\processed\panel_features_v2-3_imputed_8.csv
+data\processed\panel_features_v2-3_imputed_9.csv
+data\processed\panel_features_v2-3_imputed_10.csv

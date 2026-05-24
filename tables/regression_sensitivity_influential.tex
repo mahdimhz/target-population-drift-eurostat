@@ -1,0 +1,13 @@
+\begin{table}
+\caption{Influential-country sensitivity of the poverty association}
+\label{tab:regression_sensitivity_influential}
+\begin{tabular}{llrrrrrrrl}
+\toprule
+specification & term & coef & se & p\_value & ci\_low & ci\_high & nobs & countries & dropped\_countries \\
+\midrule
+Drop top 3 high-unmet countries & poverty\_or\_social\_exclusion\_pc & 0.210 & 0.066 & 0.001 & 0.081 & 0.338 & 263 & 28 & AL, EE, LV \\
+Drop bottom 3 low-unmet countries & poverty\_or\_social\_exclusion\_pc & 0.181 & 0.070 & 0.010 & 0.043 & 0.318 & 253 & 27 & MT, AT, NL \\
+Drop top 3 and bottom 3 & poverty\_or\_social\_exclusion\_pc & 0.221 & 0.068 & 0.001 & 0.087 & 0.355 & 234 & 25 & AL, EE, LV, MT, AT, NL \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -1,0 +1,2 @@
+model,nobs,countries,years,avg_years_per_country,min_years_per_country,max_years_per_country,within_r2,between_r2,overall_r2
+Baseline complete-case country-and-year FE,282,30,10,9.4,6,10,0.09846667057462943,0.22944459958098495,0.8945848839760897

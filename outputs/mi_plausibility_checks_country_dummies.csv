@@ -1,0 +1,12 @@
+variant,variable,lower_bound,upper_bound,imputed_n,imputed_min,imputed_max,outside_bounds
+country_dummies,log_gdp_per_capita,7.0,12.3,4,10.334237124623774,11.790113962213848,0
+country_dummies,gdp_per_capita_eur,0.0,150000.0,4,7208.60652433167,141704.61521594017,0
+country_dummies,unemployment_rate_pc,0.0,40.0,52,0.12777354428224186,39.5401250236408,0
+country_dummies,poverty_or_social_exclusion_pc,0.0,60.0,233,0.755648795101699,59.70005063331058,0
+country_dummies,government_health_expenditure_gdp_pc,0.0,15.0,106,0.12446332841714192,14.427746169703974,0
+country_dummies,compulsory_health_financing_gdp_pc,0.0,15.0,164,0.0,14.971675336111959,0
+country_dummies,gini_income,0.0,60.0,199,0.011075384408542277,59.84965039589981,0
+country_dummies,physicians_per_100k,0.0,1000.0,177,5.622105705205854,998.415766709724,0
+country_dummies,hospital_beds_per_100k,0.0,1500.0,86,26.02115576568883,1476.439986532879,0
+country_dummies,oop_health_expenditure_share_pc,0.0,60.0,164,0.0,59.956744025502736,0
+country_dummies,long_term_unemployment_rate_pc,0.0,30.0,54,0.0,29.877101384667142,0

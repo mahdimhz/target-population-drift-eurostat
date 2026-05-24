@@ -1,0 +1,15 @@
+feature,importance
+physicians_per_100k,0.37277661616781615
+gini_income,0.12389383226463445
+poverty_or_social_exclusion_pc,0.12317828762851744
+long_term_unemployment_rate_pc,0.09879408627313974
+hospital_beds_per_100k,0.054339108047168246
+unemployment_rate_pc,0.05267065670550138
+compulsory_health_financing_gdp_pc,0.050277935604970056
+gdp_per_capita_eur,0.04538880795794009
+physicians_per_100k_lag1,0.027401393650862436
+oop_health_expenditure_share_pc,0.02695512874801672
+government_health_expenditure_gdp_pc,0.007825537175781926
+gdp_per_capita_growth,0.0069666724370202795
+unemployment_rate_change,0.005496211271374113
+log_gdp_per_capita,0.004035726067256898

@@ -1,0 +1,22 @@
+\begingroup
+\scriptsize
+\begin{tabular}{@{}p{0.20\textwidth}p{0.23\textwidth}rrrp{0.20\textwidth}lp{0.20\textwidth}@{}}
+\toprule
+Spec. & Target/weighting & Rows & Countries & Years & Coef. [95\% CI] & p-value & Interpretation \\
+\midrule
+A: Poverty only & Full Eurostat-available; Unweighted & 375 & 36 & 11 & 0.157 [0.050, 0.264] & 0.004 & social-gradient test before macro or system adjustment \\
+B: Poverty + GDP + unemployment & Full Eurostat-available; Unweighted & 360 & 34 & 11 & 0.127 [0.009, 0.244] & 0.035 & adds macroeconomic context with relatively high coverage \\
+C: B + health financing & Full Eurostat-available; Unweighted & 282 & 30 & 10 & 0.178 [0.046, 0.309] & 0.008 & baseline financing-augmented specification \\
+D: C + capacity & Full Eurostat-available; Unweighted & 233 & 27 & 9 & 0.112 [-0.048, 0.272] & 0.171 & adds capacity proxies and tests sample-loss cost \\
+E: Full theory model & Full Eurostat-available; Unweighted & 231 & 27 & 9 & 0.108 [-0.053, 0.268] & 0.189 & broad conceptual model, highest covariate burden \\
+F: Reduced high-coverage model & Full Eurostat-available; Unweighted & 358 & 34 & 11 & 0.132 [0.014, 0.249] & 0.028 & parsimonious macro-labour benchmark with higher coverage than system-expanded models \\
+C-EU27: EU-27 baseline & EU-27; Unweighted & 258 & 27 & 10 & 0.179 [0.034, 0.324] & 0.015 & mandatory EU-27 universe comparison \\
+C-PW: Population-weighted baseline & Full Eurostat-available; Year-normalized population & 282 & 30 & 10 & 0.304 [-0.007, 0.615] & 0.055 & resident-weighted selected-panel version \\
+C-BO: Balanced-outcome baseline & Balanced outcome; Unweighted & 238 & 25 & 10 & 0.154 [0.060, 0.248] & 0.001 & coverage-restricted outcome/population target \\
+C-BO-PW: Balanced-outcome weighted & Balanced outcome; Year-normalized population & 238 & 25 & 10 & 0.147 [-0.026, 0.320] & 0.096 & resident-weighted balanced-outcome target \\
+\bottomrule
+\end{tabular}
+
+\vspace{0.2em}
+\begin{minipage}{0.94\textwidth}\scriptsize Notes: All rows use country-and-year fixed effects and country-clustered standard errors. Infeasible rows are retained in the table when the available row set has too few observations, countries, or years for stable FE estimation. Population weights are year-normalized country populations.\end{minipage}
+\endgroup

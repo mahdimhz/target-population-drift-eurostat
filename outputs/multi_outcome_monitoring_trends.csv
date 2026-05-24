@@ -1,0 +1,201 @@
+indicator_id,indicator_label,dataset_code,care_type,barrier_type,denominator,universe,year,countries,unweighted_mean_pc,population_weighted_mean_pc,population_weighted_countries
+dental_need_combined,"Dental, need denominator",hlth_silc_09b,dental,cost_distance_waiting,same_needs,EU-27,2021,24,6.008,5.384,24
+dental_need_combined,"Dental, need denominator",hlth_silc_09b,dental,cost_distance_waiting,same_needs,EU-27,2022,24,6.513,5.733,24
+dental_need_combined,"Dental, need denominator",hlth_silc_09b,dental,cost_distance_waiting,same_needs,EU-27,2023,24,6.6,5.897,24
+dental_need_combined,"Dental, need denominator",hlth_silc_09b,dental,cost_distance_waiting,same_needs,EU-27,2024,27,6.793,6.08,27
+dental_need_combined,"Dental, need denominator",hlth_silc_09b,dental,cost_distance_waiting,same_needs,EU-27,2025,27,6.752,6.192,27
+dental_need_combined,"Dental, need denominator",hlth_silc_09b,dental,cost_distance_waiting,same_needs,Full Eurostat-available,2021,30,6.777,5.41,30
+dental_need_combined,"Dental, need denominator",hlth_silc_09b,dental,cost_distance_waiting,same_needs,Full Eurostat-available,2022,31,6.79,5.591,31
+dental_need_combined,"Dental, need denominator",hlth_silc_09b,dental,cost_distance_waiting,same_needs,Full Eurostat-available,2023,31,7.235,5.642,31
+dental_need_combined,"Dental, need denominator",hlth_silc_09b,dental,cost_distance_waiting,same_needs,Full Eurostat-available,2024,32,6.95,5.73,32
+dental_need_combined,"Dental, need denominator",hlth_silc_09b,dental,cost_distance_waiting,same_needs,Full Eurostat-available,2025,30,6.68,5.534,30
+dental_population_combined,"Dental, population denominator",hlth_silc_09,dental,cost_distance_waiting,population,EU-27,2008,26,4.688,4.876,26
+dental_population_combined,"Dental, population denominator",hlth_silc_09,dental,cost_distance_waiting,population,EU-27,2009,26,4.846,4.956,26
+dental_population_combined,"Dental, population denominator",hlth_silc_09,dental,cost_distance_waiting,population,EU-27,2010,27,4.989,4.921,27
+dental_population_combined,"Dental, population denominator",hlth_silc_09,dental,cost_distance_waiting,population,EU-27,2011,27,5.256,5.103,27
+dental_population_combined,"Dental, population denominator",hlth_silc_09,dental,cost_distance_waiting,population,EU-27,2012,27,5.344,5.308,27
+dental_population_combined,"Dental, population denominator",hlth_silc_09,dental,cost_distance_waiting,population,EU-27,2013,27,5.633,5.718,26
+dental_population_combined,"Dental, population denominator",hlth_silc_09,dental,cost_distance_waiting,population,EU-27,2014,27,5.678,5.836,27
+dental_population_combined,"Dental, population denominator",hlth_silc_09,dental,cost_distance_waiting,population,EU-27,2015,27,4.856,4.62,27
+dental_population_combined,"Dental, population denominator",hlth_silc_09,dental,cost_distance_waiting,population,EU-27,2016,27,4.496,4.241,27
+dental_population_combined,"Dental, population denominator",hlth_silc_09,dental,cost_distance_waiting,population,EU-27,2017,27,3.67,2.771,27
+dental_population_combined,"Dental, population denominator",hlth_silc_09,dental,cost_distance_waiting,population,EU-27,2018,27,3.644,2.873,27
+dental_population_combined,"Dental, population denominator",hlth_silc_09,dental,cost_distance_waiting,population,EU-27,2019,27,3.326,2.726,27
+dental_population_combined,"Dental, population denominator",hlth_silc_09,dental,cost_distance_waiting,population,EU-27,2020,26,3.008,2.935,26
+dental_population_combined,"Dental, population denominator",hlth_silc_09,dental,cost_distance_waiting,population,EU-27,2021,27,2.937,2.724,27
+dental_population_combined,"Dental, population denominator",hlth_silc_09,dental,cost_distance_waiting,population,EU-27,2022,27,3.341,3.076,27
+dental_population_combined,"Dental, population denominator",hlth_silc_09,dental,cost_distance_waiting,population,EU-27,2023,27,3.574,3.341,27
+dental_population_combined,"Dental, population denominator",hlth_silc_09,dental,cost_distance_waiting,population,EU-27,2024,27,3.496,3.245,27
+dental_population_combined,"Dental, population denominator",hlth_silc_09,dental,cost_distance_waiting,population,EU-27,2025,27,3.419,3.232,27
+dental_population_combined,"Dental, population denominator",hlth_silc_09,dental,cost_distance_waiting,population,Full Eurostat-available,2008,31,4.897,5.336,31
+dental_population_combined,"Dental, population denominator",hlth_silc_09,dental,cost_distance_waiting,population,Full Eurostat-available,2009,31,5.097,5.408,31
+dental_population_combined,"Dental, population denominator",hlth_silc_09,dental,cost_distance_waiting,population,Full Eurostat-available,2010,33,5.376,5.45,33
+dental_population_combined,"Dental, population denominator",hlth_silc_09,dental,cost_distance_waiting,population,Full Eurostat-available,2011,33,5.442,5.178,33
+dental_population_combined,"Dental, population denominator",hlth_silc_09,dental,cost_distance_waiting,population,Full Eurostat-available,2012,33,5.458,5.302,33
+dental_population_combined,"Dental, population denominator",hlth_silc_09,dental,cost_distance_waiting,population,Full Eurostat-available,2013,35,6.054,5.713,34
+dental_population_combined,"Dental, population denominator",hlth_silc_09,dental,cost_distance_waiting,population,Full Eurostat-available,2014,35,5.757,5.59,35
+dental_population_combined,"Dental, population denominator",hlth_silc_09,dental,cost_distance_waiting,population,Full Eurostat-available,2015,35,4.96,4.626,35
+dental_population_combined,"Dental, population denominator",hlth_silc_09,dental,cost_distance_waiting,population,Full Eurostat-available,2016,35,4.514,3.92,35
+dental_population_combined,"Dental, population denominator",hlth_silc_09,dental,cost_distance_waiting,population,Full Eurostat-available,2017,36,4.094,2.868,36
+dental_population_combined,"Dental, population denominator",hlth_silc_09,dental,cost_distance_waiting,population,Full Eurostat-available,2018,37,4.273,2.97,37
+dental_population_combined,"Dental, population denominator",hlth_silc_09,dental,cost_distance_waiting,population,Full Eurostat-available,2019,35,4.023,2.943,35
+dental_population_combined,"Dental, population denominator",hlth_silc_09,dental,cost_distance_waiting,population,Full Eurostat-available,2020,34,3.506,2.873,34
+dental_population_combined,"Dental, population denominator",hlth_silc_09,dental,cost_distance_waiting,population,Full Eurostat-available,2021,34,3.274,2.83,34
+dental_population_combined,"Dental, population denominator",hlth_silc_09,dental,cost_distance_waiting,population,Full Eurostat-available,2022,34,3.518,2.934,34
+dental_population_combined,"Dental, population denominator",hlth_silc_09,dental,cost_distance_waiting,population,Full Eurostat-available,2023,34,3.903,3.171,34
+dental_population_combined,"Dental, population denominator",hlth_silc_09,dental,cost_distance_waiting,population,Full Eurostat-available,2024,32,3.638,3.074,32
+dental_population_combined,"Dental, population denominator",hlth_silc_09,dental,cost_distance_waiting,population,Full Eurostat-available,2025,30,3.447,2.89,30
+medical_need_combined,"Medical, need denominator",hlth_silc_08b,medical,cost_distance_waiting,same_needs,EU-27,2021,24,3.338,2.893,24
+medical_need_combined,"Medical, need denominator",hlth_silc_08b,medical,cost_distance_waiting,same_needs,EU-27,2022,24,3.688,3.066,24
+medical_need_combined,"Medical, need denominator",hlth_silc_08b,medical,cost_distance_waiting,same_needs,EU-27,2023,24,4.154,3.46,24
+medical_need_combined,"Medical, need denominator",hlth_silc_08b,medical,cost_distance_waiting,same_needs,EU-27,2024,27,4.53,3.727,27
+medical_need_combined,"Medical, need denominator",hlth_silc_08b,medical,cost_distance_waiting,same_needs,EU-27,2025,27,4.226,3.656,27
+medical_need_combined,"Medical, need denominator",hlth_silc_08b,medical,cost_distance_waiting,same_needs,Full Eurostat-available,2021,30,3.8,2.986,30
+medical_need_combined,"Medical, need denominator",hlth_silc_08b,medical,cost_distance_waiting,same_needs,Full Eurostat-available,2022,31,3.958,2.986,31
+medical_need_combined,"Medical, need denominator",hlth_silc_08b,medical,cost_distance_waiting,same_needs,Full Eurostat-available,2023,31,4.439,3.227,31
+medical_need_combined,"Medical, need denominator",hlth_silc_08b,medical,cost_distance_waiting,same_needs,Full Eurostat-available,2024,32,4.484,3.409,32
+medical_need_combined,"Medical, need denominator",hlth_silc_08b,medical,cost_distance_waiting,same_needs,Full Eurostat-available,2025,30,4.07,3.211,30
+medical_population_combined,"Medical, population denominator",hlth_silc_08,medical,cost_distance_waiting,population,EU-27,2008,26,3.404,3.286,26
+medical_population_combined,"Medical, population denominator",hlth_silc_08,medical,cost_distance_waiting,population,EU-27,2009,26,3.212,3.284,26
+medical_population_combined,"Medical, population denominator",hlth_silc_08,medical,cost_distance_waiting,population,EU-27,2010,27,3.578,3.356,27
+medical_population_combined,"Medical, population denominator",hlth_silc_08,medical,cost_distance_waiting,population,EU-27,2011,27,3.856,3.616,27
+medical_population_combined,"Medical, population denominator",hlth_silc_08,medical,cost_distance_waiting,population,EU-27,2012,27,3.767,3.65,27
+medical_population_combined,"Medical, population denominator",hlth_silc_08,medical,cost_distance_waiting,population,EU-27,2013,27,3.952,3.874,26
+medical_population_combined,"Medical, population denominator",hlth_silc_08,medical,cost_distance_waiting,population,EU-27,2014,27,3.93,3.768,27
+medical_population_combined,"Medical, population denominator",hlth_silc_08,medical,cost_distance_waiting,population,EU-27,2015,27,3.452,3.223,27
+medical_population_combined,"Medical, population denominator",hlth_silc_08,medical,cost_distance_waiting,population,EU-27,2016,27,3.2,2.719,27
+medical_population_combined,"Medical, population denominator",hlth_silc_08,medical,cost_distance_waiting,population,EU-27,2017,27,2.496,1.628,27
+medical_population_combined,"Medical, population denominator",hlth_silc_08,medical,cost_distance_waiting,population,EU-27,2018,27,2.689,1.788,27
+medical_population_combined,"Medical, population denominator",hlth_silc_08,medical,cost_distance_waiting,population,EU-27,2019,27,2.474,1.686,27
+medical_population_combined,"Medical, population denominator",hlth_silc_08,medical,cost_distance_waiting,population,EU-27,2020,26,2.327,1.616,26
+medical_population_combined,"Medical, population denominator",hlth_silc_08,medical,cost_distance_waiting,population,EU-27,2021,27,2.241,1.78,27
+medical_population_combined,"Medical, population denominator",hlth_silc_08,medical,cost_distance_waiting,population,EU-27,2022,27,2.563,1.997,27
+medical_population_combined,"Medical, population denominator",hlth_silc_08,medical,cost_distance_waiting,population,EU-27,2023,27,3.115,2.363,27
+medical_population_combined,"Medical, population denominator",hlth_silc_08,medical,cost_distance_waiting,population,EU-27,2024,27,2.978,2.461,27
+medical_population_combined,"Medical, population denominator",hlth_silc_08,medical,cost_distance_waiting,population,EU-27,2025,27,2.767,2.384,27
+medical_population_combined,"Medical, population denominator",hlth_silc_08,medical,cost_distance_waiting,population,Full Eurostat-available,2008,31,3.442,4.203,31
+medical_population_combined,"Medical, population denominator",hlth_silc_08,medical,cost_distance_waiting,population,Full Eurostat-available,2009,31,3.358,4.441,31
+medical_population_combined,"Medical, population denominator",hlth_silc_08,medical,cost_distance_waiting,population,Full Eurostat-available,2010,33,3.97,4.69,33
+medical_population_combined,"Medical, population denominator",hlth_silc_08,medical,cost_distance_waiting,population,Full Eurostat-available,2011,33,4.0,4.389,33
+medical_population_combined,"Medical, population denominator",hlth_silc_08,medical,cost_distance_waiting,population,Full Eurostat-available,2012,33,3.87,4.217,33
+medical_population_combined,"Medical, population denominator",hlth_silc_08,medical,cost_distance_waiting,population,Full Eurostat-available,2013,35,4.334,4.483,34
+medical_population_combined,"Medical, population denominator",hlth_silc_08,medical,cost_distance_waiting,population,Full Eurostat-available,2014,35,4.126,4.271,35
+medical_population_combined,"Medical, population denominator",hlth_silc_08,medical,cost_distance_waiting,population,Full Eurostat-available,2015,35,3.494,3.616,35
+medical_population_combined,"Medical, population denominator",hlth_silc_08,medical,cost_distance_waiting,population,Full Eurostat-available,2016,35,3.023,2.652,35
+medical_population_combined,"Medical, population denominator",hlth_silc_08,medical,cost_distance_waiting,population,Full Eurostat-available,2017,36,2.822,2.008,36
+medical_population_combined,"Medical, population denominator",hlth_silc_08,medical,cost_distance_waiting,population,Full Eurostat-available,2018,37,3.262,2.336,37
+medical_population_combined,"Medical, population denominator",hlth_silc_08,medical,cost_distance_waiting,population,Full Eurostat-available,2019,36,2.972,1.983,36
+medical_population_combined,"Medical, population denominator",hlth_silc_08,medical,cost_distance_waiting,population,Full Eurostat-available,2020,34,2.5,1.723,34
+medical_population_combined,"Medical, population denominator",hlth_silc_08,medical,cost_distance_waiting,population,Full Eurostat-available,2021,34,2.441,1.917,34
+medical_population_combined,"Medical, population denominator",hlth_silc_08,medical,cost_distance_waiting,population,Full Eurostat-available,2022,34,2.706,1.986,34
+medical_population_combined,"Medical, population denominator",hlth_silc_08,medical,cost_distance_waiting,population,Full Eurostat-available,2023,34,3.185,2.234,34
+medical_population_combined,"Medical, population denominator",hlth_silc_08,medical,cost_distance_waiting,population,Full Eurostat-available,2024,32,2.928,2.293,32
+medical_population_combined,"Medical, population denominator",hlth_silc_08,medical,cost_distance_waiting,population,Full Eurostat-available,2025,30,2.67,2.121,30
+medical_population_cost,"Medical, cost",hlth_silc_08,medical,cost,population,EU-27,2008,26,2.169,2.296,26
+medical_population_cost,"Medical, cost",hlth_silc_08,medical,cost,population,EU-27,2009,26,2.0,2.115,26
+medical_population_cost,"Medical, cost",hlth_silc_08,medical,cost,population,EU-27,2010,27,2.3,2.183,27
+medical_population_cost,"Medical, cost",hlth_silc_08,medical,cost,population,EU-27,2011,27,2.548,2.539,27
+medical_population_cost,"Medical, cost",hlth_silc_08,medical,cost,population,EU-27,2012,27,2.381,2.48,27
+medical_population_cost,"Medical, cost",hlth_silc_08,medical,cost,population,EU-27,2013,27,2.559,2.653,26
+medical_population_cost,"Medical, cost",hlth_silc_08,medical,cost,population,EU-27,2014,27,2.511,2.664,27
+medical_population_cost,"Medical, cost",hlth_silc_08,medical,cost,population,EU-27,2015,27,2.056,2.246,27
+medical_population_cost,"Medical, cost",hlth_silc_08,medical,cost,population,EU-27,2016,27,1.711,1.843,27
+medical_population_cost,"Medical, cost",hlth_silc_08,medical,cost,population,EU-27,2017,27,1.174,0.953,27
+medical_population_cost,"Medical, cost",hlth_silc_08,medical,cost,population,EU-27,2018,27,1.13,1.018,27
+medical_population_cost,"Medical, cost",hlth_silc_08,medical,cost,population,EU-27,2019,27,0.963,0.877,27
+medical_population_cost,"Medical, cost",hlth_silc_08,medical,cost,population,EU-27,2020,26,0.854,0.898,26
+medical_population_cost,"Medical, cost",hlth_silc_08,medical,cost,population,EU-27,2021,27,0.759,0.849,27
+medical_population_cost,"Medical, cost",hlth_silc_08,medical,cost,population,EU-27,2022,27,0.948,1.014,27
+medical_population_cost,"Medical, cost",hlth_silc_08,medical,cost,population,EU-27,2023,27,0.978,1.02,27
+medical_population_cost,"Medical, cost",hlth_silc_08,medical,cost,population,EU-27,2024,27,0.885,0.929,27
+medical_population_cost,"Medical, cost",hlth_silc_08,medical,cost,population,EU-27,2025,27,0.904,1.008,27
+medical_population_cost,"Medical, cost",hlth_silc_08,medical,cost,population,Full Eurostat-available,2008,31,2.281,3.187,31
+medical_population_cost,"Medical, cost",hlth_silc_08,medical,cost,population,Full Eurostat-available,2009,31,2.206,3.266,31
+medical_population_cost,"Medical, cost",hlth_silc_08,medical,cost,population,Full Eurostat-available,2010,33,2.764,3.535,33
+medical_population_cost,"Medical, cost",hlth_silc_08,medical,cost,population,Full Eurostat-available,2011,33,2.767,3.306,33
+medical_population_cost,"Medical, cost",hlth_silc_08,medical,cost,population,Full Eurostat-available,2012,33,2.564,3.044,33
+medical_population_cost,"Medical, cost",hlth_silc_08,medical,cost,population,Full Eurostat-available,2013,35,2.946,3.202,34
+medical_population_cost,"Medical, cost",hlth_silc_08,medical,cost,population,Full Eurostat-available,2014,35,2.734,3.058,35
+medical_population_cost,"Medical, cost",hlth_silc_08,medical,cost,population,Full Eurostat-available,2015,35,2.126,2.498,35
+medical_population_cost,"Medical, cost",hlth_silc_08,medical,cost,population,Full Eurostat-available,2016,35,1.68,1.823,35
+medical_population_cost,"Medical, cost",hlth_silc_08,medical,cost,population,Full Eurostat-available,2017,36,1.542,1.104,36
+medical_population_cost,"Medical, cost",hlth_silc_08,medical,cost,population,Full Eurostat-available,2018,37,1.762,1.21,37
+medical_population_cost,"Medical, cost",hlth_silc_08,medical,cost,population,Full Eurostat-available,2019,36,1.578,1.198,36
+medical_population_cost,"Medical, cost",hlth_silc_08,medical,cost,population,Full Eurostat-available,2020,34,1.141,1.04,34
+medical_population_cost,"Medical, cost",hlth_silc_08,medical,cost,population,Full Eurostat-available,2021,34,1.041,1.045,34
+medical_population_cost,"Medical, cost",hlth_silc_08,medical,cost,population,Full Eurostat-available,2022,34,1.2,1.092,34
+medical_population_cost,"Medical, cost",hlth_silc_08,medical,cost,population,Full Eurostat-available,2023,34,1.253,1.054,34
+medical_population_cost,"Medical, cost",hlth_silc_08,medical,cost,population,Full Eurostat-available,2024,32,0.941,0.928,32
+medical_population_cost,"Medical, cost",hlth_silc_08,medical,cost,population,Full Eurostat-available,2025,30,0.893,0.913,30
+medical_population_distance,"Medical, distance",hlth_silc_08,medical,distance,population,EU-27,2008,26,0.223,0.169,26
+medical_population_distance,"Medical, distance",hlth_silc_08,medical,distance,population,EU-27,2009,26,0.223,0.188,26
+medical_population_distance,"Medical, distance",hlth_silc_08,medical,distance,population,EU-27,2010,27,0.263,0.22,27
+medical_population_distance,"Medical, distance",hlth_silc_08,medical,distance,population,EU-27,2011,27,0.263,0.177,27
+medical_population_distance,"Medical, distance",hlth_silc_08,medical,distance,population,EU-27,2012,27,0.263,0.207,27
+medical_population_distance,"Medical, distance",hlth_silc_08,medical,distance,population,EU-27,2013,27,0.222,0.177,26
+medical_population_distance,"Medical, distance",hlth_silc_08,medical,distance,population,EU-27,2014,27,0.211,0.153,27
+medical_population_distance,"Medical, distance",hlth_silc_08,medical,distance,population,EU-27,2015,27,0.189,0.127,27
+medical_population_distance,"Medical, distance",hlth_silc_08,medical,distance,population,EU-27,2016,27,0.178,0.119,27
+medical_population_distance,"Medical, distance",hlth_silc_08,medical,distance,population,EU-27,2017,27,0.156,0.088,27
+medical_population_distance,"Medical, distance",hlth_silc_08,medical,distance,population,EU-27,2018,27,0.148,0.079,27
+medical_population_distance,"Medical, distance",hlth_silc_08,medical,distance,population,EU-27,2019,27,0.152,0.086,27
+medical_population_distance,"Medical, distance",hlth_silc_08,medical,distance,population,EU-27,2020,26,0.135,0.098,26
+medical_population_distance,"Medical, distance",hlth_silc_08,medical,distance,population,EU-27,2021,27,0.119,0.082,27
+medical_population_distance,"Medical, distance",hlth_silc_08,medical,distance,population,EU-27,2022,27,0.115,0.086,27
+medical_population_distance,"Medical, distance",hlth_silc_08,medical,distance,population,EU-27,2023,27,0.159,0.121,27
+medical_population_distance,"Medical, distance",hlth_silc_08,medical,distance,population,EU-27,2024,27,0.163,0.12,27
+medical_population_distance,"Medical, distance",hlth_silc_08,medical,distance,population,EU-27,2025,27,0.152,0.132,27
+medical_population_distance,"Medical, distance",hlth_silc_08,medical,distance,population,Full Eurostat-available,2008,31,0.248,0.209,31
+medical_population_distance,"Medical, distance",hlth_silc_08,medical,distance,population,Full Eurostat-available,2009,31,0.252,0.245,31
+medical_population_distance,"Medical, distance",hlth_silc_08,medical,distance,population,Full Eurostat-available,2010,33,0.288,0.27,33
+medical_population_distance,"Medical, distance",hlth_silc_08,medical,distance,population,Full Eurostat-available,2011,33,0.288,0.24,33
+medical_population_distance,"Medical, distance",hlth_silc_08,medical,distance,population,Full Eurostat-available,2012,33,0.285,0.249,33
+medical_population_distance,"Medical, distance",hlth_silc_08,medical,distance,population,Full Eurostat-available,2013,35,0.289,0.262,34
+medical_population_distance,"Medical, distance",hlth_silc_08,medical,distance,population,Full Eurostat-available,2014,35,0.229,0.208,35
+medical_population_distance,"Medical, distance",hlth_silc_08,medical,distance,population,Full Eurostat-available,2015,35,0.209,0.187,35
+medical_population_distance,"Medical, distance",hlth_silc_08,medical,distance,population,Full Eurostat-available,2016,35,0.18,0.158,35
+medical_population_distance,"Medical, distance",hlth_silc_08,medical,distance,population,Full Eurostat-available,2017,36,0.181,0.123,36
+medical_population_distance,"Medical, distance",hlth_silc_08,medical,distance,population,Full Eurostat-available,2018,37,0.189,0.133,37
+medical_population_distance,"Medical, distance",hlth_silc_08,medical,distance,population,Full Eurostat-available,2019,36,0.183,0.156,36
+medical_population_distance,"Medical, distance",hlth_silc_08,medical,distance,population,Full Eurostat-available,2020,34,0.156,0.153,34
+medical_population_distance,"Medical, distance",hlth_silc_08,medical,distance,population,Full Eurostat-available,2021,34,0.141,0.15,34
+medical_population_distance,"Medical, distance",hlth_silc_08,medical,distance,population,Full Eurostat-available,2022,34,0.132,0.135,34
+medical_population_distance,"Medical, distance",hlth_silc_08,medical,distance,population,Full Eurostat-available,2023,34,0.176,0.14,34
+medical_population_distance,"Medical, distance",hlth_silc_08,medical,distance,population,Full Eurostat-available,2024,32,0.178,0.167,32
+medical_population_distance,"Medical, distance",hlth_silc_08,medical,distance,population,Full Eurostat-available,2025,30,0.157,0.144,30
+medical_population_waiting,"Medical, waiting",hlth_silc_08,medical,waiting,population,EU-27,2008,26,1.023,0.845,26
+medical_population_waiting,"Medical, waiting",hlth_silc_08,medical,waiting,population,EU-27,2009,26,0.981,0.95,26
+medical_population_waiting,"Medical, waiting",hlth_silc_08,medical,waiting,population,EU-27,2010,27,1.026,0.995,27
+medical_population_waiting,"Medical, waiting",hlth_silc_08,medical,waiting,population,EU-27,2011,27,1.037,0.903,27
+medical_population_waiting,"Medical, waiting",hlth_silc_08,medical,waiting,population,EU-27,2012,27,1.115,0.983,27
+medical_population_waiting,"Medical, waiting",hlth_silc_08,medical,waiting,population,EU-27,2013,27,1.163,1.026,26
+medical_population_waiting,"Medical, waiting",hlth_silc_08,medical,waiting,population,EU-27,2014,27,1.204,0.963,27
+medical_population_waiting,"Medical, waiting",hlth_silc_08,medical,waiting,population,EU-27,2015,27,1.193,0.81,27
+medical_population_waiting,"Medical, waiting",hlth_silc_08,medical,waiting,population,EU-27,2016,27,1.319,0.77,27
+medical_population_waiting,"Medical, waiting",hlth_silc_08,medical,waiting,population,EU-27,2017,27,1.152,0.561,27
+medical_population_waiting,"Medical, waiting",hlth_silc_08,medical,waiting,population,EU-27,2018,27,1.389,0.669,27
+medical_population_waiting,"Medical, waiting",hlth_silc_08,medical,waiting,population,EU-27,2019,27,1.363,0.702,27
+medical_population_waiting,"Medical, waiting",hlth_silc_08,medical,waiting,population,EU-27,2020,26,1.323,0.634,26
+medical_population_waiting,"Medical, waiting",hlth_silc_08,medical,waiting,population,EU-27,2021,27,1.341,0.832,27
+medical_population_waiting,"Medical, waiting",hlth_silc_08,medical,waiting,population,EU-27,2022,27,1.507,0.884,27
+medical_population_waiting,"Medical, waiting",hlth_silc_08,medical,waiting,population,EU-27,2023,27,1.963,1.228,27
+medical_population_waiting,"Medical, waiting",hlth_silc_08,medical,waiting,population,EU-27,2024,27,1.911,1.386,27
+medical_population_waiting,"Medical, waiting",hlth_silc_08,medical,waiting,population,EU-27,2025,27,1.726,1.259,27
+medical_population_waiting,"Medical, waiting",hlth_silc_08,medical,waiting,population,Full Eurostat-available,2008,31,0.923,0.816,31
+medical_population_waiting,"Medical, waiting",hlth_silc_08,medical,waiting,population,Full Eurostat-available,2009,31,0.897,0.928,31
+medical_population_waiting,"Medical, waiting",hlth_silc_08,medical,waiting,population,Full Eurostat-available,2010,33,0.924,0.915,33
+medical_population_waiting,"Medical, waiting",hlth_silc_08,medical,waiting,population,Full Eurostat-available,2011,33,0.942,0.857,33
+medical_population_waiting,"Medical, waiting",hlth_silc_08,medical,waiting,population,Full Eurostat-available,2012,33,1.018,0.939,33
+medical_population_waiting,"Medical, waiting",hlth_silc_08,medical,waiting,population,Full Eurostat-available,2013,35,1.086,1.003,34
+medical_population_waiting,"Medical, waiting",hlth_silc_08,medical,waiting,population,Full Eurostat-available,2014,35,1.157,1.001,35
+medical_population_waiting,"Medical, waiting",hlth_silc_08,medical,waiting,population,Full Eurostat-available,2015,35,1.137,0.889,35
+medical_population_waiting,"Medical, waiting",hlth_silc_08,medical,waiting,population,Full Eurostat-available,2016,35,1.166,0.679,35
+medical_population_waiting,"Medical, waiting",hlth_silc_08,medical,waiting,population,Full Eurostat-available,2017,36,1.086,0.751,36
+medical_population_waiting,"Medical, waiting",hlth_silc_08,medical,waiting,population,Full Eurostat-available,2018,37,1.295,0.977,37
+medical_population_waiting,"Medical, waiting",hlth_silc_08,medical,waiting,population,Full Eurostat-available,2019,36,1.211,0.598,36
+medical_population_waiting,"Medical, waiting",hlth_silc_08,medical,waiting,population,Full Eurostat-available,2020,34,1.197,0.543,34
+medical_population_waiting,"Medical, waiting",hlth_silc_08,medical,waiting,population,Full Eurostat-available,2021,34,1.247,0.724,34
+medical_population_waiting,"Medical, waiting",hlth_silc_08,medical,waiting,population,Full Eurostat-available,2022,34,1.376,0.749,34
+medical_population_waiting,"Medical, waiting",hlth_silc_08,medical,waiting,population,Full Eurostat-available,2023,34,1.744,1.031,34
+medical_population_waiting,"Medical, waiting",hlth_silc_08,medical,waiting,population,Full Eurostat-available,2024,32,1.797,1.177,32
+medical_population_waiting,"Medical, waiting",hlth_silc_08,medical,waiting,population,Full Eurostat-available,2025,30,1.63,1.06,30

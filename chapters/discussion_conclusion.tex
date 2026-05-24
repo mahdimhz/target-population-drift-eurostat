@@ -1,0 +1,72 @@
+\chapter{Target-Population Drift Reporting Protocol and Conclusion}
+\label{ch:discussion_conclusion}
+
+\section{Main Finding}
+
+The thesis is a reproducible audit of target-population drift in public Eurostat unmet-care panels. Its central finding is not a single poverty/social-exclusion coefficient. The central finding is that aggregate monitoring and modelling conclusions change when the analyst changes indicator definition, denominator, country universe, population weighting, covariate-completeness rules, and missing-data assumptions.
+
+The primary case remains informative because it is concrete: the observed \texttt{hlth\_silc\_08} monitoring panel has 608 country-years, while the baseline complete-case fixed-effects stress-test sample has 282 rows. The multi-outcome benchmark shows that this is part of a broader public-data problem. Population-denominator indicators, need-denominator indicators, medical care, dental care, and barrier-specific indicators do not all support the same analytical target.
+
+\section{Reporting Protocol}
+
+The protocol developed in the thesis is not a new estimator. It is a reporting discipline for aggregate public panels. Before interpreting a coefficient, the analyst should define the monitoring target, measure coverage drift, diagnose included-versus-excluded imbalance, compare estimands, stress-test missingness assumptions, and classify the evidence.
+
+\begin{table}[H]
+\centering
+\scriptsize
+\caption{Target-population drift reporting checklist. The protocol is a structured audit for public aggregate health-monitoring panels and does not introduce a new estimator.}
+\label{tab:target_population_drift_reporting_checklist}
+\input{tables/target_population_drift_reporting_checklist}
+\end{table}
+
+Table~\ref{tab:target_population_drift_reporting_checklist} is the reusable output of the thesis. It turns the empirical work into a sequence that another Eurostat aggregate-panel study can apply. The order matters: target definition and monitoring coverage come before regression, while coefficient interpretation comes only after the estimand matrix and simulation stress test.
+
+\section{Failure Modes}
+
+The thesis uses deterministic labels to avoid narrative interpretation of unstable coefficients. A result is not called stable because one table has a favourable sign. It is stable only when the main estimand families agree sufficiently on the IQR-effect scale and have enough empirical support. If the available data cannot support that standard, the result is labelled target-dependent, missingness-dependent, imputation-model-dependent, denominator-dependent, or non-identifiable.
+
+\begin{table}[H]
+\centering
+\scriptsize
+\caption{Failure modes in public aggregate panels. The labels classify interpretation risk after target definition, attrition, coefficient stability, and simulation diagnostics have been reported.}
+\label{tab:failure_modes_public_aggregate_panels}
+\input{tables/failure_modes_public_aggregate_panels}
+\end{table}
+
+These labels are conservative by design. They protect the thesis from treating a selected complete-case coefficient as a general statement about European access barriers. They also prevent imputation from being misread as correction: MI and MNAR analyses are sensitivity designs, and their results remain model-dependent.
+
+\section{Final Classification of Findings}
+
+\begin{table}[H]
+\centering
+\scriptsize
+\caption{Final classification of Eurostat unmet-care findings. Labels are generated from the outcome-by-estimand matrix and deterministic rules; they summarize whether a poverty/social-exclusion coefficient can be interpreted for each outcome target.}
+\label{tab:final_classification_eurostat_findings}
+\input{tables/final_classification_eurostat_findings}
+\end{table}
+
+Table~\ref{tab:final_classification_eurostat_findings} summarizes the empirical conclusion. Several population-denominator outcomes are target-dependent: the coefficient changes when the target population, weighting rule, or missing-data assumption changes. Need-denominator outcomes are non-identifiable as coefficient targets in this public aggregate setup because too few reliable observed-data estimand families are feasible. The waiting-list population indicator is the most stable in this audit, but it remains an aggregate monitoring result, not an individual-level mechanism.
+
+\section{What the Simulation Adds}
+
+The semi-synthetic simulation strengthens the audit logic because it creates a reference estimand before deleting covariates. It does not claim to know the coefficient for Europe. It asks a narrower question: when a complete artificial panel is available and Eurostat-style missingness is imposed, how often do complete-case FE, population-weighted FE, IPW, PMM MI, and MNAR-shift MI recover the reference estimand?
+
+The answer is mechanism-dependent. Some missingness patterns leave complete-case FE close to the reference estimand in this panel; other patterns create sign instability, undercoverage, or large model-based imputation movement. The simulation therefore supports the reporting protocol: analysts should report not only a coefficient but also the target drift and missingness mechanism that make the coefficient interpretable or non-identifiable.
+
+\section{Secondary Evidence}
+
+Prediction is deliberately appendix-level evidence. The one-year-ahead benchmark shows that previous-year persistence is difficult to beat and that flexible models do not add convincing predictive value in this small aggregate panel. This supports cautious validation practice, but it is not a main thesis contribution.
+
+Citizenship, convergence, bivariate scatterplots, and long model ladders are also supporting material. They may provide useful context, but they do not define the thesis contribution. The thesis is strongest when every result serves the target-population drift audit.
+
+\section{Limits}
+
+The thesis remains aggregate, associational, and public-data-based. Country-year averages cannot identify individual mechanisms, within-country inequalities, or intervention effects. Self-reported unmet care depends on perceived need, expectations, survey wording, and denominator definition. Population weighting changes the estimand from average country to average resident; it does not automatically improve the estimate. Complete-case, IPW, MAR MI, and MNAR analyses each require assumptions that are only partly testable from public aggregate data.
+
+The main limitation is also the reason the thesis is useful: public monitoring panels are incomplete, and incompleteness changes interpretation. The thesis does not remove that problem. It makes the problem visible and reportable.
+
+\section{Conclusion}
+
+This thesis formalizes and applies a reproducible target-population drift audit protocol for public Eurostat unmet-care panels. It builds a public-data estimand registry, compares multiple unmet-care indicators before modelling, measures complete-case drift, classifies coefficient stability across estimands, and stress-tests missingness through semi-synthetic simulation.
+
+The final conclusion is controlled but strong. Eurostat unmet-care indicators are valuable for monitoring European health-access barriers, but aggregate coefficients cannot be interpreted until the analyst defines the target population, denominator, weighting rule, country universe, row-selection process, and missing-data assumption. In this thesis, many poverty/social-exclusion coefficients are target-dependent or non-identifiable rather than stable. That is the substantive result of the audit.

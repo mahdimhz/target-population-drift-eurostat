@@ -1,0 +1,13 @@
+variable,observed,missing,missing_pct
+unmet_need_pc,608,0,0.0
+gdp_per_capita_eur,604,4,0.6578947368421052
+log_gdp_per_capita,604,4,0.6578947368421052
+unemployment_rate_pc,556,52,8.552631578947368
+long_term_unemployment_rate_pc,554,54,8.881578947368421
+poverty_or_social_exclusion_pc,375,233,38.32236842105263
+gini_income,409,199,32.73026315789473
+government_health_expenditure_gdp_pc,502,106,17.434210526315788
+compulsory_health_financing_gdp_pc,444,164,26.973684210526315
+oop_health_expenditure_share_pc,444,164,26.973684210526315
+physicians_per_100k,431,177,29.111842105263158
+hospital_beds_per_100k,522,86,14.144736842105262

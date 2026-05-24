@@ -1,0 +1,18 @@
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}p{0.16\textwidth}p{0.25\textwidth}rrp{0.20\textwidth}p{0.25\textwidth}@{}}
+\toprule
+Label & Target population & Countries & Rows & Weighting & Interpretation \\
+\midrule
+Outcome-observed & All country-years with observed \texttt{hlth\_silc\_08} & 37 & 608 & None & Average-country monitoring target before covariate attrition. \\
+Population-weighted & Outcome-observed or selected rows with valid \texttt{demo\_pjan} & 37 & 607 & Year-normalized population & Average-resident monitoring target; not inherently more correct. \\
+Complete-case FE & Outcome and all baseline regression covariates observed & 30 & 282 & None & Selected analytical panel for the baseline FE coefficient. \\
+Balanced-outcome & Countries with complete primary-outcome and population-weight coverage & 25 & 238 & Optional & Coverage-restricted target; not automatically covariate-balanced. \\
+IPW CC & Complete cases reweighted by predicted complete-case inclusion & 30 & 282 & Stabilized truncated IPW & Selection diagnostic; cannot recover structurally missing covariates. \\
+MAR MI & Outcome-observed rows with model-imputed covariates & 37 & 608 & Usually none & Model-based sensitivity target under imputation assumptions. \\
+MNAR sensitivity & Outcome-observed rows with shifted imputed values & 37 & 608 & Scenario-specific & Stress test for departures from MAR; implemented in Step 2. \\
+\bottomrule
+\end{tabular}%
+}
+
+\vspace{0.2em}
+\begin{minipage}{0.96\textwidth}\scriptsize Notes: Row counts refer to the generated thesis pipeline. Balanced-outcome means balanced for the primary outcome and population weights, not for every regression covariate. MAR and MNAR imputation estimates are sensitivity estimates, not true coefficients.\end{minipage}

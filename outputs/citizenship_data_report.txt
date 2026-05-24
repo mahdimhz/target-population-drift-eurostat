@@ -1,0 +1,4 @@
+Available country-year-citizenship combinations: 1612
+Year range: 2008-2025
+Countries with at least one year containing all three citizenship groups: AL, AT, BE, BG, CH, CY, CZ, DE, DK, EE, EL, ES, FI, FR, HR, HU, IE, IS, IT, LU, LV, ME, MT, NL, NO, PL, PT, RS, SE, SI, SK, TR, UK, XK
+Countries with fewer than 3 years of data: XK

@@ -1,0 +1,11 @@
+matrix_column,observed_n,missing_n,requested_k_pmm,effective_donor_pool,donor_warning
+log_gdp_per_capita,604,4,20,20,no
+unemployment_rate_pc,556,52,20,20,no
+poverty_or_social_exclusion_pc,375,233,20,20,no
+government_health_expenditure_gdp_pc,502,106,20,20,no
+compulsory_health_financing_gdp_pc,444,164,20,20,no
+gini_income,409,199,20,20,no
+physicians_per_100k,431,177,20,20,no
+hospital_beds_per_100k,522,86,20,20,no
+oop_health_expenditure_share_pc,444,164,20,20,no
+long_term_unemployment_rate_pc,554,54,20,20,no

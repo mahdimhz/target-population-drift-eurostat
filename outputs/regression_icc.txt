@@ -1,0 +1,5 @@
+Random intercept variance: 5.026424
+Residual variance: 2.588431
+ICC: 0.660081
+N: 473
+Countries: 30

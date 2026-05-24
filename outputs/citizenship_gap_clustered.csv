@@ -1,0 +1,3 @@
+model,term,coef,se,t_stat,p_value_two_sided,nobs,countries
+Intercept-only paired country-year gap,Intercept,2.5226053639846757,0.43170750439555944,5.843320624033663,5.1170393834281145e-09,522,37
+Year-adjusted paired country-year gap,Intercept,4.010714285714302,0.6748843833485956,5.942816850812597,2.8016540573576154e-09,522,37

@@ -1,0 +1,12 @@
+variant,variable,lower_bound,upper_bound,imputed_n,imputed_min,imputed_max,outside_bounds
+baseline_m50,log_gdp_per_capita,7.0,12.3,4,7.487060471199044,11.478599901466355,0
+baseline_m50,gdp_per_capita_eur,0.0,150000.0,4,0.0,13993.244686121274,0
+baseline_m50,unemployment_rate_pc,0.0,40.0,52,1.0973169693519509,39.7887569353469,0
+baseline_m50,poverty_or_social_exclusion_pc,0.0,60.0,233,0.0,60.0,0
+baseline_m50,government_health_expenditure_gdp_pc,0.0,15.0,106,0.06668159576379651,14.458756598604335,0
+baseline_m50,compulsory_health_financing_gdp_pc,0.0,15.0,164,0.11187402489446541,14.988830073276441,0
+baseline_m50,gini_income,0.0,60.0,199,0.00965124159640851,59.86582823581048,0
+baseline_m50,physicians_per_100k,0.0,1000.0,177,5.667089526411871,996.6087980340571,0
+baseline_m50,hospital_beds_per_100k,0.0,1500.0,86,37.03523152754184,1484.6416750727471,0
+baseline_m50,oop_health_expenditure_share_pc,0.0,60.0,164,0.0,59.92394257446273,0
+baseline_m50,long_term_unemployment_rate_pc,0.0,30.0,54,0.0,29.503804072594654,0

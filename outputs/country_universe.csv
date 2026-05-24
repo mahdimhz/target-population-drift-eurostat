@@ -1,0 +1,38 @@
+geo,universe_category,in_outcome_observed_panel,outcome_observed_rows,in_complete_case_fe,complete_case_rows,in_mi_target,mi_target_rows,in_ml_sample,ml_rows
+AL,Candidate/potential candidate,yes,7,no,0,yes,7,no,0
+AT,EU-27,yes,18,yes,10,yes,18,yes,9
+BE,EU-27,yes,18,yes,9,yes,18,yes,9
+BG,EU-27,yes,18,yes,9,yes,18,yes,9
+CH,Switzerland,yes,17,yes,10,yes,17,yes,9
+CY,EU-27,yes,18,yes,9,yes,18,yes,9
+CZ,EU-27,yes,18,yes,10,yes,18,yes,5
+DE,EU-27,yes,18,yes,10,yes,18,yes,9
+DK,EU-27,yes,18,yes,10,yes,18,yes,8
+EE,EU-27,yes,18,yes,10,yes,18,yes,9
+EL,EU-27,yes,18,yes,9,yes,18,no,0
+ES,EU-27,yes,18,yes,9,yes,18,yes,9
+FI,EU-27,yes,18,yes,9,yes,18,yes,9
+FR,EU-27,yes,18,yes,10,yes,18,yes,9
+HR,EU-27,yes,16,yes,9,yes,16,yes,9
+HU,EU-27,yes,18,yes,10,yes,18,yes,9
+IE,EU-27,yes,18,yes,10,yes,18,yes,9
+IS,EEA country,yes,13,yes,6,yes,13,yes,4
+IT,EU-27,yes,17,yes,9,yes,17,yes,8
+LT,EU-27,yes,18,yes,10,yes,18,yes,9
+LU,EU-27,yes,18,yes,10,yes,18,yes,9
+LV,EU-27,yes,18,yes,9,yes,18,yes,9
+ME,Candidate/potential candidate,yes,11,no,0,yes,11,no,0
+MK,Candidate/potential candidate,yes,15,no,0,yes,15,no,0
+MT,EU-27,yes,18,yes,9,yes,18,yes,9
+NL,EU-27,yes,18,yes,10,yes,18,yes,9
+NO,EEA country,yes,18,yes,8,yes,18,yes,8
+PL,EU-27,yes,18,yes,10,yes,18,yes,9
+PT,EU-27,yes,18,yes,10,yes,18,no,0
+RO,EU-27,yes,18,yes,9,yes,18,yes,9
+RS,Candidate/potential candidate,yes,13,no,0,yes,13,no,0
+SE,EU-27,yes,18,yes,10,yes,18,yes,8
+SI,EU-27,yes,18,yes,10,yes,18,yes,9
+SK,EU-27,yes,18,yes,9,yes,18,no,0
+TR,Candidate/potential candidate,yes,18,no,0,yes,18,no,0
+UK,UK,yes,11,no,0,yes,11,no,0
+XK,Candidate/potential candidate,yes,2,no,0,yes,2,no,0

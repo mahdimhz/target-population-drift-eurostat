@@ -1,0 +1,6 @@
+universe,countries,rows,status,poverty_coef,ci_low,ci_high,p_value
+Full Eurostat-available,30,282,estimated,0.17752062443807837,0.04578936472376516,0.3092518841523916,0.008260288895314718
+EU-27,27,258,estimated,0.17932879257130596,0.0342954603027012,0.3243621248399107,0.01537476082264274
+EEA countries,2,14,infeasible: fewer than 50 observations,,,,
+Extended Europe,30,282,estimated,0.17752062443807837,0.04578936472376516,0.3092518841523916,0.008260288895314718
+Candidate/potential candidate,0,0,infeasible: fewer than 50 observations,,,,

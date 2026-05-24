@@ -1,0 +1,7 @@
+universe,target_population,weighting,missingness_handling,countries,rows,poverty_coef,ci_low,ci_high,p_value,interpretation_label
+Full Eurostat-available,Selected complete-case,Unweighted,Complete-case,30,282,0.17752062443807837,0.04578936472376516,0.3092518841523916,0.008260288895314718,selected complete-case result
+EU-27,Selected complete-case,Unweighted,Complete-case,27,258,0.17932879257130596,0.0342954603027012,0.3243621248399107,0.01537476082264274,EU-27 complete-case result
+Full Eurostat-available,Selected complete-case,Year-normalized population,Complete-case,30,282,0.3040611920354954,-0.006626040113079934,0.6147484241840708,0.05509025142817865,population-weighted selected result
+Full Eurostat-available,Balanced-outcome,Unweighted,Available covariate-complete,25,238,0.1536393161908131,0.05951482772225085,0.24776380465937536,0.0013778686619481144,balanced-outcome restriction
+Full Eurostat-available,Balanced-outcome,Year-normalized population,Available covariate-complete,25,238,0.14706691749368397,-0.02586882658872297,0.3200026615760909,0.09555813312269014,balanced-outcome weighted restriction
+Full Eurostat-available,Full outcome-observed,Unweighted,30-imputation PMM MI,37,608,0.013931243326432778,-0.07118345995498383,0.09904594660784939,0.7484886180745209,model-based full-target sensitivity

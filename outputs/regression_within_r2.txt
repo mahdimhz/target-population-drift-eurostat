@@ -1,0 +1,3 @@
+Within R2: 0.098467
+N: 282
+Countries: 30

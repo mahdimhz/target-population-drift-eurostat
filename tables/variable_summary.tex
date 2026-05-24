@@ -1,0 +1,25 @@
+\begingroup
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.22\textwidth}>{\raggedright\arraybackslash}p{0.38\textwidth}>{\raggedright\arraybackslash}p{0.23\textwidth}r@{}}
+\toprule
+Variable & Description & Source & Years \\
+\midrule
+\path{unmet_need_pc} & Primary outcome: unmet medical examination need due to cost, distance, or waiting list; persons aged 16+. & Eurostat \texttt{hlth\_silc\_08} & 2008--2025 \\
+\path{unmet_need_pc_08b} & Robustness outcome: same access-barrier reasons, measured among persons having the same medical needs. & Eurostat \texttt{hlth\_silc\_08b} & 2021--2025 \\
+\path{gdp_per_capita_eur} & Macroeconomic level: current-price GDP per inhabitant. & Eurostat \path{nama_10_pc} & 2008--2025 \\
+\path{unemployment_rate_pc} & Labour-market condition: unemployment rate for ages 15--74. & Eurostat \path{une_rt_a} & 2008--2025 \\
+\path{poverty_or_social_exclusion_pc} & Inequality and poverty: persons at risk of poverty or social exclusion. & Eurostat \path{ilc_peps01n} & 2015--2025 \\
+\path{government_health_expenditure_gdp_pc} & Health-system financing: general government health expenditure as share of GDP. & Eurostat \path{gov_10a_exp} & 2008--2025 \\
+\path{compulsory_health_financing_gdp_pc} & Health-system financing: compulsory financing schemes as share of GDP. & Eurostat \path{hlth_sha11_hf} & 2008--2024 \\
+\path{physicians_per_100k} & Health-system capacity: practising physicians per 100,000 inhabitants. & Eurostat \path{hlth_rs_prs2} & 2008--2024 \\
+\path{hospital_beds_per_100k} & Health-system capacity: total hospital beds per 100,000 inhabitants. & Eurostat \path{hlth_rs_bds1} & 2008--2024 \\
+\path{oop_health_expenditure_share_pc} & Health-system financing: out-of-pocket spending as share of current health expenditure. & Eurostat \path{hlth_sha11_hf} & 2008--2024 \\
+\path{gini_income} & Inequality: Gini coefficient of equivalised disposable income. & Eurostat \path{ilc_di12} & 2014--2025 \\
+\path{long_term_unemployment_rate_pc} & Labour-market condition: long-term unemployment rate for ages 15--74. & Eurostat \path{une_ltu_a} & 2008--2025 \\
+\path{log_gdp_per_capita} & Engineered feature: natural log of GDP per inhabitant. & Derived: \texttt{nama\_10\_pc} & 2008--2025 \\
+\path{gdp_per_capita_growth} & Engineered feature: annual within-country change in GDP per inhabitant. & Derived: \texttt{nama\_10\_pc} & 2009--2025 \\
+\path{unemployment_rate_change} & Engineered feature: annual within-country change in unemployment rate. & Derived: \texttt{une\_rt\_a} & 2009--2025 \\
+\path{physicians_per_100k_lag1} & Engineered feature: one-year lag of practising physicians per 100,000 inhabitants. & Derived: \texttt{hlth\_rs\_prs2} & 2009--2025 \\
+\bottomrule
+\end{tabular}
+\endgroup

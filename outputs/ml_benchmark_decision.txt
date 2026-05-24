@@ -1,0 +1,5 @@
+Best flexible model: Random Forest MAE 0.727
+Best naive/statistical baseline: Previous-year outcome MAE 0.587
+MAE improvement: -0.140
+Decision rule: flexible models must improve MAE by more than 0.10 percentage points.
+Recommended interpretation: demote to negative-result benchmark section.

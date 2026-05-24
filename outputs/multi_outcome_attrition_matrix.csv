@@ -1,0 +1,8 @@
+indicator_id,indicator_label,outcome_observed_rows,outcome_observed_countries,outcome_observed_years,population_weight_rows,population_weight_countries,population_weight_years,gdp_rows,gdp_countries,gdp_years,unemployment_rows,unemployment_countries,unemployment_years,poverty_social_exclusion_rows,poverty_social_exclusion_countries,poverty_social_exclusion_years,baseline_complete_case_rows,baseline_complete_case_countries,baseline_complete_case_years,capacity_sensitivity_rows,capacity_sensitivity_countries,capacity_sensitivity_years
+dental_need_combined,Dental need,154,34,5,154,34,5,152,34,5,147,32,5,147,32,5,93,28,4,69,24,3
+dental_population_combined,Dental population,607,37,18,606,37,18,604,36,18,555,34,18,360,34,11,282,30,10,233,27,9
+medical_need_combined,Medical need,154,34,5,154,34,5,152,34,5,147,32,5,147,32,5,93,28,4,69,24,3
+medical_population_combined,Medical population,608,37,18,607,37,18,604,36,18,555,34,18,360,34,11,282,30,10,233,27,9
+medical_population_cost,Medical cost,608,37,18,607,37,18,604,36,18,555,34,18,360,34,11,282,30,10,233,27,9
+medical_population_distance,Medical distance,608,37,18,607,37,18,604,36,18,555,34,18,360,34,11,282,30,10,233,27,9
+medical_population_waiting,Medical waiting,608,37,18,607,37,18,604,36,18,555,34,18,360,34,11,282,30,10,233,27,9

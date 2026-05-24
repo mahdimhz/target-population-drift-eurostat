@@ -1,0 +1,6 @@
+variant,include_outcome,country_structure,year_effects,lagged_predictors,imputations,coef,se,p_value,mean_nobs,mean_countries
+baseline_pmm,True,group,True,False,30,0.013931243326432778,0.04342586902113092,0.7484886180745209,608.0,37.0
+no_outcome_pmm,False,group,True,False,30,-0.030827230439541716,0.04919699335453436,0.5317412919593152,608.0,37.0
+country_dummies_pmm,True,country,True,False,30,0.25162244226462555,0.0895735045951274,0.0052547236920821305,608.0,37.0
+lagged_predictors_pmm,True,group,True,True,30,-0.04722215599312832,0.05664016147234472,0.4048261294020823,608.0,37.0
+baseline_pmm_m50,True,group,True,False,50,0.012186332588070503,0.04322094396269536,0.7780477090486388,608.0,37.0

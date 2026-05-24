@@ -1,0 +1,4 @@
+replicates: 100
+smoke_replicates: 20
+imputations: 2
+seed: 42

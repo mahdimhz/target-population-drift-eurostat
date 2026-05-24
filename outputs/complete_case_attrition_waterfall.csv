@@ -1,0 +1,7 @@
+step,required_variables,rows,countries,years,rows_lost_from_previous,retained_pct_of_outcome
+Outcome observed,Unmet need,608,37,18,0,100.0
++ GDP,Unmet need; Log GDP/capita,604,36,18,4,99.34210526315789
++ unemployment,Unmet need; Log GDP/capita; Unemployment,555,34,18,49,91.28289473684211
++ poverty/social exclusion,Unmet need; Log GDP/capita; Unemployment; Poverty/social exclusion,360,34,11,195,59.21052631578947
++ health expenditure,Unmet need; Log GDP/capita; Unemployment; Poverty/social exclusion; Gov. health expenditure,296,30,11,64,48.68421052631579
++ compulsory financing,Unmet need; Log GDP/capita; Unemployment; Poverty/social exclusion; Gov. health expenditure; Compulsory financing,282,30,10,14,46.38157894736842

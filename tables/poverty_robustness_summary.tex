@@ -1,0 +1,24 @@
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}lp{0.25\textwidth}rrlp{0.20\textwidth}@{}}
+\toprule
+Check & Interpretation & Countries & \(N\) & Coef. [95\% CI] & Status \\
+\midrule
+Baseline complete-case FE & selected panel & 30 & 282 & 0.178 [0.046, 0.309] & estimated \\
+Population-weighted CC FE & resident-weighted selected panel & 30 & 282 & 0.304 [-0.007, 0.615] & estimated \\
+Lagged covariates & temporal ordering check & 30 & 280 & 0.074 [-0.035, 0.182] & estimated \\
+Excluding COVID years & crisis-period sensitivity; excludes 2020-2022 & 30 & 195 & 0.230 [0.064, 0.396] & estimated \\
+Excluding 2015 & 2015 measurement-change diagnostic & 30 & 252 & 0.099 [-0.018, 0.216] & estimated \\
+2016 onward & post-2015 restriction & 30 & 252 & 0.099 [-0.018, 0.216] & estimated \\
+2016-2019 & pre-COVID period & 30 & 120 & 0.169 [-0.027, 0.364] & estimated \\
+2020-2024 & COVID/post-COVID period & 30 & 132 & 0.078 [-0.123, 0.278] & estimated \\
+Excluding high-unmet countries & influence check; dropped EE, EL, LV & 27 & 254 & 0.189 [0.058, 0.319] & estimated \\
+Excluding low-unmet countries & influence check; dropped DE, MT, NL & 27 & 253 & 0.191 [0.045, 0.337] & estimated \\
+Leave-one-country-out range & country influence; min drops IT, max drops HU & 29 & 272 & 0.179 [0.134, 0.217] & estimated range \\
+Country-specific trends & conservative over-control sensitivity & 30 & 282 & 0.125 [-0.027, 0.278] & estimated \\
+MI full target & model-based broader target & 37 & 608 & 0.014 [-0.071, 0.099] & estimated \\
+\bottomrule
+\end{tabular}%
+}
+
+\vspace{0.2em}
+\begin{minipage}{0.96\textwidth}\scriptsize Notes: All estimated rows report the poverty/social-exclusion coefficient from country-and-year fixed-effects models with country-clustered standard errors, except the MI row, which uses Rubin pooling. Specifications with too few observations, countries, years, or unstable fixed-effects estimation are reported as infeasible rather than forced.\end{minipage}

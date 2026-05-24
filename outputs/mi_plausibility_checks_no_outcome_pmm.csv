@@ -1,0 +1,11 @@
+variant,variable,lower_bound,upper_bound,imputed_n,imputed_min,imputed_max,outside_bounds
+no_outcome_pmm,log_gdp_per_capita,7.0,12.3,4,9.26672070541229,10.063052122207466,0
+no_outcome_pmm,unemployment_rate_pc,0.0,40.0,52,3.9,21.8,0
+no_outcome_pmm,poverty_or_social_exclusion_pc,0.0,60.0,233,12.6,58.5,0
+no_outcome_pmm,government_health_expenditure_gdp_pc,0.0,15.0,106,2.1,9.0,0
+no_outcome_pmm,compulsory_health_financing_gdp_pc,0.0,15.0,164,2.75,10.22,0
+no_outcome_pmm,gini_income,0.0,60.0,199,20.9,45.3,0
+no_outcome_pmm,physicians_per_100k,0.0,1000.0,177,216.99,564.69,0
+no_outcome_pmm,hospital_beds_per_100k,0.0,1500.0,86,222.5,797.89,0
+no_outcome_pmm,oop_health_expenditure_share_pc,0.0,60.0,164,8.77,47.74,0
+no_outcome_pmm,long_term_unemployment_rate_pc,0.0,30.0,54,0.6,12.5,0

@@ -1,0 +1,5 @@
+Hausman test comparing country FE and random-intercept RE (same baseline covariates plus year indicators).
+Statistic: 3.210936
+Degrees of freedom: 5
+p-value: 0.667502
+Conclusion: RE plausible

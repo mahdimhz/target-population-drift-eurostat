@@ -1,0 +1,11 @@
+variant,variable,lower_bound,upper_bound,imputed_n,imputed_min,imputed_max,outside_bounds
+baseline_pmm_m50,log_gdp_per_capita,7.0,12.3,4,9.311090275076326,10.07280829715283,0
+baseline_pmm_m50,unemployment_rate_pc,0.0,40.0,52,3.2,17.6,0
+baseline_pmm_m50,poverty_or_social_exclusion_pc,0.0,60.0,233,10.7,53.9,0
+baseline_pmm_m50,government_health_expenditure_gdp_pc,0.0,15.0,106,1.9,8.9,0
+baseline_pmm_m50,compulsory_health_financing_gdp_pc,0.0,15.0,164,2.75,9.67,0
+baseline_pmm_m50,gini_income,0.0,60.0,199,21.2,44.8,0
+baseline_pmm_m50,physicians_per_100k,0.0,1000.0,177,219.11,544.6,0
+baseline_pmm_m50,hospital_beds_per_100k,0.0,1500.0,86,200.23,880.59,0
+baseline_pmm_m50,oop_health_expenditure_share_pc,0.0,60.0,164,8.39,47.74,0
+baseline_pmm_m50,long_term_unemployment_rate_pc,0.0,30.0,54,0.5,13.4,0

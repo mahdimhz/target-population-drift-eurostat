@@ -1,0 +1,7 @@
+feature,importance,model_name
+lag1_unmet_need_pc,0.9214837496569334,Random Forest
+lag1_unemployment_rate_pc,0.03217749343342658,Random Forest
+lag1_poverty_or_social_exclusion_pc,0.01556369549266991,Random Forest
+lag1_compulsory_health_financing_gdp_pc,0.013061495796571527,Random Forest
+lag1_log_gdp_per_capita,0.009794984653859641,Random Forest
+lag1_government_health_expenditure_gdp_pc,0.007918580966539019,Random Forest

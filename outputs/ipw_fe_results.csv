@@ -1,0 +1,2 @@
+specification,term,coef,se,p_value,ci_low,ci_high,nobs,countries
+IPW two-way FE,poverty_or_social_exclusion_pc,0.1781618528630968,0.06737334766445204,0.008183670101276594,0.046112517922875046,0.3102111878033186,282,30

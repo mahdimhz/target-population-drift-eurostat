@@ -1,0 +1,14 @@
+\begin{tabular}{@{}rrrr@{}}
+\toprule
+Model & MAE & RMSE & R2 \\
+\midrule
+Previous-year outcome & 0.587 & 1.006 & 0.850 \\
+AR(1) linear & 0.661 & 1.101 & 0.820 \\
+Ridge with lagged predictors & 0.695 & 1.115 & 0.816 \\
+Last observed country value & 0.718 & 1.187 & 0.791 \\
+Rolling country mean & 0.796 & 1.357 & 0.727 \\
+Country mean & 0.855 & 1.340 & 0.734 \\
+Last training-year mean & 1.815 & 2.613 & -0.013 \\
+Global mean & 1.885 & 2.596 & -0.000 \\
+\bottomrule
+\end{tabular}

@@ -1,0 +1,519 @@
+# Master Analysis Summary
+
+## Steps completed
+- Step 0: Duplicate cleanup.
+- Step 1: Eurostat hlth_silc_32 citizenship data extraction.
+- Step 2: Descriptive analysis.
+- Step 3: Regression and robustness analysis.
+- Step 4: Multiple-imputation sensitivity.
+- Step 4b: Missingness-aware IPW and improved multiple-imputation robustness.
+- Step 5: One-year-ahead prediction analysis with naive baselines.
+- Step 6: Additional trend, convergence, citizenship-gap, and heterogeneity analyses.
+- Step 7: Master summary and quality checks.
+
+## Key numeric results
+- Within-R2 from FE model: 0.098467
+- ICC from multilevel model: 0.660081
+- Hausman test p-value: 0.667502; conclusion: RE plausible
+
+### Poverty/social-exclusion coefficient
+Target-population sensitivity table:
+- Selected complete-case / Unweighted / Complete-case: coef 0.1775, 95% CI [0.0458, 0.3093], p 0.0083, N 282
+- Selected complete-case / Unweighted / Complete-case: coef 0.1793, 95% CI [0.0343, 0.3244], p 0.0154, N 258
+- Selected complete-case / Year-normalized population / Complete-case: coef 0.3041, 95% CI [-0.0066, 0.6147], p 0.0551, N 282
+- Balanced-outcome / Unweighted / Available covariate-complete: coef 0.1536, 95% CI [0.0595, 0.2478], p 0.0014, N 238
+- Balanced-outcome / Year-normalized population / Available covariate-complete: coef 0.1471, 95% CI [-0.0259, 0.3200], p 0.0956, N 238
+- Full outcome-observed / Unweighted / 30-imputation PMM MI: coef 0.0139, 95% CI [-0.0712, 0.0990], p 0.7485, N 608
+Robustness specifications:
+- Baseline two-way FE: coef 0.1775, SE 0.0672, p 0.0083, N 282
+- 1-year lagged covariates: coef 0.0739, SE 0.0553, p 0.1818, N 280
+- 2-year lagged covariates: coef -0.0659, SE 0.0989, p 0.5056, N 262
+- Exclude COVID 2020-2022: coef 0.2298, SE 0.0848, p 0.0067, N 195
+- Exclude 2015 measurement-change year: coef 0.0993, SE 0.0598, p 0.0968, N 252
+- Restrict 2016 onward: coef 0.0993, SE 0.0598, p 0.0968, N 252
+- Drop top 3 high-unmet countries: coef 0.2099, SE 0.0656, p 0.0014, N 263
+- Drop bottom 3 low-unmet countries: coef 0.1807, SE 0.0701, p 0.0100, N 253
+- Drop top 3 and bottom 3: coef 0.2211, SE 0.0684, p 0.0012, N 234
+- Country group Western/Northern Europe: coef -0.2566, SE 0.1375, p 0.0620, N 122
+- Country group Eastern/Southern Europe: coef 0.1232, SE 0.1104, p 0.2645, N 160
+- Multiple imputation pooled: coef 0.0001, SE 0.0012, p 0.8994
+
+### Missingness-aware poverty/social-exclusion comparison
+- Complete-case two-way FE: coef 0.1775, SE 0.0672, p 0.0083, N 282
+- Population-weighted complete-case FE: coef 0.3041, SE 0.1585, p 0.0551, N 282
+- Earlier MI sensitivity: coef 0.0001, SE 0.0012, p 0.8994, N 422
+- IPW two-way FE: coef 0.1782, SE 0.0674, p 0.0082, N 282
+- PMM MI full target: coef 0.0139, SE 0.0434, p 0.7485, N 608
+
+### ML
+- Lowest point-MAE ML model: Lasso
+- Test MAE: 0.6667
+- Test RMSE: 1.1158
+- Test R2: 0.8152
+- Bootstrap MAE interval for lowest point-MAE model: Lasso 0.4893-0.8719
+- Best naive/statistical baseline: Previous-year outcome; MAE 0.5874
+- Benchmark decision: Best flexible model: Random Forest MAE 0.727 | Best naive/statistical baseline: Previous-year outcome MAE 0.587 | MAE improvement: -0.140 | Decision rule: flexible models must improve MAE by more than 0.10 percentage points. | Recommended interpretation: demote to negative-result benchmark section.
+- Best country-holdout point model: Lasso; mean MAE 0.5944
+- ML importance stability diagnostic: Best tree model: Random Forest | lag1_poverty_or_social_exclusion_pc ranked top 3 in 16/20 runs. | Consistently top 3 across all 20 runs: False
+
+### Citizenship gap
+- Mean gap: 2.522605
+- Intercept-only clustered two-sided p-value: <0.001
+- Year-adjusted clustered two-sided p-value: <0.001
+- Clustered gap coefficient: 2.5226
+- log_gdp_per_capita: coef 1.4662, p 0.0729
+- oop_health_expenditure_share_pc: coef 0.0622, p 0.3325
+
+### Trend and convergence
+- Trend test: significant monotonic decline at alpha=0.05.
+- Kendall tau: -0.529412; p-value: 0.001670
+- Sigma-convergence direction: declined from 4.0455 to 2.6610
+- Beta-convergence: beta-convergence pattern.
+- Beta coefficient: -0.826163; p-value: NA
+
+## Figures generated
+- figures/08b_minus_08_difference_by_country.pdf
+- figures/08b_vs_08_scatter.pdf
+- figures/citizenship_gap_correlations.pdf
+- figures/citizenship_unmet_need_comparison.pdf
+- figures/citizenship_unmet_need_heatmap.pdf
+- figures/citizenship_unmet_need_trend.pdf
+- figures/complete_case_attrition_waterfall.pdf
+- figures/conceptual_selection_estimand_diagram.pdf
+- figures/convergence_sigma.pdf
+- figures/descriptive_country_rankings.pdf
+- figures/descriptive_country_rankings_latest.pdf
+- figures/descriptive_country_year_heatmap.pdf
+- figures/descriptive_estimand_drift_diagnostic.pdf
+- figures/descriptive_eu_trend.pdf
+- figures/descriptive_trend_europe.pdf
+- figures/descriptive_trend_with_bands.pdf
+- figures/leave_one_country_out_poverty.pdf
+- figures/leave_one_year_out_poverty.pdf
+- figures/mi_coefficient_distribution.pdf
+- figures/mi_imputed_share_heatmap_baseline.pdf
+- figures/mi_imputed_share_heatmap_baseline_m50.pdf
+- figures/mi_imputed_share_heatmap_baseline_pmm.pdf
+- figures/mi_imputed_share_heatmap_baseline_pmm_m50.pdf
+- figures/mi_imputed_share_heatmap_country_dummies.pdf
+- figures/mi_imputed_share_heatmap_country_dummies_pmm.pdf
+- figures/mi_imputed_share_heatmap_lagged_predictors_pmm.pdf
+- figures/mi_imputed_share_heatmap_no_outcome.pdf
+- figures/mi_imputed_share_heatmap_no_outcome_pmm.pdf
+- figures/mi_observed_vs_imputed_baseline.pdf
+- figures/mi_observed_vs_imputed_baseline_m50.pdf
+- figures/mi_observed_vs_imputed_baseline_pmm.pdf
+- figures/mi_observed_vs_imputed_baseline_pmm_m50.pdf
+- figures/mi_observed_vs_imputed_country_dummies.pdf
+- figures/mi_observed_vs_imputed_country_dummies_pmm.pdf
+- figures/mi_observed_vs_imputed_lagged_predictors_pmm.pdf
+- figures/mi_observed_vs_imputed_no_outcome.pdf
+- figures/mi_observed_vs_imputed_no_outcome_pmm.pdf
+- figures/missingness_heatmap.pdf
+- figures/missingness_heatmap_capacity.pdf
+- figures/missingness_heatmap_financing.pdf
+- figures/missingness_heatmap_outcome.pdf
+- figures/missingness_heatmap_population.pdf
+- figures/missingness_heatmap_socioeconomic.pdf
+- figures/missingness_inclusion_probability.pdf
+- figures/ml_actual_vs_predicted_gradient_boosting.pdf
+- figures/ml_actual_vs_predicted_random_forest.pdf
+- figures/ml_actual_vs_predicted_ridge.pdf
+- figures/ml_calibration_plot.pdf
+- figures/ml_expanding_window_validation.pdf
+- figures/ml_importance_comparison.pdf
+- figures/ml_importance_stability.pdf
+- figures/ml_learning_curves.pdf
+- figures/ml_permutation_vs_impurity_importance.pdf
+- figures/ml_residuals_by_country_gradient_boosting.pdf
+- figures/ml_residuals_by_country_random_forest.pdf
+- figures/ml_residuals_by_country_ridge.pdf
+- figures/ml_residuals_vs_predicted_gradient_boosting.pdf
+- figures/ml_residuals_vs_predicted_random_forest.pdf
+- figures/ml_residuals_vs_predicted_ridge.pdf
+- figures/ml_tree_feature_importance.pdf
+- figures/ml_validation_tuning_mae.pdf
+- figures/mnar_tipping_point_curve.pdf
+- figures/model_correlations_heatmap.pdf
+- figures/model_ladder_coefficient_forest.pdf
+- figures/multi_outcome_monitoring_benchmark.pdf
+- figures/multi_outcome_primary_attrition_waterfall.pdf
+- figures/multi_outcome_retention_heatmap.pdf
+- figures/outcome_estimand_coefficient_stability.pdf
+- figures/outcome_missingness_heatmap.pdf
+- figures/panel_correlations_heatmap.pdf
+- figures/panel_heterogeneity.pdf
+- figures/panel_variable_distributions.pdf
+- figures/population_weighted_trend.pdf
+- figures/poverty_robustness_forest.pdf
+- figures/regression_fe_coefficient_plot.pdf
+- figures/regression_robustness_forest_plot.pdf
+- figures/scatter_unmet_vs_compulsory_health_financing_gdp_pc.pdf
+- figures/scatter_unmet_vs_gdp_per_capita_eur.pdf
+- figures/scatter_unmet_vs_gini_income.pdf
+- figures/scatter_unmet_vs_government_health_expenditure_gdp_pc.pdf
+- figures/scatter_unmet_vs_hospital_beds_per_100k.pdf
+- figures/scatter_unmet_vs_log_gdp_per_capita.pdf
+- figures/scatter_unmet_vs_long_term_unemployment_rate_pc.pdf
+- figures/scatter_unmet_vs_oop_health_expenditure_share_pc.pdf
+- figures/scatter_unmet_vs_physicians_per_100k.pdf
+- figures/scatter_unmet_vs_poverty_or_social_exclusion_pc.pdf
+- figures/scatter_unmet_vs_unemployment_rate_pc.pdf
+- figures/simulation_bias_by_mechanism.pdf
+- figures/simulation_target_distance_vs_error.pdf
+- figures/tree_feature_importance.pdf
+- figures/unmet_need_trends_all_countries.pdf
+- figures/unmet_need_vs_gdp_per_capita_eur_2025.pdf
+- figures/unmet_need_vs_poverty_or_social_exclusion_pc_2025.pdf
+- figures/unmet_need_vs_unemployment_rate_pc_2025.pdf
+
+## LaTeX tables generated
+- tables/appendix_full_pooled_regression.tex
+- tables/attrition_by_country_group.tex
+- tables/attrition_by_country_top_loss.tex
+- tables/attrition_by_covariate_block.tex
+- tables/attrition_by_year.tex
+- tables/citizenship_gap_clustered.tex
+- tables/citizenship_gap_regression.tex
+- tables/citizenship_gap_table.tex
+- tables/complete_case_attrition_waterfall.tex
+- tables/complete_case_selection_model.tex
+- tables/country_coverage.tex
+- tables/country_universe.tex
+- tables/descriptive_statistics.tex
+- tables/estimand_framework.tex
+- tables/eurostat_sources_appendix.tex
+- tables/failure_modes_public_aggregate_panels.tex
+- tables/fe_fit_diagnostics.tex
+- tables/fe_inference_comparison.tex
+- tables/final_classification_eurostat_findings.tex
+- tables/included_vs_excluded_smd.tex
+- tables/leave_one_variable_out_sample_recovery.tex
+- tables/main_sensitivity_ladder.tex
+- tables/mi_diagnostics_summary.tex
+- tables/mi_pmm_donor_diagnostics.tex
+- tables/mi_variant_summary.tex
+- tables/missingness_comparison.tex
+- tables/missingness_robustness_results.tex
+- tables/ml_country_holdout_summary.tex
+- tables/ml_hyperparameter_grid.tex
+- tables/ml_model_performance_full.tex
+- tables/ml_naive_baselines.tex
+- tables/ml_paired_tree_mae_differences.tex
+- tables/ml_test_mae_bootstrap_ci.tex
+- tables/ml_time_aware_fold_results.tex
+- tables/mnar_sensitivity_results.tex
+- tables/mnar_tipping_point_results.tex
+- tables/model_ladder_results.tex
+- tables/multi_outcome_attrition_matrix.tex
+- tables/multi_outcome_country_group_retention.tex
+- tables/multi_outcome_coverage_table.tex
+- tables/multi_outcome_included_excluded_smd_top.tex
+- tables/multi_outcome_monitoring_dependence_summary.tex
+- tables/multi_outcome_primary_attrition_waterfall.tex
+- tables/multiple_imputation_sensitivity.tex
+- tables/outcome_estimand_coefficient_matrix.tex
+- tables/outcome_failure_classification.tex
+- tables/output_generation_map.tex
+- tables/poverty_robustness_summary.tex
+- tables/processed_data_dictionary_summary.tex
+- tables/public_data_estimand_registry.tex
+- tables/reduced_covariate_sensitivity.tex
+- tables/regression_country_groups.tex
+- tables/regression_crisis_exclusion.tex
+- tables/regression_lag_robustness.tex
+- tables/regression_main_results.tex
+- tables/regression_multilevel.tex
+- tables/regression_robustness_summary.tex
+- tables/regression_sensitivity_covariate.tex
+- tables/regression_sensitivity_influential.tex
+- tables/regression_vif.tex
+- tables/regression_vif_diagnostics.tex
+- tables/robustness_08b_results.tex
+- tables/simulation_complete_case_bias.tex
+- tables/simulation_main_summary.tex
+- tables/software_versions.tex
+- tables/target_population_drift_reporting_checklist.tex
+- tables/target_population_sensitivity_results.tex
+- tables/universe_sensitivity_results.tex
+- tables/variable_summary.tex
+
+## Other output files
+- outputs/08b_common_country_years.csv
+- outputs/08b_country_average_comparison.csv
+- outputs/08b_robustness_summary.md
+- outputs/advisor_decision_brief.md
+- outputs/analysis_errors.log
+- outputs/attrition_by_country.csv
+- outputs/attrition_by_country_group.csv
+- outputs/attrition_by_covariate_block.csv
+- outputs/attrition_by_year.csv
+- outputs/attrition_summary.json
+- outputs/balanced_outcome_countries.csv
+- outputs/citation_migration_needed.txt
+- outputs/citizenship_data_report.txt
+- outputs/citizenship_gap_by_country.csv
+- outputs/citizenship_gap_by_country_year.csv
+- outputs/citizenship_gap_clustered.csv
+- outputs/citizenship_gap_correlations.csv
+- outputs/citizenship_gap_regression.csv
+- outputs/citizenship_gap_ttest.txt
+- outputs/cli_smoke_simulation_bias_summary.csv
+- outputs/cli_smoke_simulation_ci_coverage.csv
+- outputs/cli_smoke_simulation_reference_estimand.csv
+- outputs/cli_smoke_simulation_results.csv
+- outputs/cli_smoke_simulation_sign_reversal.csv
+- outputs/cli_smoke_simulation_wrong_conclusion.csv
+- outputs/coefficients_lasso.csv
+- outputs/coefficients_ols.csv
+- outputs/coefficients_ridge.csv
+- outputs/complete_case_attrition_waterfall.csv
+- outputs/complete_case_selection_model.csv
+- outputs/control_api_requests.json
+- outputs/control_feasibility-4.csv
+- outputs/control_feasibility.md
+- outputs/control_feasibility_extended-2.csv
+- outputs/control_feasibility_extended.md
+- outputs/control_feasibility_notebook.csv
+- outputs/control_feasibility_notebook.md
+- outputs/control_missingness_by_year.csv
+- outputs/convergence_beta_result.txt
+- outputs/convergence_sigma.csv
+- outputs/country_coverage_table.csv
+- outputs/country_universe.csv
+- outputs/country_universe_summary.csv
+- outputs/dataset_audit.xlsx
+- outputs/dataset_audit_summary.md
+- outputs/descriptive_estimand_drift_diagnostic.csv
+- outputs/descriptive_profile_summary.md
+- outputs/eda_descriptive_summary.md
+- outputs/eurodrift_report_hlth_silc_08.csv
+- outputs/eurostat_reason_code_validation.csv
+- outputs/failure_modes_public_aggregate_panels.csv
+- outputs/fe_baseline_summary.md
+- outputs/fe_fit_diagnostics.csv
+- outputs/fe_inference_comparison.csv
+- outputs/feature_api_requests.json
+- outputs/feature_engineering_summary.md
+- outputs/figures_quality_report.txt
+- outputs/final_classification_eurostat_findings.csv
+- outputs/final_scoping_report.md
+- outputs/gradient_boosting_validation_tuning.csv
+- outputs/hausman_test_result.txt
+- outputs/hlth_silc_08_api_url.txt
+- outputs/hlth_silc_08b_api_url.txt
+- outputs/hlth_silc_08b_availability_matrix_2021_2025.csv
+- outputs/hlth_silc_08b_missingness_2021_2025.csv
+- outputs/hlth_silc_08b_phase4_api_url.txt
+- outputs/hlth_silc_32_extraction_notes.txt
+- outputs/improved_mi_fe_results.csv
+- outputs/improved_mi_fe_results_baseline.csv
+- outputs/improved_mi_fe_results_baseline_m50.csv
+- outputs/improved_mi_fe_results_baseline_pmm.csv
+- outputs/improved_mi_fe_results_baseline_pmm_m50.csv
+- outputs/improved_mi_fe_results_country_dummies.csv
+- outputs/improved_mi_fe_results_country_dummies_pmm.csv
+- outputs/improved_mi_fe_results_lagged_predictors_pmm.csv
+- outputs/improved_mi_fe_results_no_outcome.csv
+- outputs/improved_mi_fe_results_no_outcome_pmm.csv
+- outputs/improved_mi_pooled_results.csv
+- outputs/improved_mi_pooled_results_baseline.csv
+- outputs/improved_mi_pooled_results_baseline_m50.csv
+- outputs/improved_mi_pooled_results_baseline_pmm.csv
+- outputs/improved_mi_pooled_results_baseline_pmm_m50.csv
+- outputs/improved_mi_pooled_results_country_dummies.csv
+- outputs/improved_mi_pooled_results_country_dummies_pmm.csv
+- outputs/improved_mi_pooled_results_lagged_predictors_pmm.csv
+- outputs/improved_mi_pooled_results_no_outcome.csv
+- outputs/improved_mi_pooled_results_no_outcome_pmm.csv
+- outputs/included_vs_excluded_comparison.csv
+- outputs/included_vs_excluded_smd.csv
+- outputs/ipw_balance.csv
+- outputs/ipw_fe_results.csv
+- outputs/ipw_weight_summary.csv
+- outputs/lasso_validation_tuning.csv
+- outputs/leave_one_country_out_poverty.csv
+- outputs/leave_one_variable_out_sample_recovery.csv
+- outputs/leave_one_year_out_poverty.csv
+- outputs/linear_models_summary.md
+- outputs/main_sensitivity_ladder.csv
+- outputs/master_analysis_summary.md
+- outputs/measurement_break_2015_poverty.csv
+- outputs/methodology_ladder.md
+- outputs/mi_coefficient_distribution.csv
+- outputs/mi_diagnostics_summary.csv
+- outputs/mi_fmi_poverty.csv
+- outputs/mi_gdp_consistency_baseline_pmm.csv
+- outputs/mi_gdp_consistency_baseline_pmm_m50.csv
+- outputs/mi_gdp_consistency_country_dummies_pmm.csv
+- outputs/mi_gdp_consistency_lagged_predictors_pmm.csv
+- outputs/mi_gdp_consistency_no_outcome_pmm.csv
+- outputs/mi_method_notes.txt
+- outputs/mi_observed_vs_imputed_baseline.csv
+- outputs/mi_observed_vs_imputed_baseline_m50.csv
+- outputs/mi_observed_vs_imputed_baseline_pmm.csv
+- outputs/mi_observed_vs_imputed_baseline_pmm_m50.csv
+- outputs/mi_observed_vs_imputed_by_group_year.csv
+- outputs/mi_observed_vs_imputed_country_dummies.csv
+- outputs/mi_observed_vs_imputed_country_dummies_pmm.csv
+- outputs/mi_observed_vs_imputed_lagged_predictors_pmm.csv
+- outputs/mi_observed_vs_imputed_no_outcome.csv
+- outputs/mi_observed_vs_imputed_no_outcome_pmm.csv
+- outputs/mi_plausibility_checks_baseline.csv
+- outputs/mi_plausibility_checks_baseline_m50.csv
+- outputs/mi_plausibility_checks_baseline_pmm.csv
+- outputs/mi_plausibility_checks_baseline_pmm_m50.csv
+- outputs/mi_plausibility_checks_country_dummies.csv
+- outputs/mi_plausibility_checks_country_dummies_pmm.csv
+- outputs/mi_plausibility_checks_lagged_predictors_pmm.csv
+- outputs/mi_plausibility_checks_no_outcome.csv
+- outputs/mi_plausibility_checks_no_outcome_pmm.csv
+- outputs/mi_pmm_donor_diagnostics.csv
+- outputs/mi_variant_summary.csv
+- outputs/missingness_by_variable.csv
+- outputs/missingness_inclusion_probabilities.csv
+- outputs/missingness_model_summary.csv
+- outputs/missingness_robustness_results.csv
+- outputs/ml_benchmark_decision.txt
+- outputs/ml_benchmark_summary-4.md
+- outputs/ml_country_holdout_fold_results.csv
+- outputs/ml_country_holdout_summary.csv
+- outputs/ml_expanding_window_results.csv
+- outputs/ml_hyperparameter_grid.csv
+- outputs/ml_importance_caution.txt
+- outputs/ml_importance_stability.csv
+- outputs/ml_importance_stability_note.txt
+- outputs/ml_naive_baselines.csv
+- outputs/ml_paired_tree_mae_differences.csv
+- outputs/ml_performance_full.csv
+- outputs/ml_permutation_vs_impurity_importance.csv
+- outputs/ml_split_confirmation.txt
+- outputs/ml_test_mae_bootstrap_ci.csv
+- outputs/ml_test_residuals_gradient_boosting.csv
+- outputs/ml_test_residuals_random_forest.csv
+- outputs/ml_test_residuals_ridge.csv
+- outputs/ml_time_aware_fold_results.csv
+- outputs/mnar_imputation_fe_results.csv
+- outputs/mnar_sensitivity_results.csv
+- outputs/mnar_tipping_point_fe_results.csv
+- outputs/mnar_tipping_point_results.csv
+- outputs/model_feature_set_5a.md
+- outputs/model_ladder_feasibility.csv
+- outputs/model_ladder_results.csv
+- outputs/multi_outcome_attrition_long.csv
+- outputs/multi_outcome_attrition_matrix.csv
+- outputs/multi_outcome_country_group_retention.csv
+- outputs/multi_outcome_coverage_table.csv
+- outputs/multi_outcome_included_excluded_smd.csv
+- outputs/multi_outcome_indicator_registry.csv
+- outputs/multi_outcome_monitoring_dependence_summary.csv
+- outputs/multi_outcome_monitoring_trends.csv
+- outputs/multi_outcome_year_normalized_weights.csv
+- outputs/multiple_imputation_fe_results.csv
+- outputs/multiple_imputation_notes.txt
+- outputs/multiple_imputation_pooled_results.csv
+- outputs/outcome_availability_matrix.csv
+- outputs/outcome_country_coverage.csv
+- outputs/outcome_country_coverage_notebook.csv
+- outputs/outcome_estimand_coefficient_matrix.csv
+- outputs/outcome_failure_classification.csv
+- outputs/outcome_missingness_heatmap.png
+- outputs/outcome_missingness_heatmap_notebook.png
+- outputs/outcome_missingness_summary.md
+- outputs/output_manifest_hashes.csv
+- outputs/panel_correlations.csv
+- outputs/panel_correlations_full.csv
+- outputs/paper_summaries.md
+- outputs/papers_index.csv
+- outputs/permutation_importance_final.csv
+- outputs/phase1_handoff_prompt.md
+- outputs/pooled_baseline_summary-2.md
+- outputs/population_extraction_notes.txt
+- outputs/population_weighted_trend.csv
+- outputs/poverty_robustness_summary.csv
+- outputs/primary_country_paths_dense.png
+- outputs/primary_country_summary.csv
+- outputs/primary_latest_available_ranking.csv
+- outputs/primary_latest_available_ranking.png
+- outputs/primary_vs_08b_common_cells.csv
+- outputs/primary_vs_08b_scatter.png
+- outputs/primary_vs_08b_year_summary.csv
+- outputs/primary_year_summary.csv
+- outputs/primary_year_trend.png
+- outputs/processed_data_dictionary.csv
+- outputs/processed_data_dictionary_summary.csv
+- outputs/random_forest_validation_tuning.csv
+- outputs/random_seed.txt
+- outputs/raw_data_download_instructions.md
+- outputs/references_raw.bib
+- outputs/regression_country_groups.csv
+- outputs/regression_crisis_exclusion.csv
+- outputs/regression_fe_full.csv
+- outputs/regression_icc.txt
+- outputs/regression_lag_robustness.csv
+- outputs/regression_multilevel_results.csv
+- outputs/regression_pooled_full.csv
+- outputs/regression_robustness_summary.csv
+- outputs/regression_sample_note.txt
+- outputs/regression_sensitivity_covariate_set.csv
+- outputs/regression_sensitivity_influential.csv
+- outputs/regression_serial_correlation_check.csv
+- outputs/regression_vif.csv
+- outputs/regression_within_r2.txt
+- outputs/reproducibility_archive.zip
+- outputs/reproducibility_manifest.json
+- outputs/ridge_validation_tuning.csv
+- outputs/simulation_bias_summary.csv
+- outputs/simulation_ci_coverage.csv
+- outputs/simulation_reference_estimand.csv
+- outputs/simulation_results.csv
+- outputs/simulation_sign_reversal.csv
+- outputs/simulation_wrong_conclusion.csv
+- outputs/smoke_repeat_simulation_bias_summary.csv
+- outputs/smoke_repeat_simulation_ci_coverage.csv
+- outputs/smoke_repeat_simulation_reference_estimand.csv
+- outputs/smoke_repeat_simulation_results.csv
+- outputs/smoke_repeat_simulation_sign_reversal.csv
+- outputs/smoke_repeat_simulation_wrong_conclusion.csv
+- outputs/smoke_simulation_bias_summary.csv
+- outputs/smoke_simulation_ci_coverage.csv
+- outputs/smoke_simulation_reference_estimand.csv
+- outputs/smoke_simulation_results.csv
+- outputs/smoke_simulation_sign_reversal.csv
+- outputs/smoke_simulation_wrong_conclusion.csv
+- outputs/table_08b_robustness_models.csv
+- outputs/table_country_summary.csv
+- outputs/table_descriptive_statistics.csv
+- outputs/table_fe_baseline.csv
+- outputs/table_figure_generation_map.csv
+- outputs/table_linear_models_performance.csv
+- outputs/table_ml_performance.csv
+- outputs/table_pooled_baseline.csv
+- outputs/table_tree_models_performance.csv
+- outputs/table_year_inequality.csv
+- outputs/table_year_summary.csv
+- outputs/tables_quality_report.txt
+- outputs/target_population_drift_reporting_checklist.csv
+- outputs/target_population_sensitivity_results.csv
+- outputs/template_analysis.md
+- outputs/template_migration_log.txt
+- outputs/thesis_design_feasibility.md
+- outputs/thesis_design_feasibility.xlsx
+- outputs/thesis_roadmap.md
+- outputs/tree_feature_importance.csv
+- outputs/tree_feature_importance_final.csv
+- outputs/tree_models_summary.md
+- outputs/trend_test_results.txt
+- outputs/universe_sensitivity_results.csv
+- outputs/year_trend_summary.csv
+
+## Errors or skipped steps
+No errors encountered.
+
+## Suspicious results for review
+- Multiple-imputation poverty coefficient is near zero while baseline FE is materially positive.
+- Monitored lagged feature is not consistently top 3 in ML importance stability.
+
+## Quality check manual-review lists
+- Figures: 08b_minus_08_difference_by_country.pdf, 08b_vs_08_scatter.pdf, citizenship_gap_correlations.pdf, mi_observed_vs_imputed_baseline.pdf, mi_observed_vs_imputed_baseline_m50.pdf, mi_observed_vs_imputed_baseline_pmm.pdf, mi_observed_vs_imputed_baseline_pmm_m50.pdf, mi_observed_vs_imputed_country_dummies.pdf, mi_observed_vs_imputed_country_dummies_pmm.pdf, mi_observed_vs_imputed_lagged_predictors_pmm.pdf, mi_observed_vs_imputed_no_outcome.pdf, mi_observed_vs_imputed_no_outcome_pmm.pdf, missingness_inclusion_probability.pdf, model_correlations_heatmap.pdf, outcome_missingness_heatmap.pdf, tree_feature_importance.pdf, unmet_need_trends_all_countries.pdf, unmet_need_vs_gdp_per_capita_eur_2025.pdf, unmet_need_vs_poverty_or_social_exclusion_pc_2025.pdf, unmet_need_vs_unemployment_rate_pc_2025.pdf
+- Tables: appendix_full_pooled_regression.tex, complete_case_selection_model.tex, country_universe.tex, estimand_framework.tex, eurostat_sources_appendix.tex, failure_modes_public_aggregate_panels.tex, fe_fit_diagnostics.tex, fe_inference_comparison.tex, final_classification_eurostat_findings.tex, main_sensitivity_ladder.tex, mi_diagnostics_summary.tex, mi_pmm_donor_diagnostics.tex, mi_variant_summary.tex, missingness_comparison.tex, missingness_robustness_results.tex, ml_country_holdout_summary.tex, ml_hyperparameter_grid.tex, ml_model_performance_full.tex, ml_naive_baselines.tex, ml_paired_tree_mae_differences.tex, ml_test_mae_bootstrap_ci.tex, ml_time_aware_fold_results.tex, mnar_sensitivity_results.tex, mnar_tipping_point_results.tex, model_ladder_results.tex, multi_outcome_attrition_matrix.tex, multi_outcome_country_group_retention.tex, multi_outcome_coverage_table.tex, multi_outcome_included_excluded_smd_top.tex, multi_outcome_monitoring_dependence_summary.tex, multi_outcome_primary_attrition_waterfall.tex, outcome_estimand_coefficient_matrix.tex, outcome_failure_classification.tex, poverty_robustness_summary.tex, public_data_estimand_registry.tex, reduced_covariate_sensitivity.tex, regression_main_results.tex, regression_vif_diagnostics.tex, robustness_08b_results.tex, simulation_complete_case_bias.tex, simulation_main_summary.tex, software_versions.tex, target_population_drift_reporting_checklist.tex, target_population_sensitivity_results.tex, universe_sensitivity_results.tex, variable_summary.tex

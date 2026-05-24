@@ -1,0 +1,75 @@
+Tables quality report
+Checks: booktabs markers, caption, label, and excessive decimal precision scan.
+
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/appendix_full_pooled_regression.tex | REVIEW | missing caption; missing label
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/attrition_by_country_group.tex | OK | booktabs/caption/label present; rounded
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/attrition_by_country_top_loss.tex | OK | booktabs/caption/label present; rounded
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/attrition_by_covariate_block.tex | OK | booktabs/caption/label present; rounded
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/attrition_by_year.tex | OK | booktabs/caption/label present; rounded
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/citizenship_gap_clustered.tex | OK | booktabs/caption/label present; rounded
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/citizenship_gap_regression.tex | OK | booktabs/caption/label present; rounded
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/citizenship_gap_table.tex | OK | booktabs/caption/label present; rounded
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/complete_case_attrition_waterfall.tex | OK | booktabs/caption/label present; rounded
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/complete_case_selection_model.tex | REVIEW | missing caption; missing label
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/country_coverage.tex | OK | booktabs/caption/label present; rounded
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/country_universe.tex | REVIEW | missing caption; missing label
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/descriptive_statistics.tex | OK | booktabs/caption/label present; rounded
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/estimand_framework.tex | REVIEW | missing caption; missing label
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/eurostat_sources_appendix.tex | REVIEW | missing caption; missing label
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/failure_modes_public_aggregate_panels.tex | REVIEW | missing caption; missing label
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/fe_fit_diagnostics.tex | REVIEW | missing caption; missing label
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/fe_inference_comparison.tex | REVIEW | missing caption; missing label
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/final_classification_eurostat_findings.tex | REVIEW | missing caption; missing label
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/included_vs_excluded_smd.tex | OK | booktabs/caption/label present; rounded
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/leave_one_variable_out_sample_recovery.tex | OK | booktabs/caption/label present; rounded
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/main_sensitivity_ladder.tex | REVIEW | missing caption; missing label
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/mi_diagnostics_summary.tex | REVIEW | missing caption; missing label
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/mi_pmm_donor_diagnostics.tex | REVIEW | missing caption; missing label
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/mi_variant_summary.tex | REVIEW | missing caption; missing label
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/missingness_comparison.tex | REVIEW | missing caption; missing label
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/missingness_robustness_results.tex | REVIEW | missing caption; missing label
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/ml_country_holdout_summary.tex | REVIEW | missing caption; missing label
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/ml_hyperparameter_grid.tex | REVIEW | missing caption; missing label
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/ml_model_performance_full.tex | REVIEW | missing caption; missing label
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/ml_naive_baselines.tex | REVIEW | missing caption; missing label
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/ml_paired_tree_mae_differences.tex | REVIEW | missing caption; missing label
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/ml_test_mae_bootstrap_ci.tex | REVIEW | missing caption; missing label
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/ml_time_aware_fold_results.tex | REVIEW | missing caption; missing label
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/mnar_sensitivity_results.tex | REVIEW | missing caption; missing label
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/mnar_tipping_point_results.tex | REVIEW | missing caption; missing label
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/model_ladder_results.tex | REVIEW | missing caption; missing label
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/multi_outcome_attrition_matrix.tex | REVIEW | missing caption; missing label
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/multi_outcome_country_group_retention.tex | REVIEW | missing caption; missing label
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/multi_outcome_coverage_table.tex | REVIEW | missing caption; missing label
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/multi_outcome_included_excluded_smd_top.tex | REVIEW | missing caption; missing label
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/multi_outcome_monitoring_dependence_summary.tex | REVIEW | missing caption; missing label
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/multi_outcome_primary_attrition_waterfall.tex | REVIEW | missing caption; missing label; 6 values with >4 decimals
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/multiple_imputation_sensitivity.tex | OK | booktabs/caption/label present; rounded
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/outcome_estimand_coefficient_matrix.tex | REVIEW | missing caption; missing label
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/outcome_failure_classification.tex | REVIEW | missing caption; missing label
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/output_generation_map.tex | OK | booktabs/caption/label present; rounded
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/poverty_robustness_summary.tex | REVIEW | missing caption; missing label
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/processed_data_dictionary_summary.tex | OK | booktabs/caption/label present; rounded
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/public_data_estimand_registry.tex | REVIEW | missing caption; missing label
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/reduced_covariate_sensitivity.tex | REVIEW | missing caption; missing label
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/regression_country_groups.tex | OK | booktabs/caption/label present; rounded
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/regression_crisis_exclusion.tex | OK | booktabs/caption/label present; rounded
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/regression_lag_robustness.tex | OK | booktabs/caption/label present; rounded
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/regression_main_results.tex | REVIEW | missing caption; missing label
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/regression_multilevel.tex | OK | booktabs/caption/label present; rounded
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/regression_robustness_summary.tex | OK | booktabs/caption/label present; rounded
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/regression_sensitivity_covariate.tex | OK | booktabs/caption/label present; rounded
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/regression_sensitivity_influential.tex | OK | booktabs/caption/label present; rounded
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/regression_vif.tex | OK | booktabs/caption/label present; rounded
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/regression_vif_diagnostics.tex | REVIEW | missing caption; missing label
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/robustness_08b_results.tex | REVIEW | missing caption; missing label
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/simulation_complete_case_bias.tex | REVIEW | missing caption; missing label
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/simulation_main_summary.tex | REVIEW | missing caption; missing label
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/software_versions.tex | REVIEW | missing caption; missing label
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/target_population_drift_reporting_checklist.tex | REVIEW | missing caption; missing label
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/target_population_sensitivity_results.tex | REVIEW | missing caption; missing label
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/universe_sensitivity_results.tex | REVIEW | missing caption; missing label
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/tables/variable_summary.tex | REVIEW | missing caption; missing label
+
+Tables needing manual review:
+appendix_full_pooled_regression.tex, complete_case_selection_model.tex, country_universe.tex, estimand_framework.tex, eurostat_sources_appendix.tex, failure_modes_public_aggregate_panels.tex, fe_fit_diagnostics.tex, fe_inference_comparison.tex, final_classification_eurostat_findings.tex, main_sensitivity_ladder.tex, mi_diagnostics_summary.tex, mi_pmm_donor_diagnostics.tex, mi_variant_summary.tex, missingness_comparison.tex, missingness_robustness_results.tex, ml_country_holdout_summary.tex, ml_hyperparameter_grid.tex, ml_model_performance_full.tex, ml_naive_baselines.tex, ml_paired_tree_mae_differences.tex, ml_test_mae_bootstrap_ci.tex, ml_time_aware_fold_results.tex, mnar_sensitivity_results.tex, mnar_tipping_point_results.tex, model_ladder_results.tex, multi_outcome_attrition_matrix.tex, multi_outcome_country_group_retention.tex, multi_outcome_coverage_table.tex, multi_outcome_included_excluded_smd_top.tex, multi_outcome_monitoring_dependence_summary.tex, multi_outcome_primary_attrition_waterfall.tex, outcome_estimand_coefficient_matrix.tex, outcome_failure_classification.tex, poverty_robustness_summary.tex, public_data_estimand_registry.tex, reduced_covariate_sensitivity.tex, regression_main_results.tex, regression_vif_diagnostics.tex, robustness_08b_results.tex, simulation_complete_case_bias.tex, simulation_main_summary.tex, software_versions.tex, target_population_drift_reporting_checklist.tex, target_population_sensitivity_results.tex, universe_sensitivity_results.tex, variable_summary.tex

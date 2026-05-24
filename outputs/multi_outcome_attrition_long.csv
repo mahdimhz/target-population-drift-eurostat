@@ -1,0 +1,50 @@
+indicator_id,indicator_label,step,required_variables,rows,countries,years,rows_lost_from_previous,retained_pct_of_start
+dental_need_combined,Dental need,Outcome observed,outcome_value_pc,154,34,5,0,100.0
+dental_need_combined,Dental need,+ population weight,outcome_value_pc; population_weight_year_norm,154,34,5,0,100.0
+dental_need_combined,Dental need,+ GDP,outcome_value_pc; log_gdp_per_capita,152,34,5,2,98.7012987012987
+dental_need_combined,Dental need,+ unemployment,outcome_value_pc; log_gdp_per_capita; unemployment_rate_pc,147,32,5,5,95.45454545454545
+dental_need_combined,Dental need,+ poverty/social exclusion,outcome_value_pc; log_gdp_per_capita; unemployment_rate_pc; poverty_or_social_exclusion_pc,147,32,5,0,95.45454545454545
+dental_need_combined,Dental need,Baseline complete case,outcome_value_pc; log_gdp_per_capita; unemployment_rate_pc; poverty_or_social_exclusion_pc; government_health_expenditure_gdp_pc; compulsory_health_financing_gdp_pc,93,28,4,54,60.38961038961039
+dental_need_combined,Dental need,+ capacity sensitivity,outcome_value_pc; log_gdp_per_capita; unemployment_rate_pc; poverty_or_social_exclusion_pc; government_health_expenditure_gdp_pc; compulsory_health_financing_gdp_pc; physicians_per_100k; hospital_beds_per_100k,69,24,3,24,44.8051948051948
+dental_population_combined,Dental population,Outcome observed,outcome_value_pc,607,37,18,0,100.0
+dental_population_combined,Dental population,+ population weight,outcome_value_pc; population_weight_year_norm,606,37,18,1,99.83525535420098
+dental_population_combined,Dental population,+ GDP,outcome_value_pc; log_gdp_per_capita,604,36,18,2,99.50576606260296
+dental_population_combined,Dental population,+ unemployment,outcome_value_pc; log_gdp_per_capita; unemployment_rate_pc,555,34,18,49,91.4332784184514
+dental_population_combined,Dental population,+ poverty/social exclusion,outcome_value_pc; log_gdp_per_capita; unemployment_rate_pc; poverty_or_social_exclusion_pc,360,34,11,195,59.308072487644154
+dental_population_combined,Dental population,Baseline complete case,outcome_value_pc; log_gdp_per_capita; unemployment_rate_pc; poverty_or_social_exclusion_pc; government_health_expenditure_gdp_pc; compulsory_health_financing_gdp_pc,282,30,10,78,46.45799011532125
+dental_population_combined,Dental population,+ capacity sensitivity,outcome_value_pc; log_gdp_per_capita; unemployment_rate_pc; poverty_or_social_exclusion_pc; government_health_expenditure_gdp_pc; compulsory_health_financing_gdp_pc; physicians_per_100k; hospital_beds_per_100k,233,27,9,49,38.38550247116969
+medical_need_combined,Medical need,Outcome observed,outcome_value_pc,154,34,5,0,100.0
+medical_need_combined,Medical need,+ population weight,outcome_value_pc; population_weight_year_norm,154,34,5,0,100.0
+medical_need_combined,Medical need,+ GDP,outcome_value_pc; log_gdp_per_capita,152,34,5,2,98.7012987012987
+medical_need_combined,Medical need,+ unemployment,outcome_value_pc; log_gdp_per_capita; unemployment_rate_pc,147,32,5,5,95.45454545454545
+medical_need_combined,Medical need,+ poverty/social exclusion,outcome_value_pc; log_gdp_per_capita; unemployment_rate_pc; poverty_or_social_exclusion_pc,147,32,5,0,95.45454545454545
+medical_need_combined,Medical need,Baseline complete case,outcome_value_pc; log_gdp_per_capita; unemployment_rate_pc; poverty_or_social_exclusion_pc; government_health_expenditure_gdp_pc; compulsory_health_financing_gdp_pc,93,28,4,54,60.38961038961039
+medical_need_combined,Medical need,+ capacity sensitivity,outcome_value_pc; log_gdp_per_capita; unemployment_rate_pc; poverty_or_social_exclusion_pc; government_health_expenditure_gdp_pc; compulsory_health_financing_gdp_pc; physicians_per_100k; hospital_beds_per_100k,69,24,3,24,44.8051948051948
+medical_population_combined,Medical population,Outcome observed,outcome_value_pc,608,37,18,0,100.0
+medical_population_combined,Medical population,+ population weight,outcome_value_pc; population_weight_year_norm,607,37,18,1,99.83552631578948
+medical_population_combined,Medical population,+ GDP,outcome_value_pc; log_gdp_per_capita,604,36,18,3,99.34210526315789
+medical_population_combined,Medical population,+ unemployment,outcome_value_pc; log_gdp_per_capita; unemployment_rate_pc,555,34,18,49,91.28289473684211
+medical_population_combined,Medical population,+ poverty/social exclusion,outcome_value_pc; log_gdp_per_capita; unemployment_rate_pc; poverty_or_social_exclusion_pc,360,34,11,195,59.21052631578947
+medical_population_combined,Medical population,Baseline complete case,outcome_value_pc; log_gdp_per_capita; unemployment_rate_pc; poverty_or_social_exclusion_pc; government_health_expenditure_gdp_pc; compulsory_health_financing_gdp_pc,282,30,10,78,46.38157894736842
+medical_population_combined,Medical population,+ capacity sensitivity,outcome_value_pc; log_gdp_per_capita; unemployment_rate_pc; poverty_or_social_exclusion_pc; government_health_expenditure_gdp_pc; compulsory_health_financing_gdp_pc; physicians_per_100k; hospital_beds_per_100k,233,27,9,49,38.32236842105263
+medical_population_cost,Medical cost,Outcome observed,outcome_value_pc,608,37,18,0,100.0
+medical_population_cost,Medical cost,+ population weight,outcome_value_pc; population_weight_year_norm,607,37,18,1,99.83552631578948
+medical_population_cost,Medical cost,+ GDP,outcome_value_pc; log_gdp_per_capita,604,36,18,3,99.34210526315789
+medical_population_cost,Medical cost,+ unemployment,outcome_value_pc; log_gdp_per_capita; unemployment_rate_pc,555,34,18,49,91.28289473684211
+medical_population_cost,Medical cost,+ poverty/social exclusion,outcome_value_pc; log_gdp_per_capita; unemployment_rate_pc; poverty_or_social_exclusion_pc,360,34,11,195,59.21052631578947
+medical_population_cost,Medical cost,Baseline complete case,outcome_value_pc; log_gdp_per_capita; unemployment_rate_pc; poverty_or_social_exclusion_pc; government_health_expenditure_gdp_pc; compulsory_health_financing_gdp_pc,282,30,10,78,46.38157894736842
+medical_population_cost,Medical cost,+ capacity sensitivity,outcome_value_pc; log_gdp_per_capita; unemployment_rate_pc; poverty_or_social_exclusion_pc; government_health_expenditure_gdp_pc; compulsory_health_financing_gdp_pc; physicians_per_100k; hospital_beds_per_100k,233,27,9,49,38.32236842105263
+medical_population_distance,Medical distance,Outcome observed,outcome_value_pc,608,37,18,0,100.0
+medical_population_distance,Medical distance,+ population weight,outcome_value_pc; population_weight_year_norm,607,37,18,1,99.83552631578948
+medical_population_distance,Medical distance,+ GDP,outcome_value_pc; log_gdp_per_capita,604,36,18,3,99.34210526315789
+medical_population_distance,Medical distance,+ unemployment,outcome_value_pc; log_gdp_per_capita; unemployment_rate_pc,555,34,18,49,91.28289473684211
+medical_population_distance,Medical distance,+ poverty/social exclusion,outcome_value_pc; log_gdp_per_capita; unemployment_rate_pc; poverty_or_social_exclusion_pc,360,34,11,195,59.21052631578947
+medical_population_distance,Medical distance,Baseline complete case,outcome_value_pc; log_gdp_per_capita; unemployment_rate_pc; poverty_or_social_exclusion_pc; government_health_expenditure_gdp_pc; compulsory_health_financing_gdp_pc,282,30,10,78,46.38157894736842
+medical_population_distance,Medical distance,+ capacity sensitivity,outcome_value_pc; log_gdp_per_capita; unemployment_rate_pc; poverty_or_social_exclusion_pc; government_health_expenditure_gdp_pc; compulsory_health_financing_gdp_pc; physicians_per_100k; hospital_beds_per_100k,233,27,9,49,38.32236842105263
+medical_population_waiting,Medical waiting,Outcome observed,outcome_value_pc,608,37,18,0,100.0
+medical_population_waiting,Medical waiting,+ population weight,outcome_value_pc; population_weight_year_norm,607,37,18,1,99.83552631578948
+medical_population_waiting,Medical waiting,+ GDP,outcome_value_pc; log_gdp_per_capita,604,36,18,3,99.34210526315789
+medical_population_waiting,Medical waiting,+ unemployment,outcome_value_pc; log_gdp_per_capita; unemployment_rate_pc,555,34,18,49,91.28289473684211
+medical_population_waiting,Medical waiting,+ poverty/social exclusion,outcome_value_pc; log_gdp_per_capita; unemployment_rate_pc; poverty_or_social_exclusion_pc,360,34,11,195,59.21052631578947
+medical_population_waiting,Medical waiting,Baseline complete case,outcome_value_pc; log_gdp_per_capita; unemployment_rate_pc; poverty_or_social_exclusion_pc; government_health_expenditure_gdp_pc; compulsory_health_financing_gdp_pc,282,30,10,78,46.38157894736842
+medical_population_waiting,Medical waiting,+ capacity sensitivity,outcome_value_pc; log_gdp_per_capita; unemployment_rate_pc; poverty_or_social_exclusion_pc; government_health_expenditure_gdp_pc; compulsory_health_financing_gdp_pc; physicians_per_100k; hospital_beds_per_100k,233,27,9,49,38.32236842105263

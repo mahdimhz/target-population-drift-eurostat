@@ -1,0 +1,38 @@
+country,descriptive_rows,in_regression_sample,in_ml_sample,complete_baseline_rows,exclusion_driver
+AL,7,no,no,0,"unemployment_rate_pc, government_health_expenditure_gdp_pc, compulsory_health_financing_gdp_pc"
+AT,18,yes,yes,10,
+BE,18,yes,yes,9,
+BG,18,yes,yes,9,
+CH,17,yes,yes,10,
+CY,18,yes,yes,9,
+CZ,18,yes,yes,10,
+DE,18,yes,yes,10,
+DK,18,yes,yes,10,
+EE,18,yes,yes,10,
+EL,18,yes,no,9,
+ES,18,yes,yes,9,
+FI,18,yes,yes,9,
+FR,18,yes,yes,10,
+HR,16,yes,yes,9,
+HU,18,yes,yes,10,
+IE,18,yes,yes,10,
+IS,13,yes,yes,6,
+IT,17,yes,yes,9,
+LT,18,yes,yes,10,
+LU,18,yes,yes,10,
+LV,18,yes,yes,9,
+ME,11,no,no,0,government_health_expenditure_gdp_pc
+MK,15,no,no,0,"government_health_expenditure_gdp_pc, compulsory_health_financing_gdp_pc"
+MT,18,yes,yes,9,
+NL,18,yes,yes,10,
+NO,18,yes,yes,8,
+PL,18,yes,yes,10,
+PT,18,yes,no,10,
+RO,18,yes,yes,9,
+RS,13,no,no,0,government_health_expenditure_gdp_pc
+SE,18,yes,yes,10,
+SI,18,yes,yes,10,
+SK,18,yes,no,9,
+TR,18,no,no,0,"government_health_expenditure_gdp_pc, compulsory_health_financing_gdp_pc"
+UK,11,no,no,0,"unemployment_rate_pc, government_health_expenditure_gdp_pc"
+XK,2,no,no,0,"log_gdp_per_capita, unemployment_rate_pc, poverty_or_social_exclusion_pc, government_health_expenditure_gdp_pc, compulsory_health_financing_gdp_pc"

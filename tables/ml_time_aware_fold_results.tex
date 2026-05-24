@@ -1,0 +1,15 @@
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Model & 2018 fold & 2019 fold & 2020 fold & Mean \(\pm\) SD \\
+\midrule
+OLS & 2.388 & 2.357 & 2.410 & 2.385 $\pm$ 0.027 \\
+Ridge & 1.626 & 1.547 & 1.582 & 1.585 $\pm$ 0.040 \\
+Lasso & 1.955 & 1.801 & 1.949 & 1.901 $\pm$ 0.087 \\
+Random Forest & 1.526 & 1.535 & 1.182 & 1.415 $\pm$ 0.201 \\
+Gradient Boosting & 1.450 & 1.172 & 0.987 & 1.203 $\pm$ 0.233 \\
+\bottomrule
+\end{tabular}
+\par\vspace{0.3em}
+\begin{minipage}{0.96\textwidth}
+\footnotesize Notes: Folds are time-aware expanding-window checks within the pre-test period. Fold 1 trains on 2015--2017 and validates on 2018; Fold 2 trains on 2015--2018 and validates on 2019; Fold 3 trains on 2015--2019 and validates on 2020. MAE is measured in percentage points of unmet medical care need.
+\end{minipage}

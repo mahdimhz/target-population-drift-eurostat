@@ -1,0 +1,11 @@
+variant,variable,lower_bound,upper_bound,imputed_n,imputed_min,imputed_max,outside_bounds
+lagged_predictors_pmm,log_gdp_per_capita,7.0,12.3,4,8.964439833539357,10.026147565272016,0
+lagged_predictors_pmm,unemployment_rate_pc,0.0,40.0,52,3.4,22.1,0
+lagged_predictors_pmm,poverty_or_social_exclusion_pc,0.0,60.0,233,11.3,58.5,0
+lagged_predictors_pmm,government_health_expenditure_gdp_pc,0.0,15.0,106,1.9,9.2,0
+lagged_predictors_pmm,compulsory_health_financing_gdp_pc,0.0,15.0,164,2.79,9.85,0
+lagged_predictors_pmm,gini_income,0.0,60.0,199,21.2,43.9,0
+lagged_predictors_pmm,physicians_per_100k,0.0,1000.0,177,218.08,551.44,0
+lagged_predictors_pmm,hospital_beds_per_100k,0.0,1500.0,86,222.5,779.29,0
+lagged_predictors_pmm,oop_health_expenditure_share_pc,0.0,60.0,164,8.83,44.61,0
+lagged_predictors_pmm,long_term_unemployment_rate_pc,0.0,30.0,54,0.6,12.4,0

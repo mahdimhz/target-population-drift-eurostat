@@ -1,0 +1,148 @@
+\chapter{Multi-Outcome Monitoring Benchmark}
+\label{ch:descriptive_evidence}
+
+\section{Purpose}
+
+This chapter is monitoring before modelling. It asks whether Eurostat unmet-care conclusions change before any association coefficient is estimated. The chapter therefore compares outcome definitions, denominators, country universes, and population-weighting rules in the public country-year panel. No regression coefficient is interpreted in this chapter.
+
+The monitoring benchmark is the first layer of the target-population drift audit. It compares medical and dental indicators, population-denominator and need-denominator indicators, cost, waiting, and distance barriers, the full Eurostat-available country universe, the EU-27 restriction, and year-normalized population weighting. The primary medical indicator remains the detailed example because it has 608 observed country-years over 2008--2025, but it is no longer the only outcome object in the thesis.
+
+\section{Multi-Outcome Monitoring Benchmark}
+
+Figure~\ref{fig:multi_outcome_monitoring_benchmark} summarizes the benchmark. Panel A compares medical and dental unmet-care indicators using the population denominator. Panel B compares population-denominator and need-denominator definitions. Panel C separates medical cost, waiting-list, and distance barriers. Panel D shows how the primary medical indicator changes when the universe is restricted to EU-27 countries and when year-normalized population weights are applied.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.98\textwidth]{multi_outcome_monitoring_benchmark}
+\caption{Multi-outcome Eurostat unmet-care monitoring benchmark. The sample is national Eurostat country-year observations from the feasible indicators in Table~\ref{tab:public_data_estimand_registry}; population-denominator indicators cover 2008--2025 where available, need-denominator indicators cover 2021--2025, and country coverage varies by indicator and year. Weighted series use \texttt{demo\_pjan} populations normalized within each year and outcome.}
+\label{fig:multi_outcome_monitoring_benchmark}
+\end{figure}
+
+The figure shows that monitoring conclusions are indicator-dependent before modelling begins. Medical and dental unmet care do not describe the same service domain. Population-denominator and need-denominator indicators answer different questions. Barrier-specific indicators separate affordability, waiting-time, and distance mechanisms. Population weighting changes the estimand from an average-country quantity to an average-resident quantity within each year.
+
+\begin{table}[htbp]
+\centering
+\scriptsize
+\caption{Coverage of feasible multi-outcome Eurostat unmet-care indicators. The table uses the full Eurostat-available national universe after excluding EU and euro-area aggregate codes; population rows count observations with valid \texttt{demo\_pjan} population available for year-normalized weighting.}
+\label{tab:multi_outcome_coverage_table}
+\input{tables/multi_outcome_coverage_table}
+\end{table}
+
+Table~\ref{tab:multi_outcome_coverage_table} gives the coverage behind the monitoring benchmark. The population-denominator medical and dental indicators provide long panels, while need-denominator indicators are shorter. This is not a defect to hide; it is an estimand fact that must be reported before comparisons are interpreted.
+
+\begin{table}[htbp]
+\centering
+\scriptsize
+\caption{Monitoring-dependence summary for 2025. Values are unweighted country means unless the comparison explicitly uses year-normalized population weighting; the table is descriptive and does not estimate any association model.}
+\label{tab:multi_outcome_monitoring_dependence_summary}
+\input{tables/multi_outcome_monitoring_dependence_summary}
+\end{table}
+
+Table~\ref{tab:multi_outcome_monitoring_dependence_summary} reports compact 2025 contrasts. It is intentionally descriptive: its purpose is to show that denominator choice, care type, barrier type, country universe, and weighting rule all change the monitoring object.
+
+\section{Primary Indicator Coverage Bridge}
+
+The remainder of this chapter keeps the primary \texttt{hlth\_silc\_08} coverage diagnostics because they motivate the later coefficient-stability analysis. These diagnostics still do not estimate a substantive association. They show how the broad monitoring panel becomes a narrower complete-case analytical panel.
+
+\section{Monitoring Trend and Analytical Coverage}
+
+Figure~\ref{fig:descriptive_estimand_drift_diagnostic} is the first coverage diagnostic. The upper panels compare the unweighted country mean with the year-normalized population-weighted mean. The lower panels compare the number of countries observed in the outcome panel with the number entering the complete-case regression sample in each year.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.96\textwidth]{descriptive_estimand_drift_diagnostic}
+\caption{Observed monitoring panel versus complete-case analytical panel. The sample is observed \texttt{hlth\_silc\_08} country-years over 2008--2025; the population-weighted panel uses \texttt{demo\_pjan} country-year population normalized within year; complete-case counts use the baseline FE covariate-complete row set. Country coverage varies by year.}
+\label{fig:descriptive_estimand_drift_diagnostic}
+\end{figure}
+
+The figure shows why a single monitoring average or a single regression coefficient is not self-explanatory. The unweighted and population-weighted series answer different monitoring questions: the former treats countries equally, while the latter gives larger within-year weight to countries with larger resident populations. The complete-case country count is a narrower object because it depends on covariate availability. This is the descriptive version of the estimand-drift problem analysed formally in Chapter~\ref{ch:modeling_strategy_results}.
+
+The 2015 marker is a measurement-period warning, not a regression-discontinuity design. The outcome series covers years before and after 2015, but the baseline complete-case regression has too little pre-2015 covariate coverage to support a valid pre/post split for the poverty coefficient. Chapter~\ref{ch:modeling_strategy_results} therefore uses excluding-2015 and 2016-onward checks rather than treating the complete-case regression as a clean measurement-break design.
+
+\section{Attrition Waterfall}
+
+Figure~\ref{fig:complete_case_attrition_waterfall} and Table~\ref{tab:complete_case_attrition_waterfall} show the sequential row loss from the monitoring target to the baseline complete-case FE sample. The waterfall starts with all 608 outcome-observed country-years. It then requires GDP, unemployment, poverty or social exclusion, government health expenditure, and compulsory financing. The final step is the 282-row complete-case panel used for the baseline association model.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.92\textwidth]{complete_case_attrition_waterfall}
+\caption{Complete-case attrition waterfall. The sample starts from all outcome-observed \texttt{hlth\_silc\_08} country-years over 2008--2025 and sequentially requires the baseline FE covariates; no population weights are applied and country coverage varies by year.}
+\label{fig:complete_case_attrition_waterfall}
+\end{figure}
+
+\input{tables/complete_case_attrition_waterfall}
+
+The waterfall is the central descriptive result of the thesis. It shows that the baseline FE coefficient is not estimated on the full monitoring panel. It is estimated on a selected covariate-complete subset. The interpretation of the poverty/social-exclusion coefficient therefore depends not only on the regression formula, but also on the row-selection process that defines the analytical population.
+
+\section{Where Attrition Occurs}
+
+Table~\ref{tab:attrition_by_country_group} summarizes attrition by broad country group. Table~\ref{tab:attrition_by_covariate_block} shows how many outcome-observed rows remain when requiring each covariate block. These tables separate two mechanisms that would otherwise be hidden: country-group coverage differences and block-specific source availability.
+
+\input{tables/attrition_by_country_group}
+
+\input{tables/attrition_by_covariate_block}
+
+The block table is especially important because it distinguishes conceptual model breadth from empirical coverage. Adding covariates can make the model look more theoretically complete while moving the analysis further away from the outcome-observed monitoring target. The thesis therefore treats model expansion as an estimand choice, not merely as a technical adjustment.
+
+Table~\ref{tab:leave_one_variable_out_sample_recovery} reports the sample recovery from omitting each baseline covariate from the complete-case requirement. It is not used to choose a preferred model mechanically. Its purpose is to show which variables contribute most to the difference between the broad monitoring target and the selected analytical panel.
+
+\input{tables/leave_one_variable_out_sample_recovery}
+
+The country-level version is kept compact in the main text. Table~\ref{tab:attrition_by_country_top_loss} lists the countries with the lowest retention from outcome-observed rows to complete-case FE rows; the full country table is generated in the output folder and documented in the reproducibility appendix.
+
+\input{tables/attrition_by_country_top_loss}
+
+\section{Included and Excluded Rows}
+
+The most important question is whether excluded rows look like a neutral remainder. They do not. Table~\ref{tab:included_vs_excluded_smd} reports standardized mean differences between complete-case rows and excluded outcome-observed rows. Table~\ref{tab:missingness_comparison} reports the corresponding descriptive mean comparison.
+
+\input{tables/included_vs_excluded_smd}
+
+\begin{table}[htbp]
+\centering
+\caption{Included versus excluded outcome-observed rows}
+\label{tab:missingness_comparison}
+\input{tables/missingness_comparison}
+\end{table}
+
+These diagnostics are not interpreted as a correction. They show why correction is needed conceptually and why any single complete-case coefficient must be read as a selected-panel estimate. If excluded rows have different unmet need and macro-social conditions, the complete-case panel is not simply a smaller version of the monitoring panel.
+
+\section{Coverage Heatmaps}
+
+Figure~\ref{fig:missingness_heatmap_socioeconomic} and Figure~\ref{fig:missingness_heatmap_financing} split the missingness heatmaps into readable covariate blocks. The heatmaps show country-year coverage, not model results. Their value is diagnostic: they make visible that Eurostat covariate availability has structure by country, period, and indicator block.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.96\textwidth]{missingness_heatmap_socioeconomic}
+\caption{Socioeconomic covariate coverage. Cells show the observed share among socioeconomic variables in each country-year over 2008--2025; no population weights are applied and blank or low-coverage cells indicate missing source coverage.}
+\label{fig:missingness_heatmap_socioeconomic}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.96\textwidth]{missingness_heatmap_financing}
+\caption{Health-financing covariate coverage. Cells show the observed share among financing variables in each country-year over 2008--2025; no population weights are applied and country coverage varies by indicator and year.}
+\label{fig:missingness_heatmap_financing}
+\end{figure}
+
+\section{Country Heterogeneity as Context}
+
+Country heterogeneity remains useful, but it is no longer the centre of the chapter. Figure~\ref{fig:descriptive_country_rankings} ranks countries by the latest observed value of unmet medical care need. Figure~\ref{fig:descriptive_country_year_heatmap} shows the same outcome in country-year form. These figures motivate country structure in the models and help interpret why a selected complete-case panel may not represent the same monitoring object as the full outcome-observed panel.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.88\textwidth]{descriptive_country_rankings}
+\caption{Country rankings in unmet medical care need. Rankings use the latest observed \texttt{hlth\_silc\_08} value per country in the 2008--2025 descriptive panel; no population weights are applied and the latest year can differ where country coverage varies.}
+\label{fig:descriptive_country_rankings}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.96\textwidth]{descriptive_country_year_heatmap}
+\caption{Country-year heatmap of unmet medical care need. Cells show observed \texttt{hlth\_silc\_08} values over 2008--2025; blank cells indicate missing country-year outcome coverage; no population weights are applied.}
+\label{fig:descriptive_country_year_heatmap}
+\end{figure}
+
+\section{Secondary Descriptive Outputs}
+
+Several descriptive outputs are generated for reproducibility but do not carry the thesis argument. Bivariate scatterplots are screening diagnostics only because they do not condition on country or year structure. Convergence outputs are interpreted as descriptive context and remain vulnerable to regression-to-the-mean and changing coverage. Citizenship gaps are descriptive equity context because aggregate citizenship rows cannot adjust for income, health status, legal status, language, duration of residence, or local access conditions. The \texttt{hlth\_silc\_08b} comparison is a denominator robustness check for 2021--2025 only. These materials support transparency, but they do not compete with the target-population drift analysis.

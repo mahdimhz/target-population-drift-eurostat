@@ -1,0 +1,7 @@
+Created one-year-ahead prediction dataset using lagged predictors only.
+Forecast split is built from lagged predictors in panel_features_v2-3.csv.
+
+Created time-based split for all Step 5 models.
+Train: years 2016-2020, rows 149, countries 30
+Test: years 2021-2023, rows 87, countries 29
+Saved: data/processed/modeling_dataset_time_split.csv

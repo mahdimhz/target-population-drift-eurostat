@@ -1,0 +1,8 @@
+indicator_id,indicator_label,dataset_code,care_type,barrier_type,denominator,year_min,year_max,country_count,observed_rows,population_weight_rows
+dental_population_combined,"Dental, population denominator",hlth_silc_09,dental,cost_distance_waiting,population,2008,2025,37,607,606
+dental_need_combined,"Dental, need denominator",hlth_silc_09b,dental,cost_distance_waiting,same_needs,2021,2025,34,154,154
+medical_population_cost,"Medical, cost",hlth_silc_08,medical,cost,population,2008,2025,37,608,607
+medical_population_combined,"Medical, population denominator",hlth_silc_08,medical,cost_distance_waiting,population,2008,2025,37,608,607
+medical_population_distance,"Medical, distance",hlth_silc_08,medical,distance,population,2008,2025,37,608,607
+medical_population_waiting,"Medical, waiting",hlth_silc_08,medical,waiting,population,2008,2025,37,608,607
+medical_need_combined,"Medical, need denominator",hlth_silc_08b,medical,cost_distance_waiting,same_needs,2021,2025,34,154,154

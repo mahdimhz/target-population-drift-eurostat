@@ -1,0 +1,7 @@
+Trend test for annual mean unmet medical need.
+Method: scipy Kendall tau as Mann-Kendall style monotonic trend test.
+Kendall tau: -0.529412
+p-value: 0.001670
+Linear slope: -0.078809 percentage points per year
+Linear slope p-value: <0.001
+Conclusion: significant monotonic decline at alpha=0.05.

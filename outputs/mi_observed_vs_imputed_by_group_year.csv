@@ -1,0 +1,181 @@
+variant,variable,country_group,period,source,n,mean,sd,min,p05,median,p95,max
+baseline_pmm,log_gdp_per_capita,All,All,Observed,604,10.073280130872783,0.768194537523333,8.202482446576537,8.714477082836265,10.102707547359328,11.308419551020663,11.777594763112935
+baseline_pmm,log_gdp_per_capita,All,All,Imputed where missing,4,9.668225226688678,0.3281164902620786,9.311090275076326,9.342541023524495,9.644501167262778,10.027123113049122,10.07280829715283
+baseline_pmm,log_gdp_per_capita,Eastern/Southern,All,Observed,365,9.58554860273054,0.5402912409800055,8.202482446576537,8.587082346280148,9.680344001221918,10.345731822781918,10.649227183215244
+baseline_pmm,log_gdp_per_capita,Eastern/Southern,All,Imputed where missing,4,9.668225226688678,0.3281164902620786,9.311090275076326,9.342541023524495,9.644501167262778,10.027123113049122,10.07280829715283
+baseline_pmm,log_gdp_per_capita,Western/Northern,All,Observed,239,10.818142088077465,0.35597178196276413,10.237098556876308,10.381986034378022,10.72524780056405,11.50403551104038,11.777594763112935
+baseline_pmm,log_gdp_per_capita,Western/Northern,All,Imputed where missing,0,,,,,,,
+baseline_pmm,log_gdp_per_capita,All,2015-onward,Observed,373,10.159554931333874,0.7667039525485689,8.318742252692399,8.785070511516372,10.170073661693175,11.407243909000472,11.777594763112935
+baseline_pmm,log_gdp_per_capita,All,2015-onward,Imputed where missing,4,9.668225226688678,0.3281164902620786,9.311090275076326,9.342541023524495,9.644501167262778,10.027123113049122,10.07280829715283
+baseline_pmm,log_gdp_per_capita,All,pre-2015,Observed,231,9.933970604587124,0.751549294739557,8.202482446576537,8.627791219504243,10.00604414086122,11.129097266831216,11.437770791369468
+baseline_pmm,log_gdp_per_capita,All,pre-2015,Imputed where missing,0,,,,,,,
+baseline_pmm,log_gdp_per_capita,Eastern/Southern,2015-onward,Observed,232,9.689103266331637,0.5371189848689738,8.318742252692399,8.666729954154185,9.771098364490385,10.416174007322127,10.649227183215244
+baseline_pmm,log_gdp_per_capita,Eastern/Southern,2015-onward,Imputed where missing,4,9.668225226688678,0.3281164902620786,9.311090275076326,9.342541023524495,9.644501167262778,10.027123113049122,10.07280829715283
+baseline_pmm,log_gdp_per_capita,Eastern/Southern,pre-2015,Observed,133,9.404911896298552,0.498380365777744,8.202482446576537,8.52107763115821,9.425451751593128,10.13168336007036,10.23135141462074
+baseline_pmm,log_gdp_per_capita,Eastern/Southern,pre-2015,Imputed where missing,0,,,,,,,
+baseline_pmm,log_gdp_per_capita,Western/Northern,2015-onward,Observed,141,10.933631429777277,0.34014786276112063,10.41030515490458,10.503422351373894,10.844665999918062,11.55703803958855,11.777594763112935
+baseline_pmm,log_gdp_per_capita,Western/Northern,2015-onward,Imputed where missing,0,,,,,,,
+baseline_pmm,log_gdp_per_capita,Western/Northern,pre-2015,Observed,98,10.651978851550187,0.31086638308038544,10.237098556876308,10.333295505914192,10.541385700448814,11.314999874934367,11.437770791369468
+baseline_pmm,log_gdp_per_capita,Western/Northern,pre-2015,Imputed where missing,0,,,,,,,
+baseline_pmm,unemployment_rate_pc,All,All,Observed,556,8.64658273381295,5.103583532952848,2.0,3.4,7.2,18.325000000000003,32.0
+baseline_pmm,unemployment_rate_pc,All,All,Imputed where missing,52,7.5307692307692315,3.481071418430131,3.2,3.6,6.6,15.089999999999998,17.6
+baseline_pmm,unemployment_rate_pc,Eastern/Southern,All,Observed,340,10.123529411764705,5.818592862946944,2.0,3.3,8.6,22.115000000000006,32.0
+baseline_pmm,unemployment_rate_pc,Eastern/Southern,All,Imputed where missing,29,8.451724137931034,4.188642866614366,3.2,3.54,6.9,15.2,17.6
+baseline_pmm,unemployment_rate_pc,Western/Northern,All,Observed,216,6.3217592592592595,2.23039023750145,2.7,3.5,5.95,9.825000000000001,15.5
+baseline_pmm,unemployment_rate_pc,Western/Northern,All,Imputed where missing,23,6.369565217391305,1.7983413526228438,3.6,3.62,6.4,9.319999999999999,11.1
+baseline_pmm,unemployment_rate_pc,All,2015-onward,Observed,361,7.5055401662049865,4.250002914923049,2.0,3.1,6.3,16.5,26.1
+baseline_pmm,unemployment_rate_pc,All,2015-onward,Imputed where missing,16,10.0125,4.545308937061741,3.2,3.5,9.600000000000001,15.8,17.6
+baseline_pmm,unemployment_rate_pc,All,pre-2015,Observed,195,10.75897435897436,5.838545837735553,3.4,4.7700000000000005,8.8,24.589999999999996,32.0
+baseline_pmm,unemployment_rate_pc,All,pre-2015,Imputed where missing,36,6.427777777777776,2.1763155116731596,3.5,3.6,6.300000000000001,10.05,13.9
+baseline_pmm,unemployment_rate_pc,Eastern/Southern,2015-onward,Observed,224,8.54375,4.934972319448405,2.0,2.93,6.9,17.9,26.1
+baseline_pmm,unemployment_rate_pc,Eastern/Southern,2015-onward,Imputed where missing,12,10.799999999999999,4.881132506443002,3.2,3.42,11.25,16.279999999999998,17.6
+baseline_pmm,unemployment_rate_pc,Eastern/Southern,pre-2015,Observed,116,13.174137931034483,6.1909488026038275,5.4,6.275,11.75,26.900000000000002,32.0
+baseline_pmm,unemployment_rate_pc,Eastern/Southern,pre-2015,Imputed where missing,17,6.794117647058823,2.695939212091793,3.5,3.82,6.2,12.379999999999999,13.9
+baseline_pmm,unemployment_rate_pc,Western/Northern,2015-onward,Observed,137,5.808029197080292,1.7891855851098266,2.7,3.2,5.6,8.92,10.3
+baseline_pmm,unemployment_rate_pc,Western/Northern,2015-onward,Imputed where missing,4,7.6499999999999995,2.4528894525980305,5.3,5.555,7.1,10.514999999999999,11.1
+baseline_pmm,unemployment_rate_pc,Western/Northern,pre-2015,Observed,79,7.212658227848102,2.6197654567462565,3.4,3.89,7.2,12.719999999999994,15.5
+baseline_pmm,unemployment_rate_pc,Western/Northern,pre-2015,Imputed where missing,19,6.1,1.5839472494022295,3.6,3.6,6.4,8.679999999999998,9.4
+baseline_pmm,poverty_or_social_exclusion_pc,All,All,Observed,375,22.832533333333334,7.896577999350209,10.7,13.58,20.3,39.230000000000004,58.5
+baseline_pmm,poverty_or_social_exclusion_pc,All,All,Imputed where missing,233,24.805150214592278,8.398828381896205,10.7,15.280000000000001,22.8,41.08,53.9
+baseline_pmm,poverty_or_social_exclusion_pc,Eastern/Southern,All,Observed,234,25.70641025641026,8.633769506978794,10.7,13.265,24.799999999999997,42.305,58.5
+baseline_pmm,poverty_or_social_exclusion_pc,Eastern/Southern,All,Imputed where missing,135,28.88740740740741,8.384780363000907,12.1,17.44,29.0,42.739999999999995,53.9
+baseline_pmm,poverty_or_social_exclusion_pc,Western/Northern,All,Observed,141,18.063120567375883,2.4095468260210775,11.3,14.4,17.9,21.9,25.4
+baseline_pmm,poverty_or_social_exclusion_pc,Western/Northern,All,Imputed where missing,98,19.181632653061225,4.055856067587291,10.7,12.6,18.55,27.3,27.8
+baseline_pmm,poverty_or_social_exclusion_pc,All,2015-onward,Observed,375,22.832533333333334,7.896577999350209,10.7,13.58,20.3,39.230000000000004,58.5
+baseline_pmm,poverty_or_social_exclusion_pc,All,2015-onward,Imputed where missing,2,27.15,15.061374439273461,16.5,17.565,27.15,36.735,37.8
+baseline_pmm,poverty_or_social_exclusion_pc,All,pre-2015,Observed,0,,,,,,,
+baseline_pmm,poverty_or_social_exclusion_pc,All,pre-2015,Imputed where missing,231,24.784848484848485,8.373721049573708,10.7,15.2,22.8,41.1,53.9
+baseline_pmm,poverty_or_social_exclusion_pc,Eastern/Southern,2015-onward,Observed,234,25.70641025641026,8.633769506978794,10.7,13.265,24.799999999999997,42.305,58.5
+baseline_pmm,poverty_or_social_exclusion_pc,Eastern/Southern,2015-onward,Imputed where missing,2,27.15,15.061374439273461,16.5,17.565,27.15,36.735,37.8
+baseline_pmm,poverty_or_social_exclusion_pc,Eastern/Southern,pre-2015,Observed,0,,,,,,,
+baseline_pmm,poverty_or_social_exclusion_pc,Eastern/Southern,pre-2015,Imputed where missing,133,28.913533834586467,8.342950044661071,12.1,17.560000000000002,29.0,42.81999999999999,53.9
+baseline_pmm,poverty_or_social_exclusion_pc,Western/Northern,2015-onward,Observed,141,18.063120567375883,2.4095468260210775,11.3,14.4,17.9,21.9,25.4
+baseline_pmm,poverty_or_social_exclusion_pc,Western/Northern,2015-onward,Imputed where missing,0,,,,,,,
+baseline_pmm,poverty_or_social_exclusion_pc,Western/Northern,pre-2015,Observed,0,,,,,,,
+baseline_pmm,poverty_or_social_exclusion_pc,Western/Northern,pre-2015,Imputed where missing,98,19.181632653061225,4.055856067587291,10.7,12.6,18.55,27.3,27.8
+baseline_pmm,government_health_expenditure_gdp_pc,All,All,Observed,502,6.281872509960159,1.64176104261223,1.7,3.005,6.5,8.795,10.1
+baseline_pmm,government_health_expenditure_gdp_pc,All,All,Imputed where missing,106,5.580188679245283,1.6057290177196184,1.9,2.5,5.4,7.975,8.9
+baseline_pmm,government_health_expenditure_gdp_pc,Eastern/Southern,All,Observed,284,5.775352112676057,1.3116863485574541,2.5,3.7150000000000003,5.7,7.7,9.5
+baseline_pmm,government_health_expenditure_gdp_pc,Eastern/Southern,All,Imputed where missing,85,5.311764705882352,1.5565844603081544,1.9,2.5,5.2,7.8,8.4
+baseline_pmm,government_health_expenditure_gdp_pc,Western/Northern,All,Observed,218,6.941743119266055,1.7905153824052606,1.7,2.1,7.3,9.0,10.1
+baseline_pmm,government_health_expenditure_gdp_pc,Western/Northern,All,Imputed where missing,21,6.666666666666667,1.3469719126000115,4.4,4.7,7.1,8.1,8.9
+baseline_pmm,government_health_expenditure_gdp_pc,All,2015-onward,Observed,296,6.378378378378378,1.6299959671590138,2.1,3.575,6.55,8.9,10.1
+baseline_pmm,government_health_expenditure_gdp_pc,All,2015-onward,Imputed where missing,81,5.571604938271605,1.5362482357924152,1.9,2.5,5.4,7.8,8.4
+baseline_pmm,government_health_expenditure_gdp_pc,All,pre-2015,Observed,206,6.143203883495145,1.652618742919328,1.7,3.0,6.5,8.2,9.3
+baseline_pmm,government_health_expenditure_gdp_pc,All,pre-2015,Imputed where missing,25,5.608,1.8472772757042546,2.5,3.1,5.0,8.08,8.9
+baseline_pmm,government_health_expenditure_gdp_pc,Eastern/Southern,2015-onward,Observed,169,5.925443786982249,1.2842002136682478,2.5,4.14,5.8,8.179999999999998,9.5
+baseline_pmm,government_health_expenditure_gdp_pc,Eastern/Southern,2015-onward,Imputed where missing,67,5.3552238805970145,1.5030558349766785,1.9,2.5,5.4,7.64,8.4
+baseline_pmm,government_health_expenditure_gdp_pc,Eastern/Southern,pre-2015,Observed,115,5.554782608695652,1.3260046491319142,2.7,3.1,5.4,7.529999999999999,8.0
+baseline_pmm,government_health_expenditure_gdp_pc,Eastern/Southern,pre-2015,Imputed where missing,18,5.1499999999999995,1.779375303466988,2.5,3.0100000000000002,4.6,8.015,8.1
+baseline_pmm,government_health_expenditure_gdp_pc,Western/Northern,2015-onward,Observed,127,6.981102362204726,1.8385524103569355,2.1,2.2,7.4,9.169999999999998,10.1
+baseline_pmm,government_health_expenditure_gdp_pc,Western/Northern,2015-onward,Imputed where missing,14,6.607142857142857,1.2874926650809946,4.4,4.595000000000001,7.15,7.97,8.1
+baseline_pmm,government_health_expenditure_gdp_pc,Western/Northern,pre-2015,Observed,91,6.886813186813187,1.729817510683893,1.7,2.05,7.3,8.850000000000001,9.3
+baseline_pmm,government_health_expenditure_gdp_pc,Western/Northern,pre-2015,Imputed where missing,7,6.785714285714286,1.5593038739862644,4.7,4.73,7.1,8.57,8.9
+baseline_pmm,compulsory_health_financing_gdp_pc,All,All,Observed,444,6.524752252252251,1.7599938902698613,2.75,3.992,6.415,9.373999999999999,10.91
+baseline_pmm,compulsory_health_financing_gdp_pc,All,All,Imputed where missing,164,5.551036585365854,1.54195462717712,2.75,3.43,5.43,8.49,9.67
+baseline_pmm,compulsory_health_financing_gdp_pc,Eastern/Southern,All,Observed,238,5.390336134453782,1.0946983344734376,2.75,3.4225000000000003,5.42,7.0215,8.53
+baseline_pmm,compulsory_health_financing_gdp_pc,Eastern/Southern,All,Imputed where missing,131,5.098091603053435,1.1797914512605228,2.75,3.275,4.87,6.965,8.18
+baseline_pmm,compulsory_health_financing_gdp_pc,Western/Northern,All,Observed,206,7.835388349514563,1.445046575217052,4.24,4.83,7.9350000000000005,9.735,10.91
+baseline_pmm,compulsory_health_financing_gdp_pc,Western/Northern,All,Imputed where missing,33,7.349090909090909,1.5107931766880842,4.24,4.598,7.58,9.256,9.67
+baseline_pmm,compulsory_health_financing_gdp_pc,All,2015-onward,Observed,291,6.553161512027492,1.8051442691498656,2.75,4.1850000000000005,6.27,9.684999999999999,10.91
+baseline_pmm,compulsory_health_financing_gdp_pc,All,2015-onward,Imputed where missing,86,5.643837209302327,1.5168583388854209,2.75,3.805,5.525,8.4125,9.67
+baseline_pmm,compulsory_health_financing_gdp_pc,All,pre-2015,Observed,153,6.470718954248366,1.67522076493909,2.98,3.434,6.61,8.906,9.3
+baseline_pmm,compulsory_health_financing_gdp_pc,All,pre-2015,Imputed where missing,78,5.448717948717949,1.5725835794065492,2.86,3.3345,5.37,8.566999999999998,9.16
+baseline_pmm,compulsory_health_financing_gdp_pc,Eastern/Southern,2015-onward,Observed,165,5.496787878787879,1.0681103600825128,2.75,3.844,5.51,7.111999999999999,8.53
+baseline_pmm,compulsory_health_financing_gdp_pc,Eastern/Southern,2015-onward,Imputed where missing,71,5.245915492957748,1.222001376507044,2.75,3.6100000000000003,4.88,7.43,8.18
+baseline_pmm,compulsory_health_financing_gdp_pc,Eastern/Southern,pre-2015,Observed,73,5.149726027397261,1.123087228979343,2.98,3.146,5.01,6.651999999999999,6.81
+baseline_pmm,compulsory_health_financing_gdp_pc,Eastern/Southern,pre-2015,Imputed where missing,60,4.923166666666668,1.1125668773144268,2.86,3.1805,4.85,6.5865,6.99
+baseline_pmm,compulsory_health_financing_gdp_pc,Western/Northern,2015-onward,Observed,126,7.936507936507938,1.6312696000160454,4.24,4.7925,8.225000000000001,10.0075,10.91
+baseline_pmm,compulsory_health_financing_gdp_pc,Western/Northern,2015-onward,Imputed where missing,15,7.527333333333333,1.3780756078504477,4.83,5.306,7.55,9.481,9.67
+baseline_pmm,compulsory_health_financing_gdp_pc,Western/Northern,pre-2015,Observed,80,7.676124999999999,1.079879850032553,4.35,6.299,7.68,9.110999999999999,9.3
+baseline_pmm,compulsory_health_financing_gdp_pc,Western/Northern,pre-2015,Imputed where missing,18,7.200555555555557,1.6374099785663019,4.24,4.2485,7.895,8.9305,9.16
+baseline_pmm,gini_income,All,All,Observed,409,30.26234718826406,4.62379823991906,20.9,23.7,29.7,38.4,46.6
+baseline_pmm,gini_income,All,All,Imputed where missing,199,30.287437185929647,4.941434070342284,21.2,23.7,30.1,39.71,44.8
+baseline_pmm,gini_income,Eastern/Southern,All,Observed,254,31.777952755905513,5.029343357383231,20.9,23.465,31.9,40.94,46.6
+baseline_pmm,gini_income,Eastern/Southern,All,Imputed where missing,115,32.38695652173913,4.9836666861301975,21.6,24.38,31.9,41.94,44.8
+baseline_pmm,gini_income,Western/Northern,All,Observed,155,27.778709677419346,2.2560448984886468,22.7,24.07,27.6,31.33,33.5
+baseline_pmm,gini_income,Western/Northern,All,Imputed where missing,84,27.41309523809524,3.1092469844156048,21.2,23.245,26.85,32.655,36.2
+baseline_pmm,gini_income,All,2015-onward,Observed,375,30.226399999999998,4.634400733690151,20.9,23.7,29.7,38.76000000000001,46.6
+baseline_pmm,gini_income,All,2015-onward,Imputed where missing,2,26.9,3.3941125496954285,24.5,24.74,26.9,29.06,29.3
+baseline_pmm,gini_income,All,pre-2015,Observed,34,30.658823529411766,4.553927219382144,22.7,24.475,30.45,36.544999999999995,41.2
+baseline_pmm,gini_income,All,pre-2015,Imputed where missing,197,30.32182741116751,4.948724914175728,21.2,23.7,30.2,39.72,44.8
+baseline_pmm,gini_income,Eastern/Southern,2015-onward,Observed,234,31.692307692307693,5.077318981732206,20.9,23.4,31.8,41.114999999999995,46.6
+baseline_pmm,gini_income,Eastern/Southern,2015-onward,Imputed where missing,2,26.9,3.3941125496954285,24.5,24.74,26.9,29.06,29.3
+baseline_pmm,gini_income,Eastern/Southern,pre-2015,Observed,20,32.78,4.4195260522272966,25.0,25.095000000000002,34.6,38.445,41.2
+baseline_pmm,gini_income,Eastern/Southern,pre-2015,Imputed where missing,113,32.48407079646018,4.962908248261034,21.6,24.520000000000003,32.0,42.019999999999996,44.8
+baseline_pmm,gini_income,Western/Northern,2015-onward,Observed,141,27.793617021276596,2.2180497471542573,23.2,24.1,27.6,31.3,33.5
+baseline_pmm,gini_income,Western/Northern,2015-onward,Imputed where missing,0,,,,,,,
+baseline_pmm,gini_income,Western/Northern,pre-2015,Observed,14,27.628571428571426,2.6991248072800795,22.7,23.22,27.65,31.21,31.6
+baseline_pmm,gini_income,Western/Northern,pre-2015,Imputed where missing,84,27.41309523809524,3.1092469844156048,21.2,23.245,26.85,32.655,36.2
+baseline_pmm,physicians_per_100k,All,All,Observed,431,358.74201856148494,72.4778073161557,213.12,240.42000000000002,350.88,467.22,564.69
+baseline_pmm,physicians_per_100k,All,All,Imputed where missing,177,355.4989265536723,72.49746409734419,219.11,246.342,347.29,457.11199999999997,544.6
+baseline_pmm,physicians_per_100k,Eastern/Southern,All,Observed,234,351.1383760683761,70.43039829051168,213.12,235.724,343.255,456.7305,536.52
+baseline_pmm,physicians_per_100k,Eastern/Southern,All,Imputed where missing,135,351.64459259259263,73.64824034297332,219.11,241.678,343.29,457.228,544.6
+baseline_pmm,physicians_per_100k,Western/Northern,All,Observed,197,367.7737563451776,74.00436779788623,216.16,249.88000000000002,366.84,494.794,564.69
+baseline_pmm,physicians_per_100k,Western/Northern,All,Imputed where missing,42,367.88785714285706,68.0313524399476,232.15,255.25400000000002,378.38,455.8684999999999,544.6
+baseline_pmm,physicians_per_100k,All,2015-onward,Observed,253,379.88268774703556,69.88732782390808,232.9,277.372,377.96,506.5719999999999,564.69
+baseline_pmm,physicians_per_100k,All,2015-onward,Imputed where missing,124,366.8346774193548,74.15811791530732,219.26,251.3555,377.19,461.0915,544.6
+baseline_pmm,physicians_per_100k,All,pre-2015,Observed,178,328.69376404494386,65.27591778607227,213.12,224.40300000000002,331.755,441.213,484.14
+baseline_pmm,physicians_per_100k,All,pre-2015,Imputed where missing,53,328.9775471698114,61.298857371257505,219.11,226.994,323.82,432.772,484.14
+baseline_pmm,physicians_per_100k,Eastern/Southern,2015-onward,Observed,138,369.10942028985505,67.80963479082013,232.9,271.81300000000005,351.68,462.9615,536.52
+baseline_pmm,physicians_per_100k,Eastern/Southern,2015-onward,Imputed where missing,98,361.80551020408166,74.80010593358242,219.26,246.56900000000002,351.57,458.57849999999996,544.6
+baseline_pmm,physicians_per_100k,Eastern/Southern,pre-2015,Observed,96,325.305,66.26911097542869,213.12,221.12,328.91499999999996,436.3575,449.83
+baseline_pmm,physicians_per_100k,Eastern/Southern,pre-2015,Imputed where missing,37,324.73189189189196,63.9416556035369,219.11,219.26,312.11,421.78399999999993,484.14
+baseline_pmm,physicians_per_100k,Western/Northern,2015-onward,Observed,115,392.8106086956522,70.4400472504369,267.95,285.554,391.81,523.1339999999999,564.69
+baseline_pmm,physicians_per_100k,Western/Northern,2015-onward,Imputed where missing,26,385.79076923076923,69.82483809780453,252.01,262.35,400.685,497.295,544.6
+baseline_pmm,physicians_per_100k,Western/Northern,pre-2015,Observed,82,332.6610975609756,64.27109983568921,216.16,232.27100000000002,336.44500000000005,450.209,484.14
+baseline_pmm,physicians_per_100k,Western/Northern,pre-2015,Imputed where missing,16,338.795625,55.375122449074546,232.15,253.23999999999998,333.08000000000004,436.7425,441.4
+baseline_pmm,hospital_beds_per_100k,All,All,Observed,522,488.3322030651341,170.60617111856195,187.41,246.412,452.68,779.202,880.59
+baseline_pmm,hospital_beds_per_100k,All,All,Imputed where missing,86,480.6056976744187,171.759219699731,200.23,260.4175,447.135,767.855,880.59
+baseline_pmm,hospital_beds_per_100k,Eastern/Southern,All,Observed,319,513.9358934169279,161.0171459005638,223.38,294.122,500.27,769.4579999999999,880.59
+baseline_pmm,hospital_beds_per_100k,Eastern/Southern,All,Imputed where missing,50,499.7914,187.77999740262703,200.23,244.373,447.135,794.0574999999999,880.59
+baseline_pmm,hospital_beds_per_100k,Western/Northern,All,Observed,203,448.0978325123153,177.7485343862696,187.41,232.89600000000002,419.4,796.2139999999999,812.86
+baseline_pmm,hospital_beds_per_100k,Western/Northern,All,Imputed where missing,36,453.95888888888885,144.99586421250146,255.66,281.725,448.045,680.875,812.86
+baseline_pmm,hospital_beds_per_100k,All,2015-onward,Observed,301,473.8936544850498,166.71570814193512,187.41,248.4,441.3,776.02,864.39
+baseline_pmm,hospital_beds_per_100k,All,2015-onward,Imputed where missing,76,471.2250000000001,170.8822689339067,200.23,268.28499999999997,431.32,748.505,880.59
+baseline_pmm,hospital_beds_per_100k,All,pre-2015,Observed,221,507.9973755656109,174.22576144549592,223.38,246.37,465.6,791.05,880.59
+baseline_pmm,hospital_beds_per_100k,All,pre-2015,Imputed where missing,10,551.899,169.9781409116413,255.66,291.87149999999997,573.81,765.7855,812.86
+baseline_pmm,hospital_beds_per_100k,Eastern/Southern,2015-onward,Observed,186,501.9666666666667,152.87241564292918,255.66,294.8725,455.515,728.25,864.39
+baseline_pmm,hospital_beds_per_100k,Eastern/Southern,2015-onward,Imputed where missing,50,499.7914,187.77999740262703,200.23,244.373,447.135,794.0574999999999,880.59
+baseline_pmm,hospital_beds_per_100k,Eastern/Southern,pre-2015,Observed,133,530.6748120300753,170.94381595434385,223.38,277.208,540.9,770.592,880.59
+baseline_pmm,hospital_beds_per_100k,Eastern/Southern,pre-2015,Imputed where missing,0,,,,,,,
+baseline_pmm,hospital_beds_per_100k,Western/Northern,2015-onward,Observed,115,428.4886086956522,178.4711182093321,187.41,215.876,374.78,777.76,800.25
+baseline_pmm,hospital_beds_per_100k,Western/Northern,2015-onward,Imputed where missing,26,416.28961538461533,117.12965890775125,274.69,284.545,405.795,623.2575,671.75
+baseline_pmm,hospital_beds_per_100k,Western/Northern,pre-2015,Observed,88,473.7235227272727,174.49331362903524,236.67,243.15800000000002,447.18,806.362,812.86
+baseline_pmm,hospital_beds_per_100k,Western/Northern,pre-2015,Imputed where missing,10,551.899,169.9781409116413,255.66,291.87149999999997,573.81,765.7855,812.86
+baseline_pmm,oop_health_expenditure_share_pc,All,All,Observed,444,20.654324324324325,8.783063619271722,8.39,10.1925,19.265,38.369499999999974,47.74
+baseline_pmm,oop_health_expenditure_share_pc,All,All,Imputed where missing,164,25.867500000000003,10.936632728104565,8.39,10.0505,24.33,44.248999999999995,47.74
+baseline_pmm,oop_health_expenditure_share_pc,Eastern/Southern,All,Observed,238,25.648949579831932,8.79034137127833,8.83,11.63,24.14,42.39099999999999,47.74
+baseline_pmm,oop_health_expenditure_share_pc,Eastern/Southern,All,Imputed where missing,131,28.588396946564885,10.423724996135858,8.39,10.93,28.66,44.41,47.74
+baseline_pmm,oop_health_expenditure_share_pc,Western/Northern,All,Observed,206,14.883834951456311,3.8662187176395095,8.39,9.265,13.985,21.64,24.07
+baseline_pmm,oop_health_expenditure_share_pc,Western/Northern,All,Imputed where missing,33,15.066363636363636,4.151935405763963,9.28,9.456,13.76,23.026,25.47
+baseline_pmm,oop_health_expenditure_share_pc,All,2015-onward,Observed,291,20.461477663230237,8.84367490017677,8.39,9.955,19.13,36.055,44.76
+baseline_pmm,oop_health_expenditure_share_pc,All,2015-onward,Imputed where missing,86,26.50325581395349,10.73040325341262,8.39,11.44,26.805,42.96,45.11
+baseline_pmm,oop_health_expenditure_share_pc,All,pre-2015,Observed,153,21.02111111111111,8.68359081343684,8.83,10.596,19.61,40.69200000000001,47.74
+baseline_pmm,oop_health_expenditure_share_pc,All,pre-2015,Imputed where missing,78,25.16653846153846,11.186902340059735,8.83,9.471,23.240000000000002,44.61,47.74
+baseline_pmm,oop_health_expenditure_share_pc,Eastern/Southern,2015-onward,Observed,165,25.050909090909087,8.845133898404791,9.19,11.404,23.87,41.52199999999998,44.76
+baseline_pmm,oop_health_expenditure_share_pc,Eastern/Southern,2015-onward,Imputed where missing,71,28.965211267605632,10.056969134337345,8.39,11.114999999999998,31.16,43.364999999999995,45.11
+baseline_pmm,oop_health_expenditure_share_pc,Eastern/Southern,pre-2015,Observed,73,27.00068493150685,8.571470820364095,8.83,14.066,26.27,42.803999999999995,47.74
+baseline_pmm,oop_health_expenditure_share_pc,Eastern/Southern,pre-2015,Imputed where missing,60,28.142499999999995,10.910289751313991,8.83,11.012500000000001,27.134999999999998,44.635,47.74
+baseline_pmm,oop_health_expenditure_share_pc,Western/Northern,2015-onward,Observed,126,14.451507936507937,3.819779274766607,8.39,9.235,13.805,21.5475,22.05
+baseline_pmm,oop_health_expenditure_share_pc,Western/Northern,2015-onward,Imputed where missing,15,14.849999999999998,4.138025754252521,11.44,11.461,13.38,22.627999999999997,25.47
+baseline_pmm,oop_health_expenditure_share_pc,Western/Northern,pre-2015,Observed,80,15.564749999999998,3.864454364026773,9.07,10.0245,14.934999999999999,22.618,24.07
+baseline_pmm,oop_health_expenditure_share_pc,Western/Northern,pre-2015,Imputed where missing,18,15.246666666666666,4.2745567365655175,9.28,9.399,14.335,22.891,23.35
+baseline_pmm,long_term_unemployment_rate_pc,All,All,Observed,554,3.8494584837545123,3.9794237584666314,0.3,0.7650000000000002,2.4,12.4,26.6
+baseline_pmm,long_term_unemployment_rate_pc,All,All,Imputed where missing,54,3.3314814814814815,2.892529354334772,0.5,0.7,2.3,9.979999999999995,13.4
+baseline_pmm,long_term_unemployment_rate_pc,Eastern/Southern,All,Observed,340,5.106470588235294,4.556212577594437,0.6,0.8949999999999999,3.6,13.525000000000006,26.6
+baseline_pmm,long_term_unemployment_rate_pc,Eastern/Southern,All,Imputed where missing,29,4.548275862068966,3.4710661896038277,0.6,0.9200000000000002,3.4,11.699999999999996,13.4
+baseline_pmm,long_term_unemployment_rate_pc,Western/Northern,All,Observed,214,1.852336448598131,1.2430347382311164,0.3,0.5650000000000001,1.6,3.6349999999999993,9.2
+baseline_pmm,long_term_unemployment_rate_pc,Western/Northern,All,Imputed where missing,25,1.92,0.7455423082115015,0.5,0.7,1.9,3.1799999999999997,3.2
+baseline_pmm,long_term_unemployment_rate_pc,All,2015-onward,Observed,359,3.200557103064067,3.2949681836441664,0.3,0.7,2.1,11.4,21.3
+baseline_pmm,long_term_unemployment_rate_pc,All,2015-onward,Imputed where missing,18,5.3055555555555545,4.0325837903438275,0.7,0.7,4.65,12.634999999999998,13.4
+baseline_pmm,long_term_unemployment_rate_pc,All,pre-2015,Observed,195,5.044102564102563,4.7845330261255565,0.4,1.0,3.5,13.369999999999985,26.6
+baseline_pmm,long_term_unemployment_rate_pc,All,pre-2015,Imputed where missing,36,2.344444444444444,1.3284673111617753,0.5,0.75,2.1,3.9749999999999996,8.0
+baseline_pmm,long_term_unemployment_rate_pc,Eastern/Southern,2015-onward,Observed,224,4.151339285714285,3.8246777162589685,0.6,0.8,2.6,12.5,21.3
+baseline_pmm,long_term_unemployment_rate_pc,Eastern/Southern,2015-onward,Imputed where missing,12,7.116666666666666,3.7406448965952706,1.1,2.365,6.1,12.905,13.4
+baseline_pmm,long_term_unemployment_rate_pc,Eastern/Southern,pre-2015,Observed,116,6.950862068965517,5.255464993114603,0.6,1.975,5.15,16.9,26.6
+baseline_pmm,long_term_unemployment_rate_pc,Eastern/Southern,pre-2015,Imputed where missing,17,2.735294117647059,1.7392315747445006,0.6,0.76,2.4,5.1999999999999975,8.0
+baseline_pmm,long_term_unemployment_rate_pc,Western/Northern,2015-onward,Observed,135,1.622962962962963,0.8019510481897557,0.3,0.5,1.6,3.03,5.3
+baseline_pmm,long_term_unemployment_rate_pc,Western/Northern,2015-onward,Imputed where missing,6,1.683333333333333,0.943221430347438,0.7,0.7,1.65,2.9,3.1
+baseline_pmm,long_term_unemployment_rate_pc,Western/Northern,pre-2015,Observed,79,2.2443037974683553,1.693482743921459,0.4,0.79,1.7,6.629999999999998,9.2
+baseline_pmm,long_term_unemployment_rate_pc,Western/Northern,pre-2015,Imputed where missing,19,1.9947368421052634,0.6851388214649368,0.5,1.22,1.9,3.2,3.2

@@ -1,0 +1,7 @@
+Current chapter files use natbib-style citation commands, especially \citet and \citep.
+
+The university template uses biblatex with style=alphabetic and prints the bibliography with \printbibliography.
+
+To preserve chapter content exactly during this migration, main.tex loads biblatex with natbib=true compatibility. This allows the existing \citet and \citep calls to compile without editing chapters/*.tex.
+
+Future optional migration: replace \citet with \textcite and \citep with \parencite if Mahdi wants the chapters to use native biblatex commands.

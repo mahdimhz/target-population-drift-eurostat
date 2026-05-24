@@ -1,0 +1,3 @@
+Regression sample constructed from panel_features_v2-3.csv complete cases for outcome and the five baseline covariates.
+Constructed regression sample: 282 rows, 30 countries.
+modeling_dataset_5a.csv currently has 230 rows, 27 countries.

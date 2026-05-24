@@ -1,0 +1,162 @@
+\chapter{Data and Indicators}
+\label{ch:data_indicators}
+
+\section{Data Source and Unit of Analysis}
+
+The thesis uses published aggregate Eurostat data. The unit of analysis is the country-year, so each row represents one national observation in one calendar year. This design differs from an EU-SILC microdata study: it cannot observe individuals, households, health status, income quintiles, or local service conditions directly. Its value is that it provides a reproducible panel of national indicators that can be used for descriptive comparison, regression analysis, and prediction.
+
+The data construction follows a national-only scope. EU and euro-area aggregate codes are excluded from the modelling data, and regional NUTS2 sources are not used in the core analysis. The dataset audit found that regional dataflows exist, but a clean balanced regional panel was not verified. The national design is therefore more conservative and more consistent with the aim of producing a reproducible MSc thesis from open Eurostat sources.
+
+The upgraded design starts from a public-data estimand registry rather than from a single outcome file. Table~\ref{tab:public_data_estimand_registry} lists the feasible core unmet-care indicators extracted for the multi-outcome benchmark. It includes medical and dental care, population-denominator and need-denominator definitions, and medical barrier-specific indicators for cost, distance, and waiting lists. Eurostat reason codes are verified programmatically from the downloaded JSON-stat metadata; indicators that cannot be verified are retained in the registry with an infeasibility reason instead of being silently dropped.
+
+\begin{table}[htbp]
+\centering
+\scriptsize
+\caption{Public-data estimand registry for feasible Eurostat unmet-care indicators. The registry defines the outcome object before modelling: dataset, care type, barrier definition, denominator, observed years, country count, row count, and feasibility status.}
+\label{tab:public_data_estimand_registry}
+\input{tables/public_data_estimand_registry}
+\end{table}
+
+The term ``Europe'' is used operationally rather than institutionally. The full Eurostat-available universe means all national units that appear in the selected Eurostat outcome and covariate tables after excluding EU and euro-area aggregates. For sensitivity analysis, the thesis distinguishes EU-27 member states from EEA countries, Switzerland, the UK, EU candidate or potential-candidate countries, and any other Eurostat-available national units. Table~\ref{tab:country_universe} reports how these country groups enter the outcome-observed panel, complete-case fixed-effects sample, MI target, and prediction sample.
+
+\begin{table}[htbp]
+\centering
+\scriptsize
+\caption{Country universe and sample inclusion. The table defines the operational country universe used in the thesis and reports inclusion in the outcome-observed panel, complete-case FE sample, MI target, and ML sample.}
+\label{tab:country_universe}
+\input{tables/country_universe}
+\end{table}
+
+All indicators are merged by country and year. The primary panel is built around the availability of the main outcome, and covariates are added using exact Eurostat dataset codes and filters. Missingness is then handled in the modelling chapters through complete-case samples and sensitivity checks. This means that descriptive analysis, regression, and machine-learning models do not always use the same set of country-year observations.
+
+\section{Primary Outcome}
+
+The primary outcome is \texttt{hlth\_silc\_08}, the Eurostat EU-SILC indicator for self-reported unmet needs for medical examination by sex, age, main reason declared, and income quintile \citep{eurostat_health_variables_metadata, eurostat_unmet_needs_statistics}. The thesis uses the aggregate filter for total sex, persons aged 16 and over, total income quantile, and unmet medical care need due to expense, distance, or waiting lists. The resulting variable is named \texttt{unmet\_need\_pc}.
+
+This outcome is appropriate because it directly matches the thesis topic and is available as a harmonised Eurostat country-level series. It measures a reported access problem, not a clinical diagnosis and not a direct measure of health-system quality. Respondents must perceive a medical need, report that the need was not met, and classify the reason through the survey categories. This is a known comparability challenge for self-reported access indicators \citep{guidi_ingleby_2023_valid_data}. For this reason, all interpretations remain associational and descriptive.
+
+The primary outcome is also broader than a need-denominator measure. It is expressed as a share of the relevant population rather than only among persons who report having the same medical needs. This distinction matters because a national rate may reflect both the prevalence of need and the probability that need remains unmet. Chapter~\ref{ch:background_literature} discusses this measurement issue, and the robustness outcome below is used to check the denominator distinction.
+
+\section{Covariate Blocks}
+
+The covariates are grouped into macroeconomic, labour-market, inequality, health-financing, and health-capacity blocks. Table~\ref{tab:variable_summary} summarises the main variables and selected engineered features. The list is limited to indicators with verified Eurostat sources and a plausible connection to unmet medical care need. The aim is not to build a complete theory of healthcare access, but to represent the main country-year conditions that the literature identifies as relevant.
+
+\begin{table}[htbp]
+\centering
+\scriptsize
+\caption{Summary of primary variables and selected engineered features. The table lists Eurostat country-year variables used in the national aggregate panel; availability varies by source and year.}
+\label{tab:variable_summary}
+\input{tables/variable_summary}
+\end{table}
+
+The macroeconomic block is based on GDP per capita. This indicator is used as a broad measure of national economic resources and living standards. The thesis also uses a logged GDP feature and a within-country GDP growth feature in the predictive modelling dataset. These transformations help represent proportional differences and changes over time, but they do not turn GDP into a causal variable.
+
+The labour-market block includes the unemployment rate and long-term unemployment rate. These variables are included because labour-market pressure can be associated with financial insecurity, weaker household buffers, and social vulnerability. The feature set also contains an unemployment-rate change variable, which captures within-country annual movement. This is a descriptive change measure and is not interpreted as a shock design.
+
+The inequality and poverty block includes poverty or social exclusion and the Gini coefficient of equivalised disposable income. Poverty or social exclusion is central to the thesis hierarchy because it is the clearest social vulnerability indicator in the regression analysis. The Gini coefficient adds an income-distribution perspective, which is useful because national average income and poverty rates do not describe the same social structure.
+
+The health-financing block includes government health expenditure, compulsory health financing, and out-of-pocket expenditure. These variables are close to the outcome concept because cost is one of the reported reasons for unmet medical care need. They are nevertheless interpreted cautiously. Higher public spending may reflect capacity or protection, but it may also reflect need, prices, or policy response. Out-of-pocket spending may indicate burden, but it can also reflect private-sector use by groups able to pay.
+
+The health-capacity block includes physicians per 100,000 inhabitants and hospital beds per 100,000 inhabitants. These are national averages, so they cannot capture geographic distribution, specialty shortages, or local waiting-time conditions. They are included because capacity may still be predictive of unmet medical care need, especially where the reported barrier is waiting time or distance. A lagged physician-density feature is also used in the machine-learning feature set.
+
+\section{Engineered Features}
+
+The feature-engineering step creates logged, lagged, and change variables within country. Logged variables reduce the influence of very large country differences, while change variables describe year-to-year movement. Lag variables are included because some country-year conditions may be more plausibly related to access with delay than only contemporaneously. These features remain predictive covariates, not causal instruments.
+
+No values are carried forward to fill missing covariates during feature engineering. This choice keeps the data construction transparent and avoids silently creating artificial observations. The cost is that lag and change variables mechanically reduce the available complete-case sample. The modelling chapters therefore report complete-case results and sensitivity checks rather than claiming full coverage of all observed outcome rows.
+
+\section{Population Weights and Target Populations}
+
+The revised thesis adds Eurostat \texttt{demo\_pjan} total population by country-year. The extraction uses total sex, total age, annual frequency, and number of persons. The outcome-observed panel covers 2008--2025, while the baseline complete-case fixed-effects model covers 2015--2024 because baseline covariate coverage begins later and is incomplete in 2025.
+
+The unweighted descriptive estimand is an average-country-year quantity over the observed outcome set \(O\):
+\[
+\mu_{O} = \frac{1}{|O|}\sum_{(i,t)\in O} y_{it},
+\]
+where \(y_{it}\) is unmet medical care need in country \(i\) and year \(t\). This estimand treats each observed country-year equally.
+
+Population-weighted estimates use country-year populations normalized within each year:
+\[
+w_{it} = \frac{N_{it}}{\sum_{j \in O_t} N_{jt}},
+\]
+where \(N_{it}\) is country \(i\)'s population in year \(t\), and \(O_t\) is the set of observed countries in that year. Each year therefore contributes equally, while larger countries receive greater weight within year. This defines an average-European-resident monitoring estimand.
+
+For a regression coefficient, the complete-case estimand is conditional on the observed covariate-complete set \(C\):
+\[
+\beta_{CC} \text{ is estimated from } \{(i,t): y_{it},X_{it}\ \text{are observed for all baseline covariates}\}.
+\]
+The population-weighted complete-case estimand uses the same set \(C\) but applies \(w_{it}\). The MI full-target estimand keeps the broader outcome-observed set \(O\) and replaces missing covariates with draws from the imputation model:
+\[
+\beta_{MI} = \frac{1}{M}\sum_{m=1}^{M}\hat{\beta}^{(m)}_{O},
+\]
+with uncertainty pooled using Rubin's rules. This notation is a reminder that MI changes the target and adds model dependence; it does not reveal the true coefficient.
+
+The planned MNAR sensitivity estimand keeps the same outcome-observed set \(O\) but applies explicit departures from the MAR imputation model:
+\[
+\beta_{MNAR(\delta)} = \frac{1}{M}\sum_{m=1}^{M}\hat{\beta}^{(m)}_{O,\delta},
+\]
+where \(\delta\) denotes a documented shift to imputed values for missing poverty, GDP, or unemployment. This estimand is a stress test for imputation assumptions, not a corrected estimate.
+
+Population weighting is not treated as more correct than unweighted analysis. The unweighted panel answers an average-country monitoring question, while the weighted panel answers an average-resident monitoring question. The balanced-outcome panel is also defined at this stage: it includes countries with complete primary-outcome coverage and valid population weights over the main analysis window. It is not automatically balanced for every regression covariate.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.86\textwidth]{population_weighted_trend}
+\caption{Unweighted and year-normalized population-weighted trends in unmet medical care need. The sample is observed \texttt{hlth\_silc\_08} country-years over 2008--2025; country coverage can vary by year, and population weights use \texttt{demo\_pjan} normalized within year.}
+\label{fig:population_weighted_trend}
+\end{figure}
+
+\section{Missingness and Sample Construction}
+
+Missingness is a substantive part of the empirical design. Some Eurostat indicators have shorter time coverage than \texttt{hlth\_silc\_08}, and some are unavailable for specific countries. The grouped heatmaps below show the country-year pattern of missingness in the merged panel. They are used as data-quality and sample-construction diagnostics, not as substantive results by themselves.
+
+Figures~\ref{fig:missingness_heatmap_socioeconomic} and \ref{fig:missingness_heatmap_financing} show two of the grouped missingness heatmaps used to diagnose coverage. Additional grouped heatmaps are included in the reproducibility materials generated with the thesis.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.96\textwidth]{missingness_heatmap_socioeconomic}
+\caption{Socioeconomic covariate coverage across country-year cells in the merged national panel. The figure covers the 2008--2025 outcome-observed construction window; white or light cells indicate missing covariate coverage, and country coverage varies by variable and year.}
+\label{fig:missingness_heatmap_socioeconomic}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.96\textwidth]{missingness_heatmap_financing}
+\caption{Health-financing covariate coverage across country-year cells in the merged national panel. The figure covers the 2008--2025 outcome-observed construction window; missing cells show why complete-case regression uses fewer rows than the outcome panel.}
+\label{fig:missingness_heatmap_financing}
+\end{figure}
+
+The regression sample is complete-case. The baseline two-way FE model uses \(N=282\) country-year observations, as reported in the regression output summary. This restriction is necessary because all selected covariates must be observed in the same country-year row. It also means that the regression results describe the available complete-case panel rather than every European country-year observed in the outcome file.
+
+The 2015 marker used in descriptive figures is not treated as a formal regression discontinuity. Because the baseline complete-case regression starts in 2015, the thesis cannot estimate a valid complete-case pre/post-2015 split for the poverty coefficient. Instead, Chapter~\ref{ch:modeling_strategy_results} reports excluding-2015 and 2016-onward diagnostics, while the descriptive chapter treats pre/post-2015 outcome patterns cautiously.
+
+Table~\ref{tab:missingness_comparison} compares rows included in the baseline regression sample with rows excluded because of missing covariates. The excluded rows have higher unmet medical care need and lower GDP on average. This is an important limitation because complete-case attrition is not random with respect to the outcome and economic context. The thesis therefore treats missingness as part of the interpretation of all regression and prediction results.
+
+\begin{table}[htbp]
+\centering
+\small
+\caption{Included and excluded country-year rows in the baseline regression sample. The comparison uses the 608 outcome-observed country-years and contrasts the 282-row complete-case FE sample with rows excluded by missing baseline covariates.}
+\label{tab:missingness_comparison}
+\input{tables/missingness_comparison}
+\end{table}
+
+\section{Robustness Outcome: \texttt{hlth\_silc\_08b}}
+
+The robustness outcome is \texttt{hlth\_silc\_08b}. This Eurostat EU-SILC indicator measures unmet medical care need due to financial reasons, waiting lists, or distance among persons having the same needs \citep{eurostat_health_variables_metadata}. It is therefore close to the primary outcome in access-barrier content, but different in denominator. The thesis uses it as a robustness and interpretation check.
+
+The key distinction is that \texttt{hlth\_silc\_08} is a broad population percentage, while \texttt{hlth\_silc\_08b} is a percentage among persons with the same medical needs. A higher value in \texttt{hlth\_silc\_08b} should not be read as a contradiction. It can arise because the denominator is narrower and more directly tied to reported need. This is why the robustness analysis does not replace the primary outcome.
+
+\begin{table}[htbp]
+\centering
+\caption{Robustness comparison using \texttt{hlth\_silc\_08b}. The table is restricted to overlapping 2021--2025 country-year cells with complete shared controls and is a denominator check, not an alternative main outcome.}
+\label{tab:robustness_08b_results}
+\input{tables/robustness_08b_results}
+\end{table}
+
+Table~\ref{tab:robustness_08b_results} reports the compact robustness comparison. The purpose is to check whether the broad sign pattern is sensitive to using the need-denominator outcome for the overlapping period and shared controls. The table is not treated as a new core model because the verified period for \texttt{hlth\_silc\_08b} is shorter and the interpretation differs from the primary population-level measure.
+
+\section{Scope Exclusions}
+
+Several possible data extensions are excluded from the core thesis. EU-SILC microdata are not used because the project is based on public aggregate Eurostat data. EHIS indicators are not pooled with EU-SILC indicators because their wording, denominator, survey context, and population structure differ. Dental-care indicators are included in the estimand registry and monitoring benchmark as a separate service category, but they are not merged into the primary medical-care regression target. Dental reason-specific indicators remain optional unless extraction and coverage are clean enough to support a defensible benchmark.
+
+ISTAT data are not merged into the core panel because no Eurostat-compatible Italian source with a verified extraction path was established for the thesis design. Regional NUTS2 data are also excluded because the audit did not verify a clean regional panel. These exclusions reduce scope, but they protect comparability. The final design is therefore a national aggregate Eurostat panel centred on \texttt{hlth\_silc\_08}, supported by \texttt{hlth\_silc\_08b} as a measurement robustness check.

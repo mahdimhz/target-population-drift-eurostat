@@ -1,0 +1,32 @@
+[
+  {
+    "dataset_code": "hlth_rs_prs2",
+    "variable_name": "physicians_per_100k",
+    "api_url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/hlth_rs_prs2?lang=en&unit=P_HTHAB&wstatus=PRACT&med_spec=PHYS&time=2008&time=2009&time=2010&time=2011&time=2012&time=2013&time=2014&time=2015&time=2016&time=2017&time=2018&time=2019&time=2020&time=2021&time=2022&time=2023&time=2024&time=2025",
+    "raw_file": "data\\raw\\feature_hlth_rs_prs2_physicians_per_100k.json"
+  },
+  {
+    "dataset_code": "hlth_rs_bds1",
+    "variable_name": "hospital_beds_per_100k",
+    "api_url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/hlth_rs_bds1?lang=en&unit=P_HTHAB&facility=HBEDT&hlthcare=TOTAL&time=2008&time=2009&time=2010&time=2011&time=2012&time=2013&time=2014&time=2015&time=2016&time=2017&time=2018&time=2019&time=2020&time=2021&time=2022&time=2023&time=2024&time=2025",
+    "raw_file": "data\\raw\\feature_hlth_rs_bds1_hospital_beds_per_100k.json"
+  },
+  {
+    "dataset_code": "hlth_sha11_hf",
+    "variable_name": "oop_health_expenditure_share_pc",
+    "api_url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/hlth_sha11_hf?lang=en&unit=PC_CHE&icha11_hf=HF3&time=2008&time=2009&time=2010&time=2011&time=2012&time=2013&time=2014&time=2015&time=2016&time=2017&time=2018&time=2019&time=2020&time=2021&time=2022&time=2023&time=2024&time=2025",
+    "raw_file": "data\\raw\\feature_hlth_sha11_hf_oop_health_expenditure_share_pc.json"
+  },
+  {
+    "dataset_code": "ilc_di12",
+    "variable_name": "gini_income",
+    "api_url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/ilc_di12?lang=en&age=TOTAL&statinfo=GINI_HND&time=2008&time=2009&time=2010&time=2011&time=2012&time=2013&time=2014&time=2015&time=2016&time=2017&time=2018&time=2019&time=2020&time=2021&time=2022&time=2023&time=2024&time=2025",
+    "raw_file": "data\\raw\\feature_ilc_di12_gini_income.json"
+  },
+  {
+    "dataset_code": "une_ltu_a",
+    "variable_name": "long_term_unemployment_rate_pc",
+    "api_url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/une_ltu_a?lang=en&indic_em=LTU&age=Y15-74&sex=T&unit=PC_ACT&time=2008&time=2009&time=2010&time=2011&time=2012&time=2013&time=2014&time=2015&time=2016&time=2017&time=2018&time=2019&time=2020&time=2021&time=2022&time=2023&time=2024&time=2025",
+    "raw_file": "data\\raw\\feature_une_ltu_a_long_term_unemployment_rate_pc.json"
+  }
+]

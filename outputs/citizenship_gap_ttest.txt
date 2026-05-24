@@ -1,0 +1,10 @@
+Clustered paired country-year models for citizenship gap (NEU_FOR minus NAT).
+N country-years: 522
+N countries: 37
+Mean gap: 2.522605
+Intercept-only clustered coefficient: 2.522605
+Intercept-only clustered SE: 0.431708
+Intercept-only two-sided p-value: <0.001
+Year-adjusted clustered coefficient: 4.010714
+Year-adjusted clustered SE: 0.674884
+Year-adjusted two-sided p-value: <0.001

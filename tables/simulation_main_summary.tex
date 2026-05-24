@@ -1,0 +1,24 @@
+\begin{tabular}{p{0.19\linewidth}p{0.18\linewidth}rrrrr}
+\toprule
+Mechanism & Estimator & Mean bias & Med. abs. error & Sign rev. & CI cov. & Wrong concl. \\
+\midrule
+country\_group & complete\_case\_fe & 0.0072 & 0.0271 & 0.0 & 1.0 & 0.0 \\
+country\_group & mnar\_shift\_mi\_fe & -0.1497 & 0.1476 & 0.15 & 0.01 & 0.15 \\
+country\_group & pmm\_mi\_fe & -0.1458 & 0.1466 & 0.12 & 0.02 & 0.12 \\
+covariate\_block & complete\_case\_fe & -0.0048 & 0.0342 & 0.0 & 1.0 & 0.0 \\
+covariate\_block & mnar\_shift\_mi\_fe & -0.0028 & 0.0026 & 0.0 & 1.0 & 0.0 \\
+covariate\_block & pmm\_mi\_fe & -0.0026 & 0.0025 & 0.0 & 1.0 & 0.0 \\
+early\_year & complete\_case\_fe & -0.0773 & 0.0773 & 0.0 & 1.0 & 0.0 \\
+early\_year & mnar\_shift\_mi\_fe & -0.2299 & 0.2303 & 1.0 & 0.0 & 1.0 \\
+early\_year & pmm\_mi\_fe & -0.2304 & 0.2316 & 1.0 & 0.0 & 1.0 \\
+eurostat\_realistic & complete\_case\_fe & -0.0091 & 0.0326 & 0.0 & 0.98 & 0.0 \\
+eurostat\_realistic & mnar\_shift\_mi\_fe & -0.0883 & 0.092 & 0.0 & 0.33 & 0.0 \\
+eurostat\_realistic & pmm\_mi\_fe & -0.0621 & 0.0598 & 0.0 & 0.8 & 0.0 \\
+mcar & complete\_case\_fe & 0.0028 & 0.1212 & 0.15 & 0.89 & 0.15 \\
+mcar & mnar\_shift\_mi\_fe & -0.1448 & 0.1434 & 0.05 & 0.0 & 0.05 \\
+mcar & pmm\_mi\_fe & -0.1315 & 0.1337 & 0.0 & 0.01 & 0.0 \\
+mnar\_high\_poverty\_unmet & complete\_case\_fe & -0.0143 & 0.0406 & 0.01 & 0.95 & 0.01 \\
+mnar\_high\_poverty\_unmet & mnar\_shift\_mi\_fe & -0.1478 & 0.146 & 0.09 & 0.0 & 0.09 \\
+mnar\_high\_poverty\_unmet & pmm\_mi\_fe & -0.1519 & 0.1513 & 0.15 & 0.0 & 0.15 \\
+\bottomrule
+\end{tabular}

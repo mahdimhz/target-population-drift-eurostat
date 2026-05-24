@@ -1,0 +1,8 @@
+block,variables,complete_rows,countries,years,retained_pct
+Outcome,Unmet need,608,37,18,100.0
+Macroeconomic,"Log GDP/capita, Unemployment",555,34,18,91.28289473684211
+Social vulnerability,Poverty/social exclusion,375,36,11,61.67763157894737
+Financing,"Gov. health expenditure, Compulsory financing, OOP expenditure share",433,30,17,71.21710526315789
+Capacity,"Physicians, Hospital beds",426,29,16,70.0657894736842
+Inequality/labour,"Gini, Long-term unemployment",392,34,12,64.47368421052632
+Population weights,"Population, Population weight",607,37,18,99.83552631578948

@@ -1,0 +1,117 @@
+﻿\documentclass[12pt, twoside]{report}
+
+% TEMPLATE PACKAGES
+\usepackage[T1]{fontenc}
+\usepackage[a4paper, margin=3.3cm]{geometry}
+\usepackage[english]{babel}
+\usepackage{fancyhdr}
+\usepackage{csquotes}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{vanvfrontespizio}
+
+% PROJECT PACKAGES
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{setspace}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{lscape}
+\usepackage{float}
+\usepackage{silence}
+\usepackage[hypertexnames=false]{hyperref}
+\WarningFilter{biblatex}{Using fall-back BibTeX}
+\usepackage[style=alphabetic, natbib=true, backend=bibtex]{biblatex}
+
+% GRAPHICS
+\graphicspath{{figures/}}
+
+% BIBLIOGRAPHY
+\addbibresource{writing/references.bib}
+
+% TITLE PAGE FIELDS
+\Universita{Universit\`a degli Studi della Campania ``Luigi Vanvitelli''}
+\Dipartimento{Dipartimento di Matematica e Fisica}
+\CorsoDiLaurea{Master's Degree in Data Science}
+\AnnoAccademico{2025--2026}
+\Titolo{Target-Population Drift in Public Eurostat Unmet-Care Panels:\\
+A Multi-Outcome Benchmark, Semi-Synthetic Missingness Simulation,\\
+and Reproducible Audit Protocol}
+\Relatore{Prof.ssa Rosanna Verde}
+\RelatoreLabel{Supervisor}
+\Candidato{Mahdi Mohammadzadeh}
+\CandidatoLabel{Candidate}
+
+% HEADERS
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\thepage}
+\fancyhead[LO]{\nouppercase{\rightmark}}
+\fancyhead[RE]{\nouppercase{\leftmark}}
+\setlength{\headheight}{14.5pt}
+\setlength{\emergencystretch}{3em}
+\hbadness=10000
+\vbadness=10000
+\hfuzz=2pt
+
+% GENERATED TABLE COMPATIBILITY
+\makeatletter
+\let\vanv@table\table
+\let\endvanv@table\endtable
+\let\vanv@caption\caption
+\let\vanv@label\label
+\newif\ifvanv@nestedtable
+\renewenvironment{table}[1][]{%
+    \ifinner
+        \vanv@nestedtabletrue
+        \let\caption\@gobble
+        \let\label\@gobble
+    \else
+        \vanv@nestedtablefalse
+        \vanv@table[#1]%
+    \fi
+}{%
+    \ifvanv@nestedtable
+        \let\caption\vanv@caption
+        \let\label\vanv@label
+    \else
+        \endvanv@table
+    \fi
+}
+\makeatother
+
+\begin{document}
+
+\input{frontmatter/titlepage}
+\pagestyle{empty}
+\cleardoublepage
+\input{frontmatter/declarations}
+\cleardoublepage
+\input{frontmatter/acknowledgements}
+\cleardoublepage
+\input{abstract}
+\cleardoublepage
+\pagestyle{fancy}
+\tableofcontents
+\listoffigures
+\listoftables
+\cleardoublepage
+
+\onehalfspacing
+
+\input{chapters/introduction}
+\input{chapters/background_literature}
+\input{chapters/data_indicators}
+\input{chapters/descriptive_evidence}
+\input{chapters/modeling_strategy_results}
+\input{chapters/discussion_conclusion}
+
+\appendix
+\input{chapters/ml_extension}
+\input{chapters/appendix}
+
+\printbibliography
+
+\end{document}

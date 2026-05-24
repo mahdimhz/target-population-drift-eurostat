@@ -1,0 +1,15 @@
+indicator_id,indicator_label,country_group,outcome_rows,complete_case_rows,countries_observed,countries_complete_case,row_retention_pct
+dental_need_combined,Dental need,Eastern/Southern,99,53,22,16,53.5
+dental_need_combined,Dental need,Western/Northern,55,40,12,12,72.7
+dental_population_combined,Dental population,Eastern/Southern,368,160,23,17,43.5
+dental_population_combined,Dental population,Western/Northern,239,122,14,13,51.0
+medical_need_combined,Medical need,Eastern/Southern,99,53,22,16,53.5
+medical_need_combined,Medical need,Western/Northern,55,40,12,12,72.7
+medical_population_combined,Medical population,Eastern/Southern,369,160,23,17,43.4
+medical_population_combined,Medical population,Western/Northern,239,122,14,13,51.0
+medical_population_cost,Medical cost,Eastern/Southern,369,160,23,17,43.4
+medical_population_cost,Medical cost,Western/Northern,239,122,14,13,51.0
+medical_population_distance,Medical distance,Eastern/Southern,369,160,23,17,43.4
+medical_population_distance,Medical distance,Western/Northern,239,122,14,13,51.0
+medical_population_waiting,Medical waiting,Eastern/Southern,369,160,23,17,43.4
+medical_population_waiting,Medical waiting,Western/Northern,239,122,14,13,51.0
