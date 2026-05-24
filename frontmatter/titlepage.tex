@@ -3,63 +3,46 @@
 \thispagestyle{empty}
 \setlength{\parindent}{0pt}
 
-\begin{minipage}[t]{0.45\textwidth}
-    \includegraphics[width=4.1cm]{Vanv-logo.pdf}
-\end{minipage}
-\hfill
-\begin{minipage}[t]{0.36\textwidth}
-    \raggedleft
-    {\small\color{olive}Dipartimento di\\Matematica e Fisica}
-\end{minipage}
+\begin{tikzpicture}[remember picture, overlay]
+    \node[anchor=north west] at ([xshift=1.25cm,yshift=-1.25cm]current page.north west)
+        {\includegraphics[width=4.15cm]{Vanv-logo.pdf}};
 
-\vspace{2.1cm}
+    \node[anchor=north east, align=left, text width=3.4cm] at ([xshift=-2.1cm,yshift=-1.25cm]current page.north east)
+        {{\small\color{olive}Dipartimento di\\Matematica e Fisica}};
 
-\begin{center}
-    {\Large\bfseries UNIVERSIT\`A DEGLI STUDI DELLA CAMPANIA ``LUIGI VANVITELLI''\par}
+    \node[anchor=north, align=center] at ([yshift=-5.15cm]current page.north)
+        {{\fontsize{13.3}{16}\selectfont\bfseries UNIVERSIT\'A DEGLI STUDI DELLA CAMPANIA ``LUIGI VANVITELLI''}};
 
-    \vspace{1.0cm}
+    \node[anchor=north, align=center] at ([yshift=-6.95cm]current page.north)
+        {{\Large\bfseries DIPARTIMENTO DI MATEMATICA E FISICA}};
 
-    {\Large\bfseries DIPARTIMENTO DI MATEMATICA E FISICA\par}
+    \node[anchor=north, align=center] at ([yshift=-8.9cm]current page.north)
+        {{\large\itshape Master's degree in}\\[0.22cm]{\Large\bfseries Data Science}};
 
-    \vspace{1.0cm}
+    \node[anchor=north, align=center] at ([yshift=-12.2cm]current page.north)
+        {{\large\bfseries Thesis in}\\[0.42cm]{\large --------------------}};
 
-    {\large\itshape Master's degree in\par}
-    \vspace{0.2cm}
-    {\Large\bfseries Data Science\par}
+    \node[anchor=north] at ([yshift=-16.55cm]current page.north)
+        {\begin{minipage}{15cm}
+        \centering
+        {\LARGE\bfseries Target-Population Drift in Eurostat\\[0.25cm]Unmet-Care Panels\par}
+        \vspace{0.45cm}
+        {\Large\bfseries A Reproducible Sensitivity Audit\par}
+        \end{minipage}};
 
-    \vspace{1.35cm}
+    \node[anchor=north west, align=left, text width=6.5cm] at ([xshift=1.7cm,yshift=-23.65cm]current page.north west)
+        {{\large Candidate}\\[0.18cm]
+        {\large Mahdi Mohammadzadeh}\\[0.08cm]
+        {\large\itshape Matr. B33000040}};
 
-    {\large\bfseries Thesis in\par}
-    \vspace{0.35cm}
-    {\large Data Science\par}
+    \node[anchor=north west, align=left, text width=6.5cm] at ([xshift=12.0cm,yshift=-23.65cm]current page.north west)
+        {{\large Supervisor}\\[0.18cm]
+        {\large\itshape Prof.}\\[0.08cm]
+        {\large Rosanna Verde}\\[0.35cm]
+        {\large Co-supervisor}\\[0.18cm]
+        {\large\itshape Dr./Prof.}};
 
-    \vspace{1.25cm}
-
-    {\LARGE\bfseries Target-Population Drift in Eurostat\\[0.18cm]
-    Unmet-Care Panels\par}
-    \vspace{0.35cm}
-    {\Large\bfseries A Reproducible Sensitivity Audit\par}
-\end{center}
-
-\vfill
-
-\begin{minipage}[t]{0.45\textwidth}
-    {\large Candidate\par}
-    \vspace{0.15cm}
-    {\large Mahdi Mohammadzadeh\par}
-    {\large\itshape Matr. B33000040\par}
-\end{minipage}
-\hfill
-\begin{minipage}[t]{0.36\textwidth}
-    {\large Supervisor\par}
-    \vspace{0.15cm}
-    {\large\itshape Prof.ssa\par}
-    {\large Rosanna Verde\par}
-\end{minipage}
-
-\vspace{1.1cm}
-
-\begin{center}
-    {\large A.Y. 2025/2026}
-\end{center}
+    \node[anchor=south, align=center] at ([yshift=1.15cm]current page.south)
+        {{\large A.Y. 2025/2026}};
+\end{tikzpicture}
 \end{titlepage}
