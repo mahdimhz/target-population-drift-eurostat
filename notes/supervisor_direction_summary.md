@@ -6,7 +6,7 @@ The current thesis is a single-outcome Eurostat sensitivity audit. It studies `h
 
 The proposed upgrade changes the thesis identity from a single-outcome applied audit to a methodological-applied public-data study:
 
-**Target-Population Drift in Public Eurostat Unmet-Care Panels: A Multi-Outcome Benchmark, Semi-Synthetic Missingness Simulation, and Reproducible Audit Protocol**
+**Target-Population Drift in Eurostat Unmet-Care Panels: A Reproducible Sensitivity Audit**
 
 ## New Thesis Identity
 

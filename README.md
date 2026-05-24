@@ -1,4 +1,4 @@
-# Target-Population Drift in Public Eurostat Unmet-Care Panels
+# Target-Population Drift in Eurostat Unmet-Care Panels
 
 Reproducible MSc thesis project by Mahdi Mohammadzadeh, MSc in Data Science, Universita degli Studi della Campania Luigi Vanvitelli, academic year 2025--2026.
 
