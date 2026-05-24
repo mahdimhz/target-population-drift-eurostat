@@ -1,5 +1,7 @@
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{@{}p{0.18\textwidth}p{0.23\textwidth}rrp{0.16\textwidth}p{0.22\textwidth}@{}}
+\begingroup
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\textwidth}{@{}p{0.17\textwidth}Yrrp{0.18\textwidth}Y@{}}
 \toprule
 Step & Target & Countries & Rows & Coef. [95\% CI] & Interpretation \\
 \midrule
@@ -22,8 +24,8 @@ MAR MI & 608 outcome-observed rows & 37 & 608 & 0.014 [-0.071, 0.099] & model-ba
 MNAR pessimistic & 608 outcome-observed rows & 37 & 608 & 0.010 [-0.086, 0.107] & missing rows shifted toward worse macro-social conditions \\
 MNAR optimistic & 608 outcome-observed rows & 37 & 608 & 0.010 [-0.086, 0.106] & missing rows shifted toward less severe macro-social conditions \\
 \bottomrule
-\end{tabular}%
-}
+\end{tabularx}
 
 \vspace{0.2em}
-\begin{minipage}{0.96\textwidth}\scriptsize Notes: The ladder follows the poverty/social-exclusion coefficient as the model, country universe, weighting rule, selection adjustment, and imputation assumption change. Infeasible rows are retained when fixed-effects estimation has too few rows, countries, or years. MAR and MNAR rows are model-based sensitivity estimands, not corrected truth.\end{minipage}
+\begin{minipage}{0.96\textwidth}\scriptsize Notes: The ladder follows the poverty/social-exclusion coefficient as the model, country universe, weighting rule, selection adjustment, and imputation assumption change. Infeasible rows are retained when fixed-effects estimation has too few rows, countries, or years. MAR and MNAR rows are model-based sensitivity estimands, not corrected estimates.\end{minipage}
+\endgroup

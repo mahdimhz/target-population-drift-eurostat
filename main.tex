@@ -20,6 +20,10 @@
 \usepackage{multirow}
 \usepackage{lscape}
 \usepackage{float}
+\usepackage{caption}
+\usepackage{tabularx}
+\usepackage{ragged2e}
+\usepackage{adjustbox}
 \usepackage{silence}
 \usepackage[hypertexnames=false]{hyperref}
 \WarningFilter{biblatex}{Using fall-back BibTeX}
@@ -55,6 +59,18 @@ and Reproducible Audit Protocol}
 \hbadness=10000
 \vbadness=10000
 \hfuzz=2pt
+\raggedbottom
+\setlength{\floatsep}{10pt plus 2pt minus 2pt}
+\setlength{\textfloatsep}{12pt plus 2pt minus 2pt}
+\setlength{\intextsep}{10pt plus 2pt minus 2pt}
+\captionsetup[table]{skip=6pt}
+\captionsetup[figure]{skip=6pt}
+\makeatletter
+\setlength{\@fptop}{0pt}
+\setlength{\@fpsep}{10pt plus 1fil}
+\setlength{\@fpbot}{0pt plus 1fil}
+\makeatother
+\newcolumntype{Y}{>{\RaggedRight\arraybackslash}X}
 
 % GENERATED TABLE COMPATIBILITY
 \makeatletter
@@ -86,18 +102,18 @@ and Reproducible Audit Protocol}
 
 \input{frontmatter/titlepage}
 \pagestyle{empty}
-\cleardoublepage
+\clearpage
 \input{frontmatter/declarations}
-\cleardoublepage
+\clearpage
 \input{frontmatter/acknowledgements}
-\cleardoublepage
+\clearpage
 \input{abstract}
-\cleardoublepage
+\clearpage
 \pagestyle{fancy}
 \tableofcontents
 \listoffigures
 \listoftables
-\cleardoublepage
+\clearpage
 
 \onehalfspacing
 

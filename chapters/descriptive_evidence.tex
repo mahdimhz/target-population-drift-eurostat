@@ -72,11 +72,13 @@ Figure~\ref{fig:complete_case_attrition_waterfall} and Table~\ref{tab:complete_c
 
 \input{tables/complete_case_attrition_waterfall}
 
-The waterfall is the central descriptive result of the thesis. It shows that the baseline FE coefficient is not estimated on the full monitoring panel. It is estimated on a selected covariate-complete subset. The interpretation of the poverty/social-exclusion coefficient therefore depends not only on the regression formula, but also on the row-selection process that defines the analytical population.
+The waterfall is the central descriptive result of the thesis. It shows that the baseline FE coefficient is not estimated on the full monitoring panel. It is estimated on a selected covariate-complete subset. The interpretation of the poverty/social-exclusion coefficient therefore depends on both the model specification and the row-selection process that defines the analytical population.
 
 \section{Where Attrition Occurs}
 
 Table~\ref{tab:attrition_by_country_group} summarizes attrition by broad country group. Table~\ref{tab:attrition_by_covariate_block} shows how many outcome-observed rows remain when requiring each covariate block. These tables separate two mechanisms that would otherwise be hidden: country-group coverage differences and block-specific source availability.
+
+The East/South and West/North grouping is used only as a compact coverage diagnostic. It is a descriptive partition of the country list used to summarize retention patterns, not a theory of European health systems and not a causal modifier. Institutional country universes such as EU-27, EEA countries, Switzerland, the UK, and candidate or potential-candidate countries are defined separately in Chapter~\ref{ch:data_indicators}.
 
 \input{tables/attrition_by_country_group}
 
@@ -127,21 +129,7 @@ Figure~\ref{fig:missingness_heatmap_socioeconomic} and Figure~\ref{fig:missingne
 
 \section{Country Heterogeneity as Context}
 
-Country heterogeneity remains useful, but it is no longer the centre of the chapter. Figure~\ref{fig:descriptive_country_rankings} ranks countries by the latest observed value of unmet medical care need. Figure~\ref{fig:descriptive_country_year_heatmap} shows the same outcome in country-year form. These figures motivate country structure in the models and help interpret why a selected complete-case panel may not represent the same monitoring object as the full outcome-observed panel.
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.88\textwidth]{descriptive_country_rankings}
-\caption{Country rankings in unmet medical care need. Rankings use the latest observed \texttt{hlth\_silc\_08} value per country in the 2008--2025 descriptive panel; no population weights are applied and the latest year can differ where country coverage varies.}
-\label{fig:descriptive_country_rankings}
-\end{figure}
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.96\textwidth]{descriptive_country_year_heatmap}
-\caption{Country-year heatmap of unmet medical care need. Cells show observed \texttt{hlth\_silc\_08} values over 2008--2025; blank cells indicate missing country-year outcome coverage; no population weights are applied.}
-\label{fig:descriptive_country_year_heatmap}
-\end{figure}
+Country heterogeneity remains useful, but it is no longer the centre of the chapter. The country ranking and country-year outcome heatmap are generated for reproducibility and listed in the output map, but they are not reproduced in the main text because they are descriptive context rather than evidence for the target-population drift claim. Their role is to motivate country structure in the models and to show why a selected complete-case panel may not represent the same monitoring object as the full outcome-observed panel.
 
 \section{Secondary Descriptive Outputs}
 

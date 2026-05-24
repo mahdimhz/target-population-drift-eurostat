@@ -7,7 +7,7 @@ The thesis uses published aggregate Eurostat data. The unit of analysis is the c
 
 The data construction follows a national-only scope. EU and euro-area aggregate codes are excluded from the modelling data, and regional NUTS2 sources are not used in the core analysis. The dataset audit found that regional dataflows exist, but a clean balanced regional panel was not verified. The national design is therefore more conservative and more consistent with the aim of producing a reproducible MSc thesis from open Eurostat sources.
 
-The upgraded design starts from a public-data estimand registry rather than from a single outcome file. Table~\ref{tab:public_data_estimand_registry} lists the feasible core unmet-care indicators extracted for the multi-outcome benchmark. It includes medical and dental care, population-denominator and need-denominator definitions, and medical barrier-specific indicators for cost, distance, and waiting lists. Eurostat reason codes are verified programmatically from the downloaded JSON-stat metadata; indicators that cannot be verified are retained in the registry with an infeasibility reason instead of being silently dropped.
+The empirical design starts from a public-data estimand registry rather than from a single outcome file. Table~\ref{tab:public_data_estimand_registry} lists the feasible core unmet-care indicators extracted for the multi-outcome benchmark. It includes medical and dental care, population-denominator and need-denominator definitions, and medical barrier-specific indicators for cost, distance, and waiting lists. Eurostat reason codes are verified programmatically from the downloaded JSON-stat metadata; indicators that cannot be verified are retained in the registry with an infeasibility reason instead of being silently dropped.
 
 \begin{table}[htbp]
 \centering
@@ -89,7 +89,7 @@ The population-weighted complete-case estimand uses the same set \(C\) but appli
 \[
 \beta_{MI} = \frac{1}{M}\sum_{m=1}^{M}\hat{\beta}^{(m)}_{O},
 \]
-with uncertainty pooled using Rubin's rules. This notation is a reminder that MI changes the target and adds model dependence; it does not reveal the true coefficient.
+with uncertainty pooled using Rubin's rules. This notation is a reminder that MI changes the target and adds model dependence; it does not establish a target-invariant coefficient.
 
 The planned MNAR sensitivity estimand keeps the same outcome-observed set \(O\) but applies explicit departures from the MAR imputation model:
 \[
@@ -108,23 +108,7 @@ Population weighting is not treated as more correct than unweighted analysis. Th
 
 \section{Missingness and Sample Construction}
 
-Missingness is a substantive part of the empirical design. Some Eurostat indicators have shorter time coverage than \texttt{hlth\_silc\_08}, and some are unavailable for specific countries. The grouped heatmaps below show the country-year pattern of missingness in the merged panel. They are used as data-quality and sample-construction diagnostics, not as substantive results by themselves.
-
-Figures~\ref{fig:missingness_heatmap_socioeconomic} and \ref{fig:missingness_heatmap_financing} show two of the grouped missingness heatmaps used to diagnose coverage. Additional grouped heatmaps are included in the reproducibility materials generated with the thesis.
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.96\textwidth]{missingness_heatmap_socioeconomic}
-\caption{Socioeconomic covariate coverage across country-year cells in the merged national panel. The figure covers the 2008--2025 outcome-observed construction window; white or light cells indicate missing covariate coverage, and country coverage varies by variable and year.}
-\label{fig:missingness_heatmap_socioeconomic}
-\end{figure}
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.96\textwidth]{missingness_heatmap_financing}
-\caption{Health-financing covariate coverage across country-year cells in the merged national panel. The figure covers the 2008--2025 outcome-observed construction window; missing cells show why complete-case regression uses fewer rows than the outcome panel.}
-\label{fig:missingness_heatmap_financing}
-\end{figure}
+Missingness is a substantive part of the empirical design. Some Eurostat indicators have shorter time coverage than \texttt{hlth\_silc\_08}, and some are unavailable for specific countries. Chapter~\ref{ch:descriptive_evidence} shows the grouped missingness heatmaps used to diagnose this coverage pattern. They are data-quality and sample-construction diagnostics, not substantive results by themselves.
 
 The regression sample is complete-case. The baseline two-way FE model uses \(N=282\) country-year observations, as reported in the regression output summary. This restriction is necessary because all selected covariates must be observed in the same country-year row. It also means that the regression results describe the available complete-case panel rather than every European country-year observed in the outcome file.
 

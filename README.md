@@ -51,7 +51,7 @@ Do not push before confirming that the full pipeline, tests, reproducibility arc
 Install with `requirements.txt`:
 
 ```powershell
-rtk python -m pip install -r requirements.txt
+python -m pip install -r requirements.txt
 ```
 
 Or create the optional conda environment:
@@ -68,30 +68,30 @@ The exact package versions from each complete run are written to `outputs/reprod
 Run from the project root:
 
 ```powershell
-rtk python src/run_full_thesis_analysis.py
-rtk python src/generate_conceptual_selection_diagram.py
-rtk python src/run_missingness_robustness.py
-rtk python src/build_multi_outcome_indicator_registry.py
-rtk python src/build_multi_outcome_monitoring_benchmark.py
-rtk python src/build_multi_outcome_drift_diagnostics.py
-rtk python src/build_outcome_estimand_stability_matrix.py
-rtk python src/run_missingness_simulation.py --replicates 100 --imputations 2 --seed 42
-rtk python src/build_reporting_protocol_tables.py
-rtk python src/run_step5_ml_analysis.py
-rtk python src/run_step6_additional_analysis.py
-rtk python src/run_step7_master_summary.py
+python src/run_full_thesis_analysis.py
+python src/generate_conceptual_selection_diagram.py
+python src/run_missingness_robustness.py
+python src/build_multi_outcome_indicator_registry.py
+python src/build_multi_outcome_monitoring_benchmark.py
+python src/build_multi_outcome_drift_diagnostics.py
+python src/build_outcome_estimand_stability_matrix.py
+python src/run_missingness_simulation.py --replicates 100 --imputations 2 --seed 42
+python src/build_reporting_protocol_tables.py
+python src/run_step5_ml_analysis.py
+python src/run_step6_additional_analysis.py
+python src/run_step7_master_summary.py
 ```
 
 Then compile the thesis:
 
 ```powershell
-rtk latexmk -pdf main.tex
+latexmk -pdf main.tex
 ```
 
 If `latexmk` is unavailable, use the bundled Tectonic path used during development:
 
 ```powershell
-rtk python C:\Users\Mahdi\.codex\plugins\cache\openai-bundled\latex\0.2.0\scripts\compile_latex.py "D:\Luigi Vanvitelli\Thesis\Pre\thesis-scope-eurostat-health\main.tex" --compiler tectonic
+python C:\Users\Mahdi\.codex\plugins\cache\openai-bundled\latex\0.2.0\scripts\compile_latex.py "D:\Luigi Vanvitelli\Thesis\Pre\thesis-scope-eurostat-health\main.tex" --compiler tectonic
 ```
 
 ## Tests
@@ -99,7 +99,7 @@ rtk python C:\Users\Mahdi\.codex\plugins\cache\openai-bundled\latex\0.2.0\script
 Run the checks:
 
 ```powershell
-rtk python -m pytest tests -q
+python -m pytest tests -q
 ```
 
 The tests check population weights, target counts, indicator registry validation, multi-outcome monitoring, drift diagnostics, coefficient classification, MI plausibility, raw/log GDP consistency, MNAR shifts, lagged prediction features, simulation reproducibility, generated output existence, CLI smoke behavior, and the reproducibility package.
@@ -109,9 +109,9 @@ The tests check population weights, target counts, indicator registry validation
 The `eurodrift` module exposes a compact command-line interface for smoke checks and reuse:
 
 ```powershell
-rtk python -m eurodrift report --indicator hlth_silc_08
-rtk python -m eurodrift simulate --config configs/simulation_primary.yml --smoke
-rtk python -m eurodrift reproduce-thesis
+python -m eurodrift report --indicator hlth_silc_08
+python -m eurodrift simulate --config configs/simulation_primary.yml --smoke
+python -m eurodrift reproduce-thesis
 ```
 
 The first command writes a compact indicator coverage report. The second command runs a 20-replicate simulation smoke test using seed 42. The third command reruns the thesis-specific audit builders and summary manifest from the current local data files.
