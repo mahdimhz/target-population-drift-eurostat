@@ -363,8 +363,7 @@ def save_trend_figure(trends: pd.DataFrame) -> None:
     for ax in axes.flat:
         ax.grid(True, alpha=0.25)
 
-    fig.suptitle("Multi-outcome Eurostat unmet-care monitoring benchmark", fontsize=14)
-    fig.tight_layout(rect=(0, 0, 1, 0.97))
+    fig.tight_layout()
     FIGURES.mkdir(parents=True, exist_ok=True)
     fig.savefig(FIGURES / "multi_outcome_monitoring_benchmark.pdf")
     fig.savefig(FIGURES / "multi_outcome_monitoring_benchmark.png", dpi=180)

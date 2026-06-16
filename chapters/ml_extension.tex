@@ -11,7 +11,7 @@ The prediction task is one-year-ahead forecasting with lagged country-level pred
 
 The decisive benchmark is simple persistence. Table~\ref{tab:ml_naive_baselines} shows that previous-year unmet need has the lowest held-out test MAE among the naive and statistical baselines. It also beats the flexible machine-learning models reported in Table~\ref{tab:ml_model_performance_full}. The prediction result is therefore negative: flexible ML does not add convincing one-year-ahead predictive value beyond last year's outcome.
 
-\begin{table}[htbp]
+\begin{table}[H]
 \centering
 \small
 \caption{Naive and statistical baselines for one-year-ahead prediction. The held-out test set is the time-ordered 2021--2023 complete-case prediction sample; predictors use prior-year country information only.}
@@ -19,7 +19,7 @@ The decisive benchmark is simple persistence. Table~\ref{tab:ml_naive_baselines}
 \input{tables/ml_naive_baselines}
 \end{table}
 
-\begin{table}[htbp]
+\begin{table}[H]
 \centering
 \small
 \caption{Linear and flexible benchmark performance with lagged predictors. Models are trained on the pre-test complete-case prediction panel and evaluated on the same 2021--2023 held-out test years as the naive baselines. Additional model-inspection tools are not used because the chapter is a negative benchmark, not an algorithmic contribution.}
@@ -31,7 +31,7 @@ The decisive benchmark is simple persistence. Table~\ref{tab:ml_naive_baselines}
 
 The evaluation uses temporal train/test separation, expanding-window validation, bootstrap intervals for held-out MAE, and blocked country-holdout validation. These checks are retained to document validation discipline, not to promote a model ranking. Country-holdout validation is especially important because aggregate predictors can encode persistent country identity rather than transferable structure.
 
-\begin{table}[htbp]
+\begin{table}[H]
 \centering
 \small
 \caption{Blocked country-holdout predictive performance. Folds hold out countries rather than years to test transfer beyond persistent country structure; no population weights are applied.}

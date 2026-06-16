@@ -10,20 +10,17 @@ The central empirical audit tracks the movement from 608 primary outcome-observe
 
 ## Repository Status
 
-The intended GitHub remote is:
+The GitHub remote used for this project is:
 
 ```powershell
-git remote add origin https://github.com/mahdimhz/unmet-medical-care-needs-europe-thesis.git
+https://github.com/mahdimhz/unmet-medical-care-needs-europe-thesis.git
 ```
 
-No public repository is cited in the thesis unless that remote is actually populated and verified. The recommended final publishing sequence after the final validation step is:
+No public repository is cited in the thesis unless the remote is populated and verified. The recommended final publishing sequence after the final validation step is:
 
 ```powershell
-git init
-git branch -M main
 git add .
 git commit -m "Reproducible thesis sensitivity audit"
-git remote add origin https://github.com/mahdimhz/unmet-medical-care-needs-europe-thesis.git
 git push -u origin main
 ```
 
@@ -88,10 +85,10 @@ Then compile the thesis:
 latexmk -pdf main.tex
 ```
 
-If `latexmk` is unavailable, use the bundled Tectonic path used during development:
+If `latexmk` is unavailable, compile with Tectonic:
 
 ```powershell
-python C:\Users\Mahdi\.codex\plugins\cache\openai-bundled\latex\0.2.0\scripts\compile_latex.py "D:\Luigi Vanvitelli\Thesis\Pre\thesis-scope-eurostat-health\main.tex" --compiler tectonic
+tectonic -X compile --outfmt pdf main.tex
 ```
 
 ## Tests

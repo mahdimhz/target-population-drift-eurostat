@@ -1,6 +1,9 @@
 from __future__ import annotations
 
 import json
+import hashlib
+import re
+from collections import Counter
 from pathlib import Path
 
 import pandas as pd
@@ -65,3 +68,38 @@ def test_readme_has_guarded_github_publish_instructions() -> None:
     assert "https://github.com/mahdimhz/unmet-medical-care-needs-europe-thesis.git" in readme
     assert "Do not push before confirming" in readme
     assert "No public repository is cited" in readme
+
+
+def test_manuscript_does_not_insert_the_same_table_fragment_twice() -> None:
+    table_inputs: list[str] = []
+    for path in (ROOT / "chapters").glob("*.tex"):
+        table_inputs.extend(re.findall(r"\\input\{(tables/[^}]+)\}", path.read_text(encoding="utf-8")))
+
+    duplicates = sorted(name for name, count in Counter(table_inputs).items() if count > 1)
+    assert duplicates == []
+
+
+def test_manuscript_uses_one_primary_attrition_waterfall() -> None:
+    text = "\n".join(path.read_text(encoding="utf-8") for path in (ROOT / "chapters").glob("*.tex"))
+    assert "multi_outcome_primary_attrition_waterfall" not in text
+    assert text.count(r"\includegraphics[width=0.92\textwidth]{complete_case_attrition_waterfall}") == 1
+
+
+def test_manuscript_references_no_byte_identical_figures() -> None:
+    figure_names: set[str] = set()
+    for path in (ROOT / "chapters").glob("*.tex"):
+        figure_names.update(
+            re.findall(
+                r"\\includegraphics(?:\[[^\]]*\])?\{([^}]+)\}",
+                path.read_text(encoding="utf-8"),
+            )
+        )
+
+    hashes: dict[str, list[str]] = {}
+    for name in sorted(figure_names):
+        path = ROOT / "figures" / f"{name}.pdf"
+        digest = hashlib.sha256(path.read_bytes()).hexdigest()
+        hashes.setdefault(digest, []).append(path.name)
+
+    duplicates = [sorted(names) for names in hashes.values() if len(names) > 1]
+    assert duplicates == []

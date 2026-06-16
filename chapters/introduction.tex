@@ -3,19 +3,19 @@
 
 \section{Motivation}
 
-Public unmet-care indicators are widely used to compare access barriers across European health systems. Eurostat EU-SILC indicators are especially useful because they provide repeated, public, country-year measures of self-reported unmet medical and dental care need. These indicators can describe cost barriers, distance barriers, waiting-list barriers, and differences between population-denominator and need-denominator definitions.
+Public unmet-care indicators support comparisons across European health systems. Eurostat EU-SILC provides country-year measures of self-reported unmet medical and dental care, including cost, distance, and waiting-list barriers and indicators defined over either the general population or people reporting a need for care \citep{eurostat_health_variables_metadata,eurostat_unmet_needs_statistics}.
 
-The same public data can also mislead if the analytical target is left implicit. Aggregate panels do not contain one natural population. The population changes when the analyst changes the denominator, country universe, weighting rule, time window, row-selection rule, or missing-data assumption. A regression that requires every covariate can quietly move the analysis from a broad monitoring panel to a selected covariate-complete subset. This movement is the central problem studied in the thesis.
+These data do not automatically define one stable analytical population. Requiring complete regression covariates can move an analysis from a broad outcome-observed panel to a selected subset of countries and years. Weighting, country restrictions, and model-based treatment of missing values can alter the target further. Because incomplete-data methods depend on assumptions about selection and missingness, this movement must be documented rather than treated as routine preprocessing \citep{little_rubin_2019,seaman_white_2013}.
 
 \section{Target-Population Drift}
 
-The thesis uses the term \emph{target-population drift} for the movement from an intended monitoring target to a different analytical target created by denominator choice, country-universe restriction, population weighting, covariate completeness, or missing-data modelling. In this setting, the same poverty/social-exclusion coefficient can refer to different objects: an equal-country complete-case panel, a population-weighted resident panel, an EU-27 subset, an IPW-reweighted selected panel, or a model-imputed outcome-observed target.
+This thesis uses \emph{target-population drift} as a working term for movement from an intended monitoring target to a different analytical target created by denominator choice, country-universe restriction, population weighting, covariate completeness, or missing-data modelling. The same poverty/social-exclusion coefficient may therefore describe an equal-country complete-case panel, a population-weighted resident panel, an EU-27 subset, an IPW-reweighted selected panel, or a model-imputed outcome-observed target.
 
-The country universe is defined before model interpretation. The full Eurostat-available universe means national units observed in the selected Eurostat tables after excluding EU and euro-area aggregates. EU-27 sensitivity is mandatory because the substantive phrase ``European'' is otherwise too broad for public aggregate data. Smaller country groups are reported only when coverage is stable enough to be interpretable.
+The country universe is defined before model interpretation. The full Eurostat-available universe comprises national units observed in the selected Eurostat tables after EU and euro-area aggregates are excluded. EU-27 sensitivity is mandatory because the term ``European'' would otherwise conceal an important institutional restriction. Smaller country groups are reported only when coverage is adequate. Institutional groupings follow official EU, EEA/EFTA, enlargement, UK, and Switzerland sources \citep{eu_countries_2026,europarl_eea_switzerland_2025,european_commission_enlargement_2026,european_commission_uk_relations_2026}.
 
 \section{Research Questions}
 
-The thesis is organized around five research questions:
+The thesis addresses five research questions:
 
 \begin{description}
     \item[RQ1: Indicator dependence.] How do unmet-care monitoring conclusions change across medical versus dental care, population-denominator versus need-denominator indicators, and barrier-specific definitions such as cost, distance, and waiting lists?
@@ -25,66 +25,20 @@ The thesis is organized around five research questions:
     \item[RQ5: Reporting protocol.] Can a reproducible target-population drift audit classify public aggregate-panel findings as stable, target-dependent, denominator-dependent, missingness-dependent, imputation-model-dependent, or non-identifiable?
 \end{description}
 
-Poverty or social exclusion remains the main stress-test covariate. It is theoretically relevant to affordability and social vulnerability, and the existing primary-outcome analysis shows that the observed outcome panel contains 608 country-years while the baseline complete-case fixed-effects model uses 282 rows. The thesis asks whether poverty-related aggregate interpretation is stable across explicitly defined estimands rather than treating any selected-panel estimate as the final answer.
+Poverty or social exclusion is the main stress-test covariate. The primary outcome is observed for 608 country-years, whereas the baseline complete-case fixed-effects analysis retains 282 rows (Table~\ref{tab:complete_case_attrition_waterfall}). The empirical question is whether the aggregate poverty association remains interpretable across the explicitly defined targets.
 
 \section{Audit Protocol}
 
-An estimand is the country-year quantity targeted by a row set, denominator, weighting rule, country universe, and missing-data assumption. The audit protocol is a structured reporting procedure for documenting how these choices change the target population and interpretation of aggregate-panel estimates. It is not a new estimator and it does not make the aggregate data causal.
+An estimand is the country-year quantity targeted by a specified outcome, denominator, row set, country universe, weighting rule, and missing-data assumption. The audit protocol documents how these choices affect the represented population and the interpretation of an estimate. It is a structured application of existing descriptive, regression, weighting, and missing-data methods rather than a new estimator.
 
-\begin{table}[htbp]
-\centering
-\scriptsize
-\caption{Target-population drift audit checklist}
-\label{tab:intro_audit_checklist}
-\begin{tabular}{p{0.24\linewidth}p{0.66\linewidth}}
-\toprule
-Audit component & Required documentation \\
-\midrule
-Target definition & Unit, outcome denominator, country universe, time window, and weighting rule. \\
-Coverage drift & Country-year coverage before and after each outcome, covariate, and population-weight requirement. \\
-Selection distortion & Included-versus-excluded differences in outcome level, covariates, country groups, and time periods. \\
-Estimand stability & Poverty/social-exclusion coefficient across complete-case, population-weighted, balanced, IPW, MAR-imputed, and MNAR-shifted targets. \\
-Simulation validity & Behaviour of complete-case and missing-data estimators under semi-synthetic Eurostat-style missingness relative to a reference estimand. \\
-Reporting classification & Final label explaining whether evidence is stable, target-dependent, denominator-dependent, missingness-dependent, imputation-model-dependent, or non-identifiable. \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-Table~\ref{tab:intro_audit_checklist} gives the checklist used to organize the thesis. The core estimands are outcome-observed monitoring targets, year-normalized population-weighted targets, complete-case fixed-effects targets, balanced-outcome targets, IPW diagnostic targets, MAR-imputed targets, and MNAR-shifted sensitivity targets. Population weighting changes the estimand; it is not automatically superior to equal-country monitoring. Multiple imputation is treated as sensitivity, not correction.
-
-\begin{table}[htbp]
-\centering
-\scriptsize
-\caption{Deterministic failure-mode labels}
-\label{tab:intro_failure_modes}
-\begin{tabular}{p{0.28\linewidth}p{0.62\linewidth}}
-\toprule
-Label & Interpretation \\
-\midrule
-Stable & Main estimand families give the same substantive direction and similar IQR-scale effects. \\
-Target-dependent & Estimates change materially when the row set, balanced-outcome restriction, weighting rule, or country universe changes. \\
-Denominator-dependent & Population-denominator and need-denominator indicators support different interpretations for the same care type or barrier. \\
-Missingness-dependent & Complete-case, IPW, or imputed targets materially disagree after covariate missingness is addressed. \\
-Imputation-model-dependent & MAR or MNAR imputation variants disagree strongly with each other. \\
-Non-identifiable & Too few reliable estimand families are feasible, or available estimands conflict too strongly for a defensible coefficient interpretation. \\
-\bottomrule
-\end{tabular}
-\end{table}
+The sequence is target definition, coverage and selection diagnostics, coefficient comparison, simulation stress testing, and final classification. Chapter~\ref{ch:data_indicators} defines the targets, Chapter~\ref{ch:modeling_strategy_results} evaluates their empirical consequences, and Chapter~\ref{ch:discussion_conclusion} presents the complete reporting checklist.
 
 \section{Contributions}
 
-The thesis makes five contributions.
+This thesis makes four contributions. First, it constructs an estimand registry and multi-outcome benchmark that record indicator denominators, country coverage, weighting options, and valid interpretations before modelling. Second, it measures complete-case attrition and selection distortion across countries, years, covariate blocks, and outcome definitions. Third, it evaluates coefficient stability across observed-data and imputed estimands and uses a semi-synthetic missingness simulation to assess bias, sign instability, interval coverage, and wrong-conclusion rates relative to a reference estimand. Fourth, it provides a reproducible reporting protocol supported by extraction records, data dictionaries, output maps, tests, and scripted analysis.
 
-\begin{enumerate}
-    \item It formalizes target-population drift in public aggregate health-monitoring panels as movement across units, denominators, country universes, weighting rules, covariate-completeness rules, and missing-data assumptions.
-    \item It builds a multi-outcome Eurostat benchmark for unmet medical and dental care indicators, including population-denominator and need-denominator outcomes where coverage is feasible.
-    \item It applies a reproducible audit protocol to quantify outcome coverage, complete-case attrition, included/excluded imbalance, country/year retention, and coefficient stability across estimands.
-    \item It uses semi-synthetic missingness simulations to evaluate when complete-case fixed-effects estimates recover a reference estimand and when they produce bias, sign instability, interval undercoverage, or wrong substantive conclusions.
-    \item It provides reusable code, tests, data dictionaries, extraction records, output maps, and command sequences for reproducing the analysis.
-\end{enumerate}
-
-The contribution is methodological-applied. It improves how public aggregate health-access monitoring results are reported and interpreted without claiming individual-level mechanisms, policy effects, or a corrected poverty coefficient.
+The novelty is to treat sample construction as an empirical object rather than a technical footnote. Previous unmet-care research primarily examines social gradients, measurement validity, or health-system differences. This thesis instead asks whether an aggregate association retains the same interpretation when the denominator, country universe, weighting rule, analytical row set, or missing-data assumption changes. Its contribution is methodological-applied: it improves the reporting and interpretation of public aggregate health-monitoring analyses.
 
 \section{Thesis Structure}
 
-The thesis is organized around this audit logic. Chapter 2 reviews healthcare access theory, Eurostat/EU-SILC measurement, ecological limits, target populations, missing data, and reporting discipline. Chapter 3 defines the public-data estimand registry. Chapter 4 presents the multi-outcome monitoring benchmark before modelling. Chapter 5 contains the empirical audit: target-population drift diagnostics, outcome-by-estimand coefficient stability, and the semi-synthetic missingness simulation. Chapter 6 presents the reporting protocol, final classification of findings, and conclusion. Prediction, citizenship, and long model ladders are treated as supporting appendix material rather than as independent thesis claims.
+Chapter 2 connects healthcare-access theory with Eurostat/EU-SILC measurement, ecological inference, missing-data assumptions, and reporting discipline. Chapter 3 defines the data architecture and estimand registry. Chapter 4 compares monitoring targets before modelling. Chapter 5 presents the selection diagnostics, coefficient-stability analysis, and semi-synthetic simulation. Chapter 6 converts the evidence into a reporting protocol and final classification. Supporting prediction, equity, diagnostic, and reproducibility material is reported in the appendices.

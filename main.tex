@@ -28,6 +28,14 @@
 \usepackage[hypertexnames=false]{hyperref}
 \WarningFilter{biblatex}{Using fall-back BibTeX}
 \usepackage[style=alphabetic, natbib=true, backend=bibtex]{biblatex}
+\DeclareSourcemap{
+  \maps[datatype=bibtex]{
+    \map{
+      \step[fieldsource=doi]
+      \step[fieldset=url, null]
+    }
+  }
+}
 
 % GRAPHICS
 \graphicspath{{figures/}}

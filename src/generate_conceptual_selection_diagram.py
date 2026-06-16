@@ -52,7 +52,7 @@ def arrow(ax, start, end, color="#303030", style="-|>"):
 
 
 def main() -> None:
-    fig, ax = plt.subplots(figsize=(10.2, 6.2))
+    fig, ax = plt.subplots(figsize=(10.2, 5.2))
     ax.set_xlim(0, 1)
     ax.set_ylim(0, 1)
     ax.axis("off")
@@ -76,25 +76,13 @@ def main() -> None:
     arrow(ax, (0.83, 0.52), (0.83, 0.42))
     arrow(ax, (0.50, 0.64), (0.72, 0.34))
 
-    ax.text(
-        0.5,
-        0.95,
-        "Conceptual selection and estimand diagram for aggregate Eurostat monitoring",
-        ha="center",
-        va="center",
-        fontsize=11,
-        fontweight="bold",
+    fig.tight_layout(pad=0.2)
+    fig.savefig(
+        FIGURES / "conceptual_selection_estimand_diagram.pdf",
+        dpi=300,
+        bbox_inches="tight",
+        pad_inches=0.03,
     )
-    ax.text(
-        0.5,
-        0.015,
-        "The diagram organizes non-causal assumptions: missing covariate availability changes the analysis population, so the coefficient is an estimand-dependent summary.",
-        ha="center",
-        va="center",
-        fontsize=8.2,
-    )
-    fig.tight_layout()
-    fig.savefig(FIGURES / "conceptual_selection_estimand_diagram.pdf", dpi=300)
 
 
 if __name__ == "__main__":

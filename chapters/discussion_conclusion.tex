@@ -3,7 +3,7 @@
 
 \section{Main Finding}
 
-The thesis is a reproducible audit of target-population drift in public Eurostat unmet-care panels. Its central finding is not a single poverty/social-exclusion coefficient. The central finding is that aggregate monitoring and modelling conclusions change when the analyst changes indicator definition, denominator, country universe, population weighting, covariate-completeness rules, and missing-data assumptions.
+This thesis is a reproducible audit of target-population drift in public Eurostat unmet-care panels. Its central finding is not a single poverty/social-exclusion coefficient. It is that aggregate monitoring and modelling conclusions change when the analyst changes indicator definition, denominator, country universe, population weighting, covariate-completeness rules, and missing-data assumptions.
 
 The primary case remains informative because it is concrete: the observed \texttt{hlth\_silc\_08} monitoring panel has 608 country-years, while the baseline complete-case fixed-effects stress-test sample has 282 rows. The multi-outcome benchmark shows that this is part of a broader public-data problem. Population-denominator indicators, need-denominator indicators, medical care, dental care, and barrier-specific indicators do not all support the same analytical target.
 
@@ -11,45 +11,60 @@ The primary case remains informative because it is concrete: the observed \textt
 
 The protocol developed in the thesis is not a new estimator. It is a reporting discipline for aggregate public panels. Before interpreting a coefficient, the analyst should define the monitoring target, measure coverage drift, diagnose included-versus-excluded imbalance, compare estimands, stress-test missingness assumptions, and classify the evidence.
 
-\begin{table}[htbp]
+\begin{table}[H]
 \centering
 \scriptsize
 \caption{Target-population drift reporting checklist. The protocol is a structured audit for public aggregate health-monitoring panels and does not introduce a new estimator.}
 \label{tab:target_population_drift_reporting_checklist}
 \input{tables/target_population_drift_reporting_checklist}
+
+\vspace{0.35em}
+\begin{minipage}{0.94\textwidth}
+\scriptsize \textit{Source:} Author's synthesis based on the measurement, missing-data, ecological-inference, and observational-reporting literature reviewed in Chapter~\ref{ch:background_literature} \citep{von_elm_altman_egger_2007_strobe,little_rubin_2019,robinson_1950}.
+\end{minipage}
 \end{table}
 
-Table~\ref{tab:target_population_drift_reporting_checklist} is the reusable output of the thesis. It turns the empirical work into a sequence that another Eurostat aggregate-panel study can apply. The order matters: target definition and monitoring coverage come before regression, while coefficient interpretation comes only after the estimand matrix and simulation stress test.
+Table~\ref{tab:target_population_drift_reporting_checklist} is the reusable reporting output of the thesis. It turns the empirical work into a sequence that another Eurostat aggregate-panel study can apply. The order matters: target definition and monitoring coverage come before regression, while coefficient interpretation comes only after the estimand matrix and simulation stress test.
 
 \section{Failure Modes}
 
 The thesis uses deterministic labels to avoid narrative interpretation of unstable coefficients. A result is not called stable because one table has a favourable sign. It is stable only when the main estimand families agree sufficiently on the IQR-effect scale and have enough empirical support. If the available data cannot support that standard, the result is labelled target-dependent, missingness-dependent, imputation-model-dependent, denominator-dependent, or non-identifiable.
 
-\begin{table}[htbp]
+\begin{table}[H]
 \centering
 \scriptsize
 \caption{Failure modes in public aggregate panels. The labels classify interpretation risk after target definition, attrition, coefficient stability, and simulation diagnostics have been reported.}
 \label{tab:failure_modes_public_aggregate_panels}
 \input{tables/failure_modes_public_aggregate_panels}
+
+\vspace{0.35em}
+\begin{minipage}{0.94\textwidth}
+\scriptsize \textit{Method note:} Labels are deterministic interpretation categories used in the thesis audit. They classify whether the available public aggregate evidence supports a coefficient interpretation after the estimand, attrition, missingness, and denominator diagnostics have been reported.
+\end{minipage}
 \end{table}
 
 These labels are conservative by design. They protect the thesis from treating a selected complete-case coefficient as a general statement about European access barriers. They also prevent imputation from being misread as correction: MI and MNAR analyses are sensitivity designs, and their results remain model-dependent.
 
 \section{Final Classification of Findings}
 
-\begin{table}[htbp]
+\begin{table}[H]
 \centering
 \scriptsize
 \caption{Final classification of Eurostat unmet-care findings. Labels are generated from the outcome-by-estimand matrix and deterministic rules; they summarize whether a poverty/social-exclusion coefficient can be interpreted for each outcome target.}
 \label{tab:final_classification_eurostat_findings}
 \input{tables/final_classification_eurostat_findings}
+
+\vspace{0.35em}
+\begin{minipage}{0.94\textwidth}
+\scriptsize \textit{Method note:} The table summarizes the Chapter~\ref{ch:modeling_strategy_results} coefficient matrix. A non-identifiable label means that too few reliable estimand families are feasible, not that the underlying social gradient is absent.
+\end{minipage}
 \end{table}
 
-Table~\ref{tab:final_classification_eurostat_findings} summarizes the empirical conclusion. Several population-denominator outcomes are target-dependent: the coefficient changes when the target population, weighting rule, or missing-data assumption changes. Need-denominator outcomes are non-identifiable as coefficient targets in this public aggregate setup because too few reliable observed-data estimand families are feasible. The waiting-list population indicator is the most stable in this audit, but it remains an aggregate monitoring result, not an individual-level mechanism.
+Table~\ref{tab:final_classification_eurostat_findings} summarizes the empirical conclusion. Several population-denominator outcomes are target-dependent: the coefficient changes when the target population, weighting rule, or missing-data assumption changes. Need-denominator outcomes are non-identifiable as coefficient targets in this public aggregate setup because too few reliable observed-data estimand families are feasible. The waiting-list population indicator is the most stable in this audit, but it remains an aggregate monitoring result.
 
 \section{What the Simulation Adds}
 
-The semi-synthetic simulation strengthens the audit logic because it creates a reference estimand before deleting covariates. It does not claim to know the coefficient for Europe. It asks a narrower question: when a complete artificial panel is available and Eurostat-style missingness is imposed, how often do complete-case FE, population-weighted FE, IPW, PMM MI, and MNAR-shift MI recover the reference estimand?
+The semi-synthetic simulation strengthens the audit logic because it creates a reference estimand before deleting covariates. It does not claim to know a population coefficient outside the constructed reference panel. It asks a narrower question: when a complete artificial panel is available and Eurostat-style missingness is imposed, how often do complete-case FE, population-weighted FE, IPW, PMM MI, and MNAR-shift MI recover the reference estimand?
 
 The answer is mechanism-dependent. Some missingness patterns leave complete-case FE close to the reference estimand in this panel; other patterns create sign instability, undercoverage, or large model-based imputation movement. The simulation therefore supports the reporting protocol: analysts should report not only a coefficient but also the target drift and missingness mechanism that make the coefficient interpretable or non-identifiable.
 

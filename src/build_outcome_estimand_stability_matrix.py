@@ -382,7 +382,6 @@ def save_plot(results: pd.DataFrame) -> None:
     plt.axvline(0, color="0.25", linewidth=1, linestyle=":")
     plt.xlabel("Poverty/social-exclusion coefficient")
     plt.ylabel("Outcome")
-    plt.title("Outcome-by-estimand coefficient stability")
     plt.legend(title="", fontsize=7, loc="best")
     plt.tight_layout()
     FIGURES.mkdir(parents=True, exist_ok=True)

@@ -317,10 +317,12 @@ def write_compact_latex(
     caption: str,
     label: str,
     align: str,
+    note: str | None = None,
+    placement: str = "htbp",
 ) -> None:
     body = df.copy()
     lines = [
-        r"\begin{table}[htbp]",
+        rf"\begin{{table}}[{placement}]",
         r"\centering",
         r"\small",
         f"\\caption{{{caption}}}",
@@ -332,7 +334,16 @@ def write_compact_latex(
     ]
     for _, row in body.iterrows():
         lines.append(" & ".join(str(row[col]) for col in body.columns) + r" \\")
-    lines.extend([r"\bottomrule", r"\end{tabular}", r"\end{table}", ""])
+    lines.extend([r"\bottomrule", r"\end{tabular}"])
+    if note:
+        lines.extend(
+            [
+                "",
+                r"\vspace{0.2em}",
+                rf"\begin{{minipage}}{{0.92\textwidth}}\scriptsize {note}\end{{minipage}}",
+            ]
+        )
+    lines.extend([r"\end{table}", ""])
     path.write_text("\n".join(lines), encoding="utf-8")
 
 
@@ -637,7 +648,6 @@ def estimand_drift_diagnostic(outcome: pd.DataFrame, panel: pd.DataFrame, model:
     for ax in axes.ravel():
         ax.axvline(2015, color="#333333", linestyle="--", linewidth=0.9)
         ax.grid(axis="y", alpha=0.25)
-    fig.suptitle("Observed monitoring panel versus complete-case analytical panel", y=0.995)
     fig.tight_layout()
     fig.savefig(FIGURES / "descriptive_estimand_drift_diagnostic.pdf", dpi=300)
     plt.close(fig)
@@ -898,7 +908,7 @@ def included_excluded(panel: pd.DataFrame, model: pd.DataFrame) -> None:
             r"\end{tabular}",
             "",
             r"\vspace{0.2em}",
-            r"\begin{minipage}{0.92\textwidth}\scriptsize Notes: Welch tests compare rows included in the baseline complete-case regression with outcome-observed rows excluded because at least one baseline covariate is missing. The table is descriptive and is used as a selection diagnostic.\end{minipage}",
+            r"\begin{minipage}{0.92\textwidth}\scriptsize Notes: Welch tests compare rows included in the baseline complete-case regression with outcome-observed rows excluded because at least one baseline covariate is missing. The table is descriptive and is used as a selection diagnostic. \textit{Source:} Author's calculations from the merged Eurostat panel; exact \(N\) varies because excluded rows can also be missing the variable being compared.\end{minipage}",
             r"\endgroup",
         ]
     )
@@ -947,6 +957,8 @@ def attrition_and_drift_outputs(panel: pd.DataFrame) -> None:
         "Sequential attrition from the outcome-observed monitoring panel to the baseline complete-case FE sample.",
         "tab:complete_case_attrition_waterfall",
         "lrrrrr",
+        r"\textit{Source:} Author's calculations from the merged Eurostat panel. Percentages use the 608 outcome-observed rows as the reference target.",
+        "H",
     )
 
     fig, ax = plt.subplots(figsize=(9.5, 5.2))
@@ -961,7 +973,6 @@ def attrition_and_drift_outputs(panel: pd.DataFrame) -> None:
     ax.set_xticks(range(len(attrition)))
     ax.set_xticklabels(attrition["step"], rotation=25, ha="right")
     ax.set_ylabel("Country-years retained")
-    ax.set_title("Complete-case attrition from monitoring target to analytical panel")
     ax.set_ylim(0, max(attrition["rows"]) * 1.16)
     ax.grid(axis="y", alpha=0.25)
     fig.tight_layout()
@@ -993,17 +1004,18 @@ def attrition_and_drift_outputs(panel: pd.DataFrame) -> None:
 
     country_display = by_country.head(14).copy()
     country_display["Country"] = country_display["geo"]
-    country_display["Group"] = country_display["country_group"]
     country_display["Outcome rows"] = country_display["outcome_rows"].astype(int).astype(str)
     country_display["CC rows"] = country_display["complete_case_rows"].astype(int).astype(str)
     country_display["Rows lost"] = country_display["rows_lost"].astype(int).astype(str)
     country_display["Retained pct"] = country_display["retained_pct"].map(lambda x: fmt_num(x, 1))
     write_compact_latex(
-        country_display[["Country", "Group", "Outcome rows", "CC rows", "Rows lost", "Retained pct"]],
+        country_display[["Country", "Outcome rows", "CC rows", "Rows lost", "Retained pct"]],
         TABLES / "attrition_by_country_top_loss.tex",
         "Countries with the lowest retention from the outcome-observed target to the complete-case FE sample.",
         "tab:attrition_by_country_top_loss",
-        "llrrrr",
+        "lrrrr",
+        r"\textit{Source:} Author's calculations from the merged Eurostat panel. The table reports the lowest country-level retention rates without assigning substantive regional labels.",
+        "H",
     )
 
     by_year = (
@@ -1088,6 +1100,8 @@ def attrition_and_drift_outputs(panel: pd.DataFrame) -> None:
         "Outcome-observed rows retained when requiring complete coverage by covariate block.",
         "tab:attrition_by_covariate_block",
         "lrrrr",
+        r"\textit{Source:} Author's calculations from the merged Eurostat panel. Each row applies one covariate-block completeness requirement to the outcome-observed target; blocks are not cumulative.",
+        "H",
     )
 
     recovery_rows = []
@@ -1117,6 +1131,8 @@ def attrition_and_drift_outputs(panel: pd.DataFrame) -> None:
         "Sample recovery when each baseline covariate is omitted from the complete-case requirement.",
         "tab:leave_one_variable_out_sample_recovery",
         "lrrrr",
+        r"\textit{Source:} Author's calculations from the baseline covariate set. Rows recovered are measured relative to the 282-row complete-case sample.",
+        "H",
     )
 
     smd_vars = [
@@ -1158,6 +1174,8 @@ def attrition_and_drift_outputs(panel: pd.DataFrame) -> None:
         "Standardized mean differences between complete-case rows and excluded outcome-observed rows.",
         "tab:included_vs_excluded_smd",
         "lrrrrr",
+        r"\textit{Source:} Author's calculations from the 608 outcome-observed \texttt{hlth\_silc\_08} rows. SMDs compare the 282 complete cases with rows excluded by missing baseline covariates.",
+        "H",
     )
 
     summary = {
@@ -1475,7 +1493,6 @@ def plot_model_ladder_forest(out: pd.DataFrame) -> None:
     plt.axvline(0, color="#000000", linestyle="--", linewidth=1)
     plt.yticks(y, plot_df["plot_label"], fontsize=8)
     plt.xlabel("Poverty/social-exclusion coefficient (95% CI)")
-    plt.title("Model-ladder stability of the poverty association")
     plt.grid(axis="x", alpha=0.2)
     plt.tight_layout()
     plt.savefig(FIGURES / "model_ladder_coefficient_forest.pdf", dpi=300)
