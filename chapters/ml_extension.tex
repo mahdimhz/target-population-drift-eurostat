@@ -3,13 +3,11 @@
 
 \section{Purpose}
 
-This chapter is a secondary benchmark, not an independent machine-learning contribution. It asks whether the Eurostat country-year panel can predict next-year unmet medical care need using only information available from the previous year. It does not test mechanisms, does not support causal interpretation, and does not reinforce the fixed-effects poverty coefficient.
-
-The prediction task is one-year-ahead forecasting with lagged country-level predictors. This avoids treating same-year GDP, unemployment, poverty, financing, or capacity as if they were known before the outcome year. The task is intentionally modest because the panel is small and country structure is persistent.
+This appendix benchmarks one-year-ahead prediction using lagged country-level predictors. The task is intentionally modest because the panel is small and country structure is persistent.
 
 \section{Persistence Baseline}
 
-The decisive benchmark is simple persistence. Table~\ref{tab:ml_naive_baselines} shows that previous-year unmet need has the lowest held-out test MAE among the naive and statistical baselines. It also beats the flexible machine-learning models reported in Table~\ref{tab:ml_model_performance_full}. The prediction result is therefore negative: flexible ML does not add convincing one-year-ahead predictive value beyond last year's outcome.
+The decisive benchmark is simple persistence. Table~\ref{tab:ml_naive_baselines} shows that previous-year unmet need has the lowest held-out test MAE among the naive and statistical baselines and beats the flexible models in Table~\ref{tab:ml_model_performance_full}.
 
 \begin{table}[H]
 \centering
@@ -29,7 +27,7 @@ The decisive benchmark is simple persistence. Table~\ref{tab:ml_naive_baselines}
 
 \section{Validation Checks}
 
-The evaluation uses temporal train/test separation, expanding-window validation, bootstrap intervals for held-out MAE, and blocked country-holdout validation. These checks are retained to document validation discipline, not to promote a model ranking. Country-holdout validation is especially important because aggregate predictors can encode persistent country identity rather than transferable structure.
+The evaluation uses temporal train/test separation, expanding-window validation, bootstrap intervals for held-out MAE, and blocked country-holdout validation. Country-holdout validation is especially important because aggregate predictors can encode persistent country identity rather than transferable structure.
 
 \begin{table}[H]
 \centering
@@ -39,8 +37,6 @@ The evaluation uses temporal train/test separation, expanding-window validation,
 \input{tables/ml_country_holdout_summary}
 \end{table}
 
-Hyperparameter grids and limited tree-inspection outputs are kept only as reproducibility diagnostics. They are not interpreted as evidence that poverty, financing, unemployment, or health-system capacity identifies a substantive access mechanism.
-
 \section{Interpretation}
 
-The predictive extension supports caution rather than algorithmic contribution. Open Eurostat indicators contain next-year predictive signal, but simple persistence is the strongest benchmark in the held-out test. In this small aggregate panel, flexible machine learning does not provide independent substantive evidence beyond the estimand-sensitivity analysis in Chapter~\ref{ch:modeling_strategy_results}.
+Open Eurostat indicators contain next-year predictive signal, but simple persistence is the strongest benchmark in the held-out test. Flexible machine learning therefore remains appendix-level validation evidence rather than an independent thesis contribution.

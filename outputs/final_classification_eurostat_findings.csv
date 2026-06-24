@@ -1,8 +1,8 @@
-finding,denominator,estimand_families,theta_IQR,directional_agreement,CSI,final_label,evidence_basis,interpretation
-Dental population,population,5,0.076894138670748,0.8,0.2310586132925198,missingness-dependent,CSI=0.231; theta IQR=0.077; dir. agreement=0.800; CC--MI gap=0.365,Covariate missingness drives the substantive interpretation.
-Medical cost,population,5,0.4660835997318585,1.0,0.0,missingness-dependent,CSI=0.000; theta IQR=0.466; dir. agreement=1.000; CC--MI gap=1.037,Covariate missingness drives the substantive interpretation.
-Medical distance,population,5,0.1868077164374023,1.0,0.0,missingness-dependent,CSI=0.000; theta IQR=0.187; dir. agreement=1.000; CC--MI gap=0.225,Covariate missingness drives the substantive interpretation.
-Medical population,population,5,0.1053347813029839,0.8,0.0,missingness-dependent,CSI=0.000; theta IQR=0.105; dir. agreement=0.800; CC--MI gap=0.512,Covariate missingness drives the substantive interpretation.
-Medical waiting,population,5,0.0409548296798368,1.0,0.5904517032016312,target-dependent,CSI=0.590; theta IQR=0.041; dir. agreement=1.000; CSI=0.590 and dir. agree=1.000,"Interpretation changes with target population, weighting, or missing-data assumptions."
-Dental need,same_needs,1,,,,non-identifiable,not computed; fewer than 2 feasible estimand families,Available public aggregate data do not support a coefficient interpretation.
-Medical need,same_needs,1,,,,non-identifiable,not computed; fewer than 2 feasible estimand families,Available public aggregate data do not support a coefficient interpretation.
+finding,denominator,estimand_families,theta_IQR,directional_agreement,CSI,final_label,secondary_flag,secondary_evidence,evidence_basis,interpretation
+Dental population,population,5,0.076894138670748,0.8,0.2310586132925198,missingness-dependent,none,none,CSI=0.231; theta IQR=0.077; dir. agreement=0.800; CC--MI gap=0.365,Covariate missingness drives the substantive interpretation.
+Medical cost,population,5,0.4660835997318585,1.0,0.0,missingness-dependent,none,none,CSI=0.000; theta IQR=0.466; dir. agreement=1.000; CC--MI gap=1.037,Covariate missingness drives the substantive interpretation.
+Medical distance,population,5,0.1868077164374023,1.0,0.0,missingness-dependent,none,none,CSI=0.000; theta IQR=0.187; dir. agreement=1.000; CC--MI gap=0.225,Covariate missingness drives the substantive interpretation.
+Medical population,population,5,0.1053347813029839,0.8,0.0,missingness-dependent,MI-variant disagreement,MI variant coefficient signs differ; MI variant zero-exclusion differs; MI variant coefficient range=0.299,CSI=0.000; theta IQR=0.105; dir. agreement=0.800; CC--MI gap=0.512,Covariate missingness drives the substantive interpretation.
+Medical waiting,population,5,0.0409548296798368,1.0,0.5904517032016312,target-dependent,none,none,CSI=0.590; theta IQR=0.041; dir. agreement=1.000,"Interpretation changes with target population, weighting, or missing-data assumptions."
+Dental need,same_needs,1,,,,non-identifiable,none,none,not computed; fewer than 2 feasible estimand families,Available public aggregate data do not support a coefficient interpretation.
+Medical need,same_needs,1,,,,non-identifiable,none,none,not computed; fewer than 2 feasible estimand families,Available public aggregate data do not support a coefficient interpretation.

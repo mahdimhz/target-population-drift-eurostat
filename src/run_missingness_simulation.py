@@ -59,6 +59,22 @@ ESTIMATORS = [
     "pmm_mi_fe",
     "mnar_shift_mi_fe",
 ]
+MECHANISM_LABELS = {
+    "mcar": "MCAR",
+    "early_year": "Early-year",
+    "country_group": "Country group",
+    "covariate_block": "Covariate block",
+    "mar_observed": "MAR observed",
+    "mnar_high_poverty_unmet": "MNAR high-pov./unmet",
+    "eurostat_realistic": "Eurostat-realistic",
+}
+ESTIMATOR_LABELS = {
+    "complete_case_fe": "CC FE",
+    "population_weighted_fe": "Pop.-weighted FE",
+    "ipw_fe": "IPW FE",
+    "pmm_mi_fe": "PMM MI",
+    "mnar_shift_mi_fe": "MNAR-shift MI",
+}
 
 
 def _latex_escape(value: object) -> str:
@@ -507,9 +523,11 @@ def write_tables(summary: pd.DataFrame, sign: pd.DataFrame, coverage: pd.DataFra
     main = summary.merge(sign, on=["mechanism", "estimator"], how="left").merge(coverage, on=["mechanism", "estimator"], how="left")
     main = main.merge(wrong, on=["mechanism", "estimator"], how="left")
     main_display = main[main["estimator"].isin(["complete_case_fe", "pmm_mi_fe", "mnar_shift_mi_fe"])].copy()
+    main_display["mechanism_label"] = main_display["mechanism"].map(MECHANISM_LABELS).fillna(main_display["mechanism"])
+    main_display["estimator_label"] = main_display["estimator"].map(ESTIMATOR_LABELS).fillna(main_display["estimator"])
     _write_tabular(
         main_display,
-        ["mechanism", "estimator", "mean_bias", "median_absolute_error", "sign_reversal_rate", "ci_coverage_rate", "wrong_conclusion_rate"],
+        ["mechanism_label", "estimator_label", "mean_bias", "median_absolute_error", "sign_reversal_rate", "ci_coverage_rate", "wrong_conclusion_rate"],
         ["Mechanism", "Estimator", "Mean bias", "Med. abs. error", "Sign rev.", "CI cov.", "Wrong concl."],
         TABLES / "simulation_main_summary.tex",
         r"p{0.19\linewidth}p{0.18\linewidth}rrrrr",
@@ -582,6 +600,13 @@ def save_figures(results: pd.DataFrame, summary: pd.DataFrame) -> None:
     plt.savefig(FIGURES / "simulation_target_distance_vs_error.pdf")
     plt.close()
 
+    tdi_summary_for_combined = pd.DataFrame()
+    wrong_by_bin_for_combined = pd.DataFrame()
+    estimator_order_for_combined: list[str] = []
+    mechanism_order_for_combined: list[str] = []
+    palette_for_combined: dict[str, object] = {}
+    markers_for_combined: dict[str, str] = {}
+
     tdi_plot = estimated.dropna(subset=["TDI", "abs_error"]).copy()
     if not tdi_plot.empty:
         from matplotlib.lines import Line2D
@@ -599,6 +624,11 @@ def save_figures(results: pd.DataFrame, summary: pd.DataFrame) -> None:
         palette = dict(zip(estimator_order, sns.color_palette("tab10", n_colors=len(estimator_order))))
         marker_values = ["o", "s", "D", "^", "P", "X", "*", "v", "<", ">"]
         markers = dict(zip(mechanism_order, marker_values[: len(mechanism_order)]))
+        tdi_summary_for_combined = tdi_summary.copy()
+        estimator_order_for_combined = estimator_order
+        mechanism_order_for_combined = mechanism_order
+        palette_for_combined = palette
+        markers_for_combined = markers
 
         fig, ax = plt.subplots(figsize=(7.2, 5.8))
         ax = sns.scatterplot(
@@ -693,6 +723,7 @@ def save_figures(results: pd.DataFrame, summary: pd.DataFrame) -> None:
             .reset_index()
         )
         wrong_by_bin["estimator_label"] = wrong_by_bin["estimator"].map(estimator_labels).fillna(wrong_by_bin["estimator"])
+        wrong_by_bin_for_combined = wrong_by_bin.copy()
         plt.figure(figsize=(7.2, 4.6))
         ax = sns.barplot(
             data=wrong_by_bin,
@@ -724,6 +755,82 @@ def save_figures(results: pd.DataFrame, summary: pd.DataFrame) -> None:
         plt.savefig(FIGURES / "simulation_wrong_conclusion_by_tdi.png", dpi=300, bbox_inches="tight")
         plt.close()
 
+    if not tdi_summary_for_combined.empty and not wrong_by_bin_for_combined.empty:
+        fig, axes = plt.subplots(1, 2, figsize=(11.4, 4.8), gridspec_kw={"width_ratios": [1.05, 1]})
+        sns.scatterplot(
+            data=tdi_summary_for_combined,
+            x="mean_TDI",
+            y="median_absolute_error",
+            hue="estimator_label",
+            style="mechanism_label",
+            hue_order=estimator_order_for_combined,
+            style_order=mechanism_order_for_combined,
+            palette=palette_for_combined,
+            markers=markers_for_combined,
+            s=74,
+            alpha=0.92,
+            edgecolor="0.2",
+            linewidth=0.4,
+            legend=False,
+            ax=axes[0],
+        )
+        axes[0].grid(True, color="0.88", linewidth=0.7)
+        axes[0].set_title("A. TDI and coefficient error", fontsize=10.5)
+        axes[0].set_xlabel("Mean TDI")
+        axes[0].set_ylabel("Median absolute coefficient error")
+        axes[0].set_xlim(left=-0.01)
+        axes[0].set_ylim(bottom=-0.01)
+
+        sns.barplot(
+            data=wrong_by_bin_for_combined,
+            x="TDI_bin",
+            y="wrong_conclusion",
+            hue="estimator_label",
+            hue_order=estimator_order_for_combined,
+            edgecolor="0.25",
+            linewidth=0.35,
+            ax=axes[1],
+        )
+        axes[1].grid(axis="y", color="0.88", linewidth=0.6)
+        axes[1].set_title("B. Wrong conclusions by TDI bin", fontsize=10.5)
+        axes[1].set_xlabel("TDI bin")
+        axes[1].set_ylabel("Wrong-conclusion probability")
+        y_max = min(1.0, max(0.25, float(wrong_by_bin_for_combined["wrong_conclusion"].max()) + 0.05))
+        axes[1].set_ylim(0, y_max)
+        axes[1].tick_params(axis="x", labelrotation=20)
+        axes[1].get_legend().remove()
+
+        from matplotlib.lines import Line2D
+
+        estimator_handles = [
+            Line2D(
+                [0],
+                [0],
+                marker="o",
+                color="white",
+                label=label,
+                markerfacecolor=palette_for_combined[label],
+                markeredgecolor="0.25",
+                markersize=7.8,
+                linestyle="None",
+            )
+            for label in estimator_order_for_combined
+        ]
+        fig.legend(
+            handles=estimator_handles,
+            title="Estimator",
+            fontsize=7.8,
+            title_fontsize=8.5,
+            ncol=5,
+            loc="lower center",
+            bbox_to_anchor=(0.5, -0.01),
+            frameon=False,
+        )
+        fig.tight_layout(rect=[0, 0.10, 1, 1])
+        fig.savefig(FIGURES / "simulation_tdi_validation_combined.pdf", bbox_inches="tight", pad_inches=0.08)
+        fig.savefig(FIGURES / "simulation_tdi_validation_combined.png", dpi=300, bbox_inches="tight", pad_inches=0.08)
+        plt.close()
+
 
 def update_generation_map() -> None:
     map_path = OUTPUTS / "table_figure_generation_map.csv"
@@ -739,12 +846,26 @@ def update_generation_map() -> None:
             {
                 "chapter_or_use": "chapters/modeling_strategy_results.tex",
                 "output_type": "figure",
+                "output_file": "figures/simulation_tdi_validation_combined.pdf",
+                "script": "src/run_missingness_simulation.py",
+                "input_file": "data/processed/panel_features_v2-3.csv",
+            },
+            {
+                "chapter_or_use": "outputs",
+                "output_type": "figure",
+                "output_file": "figures/simulation_bias_by_mechanism.pdf",
+                "script": "src/run_missingness_simulation.py",
+                "input_file": "data/processed/panel_features_v2-3.csv",
+            },
+            {
+                "chapter_or_use": "outputs",
+                "output_type": "figure",
                 "output_file": "figures/simulation_tdi_vs_error.pdf",
                 "script": "src/run_missingness_simulation.py",
                 "input_file": "data/processed/panel_features_v2-3.csv",
             },
             {
-                "chapter_or_use": "chapters/modeling_strategy_results.tex",
+                "chapter_or_use": "outputs",
                 "output_type": "figure",
                 "output_file": "figures/simulation_wrong_conclusion_by_tdi.pdf",
                 "script": "src/run_missingness_simulation.py",

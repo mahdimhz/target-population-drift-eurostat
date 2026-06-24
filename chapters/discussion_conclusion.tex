@@ -9,7 +9,7 @@ The primary case remains informative because it is concrete: the observed \textt
 
 \section{Reporting Protocol}
 
-The protocol developed in the thesis is not a new estimator. It is a reporting discipline for aggregate public panels. Before interpreting a coefficient, the analyst should define the monitoring target, measure coverage drift, diagnose included-versus-excluded imbalance, compare estimands, stress-test missingness assumptions, and classify the evidence.
+The protocol is a reporting discipline for aggregate public panels: define the monitoring target, measure coverage drift, diagnose included-versus-excluded imbalance, compare estimands, stress-test missingness assumptions, and classify the evidence before interpreting a coefficient.
 
 \begin{table}[H]
 \centering
@@ -24,11 +24,9 @@ The protocol developed in the thesis is not a new estimator. It is a reporting d
 \end{minipage}
 \end{table}
 
-Table~\ref{tab:target_population_drift_reporting_checklist} is the reusable reporting output of the thesis. It turns the empirical work into a sequence that another Eurostat aggregate-panel study can apply. The order matters: target definition and monitoring coverage come before regression, while coefficient interpretation comes only after the estimand matrix and simulation stress test.
-
 \section{Failure Modes}
 
-The thesis uses deterministic labels to avoid narrative interpretation of unstable coefficients. A result is not called stable because one table has a favourable sign. It is stable only when the main estimand families agree sufficiently on the IQR-effect scale and have enough empirical support. If the available data cannot support that standard, the result is labelled target-dependent, missingness-dependent, imputation-model-dependent, denominator-dependent, or non-identifiable.
+The thesis uses deterministic labels to avoid narrative interpretation of unstable coefficients. A result is stable only when the main estimand families agree sufficiently on the IQR-effect scale and have enough empirical support. Otherwise it is labelled target-dependent, missingness-dependent, imputation-model-dependent, denominator-dependent, or non-identifiable.
 
 \begin{table}[H]
 \centering
@@ -43,14 +41,12 @@ The thesis uses deterministic labels to avoid narrative interpretation of unstab
 \end{minipage}
 \end{table}
 
-These labels are conservative by design. They protect the thesis from treating a selected complete-case coefficient as a general statement about European access barriers. They also prevent imputation from being misread as correction: MI and MNAR analyses are sensitivity designs, and their results remain model-dependent.
-
 \section{Final Classification of Findings}
 
 \begin{table}[H]
 \centering
 \scriptsize
-\caption{Final classification of Eurostat unmet-care findings. Labels are generated from the drift-stability summary and deterministic rules; they summarize whether a poverty/social-exclusion coefficient can be interpreted for each outcome target.}
+\caption{Final classification of Eurostat unmet-care findings. Labels are generated from the drift-stability summary and deterministic rules; the table reports the primary classification used for interpretation.}
 \label{tab:final_classification_eurostat_findings}
 \input{tables/final_classification_eurostat_findings}
 
@@ -60,25 +56,21 @@ These labels are conservative by design. They protect the thesis from treating a
 \end{minipage}
 \end{table}
 
-Table~\ref{tab:final_classification_eurostat_findings} summarizes the empirical conclusion from the rule-based drift-stability framework. Many population-denominator poverty/social-exclusion coefficients are missingness-dependent because complete-case or IPW estimates and MAR full-target estimates disagree enough to change the coefficient interpretation. Need-denominator outcomes are non-identifiable as coefficient targets in this public aggregate setup because too few estimand families are feasible. Target-dependent labels are reserved for outcomes where the generated matrix shows material movement across weighting or target restrictions under the tolerance rule. Stable would mean cautious aggregate interpretation is supportable under that rule, not that an individual-level mechanism has been identified.
+Table~\ref{tab:final_classification_eurostat_findings} summarizes the empirical conclusion from the rule-based drift-stability framework. Many population-denominator poverty/social-exclusion coefficients are missingness-dependent because complete-case or IPW estimates and MAR full-target estimates disagree enough to change the coefficient interpretation. Need-denominator outcomes are non-identifiable as coefficient targets because too few estimand families are feasible. Target-dependent labels are reserved for outcomes where the generated matrix shows material movement across weighting or target restrictions under the tolerance rule.
+
+The primary label records the dominant deterministic failure mode under the declared rules; secondary flags record additional instability visible in the sensitivity matrix. The detailed secondary-flag output is stored in \texttt{outputs/mi\_variant\_secondary\_flags.csv}; in the generated results, only the medical population-denominator finding receives the secondary flag \emph{MI-variant disagreement}.
 
 \section{What the Simulation Adds}
 
-The semi-synthetic simulation strengthens the audit logic because it creates a reference estimand before deleting covariates. It does not claim to know a population coefficient outside the constructed reference panel. It asks a narrower question: when a complete artificial panel is available and Eurostat-style missingness is imposed, how often do complete-case FE, population-weighted FE, IPW, PMM MI, and MNAR-shift MI recover the reference estimand?
-
-The answer is mechanism-dependent. Some missingness patterns leave complete-case FE close to the reference estimand in this panel; other patterns create sign instability, undercoverage, or large model-based imputation movement. The simulation therefore supports the reporting protocol: analysts should report not only a coefficient but also the target drift and missingness mechanism that make the coefficient interpretable or non-identifiable.
+The semi-synthetic simulation strengthens the audit logic by defining a reference estimand before deleting covariates. Some missingness patterns leave complete-case FE close to the reference estimand, while others create sign instability, undercoverage, or large model-based imputation movement. The simulation therefore supports reporting target drift and missingness mechanism alongside any coefficient.
 
 \section{Secondary Evidence}
 
-Prediction is deliberately appendix-level evidence. The one-year-ahead benchmark shows that previous-year persistence is difficult to beat and that flexible models do not add convincing predictive value in this small aggregate panel. This supports cautious validation practice, but it is not a main thesis contribution.
-
-Citizenship, convergence, bivariate scatterplots, and long model ladders are also supporting material. They may provide useful context, but they do not define the thesis contribution. The thesis is strongest when every result serves the target-population drift audit.
+Prediction, citizenship, convergence, bivariate scatterplots, and long model ladders are deliberately appendix-level evidence. They provide context, but they do not define the thesis contribution.
 
 \section{Limits}
 
-The thesis remains aggregate, associational, and public-data-based. Country-year averages cannot identify individual mechanisms, within-country inequalities, or intervention effects. Self-reported unmet care depends on perceived need, expectations, survey wording, and denominator definition. Population weighting changes the estimand from average country to average resident; it does not automatically improve the estimate. Complete-case, IPW, MAR MI, and MNAR analyses each require assumptions that are only partly testable from public aggregate data.
-
-The main limitation is also the reason the thesis is useful: public monitoring panels are incomplete, and incompleteness changes interpretation. The thesis does not remove that problem. It makes the problem visible and reportable.
+The thesis remains aggregate, associational, and public-data-based. Country-year averages cannot identify individual mechanisms, within-country inequalities, or intervention effects. Self-reported unmet care depends on perceived need, expectations, survey wording, and denominator definition. Complete-case, IPW, MAR MI, and MNAR analyses require assumptions that are only partly testable from public aggregate data.
 
 \section{Conclusion}
 

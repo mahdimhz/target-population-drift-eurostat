@@ -62,12 +62,66 @@ def _format_float(value: object, digits: int = 3) -> str:
 def _evidence_basis(row: pd.Series) -> str:
     if row["final_label"] == "non-identifiable" and pd.isna(row["CSI"]):
         return "not computed; fewer than 2 feasible estimand families"
-    return (
+    base = (
         f"CSI={float(row['CSI']):.3f}; "
         f"theta IQR={float(row['theta_IQR']):.3f}; "
-        f"dir. agreement={float(row['directional_agreement']):.3f}; "
-        f"{row['rule_reason_short']}"
+        f"dir. agreement={float(row['directional_agreement']):.3f}"
     )
+    rule_reason = str(row["rule_reason_short"])
+    if rule_reason.startswith("CSI="):
+        return base
+    return f"{base}; {rule_reason}"
+
+
+def _mi_variant_secondary_flags() -> pd.DataFrame:
+    """Return secondary imputation flags from generated MI variant diagnostics.
+
+    The available MI variant diagnostics are for the primary medical
+    population-denominator outcome. The flag is secondary: it records additional
+    MI-model instability without replacing the deterministic primary label.
+    """
+    path = OUTPUTS / "mi_variant_summary.csv"
+    columns = ["finding", "secondary_flag", "secondary_evidence"]
+    if not path.exists():
+        return pd.DataFrame(columns=columns)
+
+    mi = pd.read_csv(path)
+    required = {"coef", "se", "variant"}
+    if not required.issubset(mi.columns):
+        return pd.DataFrame(columns=columns)
+
+    estimated = mi.dropna(subset=["coef", "se"]).copy()
+    if len(estimated) < 2:
+        return pd.DataFrame(columns=columns)
+
+    estimated["ci_low"] = estimated["coef"] - 1.96 * estimated["se"]
+    estimated["ci_high"] = estimated["coef"] + 1.96 * estimated["se"]
+    estimated["sign"] = estimated["coef"].map(lambda value: "positive" if value > 0 else "negative" if value < 0 else "zero")
+    estimated["excludes_zero"] = (estimated["ci_low"] > 0) | (estimated["ci_high"] < 0)
+
+    reasons: list[str] = []
+    if estimated["sign"].nunique() > 1:
+        reasons.append("MI variant coefficient signs differ")
+    if estimated["excludes_zero"].nunique() > 1:
+        reasons.append("MI variant zero-exclusion differs")
+    coef_range = float(estimated["coef"].max() - estimated["coef"].min())
+    if coef_range >= 0.10:
+        reasons.append(f"MI variant coefficient range={coef_range:.3f}")
+
+    if not reasons:
+        return pd.DataFrame(columns=columns)
+
+    out = pd.DataFrame(
+        [
+            {
+                "finding": "Medical population",
+                "secondary_flag": "MI-variant disagreement",
+                "secondary_evidence": "; ".join(reasons),
+            }
+        ]
+    )
+    out.to_csv(OUTPUTS / "mi_variant_secondary_flags.csv", index=False)
+    return out
 
 
 def build_checklist() -> pd.DataFrame:
@@ -174,6 +228,14 @@ def build_final_classification() -> pd.DataFrame:
         }
     ).copy()
     classifications["evidence_basis"] = classifications.apply(_evidence_basis, axis=1)
+    classifications["secondary_flag"] = "none"
+    classifications["secondary_evidence"] = "none"
+    secondary = _mi_variant_secondary_flags()
+    if not secondary.empty:
+        classifications = classifications.merge(secondary, on="finding", how="left", suffixes=("", "_generated"))
+        classifications["secondary_flag"] = classifications["secondary_flag_generated"].fillna(classifications["secondary_flag"])
+        classifications["secondary_evidence"] = classifications["secondary_evidence_generated"].fillna(classifications["secondary_evidence"])
+        classifications = classifications.drop(columns=["secondary_flag_generated", "secondary_evidence_generated"])
     classifications["interpretation"] = classifications["final_label"].map(
         {
             "stable": "Observed estimands are sufficiently aligned for cautious aggregate interpretation.",
@@ -193,6 +255,8 @@ def build_final_classification() -> pd.DataFrame:
             "directional_agreement",
             "CSI",
             "final_label",
+            "secondary_flag",
+            "secondary_evidence",
             "evidence_basis",
             "interpretation",
         ]
@@ -203,7 +267,16 @@ def build_final_classification() -> pd.DataFrame:
         display[column] = display[column].map(_format_float)
     write_tabularx(
         display,
-        ["finding", "denominator", "estimand_families", "theta_IQR", "directional_agreement", "CSI", "final_label", "evidence_basis"],
+        [
+            "finding",
+            "denominator",
+            "estimand_families",
+            "theta_IQR",
+            "directional_agreement",
+            "CSI",
+            "final_label",
+            "evidence_basis",
+        ],
         ["Finding", "Denom.", "Families", "$\\theta$ IQR", "Dir. agree", "CSI", "Final label", "Evidence basis"],
         TABLES / "final_classification_eurostat_findings.tex",
         r"@{}p{0.14\linewidth}p{0.08\linewidth}rrrrp{0.16\linewidth}Y@{}",

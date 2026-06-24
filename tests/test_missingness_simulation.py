@@ -24,6 +24,7 @@ def test_simulation_outputs_exist_and_are_nonempty() -> None:
         ROOT / "figures" / "simulation_target_distance_vs_error.pdf",
         ROOT / "figures" / "simulation_tdi_vs_error.pdf",
         ROOT / "figures" / "simulation_wrong_conclusion_by_tdi.pdf",
+        ROOT / "figures" / "simulation_tdi_validation_combined.pdf",
     ]
     missing = [path.as_posix() for path in required if not path.exists() or path.stat().st_size == 0]
     assert not missing
@@ -100,3 +101,15 @@ def test_simulation_validation_summary_has_required_schema() -> None:
     assert list(summary.columns) == required
     assert summary["number_of_successful_replicates"].ge(0).all()
     assert summary["number_of_failed_replicates"].ge(0).all()
+
+
+def test_simulation_main_table_uses_readable_labels() -> None:
+    table = (ROOT / "tables" / "simulation_main_summary.tex").read_text(encoding="utf-8")
+    assert "MNAR high-pov./unmet" in table
+    assert "CC FE" in table
+    assert "PMM MI" in table
+    assert "MNAR-shift MI" in table
+    assert "mnar\\_high\\_poverty\\_unmet" not in table
+    assert "complete\\_case\\_fe" not in table
+    assert "pmm\\_mi\\_fe" not in table
+    assert "mnar\\_shift\\_mi\\_fe" not in table

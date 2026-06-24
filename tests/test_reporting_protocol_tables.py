@@ -51,6 +51,8 @@ def test_final_classification_reports_stability_metrics_not_only_counts() -> Non
         "directional_agreement",
         "CSI",
         "final_label",
+        "secondary_flag",
+        "secondary_evidence",
         "evidence_basis",
     }
     assert required.issubset(final.columns)
@@ -65,3 +67,52 @@ def test_final_classification_reports_stability_metrics_not_only_counts() -> Non
     assert non_identifiable["directional_agreement"].isna().all()
     assert non_identifiable["evidence_basis"].eq("not computed; fewer than 2 feasible estimand families").all()
     assert not non_identifiable["evidence_basis"].str.contains("CSI=1.000", regex=False).any()
+
+
+def test_final_classification_primary_labels_are_not_replaced_by_secondary_flags() -> None:
+    final = pd.read_csv(ROOT / "outputs" / "final_classification_eurostat_findings.csv")
+    expected = {
+        "Dental population": "missingness-dependent",
+        "Medical cost": "missingness-dependent",
+        "Medical distance": "missingness-dependent",
+        "Medical population": "missingness-dependent",
+        "Medical waiting": "target-dependent",
+        "Dental need": "non-identifiable",
+        "Medical need": "non-identifiable",
+    }
+    observed = dict(zip(final["finding"], final["final_label"]))
+    assert observed == expected
+    assert set(final["secondary_flag"]).issubset({"none", "MI-variant disagreement"})
+
+
+def test_mi_variant_disagreement_is_secondary_for_primary_medical_outcome() -> None:
+    final = pd.read_csv(ROOT / "outputs" / "final_classification_eurostat_findings.csv")
+    flagged = final[final["secondary_flag"].eq("MI-variant disagreement")]
+    assert flagged["finding"].tolist() == ["Medical population"]
+    row = flagged.iloc[0]
+    assert row["final_label"] == "missingness-dependent"
+    assert "MI variant coefficient signs differ" in row["secondary_evidence"]
+    assert "MI variant zero-exclusion differs" in row["secondary_evidence"]
+    assert "MI variant coefficient range=" in row["secondary_evidence"]
+
+
+def test_mi_variant_secondary_flags_output_exists() -> None:
+    flags = pd.read_csv(ROOT / "outputs" / "mi_variant_secondary_flags.csv")
+    assert set(flags.columns) == {"finding", "secondary_flag", "secondary_evidence"}
+    assert flags["secondary_flag"].eq("MI-variant disagreement").all()
+
+
+def test_final_classification_table_and_text_do_not_contradict_secondary_flags() -> None:
+    table = (ROOT / "tables" / "final_classification_eurostat_findings.tex").read_text(encoding="utf-8")
+    chapter = (ROOT / "chapters" / "discussion_conclusion.tex").read_text(encoding="utf-8")
+    table_shows_secondary = "Secondary flag" in table
+    text_points_to_output = "outputs/mi\\_variant\\_secondary\\_flags.csv" in chapter
+    assert table_shows_secondary or text_points_to_output
+
+
+def test_medical_waiting_evidence_basis_is_not_duplicated() -> None:
+    table = (ROOT / "tables" / "final_classification_eurostat_findings.tex").read_text(encoding="utf-8")
+    medical_waiting_line = next(line for line in table.splitlines() if line.startswith("Medical waiting"))
+    assert medical_waiting_line.count("CSI=0.590") == 1
+    assert "theta IQR=0.041" in medical_waiting_line
+    assert "dir. agreement=1.000" in medical_waiting_line

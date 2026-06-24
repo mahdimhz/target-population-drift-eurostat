@@ -54,10 +54,13 @@ def test_drift_stability_builder_outputs_expected_files() -> None:
         ROOT / "outputs" / "conclusion_stability.csv",
         ROOT / "outputs" / "drift_stability_theta.csv",
         ROOT / "outputs" / "drift_stability_summary.csv",
+        ROOT / "outputs" / "framework_parameter_sensitivity.csv",
+        ROOT / "outputs" / "framework_parameter_sensitivity_summary.csv",
         ROOT / "tables" / "formal_estimand_components.tex",
         ROOT / "tables" / "target_drift_components.tex",
         ROOT / "tables" / "conclusion_stability.tex",
         ROOT / "tables" / "drift_stability_summary.tex",
+        ROOT / "tables" / "framework_parameter_sensitivity_summary.tex",
         ROOT / "figures" / "drift_stability_map.pdf",
         ROOT / "figures" / "target_drift_components_heatmap.pdf",
         ROOT / "figures" / "conclusion_stability_by_outcome.pdf",
@@ -118,3 +121,17 @@ def test_non_identifiable_outcomes_do_not_report_stability_metrics() -> None:
     assert non_identifiable["directional_agreement"].isna().all()
     assert non_identifiable["CSI"].isna().all()
     assert set(non_identifiable["rule_reason"]) == {"fewer than 2 feasible estimand families"}
+
+
+def test_framework_parameter_sensitivity_reports_declared_deltas_and_tdi_weights() -> None:
+    sensitivity = pd.read_csv(ROOT / "outputs" / "framework_parameter_sensitivity.csv")
+    summary = pd.read_csv(ROOT / "outputs" / "framework_parameter_sensitivity_summary.csv")
+    for suffix in ["0_05", "0_10", "0_15", "0_20"]:
+        assert f"delta_{suffix}_label" in sensitivity.columns
+        assert f"delta_{suffix}_CSI" in sensitivity.columns
+        assert f"delta_{suffix}_label" in summary.columns
+    for scheme in ["equal", "support_focused", "balance_focused"]:
+        assert f"median_TDI_{scheme}_min" in sensitivity.columns
+        assert f"median_TDI_{scheme}_max" in sensitivity.columns
+    assert set(summary["tdi_weighting_label_changed"]) <= {"Yes", "No"}
+    assert "No" in set(summary["tdi_weighting_label_changed"])

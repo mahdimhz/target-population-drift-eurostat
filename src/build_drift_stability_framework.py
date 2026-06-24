@@ -13,6 +13,7 @@ import seaborn as sns
 from sklearn.linear_model import LogisticRegression
 
 from eurodrift.drift import (
+    DriftWeights,
     average_absolute_smd,
     conclusion_stability_index,
     directional_agreement,
@@ -42,6 +43,12 @@ BASELINE_COVARS = [
 ]
 DRIFT_BALANCE_COVARS = BASELINE_COVARS
 CSI_DELTA = 0.10
+CSI_SENSITIVITY_DELTAS = [0.05, 0.10, 0.15, 0.20]
+TDI_WEIGHT_SCHEMES = {
+    "equal": DriftWeights(),
+    "support_focused": DriftWeights(row=2.0, country=2.0, year=2.0, weight=1.0, balance=1.0),
+    "balance_focused": DriftWeights(row=1.0, country=1.0, year=1.0, weight=1.0, balance=3.0),
+}
 
 
 ESTIMAND_METADATA = {
@@ -349,23 +356,27 @@ def build_tables(panel: pd.DataFrame, matrix: pd.DataFrame) -> tuple[pd.DataFram
     return pd.DataFrame(component_rows), pd.DataFrame(drift_rows), pd.DataFrame(stability_rows), theta_df
 
 
-def classify_stability_from_theta(estimated: pd.DataFrame, csi: float, agreement: float) -> tuple[str, str]:
+def classify_stability_from_theta_delta(estimated: pd.DataFrame, csi: float, agreement: float, delta: float) -> tuple[str, str]:
     if estimated["family"].nunique() < 2:
         return "non-identifiable", "fewer than 2 feasible estimand families"
     complete = estimated[estimated["family"].eq("complete-case")]
     mi = estimated[estimated["family"].eq("mi")]
     if not complete.empty and not mi.empty:
         gap = abs(float(complete["theta"].iloc[0]) - float(mi["theta"].iloc[0]))
-        if gap > CSI_DELTA:
+        if gap > delta:
             return "missingness-dependent", f"complete-case and MAR MI theta differ by {gap:.3f}"
     observed = estimated[~estimated["family"].eq("mi")]
     if len(observed) >= 2:
         observed_range = float(observed["theta"].max() - observed["theta"].min())
-        if observed_range > CSI_DELTA:
+        if observed_range > delta:
             return "target-dependent", f"observed-data theta range is {observed_range:.3f}"
     if pd.notna(csi) and pd.notna(agreement) and csi >= 0.75 and agreement >= 0.80:
         return "stable", f"CSI={csi:.3f} and directional agreement={agreement:.3f}"
     return "target-dependent", f"CSI={csi:.3f} and directional agreement={agreement:.3f}"
+
+
+def classify_stability_from_theta(estimated: pd.DataFrame, csi: float, agreement: float) -> tuple[str, str]:
+    return classify_stability_from_theta_delta(estimated, csi, agreement, CSI_DELTA)
 
 
 def build_drift_stability_summary(stability: pd.DataFrame, theta: pd.DataFrame) -> pd.DataFrame:
@@ -398,6 +409,107 @@ def build_drift_stability_summary(stability: pd.DataFrame, theta: pd.DataFrame) 
     return summary[columns].sort_values(["denominator", "outcome"]).reset_index(drop=True)
 
 
+def weighted_tdi(row: pd.Series, weights: DriftWeights) -> float:
+    return target_population_drift_index(
+        {
+            "Delta_row": row.get("Delta_row", np.nan),
+            "Delta_country": row.get("Delta_country", np.nan),
+            "Delta_year": row.get("Delta_year", np.nan),
+            "Delta_weight": row.get("Delta_weight", np.nan),
+            "Delta_balance": row.get("Delta_balance", np.nan),
+        },
+        weights=weights,
+    )
+
+
+def build_framework_parameter_sensitivity(
+    stability_summary: pd.DataFrame,
+    theta: pd.DataFrame,
+    drift: pd.DataFrame,
+) -> tuple[pd.DataFrame, pd.DataFrame]:
+    drift_with_weights = drift.copy()
+    for scheme, weights in TDI_WEIGHT_SCHEMES.items():
+        drift_with_weights[f"TDI_{scheme}"] = drift_with_weights.apply(lambda row: weighted_tdi(row, weights), axis=1)
+
+    tdi_summary = (
+        drift_with_weights.groupby(["outcome", "family"], as_index=False)
+        .agg(
+            median_TDI_equal=("TDI_equal", "median"),
+            median_TDI_support_focused=("TDI_support_focused", "median"),
+            median_TDI_balance_focused=("TDI_balance_focused", "median"),
+        )
+    )
+
+    rows: list[dict[str, object]] = []
+    for (indicator_id, outcome, denominator), group in theta.groupby(["indicator_id", "outcome", "denominator"], sort=True):
+        estimated = group[group["status"].eq("estimated") & group["theta"].notna()].copy()
+        observed = estimated[~estimated["family"].eq("mi")]
+        reference_values = observed["theta"] if not observed.empty else estimated["theta"]
+        reference_sign = None
+        if not reference_values.empty and reference_values.median() != 0:
+            reference_sign = 1 if reference_values.median() > 0 else -1
+
+        baseline = stability_summary[
+            stability_summary["outcome"].eq(outcome) & stability_summary["denominator"].eq(denominator)
+        ].iloc[0]
+        row: dict[str, object] = {
+            "indicator_id": indicator_id,
+            "outcome": outcome,
+            "denominator": denominator,
+            "baseline_label": baseline["final_label"],
+            "baseline_CSI": baseline["CSI"],
+            "baseline_theta_IQR": baseline["theta_IQR"],
+            "baseline_rule_reason": baseline["rule_reason"],
+        }
+
+        delta_labels: list[str] = []
+        for delta in CSI_SENSITIVITY_DELTAS:
+            if estimated["family"].nunique() < 2:
+                theta_iqr = np.nan
+                csi = np.nan
+                agreement = np.nan
+                label = "non-identifiable"
+            else:
+                theta_iqr, csi = conclusion_stability_index(estimated["theta"], delta=delta)
+                agreement = directional_agreement(estimated["theta"], reference_sign=reference_sign)
+                label, _ = classify_stability_from_theta_delta(estimated, csi, agreement, delta)
+            key = f"delta_{delta:.2f}".replace(".", "_")
+            row[f"{key}_label"] = label
+            row[f"{key}_CSI"] = csi
+            row[f"{key}_theta_IQR"] = theta_iqr
+            row[f"{key}_directional_agreement"] = agreement
+            delta_labels.append(label)
+
+        outcome_tdi = tdi_summary[tdi_summary["outcome"].eq(outcome)]
+        for scheme in TDI_WEIGHT_SCHEMES:
+            column = f"median_TDI_{scheme}"
+            values = outcome_tdi[column].dropna() if column in outcome_tdi else pd.Series(dtype=float)
+            row[f"{column}_min"] = float(values.min()) if not values.empty else np.nan
+            row[f"{column}_max"] = float(values.max()) if not values.empty else np.nan
+        row["csi_delta_label_changed"] = any(label != row["baseline_label"] for label in delta_labels)
+        row["tdi_weighting_label_changed"] = False
+        row["tdi_weighting_note"] = "No label change; deterministic labels do not use TDI-weight thresholds."
+        rows.append(row)
+
+    detailed = pd.DataFrame(rows).sort_values(["denominator", "outcome"]).reset_index(drop=True)
+    summary = detailed[
+        [
+            "outcome",
+            "denominator",
+            "baseline_label",
+            "delta_0_05_label",
+            "delta_0_10_label",
+            "delta_0_15_label",
+            "delta_0_20_label",
+            "csi_delta_label_changed",
+            "tdi_weighting_label_changed",
+        ]
+    ].copy()
+    summary["csi_delta_label_changed"] = summary["csi_delta_label_changed"].map(lambda value: "Yes" if bool(value) else "No")
+    summary["tdi_weighting_label_changed"] = summary["tdi_weighting_label_changed"].map(lambda value: "Yes" if bool(value) else "No")
+    return detailed, summary
+
+
 def _short_rule_reason(reason: object) -> str:
     text = "" if pd.isna(reason) else str(reason)
     if text.startswith("complete-case and MAR MI theta differ by "):
@@ -421,6 +533,9 @@ def write_outputs(components: pd.DataFrame, drift: pd.DataFrame, stability: pd.D
     theta.to_csv(OUTPUTS / "drift_stability_theta.csv", index=False)
     drift_summary = build_drift_stability_summary(stability, theta)
     drift_summary.to_csv(OUTPUTS / "drift_stability_summary.csv", index=False)
+    sensitivity_detail, sensitivity_summary = build_framework_parameter_sensitivity(drift_summary, theta, drift)
+    sensitivity_detail.to_csv(OUTPUTS / "framework_parameter_sensitivity.csv", index=False)
+    sensitivity_summary.to_csv(OUTPUTS / "framework_parameter_sensitivity_summary.csv", index=False)
 
     component_display = components.copy()
     _write_tabular(
@@ -473,6 +588,47 @@ def write_outputs(components: pd.DataFrame, drift: pd.DataFrame, stability: pd.D
         ["Outcome", "Denom.", "Families", "Median $\\theta$", "$\\theta$ IQR", "Dir. agree", "CSI", "Median TDI", "Label", "Rule reason"],
         TABLES / "drift_stability_summary.tex",
         r"@{}p{0.15\linewidth}p{0.08\linewidth}rrrrrp{0.08\linewidth}p{0.16\linewidth}p{0.14\linewidth}@{}",
+    )
+
+    sensitivity_display = sensitivity_summary.copy()
+    label_map = {
+        "missingness-dependent": "miss.-dep.",
+        "target-dependent": "target-dep.",
+        "non-identifiable": "non-ident.",
+        "stable": "stable",
+        "imputation-model-dependent": "imp.-dep.",
+        "denominator-dependent": "denom.-dep.",
+    }
+    for column in ["baseline_label", "delta_0_05_label", "delta_0_10_label", "delta_0_15_label", "delta_0_20_label"]:
+        sensitivity_display[column] = sensitivity_display[column].map(lambda value: label_map.get(str(value), str(value)))
+    outcome_map = {
+        "Dental population": "Dental pop.",
+        "Medical cost": "Med. cost",
+        "Medical distance": "Med. dist.",
+        "Medical population": "Med. pop.",
+        "Medical waiting": "Med. wait",
+        "Dental need": "Dental need",
+        "Medical need": "Med. need",
+    }
+    denominator_map = {"population": "pop.", "same_needs": "need"}
+    sensitivity_display["outcome"] = sensitivity_display["outcome"].map(lambda value: outcome_map.get(str(value), str(value)))
+    sensitivity_display["denominator"] = sensitivity_display["denominator"].map(lambda value: denominator_map.get(str(value), str(value)))
+    _write_tabularx(
+        sensitivity_display,
+        [
+            "outcome",
+            "denominator",
+            "baseline_label",
+            "delta_0_05_label",
+            "delta_0_10_label",
+            "delta_0_15_label",
+            "delta_0_20_label",
+            "csi_delta_label_changed",
+            "tdi_weighting_label_changed",
+        ],
+        ["Outcome", "Denom.", "Baseline", "$\\delta=.05$", "$\\delta=.10$", "$\\delta=.15$", "$\\delta=.20$", "CSI change?", "TDI change?"],
+        TABLES / "framework_parameter_sensitivity_summary.tex",
+        r"@{}p{0.12\linewidth}p{0.06\linewidth}p{0.14\linewidth}p{0.11\linewidth}p{0.11\linewidth}p{0.11\linewidth}p{0.11\linewidth}p{0.08\linewidth}p{0.08\linewidth}@{}",
     )
 
     save_figures(drift, stability, theta)
@@ -530,6 +686,7 @@ def update_generation_map() -> None:
             ["chapters/framework.tex", "table", "tables/target_drift_components.tex", "src/build_drift_stability_framework.py", "outputs/outcome_estimand_coefficient_matrix.csv; data/processed/multi_outcome_unmet_care.csv"],
             ["chapters/framework.tex", "table", "tables/conclusion_stability.tex", "src/build_drift_stability_framework.py", "outputs/target_drift_components.csv; outputs/drift_stability_theta.csv"],
             ["chapters/modeling_strategy_results.tex", "table", "tables/drift_stability_summary.tex", "src/build_drift_stability_framework.py", "outputs/target_drift_components.csv; outputs/drift_stability_theta.csv; outputs/conclusion_stability.csv"],
+            ["chapters/modeling_strategy_results.tex", "table", "tables/framework_parameter_sensitivity_summary.tex", "src/build_drift_stability_framework.py", "outputs/drift_stability_summary.csv; outputs/drift_stability_theta.csv; outputs/target_drift_components.csv"],
             ["chapters/framework.tex", "figure", "figures/drift_stability_map.pdf", "src/build_drift_stability_framework.py", "outputs/target_drift_components.csv; outputs/drift_stability_theta.csv"],
             ["chapters/framework.tex", "figure", "figures/target_drift_components_heatmap.pdf", "src/build_drift_stability_framework.py", "outputs/target_drift_components.csv"],
             ["chapters/framework.tex", "figure", "figures/conclusion_stability_by_outcome.pdf", "src/build_drift_stability_framework.py", "outputs/conclusion_stability.csv"],
@@ -549,6 +706,7 @@ def main() -> None:
     print(f"saved {OUTPUTS / 'target_drift_components.csv'}")
     print(f"saved {OUTPUTS / 'conclusion_stability.csv'}")
     print(f"saved {OUTPUTS / 'drift_stability_summary.csv'}")
+    print(f"saved {OUTPUTS / 'framework_parameter_sensitivity.csv'}")
 
 
 if __name__ == "__main__":

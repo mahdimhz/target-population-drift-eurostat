@@ -1,0 +1,8 @@
+outcome,denominator,baseline_label,delta_0_05_label,delta_0_10_label,delta_0_15_label,delta_0_20_label,csi_delta_label_changed,tdi_weighting_label_changed
+Dental population,population,missingness-dependent,missingness-dependent,missingness-dependent,missingness-dependent,missingness-dependent,No,No
+Medical cost,population,missingness-dependent,missingness-dependent,missingness-dependent,missingness-dependent,missingness-dependent,No,No
+Medical distance,population,missingness-dependent,missingness-dependent,missingness-dependent,missingness-dependent,missingness-dependent,No,No
+Medical population,population,missingness-dependent,missingness-dependent,missingness-dependent,missingness-dependent,missingness-dependent,No,No
+Medical waiting,population,target-dependent,target-dependent,target-dependent,target-dependent,stable,Yes,No
+Dental need,same_needs,non-identifiable,non-identifiable,non-identifiable,non-identifiable,non-identifiable,No,No
+Medical need,same_needs,non-identifiable,non-identifiable,non-identifiable,non-identifiable,non-identifiable,No,No
