@@ -1,0 +1,8 @@
+outcome,denominator,feasible_estimand_families,median_theta,theta_IQR,directional_agreement,CSI,final_label,reason
+Dental need,same_needs,1,-0.3091756561171625,,,,non-identifiable,fewer than 2 feasible estimand families
+Dental population,population,5,0.3770850925557425,0.07689413867074801,0.8,0.23105861329251987,missingness-dependent,complete-case and MAR MI theta differ by 0.365
+Medical need,same_needs,1,0.22944308262460483,,,,non-identifiable,fewer than 2 feasible estimand families
+Medical population,population,5,0.47876774469663524,0.10533478130298396,0.8,0.0,missingness-dependent,complete-case and MAR MI theta differ by 0.512
+Medical cost,population,5,1.1333476459503125,0.46608359973185853,1.0,0.0,missingness-dependent,complete-case and MAR MI theta differ by 1.037
+Medical distance,population,5,0.2811098069783165,0.18680771643740232,1.0,0.0,missingness-dependent,complete-case and MAR MI theta differ by 0.225
+Medical waiting,population,5,-0.01863379836315269,0.040954829679836886,1.0,0.5904517032016312,target-dependent,CSI=0.590 and directional agreement=1.000

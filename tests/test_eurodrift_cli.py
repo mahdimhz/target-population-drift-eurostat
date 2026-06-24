@@ -18,7 +18,8 @@ def test_eurodrift_import_from_project_root_exposes_required_api() -> None:
             "import eurodrift; "
             "required=['load_eurostat_panel','define_estimand','coverage_audit','attrition_waterfall',"
             "'included_excluded_balance','population_weighted_trend','estimand_ladder','ipw_diagnostic',"
-            "'pmm_imputation_sensitivity','mnar_delta_sensitivity','simulate_missingness','classify_drift','generate_report']; "
+            "'pmm_imputation_sensitivity','mnar_delta_sensitivity','simulate_missingness','classify_drift','generate_report',"
+            "'target_population_drift_index','conclusion_stability_index','standardized_coefficient']; "
             "missing=[name for name in required if not hasattr(eurodrift,name)]; "
             "assert not missing, missing"
         ),

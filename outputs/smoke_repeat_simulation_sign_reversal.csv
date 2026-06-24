@@ -15,10 +15,15 @@ early_year,mnar_shift_mi_fe,1.0
 early_year,pmm_mi_fe,1.0
 early_year,population_weighted_fe,0.0
 eurostat_realistic,complete_case_fe,0.0
-eurostat_realistic,ipw_fe,0.0
+eurostat_realistic,ipw_fe,0.05
 eurostat_realistic,mnar_shift_mi_fe,0.0
 eurostat_realistic,pmm_mi_fe,0.0
 eurostat_realistic,population_weighted_fe,0.0
+mar_observed,complete_case_fe,0.0
+mar_observed,ipw_fe,0.0
+mar_observed,mnar_shift_mi_fe,0.1
+mar_observed,pmm_mi_fe,0.0
+mar_observed,population_weighted_fe,0.0
 mcar,complete_case_fe,0.3
 mcar,ipw_fe,0.3
 mcar,mnar_shift_mi_fe,0.05
@@ -27,5 +32,5 @@ mcar,population_weighted_fe,0.3
 mnar_high_poverty_unmet,complete_case_fe,0.0
 mnar_high_poverty_unmet,ipw_fe,0.0
 mnar_high_poverty_unmet,mnar_shift_mi_fe,0.05
-mnar_high_poverty_unmet,pmm_mi_fe,0.2
+mnar_high_poverty_unmet,pmm_mi_fe,0.05
 mnar_high_poverty_unmet,population_weighted_fe,0.0

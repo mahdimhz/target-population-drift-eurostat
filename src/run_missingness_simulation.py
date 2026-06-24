@@ -13,6 +13,12 @@ import pandas as pd
 import seaborn as sns
 from sklearn.linear_model import LogisticRegression
 
+from eurodrift import (
+    average_absolute_smd,
+    jensen_shannon_divergence,
+    support_loss,
+    target_population_drift_index,
+)
 from run_missingness_robustness import apply_delta_shift, pmm_completed_dataset, rubin_pool
 
 
@@ -42,6 +48,7 @@ SIM_MECHANISMS = [
     "early_year",
     "country_group",
     "covariate_block",
+    "mar_observed",
     "mnar_high_poverty_unmet",
     "eurostat_realistic",
 ]
@@ -95,6 +102,8 @@ def load_reference_panel() -> tuple[pd.DataFrame, pd.DataFrame]:
     complete = target.dropna(subset=[OUTCOME] + BASELINE_COVARS + [POP_WEIGHT]).copy()
     complete["country_group"] = complete["geo"].map(country_group)
     target["country_group"] = target["geo"].map(country_group)
+    complete["_row_id"] = np.arange(len(complete))
+    target["_row_id"] = np.arange(len(target))
     return complete.reset_index(drop=True), target.reset_index(drop=True)
 
 
@@ -158,6 +167,14 @@ def missingness_mask(reference: pd.DataFrame, target: pd.DataFrame, mechanism: s
     elif mechanism == "covariate_block":
         affected = rng.random(len(reference)) < 0.35
         mask.loc[affected, FINANCING_COVARS] = True
+    elif mechanism == "mar_observed":
+        poverty_rank = reference[TERM].rank(pct=True)
+        unemployment_rank = reference["unemployment_rate_pc"].rank(pct=True)
+        gdp_rank = reference["log_gdp_per_capita"].rank(pct=True)
+        year_rank = reference["year"].rank(pct=True)
+        probability = (0.05 + 0.45 * ((poverty_rank + unemployment_rank + (1 - gdp_rank) + year_rank) / 4)).clip(0.05, 0.65)
+        affected = rng.random(len(reference)) < probability.to_numpy()
+        mask.loc[affected, BASELINE_COVARS] = True
     elif mechanism == "mnar_high_poverty_unmet":
         poverty_rank = reference[TERM].rank(pct=True)
         outcome_rank = reference[OUTCOME].rank(pct=True)
@@ -265,6 +282,70 @@ def target_distance(reference: pd.DataFrame, observed: pd.DataFrame) -> float:
     return float(row_component + country_component + year_component + smd_component)
 
 
+def _row_weight_distribution(
+    reference: pd.DataFrame,
+    analytical: pd.DataFrame,
+    weights: pd.Series | None = None,
+) -> tuple[pd.Series, pd.Series]:
+    reference_ids = reference["_row_id"].astype(str)
+    ref_dist = pd.Series(1.0, index=reference_ids)
+    analytical_ids = analytical["_row_id"].astype(str) if "_row_id" in analytical.columns else pd.Series(dtype=str)
+    if weights is None:
+        ana_dist = pd.Series(1.0, index=analytical_ids)
+    else:
+        weight_values = pd.to_numeric(pd.Series(weights).reset_index(drop=True), errors="coerce").fillna(0.0)
+        ana_dist = pd.Series(weight_values.to_numpy(dtype=float), index=analytical_ids.reset_index(drop=True))
+    all_ids = ref_dist.index.union(ana_dist.index)
+    return ref_dist.reindex(all_ids, fill_value=0.0), ana_dist.reindex(all_ids, fill_value=0.0)
+
+
+def simulation_drift_components(
+    reference: pd.DataFrame,
+    analytical: pd.DataFrame,
+    weights: pd.Series | None = None,
+) -> dict[str, float]:
+    if analytical.empty:
+        components = {
+            "Delta_row": 1.0,
+            "Delta_country": 1.0,
+            "Delta_year": 1.0,
+            "Delta_weight": np.nan,
+            "Delta_balance": np.nan,
+        }
+        components["TDI"] = target_population_drift_index(components)
+        return components
+
+    ref_dist, ana_dist = _row_weight_distribution(reference, analytical, weights=weights)
+    components = {
+        "Delta_row": support_loss(len(analytical), len(reference)),
+        "Delta_country": support_loss(analytical["geo"].nunique(), reference["geo"].nunique()),
+        "Delta_year": support_loss(analytical["year"].nunique(), reference["year"].nunique()),
+        "Delta_weight": jensen_shannon_divergence(ref_dist, ana_dist),
+        "Delta_balance": average_absolute_smd(reference, analytical, [OUTCOME, TERM, "log_gdp_per_capita", "unemployment_rate_pc"]),
+    }
+    components["TDI"] = target_population_drift_index(components)
+    return components
+
+
+def estimator_target_frame(
+    estimator: str,
+    reference: pd.DataFrame,
+    observed: pd.DataFrame,
+    complete: pd.DataFrame,
+) -> pd.DataFrame:
+    if estimator in {"pmm_mi_fe", "mnar_shift_mi_fe"}:
+        return reference.copy()
+    return complete.copy()
+
+
+def estimator_weights(estimator: str, observed: pd.DataFrame, complete: pd.DataFrame) -> pd.Series | None:
+    if estimator == "population_weighted_fe" and POP_WEIGHT in complete.columns:
+        return complete[POP_WEIGHT]
+    if estimator == "ipw_fe":
+        return ipw_weights(observed)
+    return None
+
+
 def simulate(replicates: int, m: int, seed: int) -> tuple[pd.DataFrame, pd.DataFrame]:
     reference, target = load_reference_panel()
     reference_fit = fit_twfe_fast(reference)
@@ -288,10 +369,17 @@ def simulate(replicates: int, m: int, seed: int) -> tuple[pd.DataFrame, pd.DataF
             observed = apply_mask(reference, mask)
             complete = observed.dropna(subset=[OUTCOME] + BASELINE_COVARS).copy()
             distance = target_distance(reference, observed)
+            estimator_weight_values = {
+                "complete_case_fe": None,
+                "population_weighted_fe": complete[POP_WEIGHT] if POP_WEIGHT in complete.columns else None,
+                "ipw_fe": estimator_weights("ipw_fe", observed, complete),
+                "pmm_mi_fe": None,
+                "mnar_shift_mi_fe": None,
+            }
             estimates = {
                 "complete_case_fe": fit_twfe_fast(complete),
-                "population_weighted_fe": fit_twfe_fast(complete, weights=complete[POP_WEIGHT] if POP_WEIGHT in complete.columns else None),
-                "ipw_fe": fit_twfe_fast(complete, weights=ipw_weights(observed)),
+                "population_weighted_fe": fit_twfe_fast(complete, weights=estimator_weight_values["population_weighted_fe"]),
+                "ipw_fe": fit_twfe_fast(complete, weights=estimator_weight_values["ipw_fe"]),
                 "pmm_mi_fe": fit_pmm(observed, mask, seed=seed + replicate * 10, m=m, mnar=False),
                 "mnar_shift_mi_fe": fit_pmm(observed, mask, seed=seed + replicate * 10 + 500, m=m, mnar=True),
             }
@@ -302,7 +390,20 @@ def simulate(replicates: int, m: int, seed: int) -> tuple[pd.DataFrame, pd.DataF
                 estimated = fit.get("status") == "estimated" and pd.notna(coef)
                 sign_reversal = bool(estimated and np.sign(float(coef)) != np.sign(reference_coef))
                 ci_coverage = bool(estimated and float(ci_low) <= reference_coef <= float(ci_high))
-                wrong_conclusion = bool(sign_reversal or (estimated and np.sign(float(coef)) != np.sign(reference_coef) and not (float(ci_low) <= 0 <= float(ci_high))))
+                wrong_direction_excludes_zero = bool(
+                    estimated
+                    and (
+                        (float(ci_low) > 0 and reference_coef < 0)
+                        or (float(ci_high) < 0 and reference_coef > 0)
+                    )
+                )
+                wrong_conclusion = bool(sign_reversal or wrong_direction_excludes_zero)
+                analytical_target = estimator_target_frame(estimator, reference, observed, complete)
+                drift = simulation_drift_components(
+                    reference,
+                    analytical_target,
+                    weights=estimator_weight_values.get(estimator),
+                )
                 rows.append(
                     {
                         "mechanism": mechanism,
@@ -319,25 +420,42 @@ def simulate(replicates: int, m: int, seed: int) -> tuple[pd.DataFrame, pd.DataF
                         "reference_coef": reference_coef,
                         "bias": float(coef) - reference_coef if estimated else np.nan,
                         "abs_error": abs(float(coef) - reference_coef) if estimated else np.nan,
+                        "absolute_coefficient_error": abs(float(coef) - reference_coef) if estimated else np.nan,
                         "sign_reversal": sign_reversal if estimated else pd.NA,
                         "ci_coverage": ci_coverage if estimated else pd.NA,
                         "row_retention": len(complete) / len(reference),
                         "country_retention": complete["geo"].nunique() / reference["geo"].nunique() if not complete.empty else 0.0,
                         "year_retention": complete["year"].nunique() / reference["year"].nunique() if not complete.empty else 0.0,
                         "target_distance": distance,
+                        "Delta_row": drift["Delta_row"],
+                        "Delta_country": drift["Delta_country"],
+                        "Delta_year": drift["Delta_year"],
+                        "Delta_weight": drift["Delta_weight"],
+                        "Delta_balance": drift["Delta_balance"],
+                        "TDI": drift["TDI"],
                         "wrong_conclusion": wrong_conclusion if estimated else pd.NA,
                     }
                 )
     return pd.DataFrame(rows), reference_rows
 
 
-def summarize(results: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame]:
+def summarize(results: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     estimated = results[results["status"].eq("estimated")].copy()
+    counts = (
+        results.assign(estimated=results["status"].eq("estimated"))
+        .groupby(["mechanism", "estimator"], as_index=False)
+        .agg(
+            number_of_successful_replicates=("estimated", "sum"),
+            total_replicates=("estimated", "size"),
+        )
+    )
+    counts["number_of_failed_replicates"] = counts["total_replicates"] - counts["number_of_successful_replicates"]
     summary = (
         estimated.groupby(["mechanism", "estimator"], as_index=False)
         .agg(
+            mean_TDI=("TDI", "mean"),
             mean_bias=("bias", "mean"),
-            median_abs_error=("abs_error", "median"),
+            median_absolute_error=("abs_error", "median"),
             mean_rows=("rows", "mean"),
             mean_target_distance=("target_distance", "mean"),
             estimated_replicates=("coef", "size"),
@@ -362,31 +480,87 @@ def summarize(results: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame, pd.Dat
         .rename(columns={"wrong_conclusion": "wrong_conclusion_rate"})
         .round(4)
     )
-    return summary, sign, coverage, wrong
+    validation = (
+        counts.merge(summary, on=["mechanism", "estimator"], how="left")
+        .merge(sign, on=["mechanism", "estimator"], how="left")
+        .merge(coverage, on=["mechanism", "estimator"], how="left")
+        .merge(wrong, on=["mechanism", "estimator"], how="left")
+    )
+    validation = validation[
+        [
+            "mechanism",
+            "estimator",
+            "mean_TDI",
+            "mean_bias",
+            "median_absolute_error",
+            "sign_reversal_rate",
+            "ci_coverage_rate",
+            "wrong_conclusion_rate",
+            "number_of_successful_replicates",
+            "number_of_failed_replicates",
+        ]
+    ].round(4)
+    return summary, sign, coverage, wrong, validation
 
 
-def write_tables(summary: pd.DataFrame, sign: pd.DataFrame, coverage: pd.DataFrame, wrong: pd.DataFrame) -> None:
+def write_tables(summary: pd.DataFrame, sign: pd.DataFrame, coverage: pd.DataFrame, wrong: pd.DataFrame, validation: pd.DataFrame) -> None:
     main = summary.merge(sign, on=["mechanism", "estimator"], how="left").merge(coverage, on=["mechanism", "estimator"], how="left")
     main = main.merge(wrong, on=["mechanism", "estimator"], how="left")
     main_display = main[main["estimator"].isin(["complete_case_fe", "pmm_mi_fe", "mnar_shift_mi_fe"])].copy()
     _write_tabular(
         main_display,
-        ["mechanism", "estimator", "mean_bias", "median_abs_error", "sign_reversal_rate", "ci_coverage_rate", "wrong_conclusion_rate"],
+        ["mechanism", "estimator", "mean_bias", "median_absolute_error", "sign_reversal_rate", "ci_coverage_rate", "wrong_conclusion_rate"],
         ["Mechanism", "Estimator", "Mean bias", "Med. abs. error", "Sign rev.", "CI cov.", "Wrong concl."],
         TABLES / "simulation_main_summary.tex",
         r"p{0.19\linewidth}p{0.18\linewidth}rrrrr",
     )
     _write_tabular(
         summary[summary["estimator"].eq("complete_case_fe")],
-        ["mechanism", "mean_bias", "median_abs_error", "mean_rows", "mean_target_distance", "estimated_replicates"],
+        ["mechanism", "mean_bias", "median_absolute_error", "mean_rows", "mean_target_distance", "estimated_replicates"],
         ["Mechanism", "Mean bias", "Med. abs. error", "Rows", "Target dist.", "Reps"],
         TABLES / "simulation_complete_case_bias.tex",
         r"p{0.28\linewidth}rrrrr",
+    )
+    _write_tabular(
+        validation,
+        [
+            "mechanism",
+            "estimator",
+            "mean_TDI",
+            "mean_bias",
+            "median_absolute_error",
+            "sign_reversal_rate",
+            "ci_coverage_rate",
+            "wrong_conclusion_rate",
+            "number_of_successful_replicates",
+            "number_of_failed_replicates",
+        ],
+        ["Mechanism", "Estimator", "Mean TDI", "Mean bias", "Med. abs. error", "Sign rev.", "CI cov.", "Wrong concl.", "OK", "Failed"],
+        TABLES / "simulation_validation_summary.tex",
+        r"p{0.15\linewidth}p{0.14\linewidth}rrrrrrrr",
     )
 
 
 def save_figures(results: pd.DataFrame, summary: pd.DataFrame) -> None:
     estimated = results[results["status"].eq("estimated")].copy()
+    estimator_labels = {
+        "complete_case_fe": "Complete-case FE",
+        "population_weighted_fe": "Population-weighted FE",
+        "ipw_fe": "IPW FE",
+        "pmm_mi_fe": "PMM MI FE",
+        "mnar_shift_mi_fe": "MNAR-shift MI FE",
+    }
+    mechanism_labels = {
+        "mcar": "MCAR",
+        "early_year": "Early-year",
+        "country_group": "Country group",
+        "covariate_block": "Covariate block",
+        "mar_observed": "MAR observed",
+        "mnar_high_poverty_unmet": "MNAR high poverty/unmet",
+        "eurostat_realistic": "Eurostat-realistic",
+    }
+    estimated["estimator_label"] = estimated["estimator"].map(estimator_labels).fillna(estimated["estimator"])
+    estimated["mechanism_label"] = estimated["mechanism"].map(mechanism_labels).fillna(estimated["mechanism"])
     plt.figure(figsize=(11, 5.8))
     sns.barplot(data=summary, x="mechanism", y="mean_bias", hue="estimator")
     plt.axhline(0, color="0.25", linewidth=1, linestyle=":")
@@ -408,19 +582,206 @@ def save_figures(results: pd.DataFrame, summary: pd.DataFrame) -> None:
     plt.savefig(FIGURES / "simulation_target_distance_vs_error.pdf")
     plt.close()
 
+    tdi_plot = estimated.dropna(subset=["TDI", "abs_error"]).copy()
+    if not tdi_plot.empty:
+        from matplotlib.lines import Line2D
+
+        tdi_summary = (
+            tdi_plot.groupby(["mechanism_label", "estimator_label"], as_index=False)
+            .agg(
+                mean_TDI=("TDI", "mean"),
+                median_absolute_error=("abs_error", "median"),
+                replicates=("abs_error", "size"),
+            )
+        )
+        estimator_order = sorted(tdi_summary["estimator_label"].dropna().unique())
+        mechanism_order = sorted(tdi_summary["mechanism_label"].dropna().unique())
+        palette = dict(zip(estimator_order, sns.color_palette("tab10", n_colors=len(estimator_order))))
+        marker_values = ["o", "s", "D", "^", "P", "X", "*", "v", "<", ">"]
+        markers = dict(zip(mechanism_order, marker_values[: len(mechanism_order)]))
+
+        fig, ax = plt.subplots(figsize=(7.2, 5.8))
+        ax = sns.scatterplot(
+            data=tdi_summary,
+            x="mean_TDI",
+            y="median_absolute_error",
+            hue="estimator_label",
+            style="mechanism_label",
+            hue_order=estimator_order,
+            style_order=mechanism_order,
+            palette=palette,
+            markers=markers,
+            s=95,
+            alpha=0.92,
+            edgecolor="0.2",
+            linewidth=0.45,
+            legend=False,
+            ax=ax,
+        )
+        ax.grid(True, color="0.88", linewidth=0.7)
+        ax.tick_params(axis="both", labelsize=10)
+        ax.set_xlabel("Mean Target-Population Drift Index (TDI)", fontsize=11)
+        ax.set_ylabel("Median absolute coefficient error", fontsize=11)
+        ax.set_title("Target drift and coefficient error by mechanism-estimator cell", fontsize=11.5, pad=8)
+        ax.set_xlim(left=-0.01)
+        ax.set_ylim(bottom=-0.01)
+        estimator_handles = [
+            Line2D(
+                [0],
+                [0],
+                marker="o",
+                color="white",
+                label=label,
+                markerfacecolor=palette[label],
+                markeredgecolor="0.25",
+                markersize=9,
+                linestyle="None",
+            )
+            for label in estimator_order
+        ]
+        mechanism_handles = [
+            Line2D(
+                [0],
+                [0],
+                marker=markers[label],
+                color="0.35",
+                label=label,
+                markerfacecolor="0.35",
+                markeredgecolor="0.25",
+                markersize=8.5,
+                linestyle="None",
+            )
+            for label in mechanism_order
+        ]
+        estimator_legend = ax.legend(
+            handles=estimator_handles,
+            title="Estimator",
+            fontsize=7.8,
+            title_fontsize=8.6,
+            ncol=3,
+            loc="upper center",
+            bbox_to_anchor=(0.5, -0.17),
+            frameon=False,
+        )
+        ax.add_artist(estimator_legend)
+        ax.legend(
+            handles=mechanism_handles,
+            title="Missingness mechanism",
+            fontsize=7.5,
+            title_fontsize=8.3,
+            ncol=4,
+            loc="upper center",
+            bbox_to_anchor=(0.5, -0.32),
+            frameon=False,
+        )
+        fig.subplots_adjust(left=0.12, right=0.98, top=0.90, bottom=0.35)
+        fig.savefig(FIGURES / "simulation_tdi_vs_error.pdf", bbox_inches="tight", pad_inches=0.08)
+        fig.savefig(FIGURES / "simulation_tdi_vs_error.png", dpi=300, bbox_inches="tight", pad_inches=0.08)
+        plt.close()
+
+    binned = estimated.dropna(subset=["TDI", "wrong_conclusion"]).copy()
+    if not binned.empty:
+        binned["TDI_bin"] = pd.cut(
+            binned["TDI"],
+            bins=[-0.001, 0.05, 0.10, 0.20, 0.40, np.inf],
+            labels=["0-0.05", "0.05-0.10", "0.10-0.20", "0.20-0.40", ">0.40"],
+        )
+        wrong_by_bin = (
+            binned.dropna(subset=["TDI_bin"])
+            .groupby(["TDI_bin", "estimator"], observed=True)["wrong_conclusion"]
+            .mean()
+            .reset_index()
+        )
+        wrong_by_bin["estimator_label"] = wrong_by_bin["estimator"].map(estimator_labels).fillna(wrong_by_bin["estimator"])
+        plt.figure(figsize=(7.2, 4.6))
+        ax = sns.barplot(
+            data=wrong_by_bin,
+            x="TDI_bin",
+            y="wrong_conclusion",
+            hue="estimator_label",
+            edgecolor="0.25",
+            linewidth=0.4,
+        )
+        plt.xlabel("TDI bin")
+        plt.ylabel("Wrong-conclusion probability")
+        y_max = min(1.0, max(0.25, float(wrong_by_bin["wrong_conclusion"].max()) + 0.05))
+        plt.ylim(0, y_max)
+        plt.grid(axis="y", color="0.88", linewidth=0.6)
+        ax.tick_params(axis="both", labelsize=10)
+        ax.set_xlabel("TDI bin", fontsize=11)
+        ax.set_ylabel("Wrong-conclusion probability", fontsize=11)
+        plt.legend(
+            title="Estimator",
+            fontsize=8.6,
+            title_fontsize=9.4,
+            ncol=3,
+            loc="upper center",
+            bbox_to_anchor=(0.5, -0.16),
+            frameon=False,
+        )
+        plt.tight_layout(rect=[0, 0.08, 1, 1])
+        plt.savefig(FIGURES / "simulation_wrong_conclusion_by_tdi.pdf", bbox_inches="tight")
+        plt.savefig(FIGURES / "simulation_wrong_conclusion_by_tdi.png", dpi=300, bbox_inches="tight")
+        plt.close()
+
+
+def update_generation_map() -> None:
+    map_path = OUTPUTS / "table_figure_generation_map.csv"
+    new_rows = pd.DataFrame(
+        [
+            {
+                "chapter_or_use": "chapters/modeling_strategy_results.tex",
+                "output_type": "table",
+                "output_file": "tables/simulation_validation_summary.tex",
+                "script": "src/run_missingness_simulation.py",
+                "input_file": "data/processed/panel_features_v2-3.csv",
+            },
+            {
+                "chapter_or_use": "chapters/modeling_strategy_results.tex",
+                "output_type": "figure",
+                "output_file": "figures/simulation_tdi_vs_error.pdf",
+                "script": "src/run_missingness_simulation.py",
+                "input_file": "data/processed/panel_features_v2-3.csv",
+            },
+            {
+                "chapter_or_use": "chapters/modeling_strategy_results.tex",
+                "output_type": "figure",
+                "output_file": "figures/simulation_wrong_conclusion_by_tdi.pdf",
+                "script": "src/run_missingness_simulation.py",
+                "input_file": "data/processed/panel_features_v2-3.csv",
+            },
+        ]
+    )
+    if map_path.exists():
+        existing = pd.read_csv(map_path)
+        existing = existing[~existing["output_file"].isin(new_rows["output_file"])]
+        updated = pd.concat([existing, new_rows], ignore_index=True)
+    else:
+        updated = new_rows
+    updated.sort_values(["chapter_or_use", "output_type", "output_file"]).to_csv(map_path, index=False)
+
 
 def write_outputs(results: pd.DataFrame, reference: pd.DataFrame, prefix: str = "") -> None:
     stem = f"{prefix}_" if prefix else ""
     results.to_csv(OUTPUTS / f"{stem}simulation_results.csv", index=False)
     reference.to_csv(OUTPUTS / f"{stem}simulation_reference_estimand.csv", index=False)
-    summary, sign, coverage, wrong = summarize(results)
+    summary, sign, coverage, wrong, validation = summarize(results)
     summary.to_csv(OUTPUTS / f"{stem}simulation_bias_summary.csv", index=False)
     sign.to_csv(OUTPUTS / f"{stem}simulation_sign_reversal.csv", index=False)
     coverage.to_csv(OUTPUTS / f"{stem}simulation_ci_coverage.csv", index=False)
     wrong.to_csv(OUTPUTS / f"{stem}simulation_wrong_conclusion.csv", index=False)
+    validation.to_csv(OUTPUTS / f"{stem}simulation_validation_summary.csv", index=False)
     if not prefix:
-        write_tables(summary, sign, coverage, wrong)
+        write_tables(summary, sign, coverage, wrong, validation)
         save_figures(results, summary)
+        update_generation_map()
+        (OUTPUTS / "simulation_runtime_notes.txt").write_text(
+            "The semi-synthetic simulation reports a reference estimand from the complete artificial panel. "
+            "Imputation-based estimators are included as sensitivity benchmarks; the default low imputation count "
+            "is used for reproducible thesis-runtime feasibility and should not be interpreted as a definitive MI "
+            "stability analysis by itself.\n",
+            encoding="utf-8",
+        )
 
 
 def parse_args() -> argparse.Namespace:

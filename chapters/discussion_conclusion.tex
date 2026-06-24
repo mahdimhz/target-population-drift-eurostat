@@ -50,17 +50,17 @@ These labels are conservative by design. They protect the thesis from treating a
 \begin{table}[H]
 \centering
 \scriptsize
-\caption{Final classification of Eurostat unmet-care findings. Labels are generated from the outcome-by-estimand matrix and deterministic rules; they summarize whether a poverty/social-exclusion coefficient can be interpreted for each outcome target.}
+\caption{Final classification of Eurostat unmet-care findings. Labels are generated from the drift-stability summary and deterministic rules; they summarize whether a poverty/social-exclusion coefficient can be interpreted for each outcome target.}
 \label{tab:final_classification_eurostat_findings}
 \input{tables/final_classification_eurostat_findings}
 
 \vspace{0.35em}
 \begin{minipage}{0.94\textwidth}
-\scriptsize \textit{Method note:} The table summarizes the Chapter~\ref{ch:modeling_strategy_results} coefficient matrix. A non-identifiable label means that too few reliable estimand families are feasible, not that the underlying social gradient is absent.
+\scriptsize \textit{Method note:} The table summarizes the Chapter~\ref{ch:modeling_strategy_results} drift-stability metrics. A non-identifiable label means that too few reliable estimand families are feasible, not that the underlying social gradient is absent.
 \end{minipage}
 \end{table}
 
-Table~\ref{tab:final_classification_eurostat_findings} summarizes the empirical conclusion. Several population-denominator outcomes are target-dependent: the coefficient changes when the target population, weighting rule, or missing-data assumption changes. Need-denominator outcomes are non-identifiable as coefficient targets in this public aggregate setup because too few reliable observed-data estimand families are feasible. The waiting-list population indicator is the most stable in this audit, but it remains an aggregate monitoring result.
+Table~\ref{tab:final_classification_eurostat_findings} summarizes the empirical conclusion from the rule-based drift-stability framework. Many population-denominator poverty/social-exclusion coefficients are missingness-dependent because complete-case or IPW estimates and MAR full-target estimates disagree enough to change the coefficient interpretation. Need-denominator outcomes are non-identifiable as coefficient targets in this public aggregate setup because too few estimand families are feasible. Target-dependent labels are reserved for outcomes where the generated matrix shows material movement across weighting or target restrictions under the tolerance rule. Stable would mean cautious aggregate interpretation is supportable under that rule, not that an individual-level mechanism has been identified.
 
 \section{What the Simulation Adds}
 
@@ -84,4 +84,4 @@ The main limitation is also the reason the thesis is useful: public monitoring p
 
 This thesis formalizes and applies a reproducible target-population drift audit protocol for public Eurostat unmet-care panels. It builds a public-data estimand registry, compares multiple unmet-care indicators before modelling, measures complete-case drift, classifies coefficient stability across estimands, and stress-tests missingness through semi-synthetic simulation.
 
-The final conclusion is controlled but strong. Eurostat unmet-care indicators are valuable for monitoring European health-access barriers, but aggregate coefficients cannot be interpreted until the analyst defines the target population, denominator, weighting rule, country universe, row-selection process, and missing-data assumption. In this thesis, many poverty/social-exclusion coefficients are target-dependent or non-identifiable rather than stable. That is the substantive result of the audit.
+The final conclusion is controlled but strong. Eurostat unmet-care indicators are valuable for monitoring European health-access barriers, but aggregate coefficients cannot be interpreted until the analyst defines the target population, denominator, weighting rule, country universe, row-selection process, and missing-data assumption. In this thesis, most feasible population-denominator poverty/social-exclusion coefficients are missingness-dependent, while need-denominator outcomes are non-identifiable as coefficient targets and some outcomes show target dependence across weighting or target restrictions. That is the substantive result of the audit.

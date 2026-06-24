@@ -47,6 +47,12 @@ outputs/table_all_models_performance.csv
 outputs/figures/mlp_training_loss.png
 outputs/figures/tree_pdp_*.png
 outputs/pdf_page_checks/
+tmp/
+outputs/final_scoping_report.md
+outputs/phase1_handoff_prompt.md
+outputs/template_analysis.md
+outputs/template_migration_log.txt
+notes/supervisor_direction_summary.md
 tables/ml_model_performance.tex
 notebooks/13_mlp_and_sequence_models.ipynb
 notebooks/14_model_comparison_and_summary.ipynb

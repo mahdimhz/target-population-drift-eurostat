@@ -1,0 +1,17 @@
+\begingroup
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\linewidth}{@{}p{0.15\linewidth}p{0.08\linewidth}rrrrrp{0.08\linewidth}p{0.16\linewidth}p{0.14\linewidth}@{}}
+\toprule
+Outcome & Denom. & Families & Median $\theta$ & $\theta$ IQR & Dir. agree & CSI & Median TDI & Label & Rule reason \\
+\midrule
+Dental population & population & 5 & 0.377 & 0.077 & 0.800 & 0.231 & 0.342 & missingness-dependent & CC--MI gap=0.365 \\
+Medical cost & population & 5 & 1.133 & 0.466 & 1.000 & 0.000 & 0.343 & missingness-dependent & CC--MI gap=1.037 \\
+Medical distance & population & 5 & 0.281 & 0.187 & 1.000 & 0.000 & 0.343 & missingness-dependent & CC--MI gap=0.225 \\
+Medical population & population & 5 & 0.479 & 0.105 & 0.800 & 0.000 & 0.343 & missingness-dependent & CC--MI gap=0.512 \\
+Medical waiting & population & 5 & -0.019 & 0.041 & 1.000 & 0.590 & 0.342 & target-dependent & CSI=0.590 and dir. agree=1.000 \\
+Dental need & same\_needs & 1 & -0.309 & NA & NA & NA & 0.000 & non-identifiable & <2 estimand families \\
+Medical need & same\_needs & 1 & 0.229 & NA & NA & NA & 0.000 & non-identifiable & <2 estimand families \\
+\bottomrule
+\end{tabularx}
+\endgroup

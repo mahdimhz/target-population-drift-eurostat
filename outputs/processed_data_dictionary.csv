@@ -90,17 +90,17 @@ data/processed/modeling_dataset_time_split.csv,lag1_poverty_or_social_exclusion_
 data/processed/modeling_dataset_time_split.csv,lag1_government_health_expenditure_gdp_pc,float64,236,0,0.0,8.3; 7.8; 5.3
 data/processed/modeling_dataset_time_split.csv,lag1_compulsory_health_financing_gdp_pc,float64,236,0,0.0,7.74; 8.26; 4.15
 data/processed/modeling_dataset_time_split.csv,time_split,str,236,0,0.0,train; train; train
-data/processed/multi_outcome_unmet_care.csv,indicator_id,str,3347,0,0.0,medical_population_combined; medical_population_combined; medical_population_combined
-data/processed/multi_outcome_unmet_care.csv,dataset_code,str,3347,0,0.0,hlth_silc_08; hlth_silc_08; hlth_silc_08
-data/processed/multi_outcome_unmet_care.csv,care_type,str,3347,0,0.0,medical; medical; medical
-data/processed/multi_outcome_unmet_care.csv,barrier_type,str,3347,0,0.0,cost_distance_waiting; cost_distance_waiting; cost_distance_waiting
-data/processed/multi_outcome_unmet_care.csv,denominator,str,3347,0,0.0,population; population; population
-data/processed/multi_outcome_unmet_care.csv,reason_code,str,3347,0,0.0,TXP_TFAR_WLIST; TXP_TFAR_WLIST; TXP_TFAR_WLIST
-data/processed/multi_outcome_unmet_care.csv,reason_label,str,3347,0,0.0,Too expensive or too far or waiting list; Too expensive or too far or waiting list; Too expensive or too far or waiting list
-data/processed/multi_outcome_unmet_care.csv,geo,str,3347,0,0.0,AL; AL; AL
-data/processed/multi_outcome_unmet_care.csv,year,int64,3347,0,0.0,2017; 2018; 2019
-data/processed/multi_outcome_unmet_care.csv,value_pc,float64,3347,0,0.0,13.1; 14.8; 14.6
-data/processed/multi_outcome_unmet_care.csv,status,str,326,3021,90.26,b; b; e
+data/processed/multi_outcome_unmet_care.csv,indicator_id,str,2740,0,0.0,medical_population_combined; medical_population_combined; medical_population_combined
+data/processed/multi_outcome_unmet_care.csv,dataset_code,str,2740,0,0.0,hlth_silc_08; hlth_silc_08; hlth_silc_08
+data/processed/multi_outcome_unmet_care.csv,care_type,str,2740,0,0.0,medical; medical; medical
+data/processed/multi_outcome_unmet_care.csv,barrier_type,str,2740,0,0.0,cost_distance_waiting; cost_distance_waiting; cost_distance_waiting
+data/processed/multi_outcome_unmet_care.csv,denominator,str,2740,0,0.0,population; population; population
+data/processed/multi_outcome_unmet_care.csv,reason_code,str,2740,0,0.0,TXP_TFAR_WLIST; TXP_TFAR_WLIST; TXP_TFAR_WLIST
+data/processed/multi_outcome_unmet_care.csv,reason_label,str,2740,0,0.0,Too expensive or too far or waiting list; Too expensive or too far or waiting list; Too expensive or too far or waiting list
+data/processed/multi_outcome_unmet_care.csv,geo,str,2740,0,0.0,AL; AL; AL
+data/processed/multi_outcome_unmet_care.csv,year,int64,2740,0,0.0,2017; 2018; 2019
+data/processed/multi_outcome_unmet_care.csv,value_pc,float64,2740,0,0.0,13.1; 14.8; 14.6
+data/processed/multi_outcome_unmet_care.csv,status,str,303,2437,88.94,b; b; e
 data/processed/panel_features_v2-3.csv,geo,str,608,0,0.0,AL; AL; AL
 data/processed/panel_features_v2-3.csv,year,int64,608,0,0.0,2017; 2018; 2019
 data/processed/panel_features_v2-3.csv,unmet_need_pc,float64,608,0,0.0,13.1; 14.8; 14.6

@@ -80,6 +80,7 @@ Robustness specifications:
 - figures/citizenship_unmet_need_trend.pdf
 - figures/complete_case_attrition_waterfall.pdf
 - figures/conceptual_selection_estimand_diagram.pdf
+- figures/conclusion_stability_by_outcome.pdf
 - figures/convergence_sigma.pdf
 - figures/descriptive_country_rankings.pdf
 - figures/descriptive_country_rankings_latest.pdf
@@ -88,6 +89,7 @@ Robustness specifications:
 - figures/descriptive_eu_trend.pdf
 - figures/descriptive_trend_europe.pdf
 - figures/descriptive_trend_with_bands.pdf
+- figures/drift_stability_map.pdf
 - figures/leave_one_country_out_poverty.pdf
 - figures/leave_one_year_out_poverty.pdf
 - figures/mi_coefficient_distribution.pdf
@@ -161,6 +163,9 @@ Robustness specifications:
 - figures/scatter_unmet_vs_unemployment_rate_pc.pdf
 - figures/simulation_bias_by_mechanism.pdf
 - figures/simulation_target_distance_vs_error.pdf
+- figures/simulation_tdi_vs_error.pdf
+- figures/simulation_wrong_conclusion_by_tdi.pdf
+- figures/target_drift_components_heatmap.pdf
 - figures/tree_feature_importance.pdf
 - figures/unmet_need_trends_all_countries.pdf
 - figures/unmet_need_vs_gdp_per_capita_eur_2025.pdf
@@ -178,6 +183,7 @@ Robustness specifications:
 - tables/citizenship_gap_table.tex
 - tables/complete_case_attrition_waterfall.tex
 - tables/complete_case_selection_model.tex
+- tables/conclusion_stability.tex
 - tables/country_coverage.tex
 - tables/country_universe.tex
 - tables/descriptive_statistics.tex
@@ -187,6 +193,7 @@ Robustness specifications:
 - tables/fe_fit_diagnostics.tex
 - tables/fe_inference_comparison.tex
 - tables/final_classification_eurostat_findings.tex
+- tables/formal_estimand_components.tex
 - tables/included_vs_excluded_smd.tex
 - tables/leave_one_variable_out_sample_recovery.tex
 - tables/main_sensitivity_ladder.tex
@@ -232,7 +239,9 @@ Robustness specifications:
 - tables/robustness_08b_results.tex
 - tables/simulation_complete_case_bias.tex
 - tables/simulation_main_summary.tex
+- tables/simulation_validation_summary.tex
 - tables/software_versions.tex
+- tables/target_drift_components.tex
 - tables/target_population_drift_reporting_checklist.tex
 - tables/target_population_sensitivity_results.tex
 - tables/universe_sensitivity_results.tex
@@ -263,12 +272,14 @@ Robustness specifications:
 - outputs/cli_smoke_simulation_reference_estimand.csv
 - outputs/cli_smoke_simulation_results.csv
 - outputs/cli_smoke_simulation_sign_reversal.csv
+- outputs/cli_smoke_simulation_validation_summary.csv
 - outputs/cli_smoke_simulation_wrong_conclusion.csv
 - outputs/coefficients_lasso.csv
 - outputs/coefficients_ols.csv
 - outputs/coefficients_ridge.csv
 - outputs/complete_case_attrition_waterfall.csv
 - outputs/complete_case_selection_model.csv
+- outputs/conclusion_stability.csv
 - outputs/control_api_requests.json
 - outputs/control_feasibility-4.csv
 - outputs/control_feasibility.md
@@ -286,6 +297,7 @@ Robustness specifications:
 - outputs/dataset_audit_summary.md
 - outputs/descriptive_estimand_drift_diagnostic.csv
 - outputs/descriptive_profile_summary.md
+- outputs/drift_stability_theta.csv
 - outputs/eda_descriptive_summary.md
 - outputs/eurodrift_report_hlth_silc_08.csv
 - outputs/eurostat_reason_code_validation.csv
@@ -297,7 +309,7 @@ Robustness specifications:
 - outputs/feature_engineering_summary.md
 - outputs/figures_quality_report.txt
 - outputs/final_classification_eurostat_findings.csv
-- outputs/final_scoping_report.md
+- outputs/formal_estimand_components.csv
 - outputs/gradient_boosting_validation_tuning.csv
 - outputs/hausman_test_result.txt
 - outputs/hlth_silc_08_api_url.txt
@@ -426,7 +438,6 @@ Robustness specifications:
 - outputs/paper_summaries.md
 - outputs/papers_index.csv
 - outputs/permutation_importance_final.csv
-- outputs/phase1_handoff_prompt.md
 - outputs/pooled_baseline_summary-2.md
 - outputs/population_extraction_notes.txt
 - outputs/population_weighted_trend.csv
@@ -467,19 +478,23 @@ Robustness specifications:
 - outputs/simulation_ci_coverage.csv
 - outputs/simulation_reference_estimand.csv
 - outputs/simulation_results.csv
+- outputs/simulation_runtime_notes.txt
 - outputs/simulation_sign_reversal.csv
+- outputs/simulation_validation_summary.csv
 - outputs/simulation_wrong_conclusion.csv
 - outputs/smoke_repeat_simulation_bias_summary.csv
 - outputs/smoke_repeat_simulation_ci_coverage.csv
 - outputs/smoke_repeat_simulation_reference_estimand.csv
 - outputs/smoke_repeat_simulation_results.csv
 - outputs/smoke_repeat_simulation_sign_reversal.csv
+- outputs/smoke_repeat_simulation_validation_summary.csv
 - outputs/smoke_repeat_simulation_wrong_conclusion.csv
 - outputs/smoke_simulation_bias_summary.csv
 - outputs/smoke_simulation_ci_coverage.csv
 - outputs/smoke_simulation_reference_estimand.csv
 - outputs/smoke_simulation_results.csv
 - outputs/smoke_simulation_sign_reversal.csv
+- outputs/smoke_simulation_validation_summary.csv
 - outputs/smoke_simulation_wrong_conclusion.csv
 - outputs/table_08b_robustness_models.csv
 - outputs/table_country_summary.csv
@@ -493,10 +508,9 @@ Robustness specifications:
 - outputs/table_year_inequality.csv
 - outputs/table_year_summary.csv
 - outputs/tables_quality_report.txt
+- outputs/target_drift_components.csv
 - outputs/target_population_drift_reporting_checklist.csv
 - outputs/target_population_sensitivity_results.csv
-- outputs/template_analysis.md
-- outputs/template_migration_log.txt
 - outputs/thesis_design_feasibility.md
 - outputs/thesis_design_feasibility.xlsx
 - outputs/thesis_roadmap.md
@@ -515,5 +529,5 @@ No errors encountered.
 - Monitored lagged feature is not consistently top 3 in ML importance stability.
 
 ## Quality check manual-review lists
-- Figures: 08b_minus_08_difference_by_country.pdf, 08b_vs_08_scatter.pdf, citizenship_gap_correlations.pdf, mi_observed_vs_imputed_baseline.pdf, mi_observed_vs_imputed_baseline_m50.pdf, mi_observed_vs_imputed_baseline_pmm.pdf, mi_observed_vs_imputed_baseline_pmm_m50.pdf, mi_observed_vs_imputed_country_dummies.pdf, mi_observed_vs_imputed_country_dummies_pmm.pdf, mi_observed_vs_imputed_lagged_predictors_pmm.pdf, mi_observed_vs_imputed_no_outcome.pdf, mi_observed_vs_imputed_no_outcome_pmm.pdf, missingness_inclusion_probability.pdf, model_correlations_heatmap.pdf, outcome_missingness_heatmap.pdf, tree_feature_importance.pdf, unmet_need_trends_all_countries.pdf, unmet_need_vs_gdp_per_capita_eur_2025.pdf, unmet_need_vs_poverty_or_social_exclusion_pc_2025.pdf, unmet_need_vs_unemployment_rate_pc_2025.pdf
-- Tables: appendix_full_pooled_regression.tex, complete_case_selection_model.tex, country_universe.tex, estimand_framework.tex, eurostat_sources_appendix.tex, failure_modes_public_aggregate_panels.tex, fe_fit_diagnostics.tex, fe_inference_comparison.tex, final_classification_eurostat_findings.tex, main_sensitivity_ladder.tex, mi_diagnostics_summary.tex, mi_pmm_donor_diagnostics.tex, mi_variant_summary.tex, missingness_comparison.tex, missingness_robustness_results.tex, ml_country_holdout_summary.tex, ml_hyperparameter_grid.tex, ml_model_performance_full.tex, ml_naive_baselines.tex, ml_paired_tree_mae_differences.tex, ml_test_mae_bootstrap_ci.tex, ml_time_aware_fold_results.tex, mnar_sensitivity_results.tex, mnar_tipping_point_results.tex, model_ladder_results.tex, multi_outcome_attrition_matrix.tex, multi_outcome_country_group_retention.tex, multi_outcome_coverage_table.tex, multi_outcome_included_excluded_smd_top.tex, multi_outcome_monitoring_dependence_summary.tex, multi_outcome_primary_attrition_waterfall.tex, outcome_estimand_coefficient_matrix.tex, outcome_failure_classification.tex, poverty_robustness_summary.tex, public_data_estimand_registry.tex, reduced_covariate_sensitivity.tex, regression_main_results.tex, regression_vif_diagnostics.tex, robustness_08b_results.tex, simulation_complete_case_bias.tex, simulation_main_summary.tex, software_versions.tex, target_population_drift_reporting_checklist.tex, target_population_sensitivity_results.tex, universe_sensitivity_results.tex, variable_summary.tex
+- Figures: 08b_minus_08_difference_by_country.pdf, 08b_vs_08_scatter.pdf, citizenship_gap_correlations.pdf, mi_observed_vs_imputed_baseline.pdf, mi_observed_vs_imputed_baseline_m50.pdf, mi_observed_vs_imputed_baseline_pmm.pdf, mi_observed_vs_imputed_baseline_pmm_m50.pdf, mi_observed_vs_imputed_country_dummies.pdf, mi_observed_vs_imputed_country_dummies_pmm.pdf, mi_observed_vs_imputed_lagged_predictors_pmm.pdf, mi_observed_vs_imputed_no_outcome.pdf, mi_observed_vs_imputed_no_outcome_pmm.pdf, missingness_inclusion_probability.pdf, model_correlations_heatmap.pdf, outcome_missingness_heatmap.pdf, simulation_wrong_conclusion_by_tdi.pdf, tree_feature_importance.pdf, unmet_need_trends_all_countries.pdf, unmet_need_vs_gdp_per_capita_eur_2025.pdf, unmet_need_vs_poverty_or_social_exclusion_pc_2025.pdf, unmet_need_vs_unemployment_rate_pc_2025.pdf
+- Tables: appendix_full_pooled_regression.tex, complete_case_selection_model.tex, conclusion_stability.tex, country_universe.tex, estimand_framework.tex, eurostat_sources_appendix.tex, failure_modes_public_aggregate_panels.tex, fe_fit_diagnostics.tex, fe_inference_comparison.tex, final_classification_eurostat_findings.tex, formal_estimand_components.tex, main_sensitivity_ladder.tex, mi_diagnostics_summary.tex, mi_pmm_donor_diagnostics.tex, mi_variant_summary.tex, missingness_comparison.tex, missingness_robustness_results.tex, ml_country_holdout_summary.tex, ml_hyperparameter_grid.tex, ml_model_performance_full.tex, ml_naive_baselines.tex, ml_paired_tree_mae_differences.tex, ml_test_mae_bootstrap_ci.tex, ml_time_aware_fold_results.tex, mnar_sensitivity_results.tex, mnar_tipping_point_results.tex, model_ladder_results.tex, multi_outcome_attrition_matrix.tex, multi_outcome_country_group_retention.tex, multi_outcome_coverage_table.tex, multi_outcome_included_excluded_smd_top.tex, multi_outcome_monitoring_dependence_summary.tex, multi_outcome_primary_attrition_waterfall.tex, outcome_estimand_coefficient_matrix.tex, outcome_failure_classification.tex, poverty_robustness_summary.tex, public_data_estimand_registry.tex, reduced_covariate_sensitivity.tex, regression_main_results.tex, regression_vif_diagnostics.tex, robustness_08b_results.tex, simulation_complete_case_bias.tex, simulation_main_summary.tex, simulation_validation_summary.tex, software_versions.tex, target_drift_components.tex, target_population_drift_reporting_checklist.tex, target_population_sensitivity_results.tex, universe_sensitivity_results.tex, variable_summary.tex

@@ -1,0 +1,1 @@
+The semi-synthetic simulation reports a reference estimand from the complete artificial panel. Imputation-based estimators are included as sensitivity benchmarks; the default low imputation count is used for reproducible thesis-runtime feasibility and should not be interpreted as a definitive MI stability analysis by itself.

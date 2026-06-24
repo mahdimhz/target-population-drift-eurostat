@@ -3,12 +3,21 @@ from __future__ import annotations
 import json
 import hashlib
 import re
+import subprocess
 from collections import Counter
 from pathlib import Path
 
 import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
+
+
+def _manuscript_files() -> list[Path]:
+    return (
+        [ROOT / "main.tex", ROOT / "abstract.tex"]
+        + sorted((ROOT / "frontmatter").glob("*.tex"))
+        + sorted((ROOT / "chapters").glob("*.tex"))
+    )
 
 
 def test_reproducibility_files_exist() -> None:
@@ -46,8 +55,7 @@ def test_table_figure_generation_map_points_to_existing_outputs() -> None:
 
 
 def test_reported_tables_and_figures_exist() -> None:
-    manuscript_files = list((ROOT / "chapters").glob("*.tex")) + [ROOT / "abstract.tex", ROOT / "main.tex"]
-    text = "\n".join(path.read_text(encoding="utf-8") for path in manuscript_files)
+    text = "\n".join(path.read_text(encoding="utf-8") for path in _manuscript_files())
 
     expected_outputs = {
         "tables/ml_naive_baselines": "ml_naive_baselines",
@@ -103,3 +111,71 @@ def test_manuscript_references_no_byte_identical_figures() -> None:
 
     duplicates = [sorted(names) for names in hashes.values() if len(names) > 1]
     assert duplicates == []
+
+
+def test_all_latex_inputs_and_figures_exist() -> None:
+    missing: list[str] = []
+    for source in _manuscript_files():
+        text = source.read_text(encoding="utf-8")
+        for item in re.findall(r"\\input\{([^}]+)\}", text):
+            path = ROOT / item
+            if path.suffix == "":
+                path = path.with_suffix(".tex")
+            if not path.exists() or path.stat().st_size == 0:
+                missing.append(f"{source.relative_to(ROOT)} -> {item}")
+        for item in re.findall(r"\\includegraphics(?:\[[^\]]*\])?\{([^}]+)\}", text):
+            candidates = [ROOT / item, source.parent / item, ROOT / "figures" / item]
+            if Path(item).suffix == "":
+                candidates = [
+                    ROOT / "figures" / f"{item}.pdf",
+                    ROOT / "figures" / f"{item}.png",
+                    ROOT / "figures" / f"{item}.jpg",
+                ]
+            if not any(path.exists() and path.stat().st_size > 0 for path in candidates):
+                missing.append(f"{source.relative_to(ROOT)} -> {item}")
+    assert missing == []
+
+
+def test_final_manuscript_contains_no_drafting_or_agent_artifacts() -> None:
+    text = "\n".join(path.read_text(encoding="utf-8") for path in _manuscript_files())
+    forbidden = [
+        "SOURCE NEEDED",
+        "TODO",
+        "PLACEHOLDER",
+        "upgraded thesis",
+        "ChatGPT",
+        "OpenAI",
+        "rtk ",
+        "p = 0.000",
+        "MI reveals",
+        "corrected truth",
+    ]
+    present = [term for term in forbidden if term.lower() in text.lower()]
+    assert present == []
+
+
+def test_github_publish_set_has_no_oversized_tracked_or_changed_files() -> None:
+    size_limit = 50 * 1024 * 1024
+    tracked = subprocess.check_output(["git", "ls-files"], cwd=ROOT, text=True).splitlines()
+    changed = [
+        line[3:]
+        for line in subprocess.check_output(["git", "status", "--porcelain=v1"], cwd=ROOT, text=True).splitlines()
+        if line[:2].strip() and line[:2] != " D"
+    ]
+    paths = sorted(set(tracked + changed))
+    oversized = []
+    for item in paths:
+        path = ROOT / item
+        if path.is_file() and path.stat().st_size > size_limit:
+            oversized.append(f"{item}: {path.stat().st_size / 1024 / 1024:.1f} MB")
+    assert oversized == []
+
+
+def test_source_appendix_contains_verified_dental_multi_outcome_rows() -> None:
+    source_table = (ROOT / "tables" / "eurostat_sources_appendix.tex").read_text(encoding="utf-8")
+    assert r"\texttt{hlth\_silc\_09}" in source_table
+    assert r"\texttt{hlth\_silc\_09b}" in source_table
+    assert "Dental population denominator" in source_table
+    assert "Dental need denominator" in source_table
+    assert "reason=TXP\\_TFAR\\_WLIST" in source_table
+    assert "reason=TOOEFW" not in source_table

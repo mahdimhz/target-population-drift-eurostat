@@ -1,13 +1,17 @@
-\begin{tabular}{p{0.22\linewidth}p{0.18\linewidth}p{0.20\linewidth}p{0.30\linewidth}}
+\begingroup
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\linewidth}{@{}p{0.14\linewidth}p{0.08\linewidth}rrrrp{0.16\linewidth}Y@{}}
 \toprule
-Finding & Final label & Evidence basis & Interpretation \\
+Finding & Denom. & Families & $\theta$ IQR & Dir. agree & CSI & Final label & Evidence basis \\
 \midrule
-Dental need & non-identifiable & 1 estimand families estimated & Available public aggregate data do not support a coefficient interpretation. \\
-Dental population & target-dependent & 5 estimand families estimated & Interpretation changes with target population, weighting, or missing-data assumptions. \\
-Medical need & non-identifiable & 1 estimand families estimated & Available public aggregate data do not support a coefficient interpretation. \\
-Medical population & target-dependent & 5 estimand families estimated & Interpretation changes with target population, weighting, or missing-data assumptions. \\
-Medical cost & target-dependent & 5 estimand families estimated & Interpretation changes with target population, weighting, or missing-data assumptions. \\
-Medical distance & target-dependent & 5 estimand families estimated & Interpretation changes with target population, weighting, or missing-data assumptions. \\
-Medical waiting & stable & 5 estimand families estimated & Observed estimands are sufficiently aligned for cautious aggregate interpretation. \\
+Dental population & population & 5 & 0.077 & 0.800 & 0.231 & missingness-dependent & CSI=0.231; theta IQR=0.077; dir. agreement=0.800; CC--MI gap=0.365 \\
+Medical cost & population & 5 & 0.466 & 1.000 & 0.000 & missingness-dependent & CSI=0.000; theta IQR=0.466; dir. agreement=1.000; CC--MI gap=1.037 \\
+Medical distance & population & 5 & 0.187 & 1.000 & 0.000 & missingness-dependent & CSI=0.000; theta IQR=0.187; dir. agreement=1.000; CC--MI gap=0.225 \\
+Medical population & population & 5 & 0.105 & 0.800 & 0.000 & missingness-dependent & CSI=0.000; theta IQR=0.105; dir. agreement=0.800; CC--MI gap=0.512 \\
+Medical waiting & population & 5 & 0.041 & 1.000 & 0.590 & target-dependent & CSI=0.590; theta IQR=0.041; dir. agreement=1.000; CSI=0.590 and dir. agree=1.000 \\
+Dental need & same\_needs & 1 & NA & NA & NA & non-identifiable & not computed; fewer than 2 feasible estimand families \\
+Medical need & same\_needs & 1 & NA & NA & NA & non-identifiable & not computed; fewer than 2 feasible estimand families \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
+\endgroup

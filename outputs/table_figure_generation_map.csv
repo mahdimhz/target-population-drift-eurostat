@@ -5,12 +5,12 @@ appendix/reproducibility artifact,figure,figures/citizenship_gap_correlations.pd
 appendix/reproducibility artifact,figure,figures/citizenship_unmet_need_comparison.pdf,src/run_step6_additional_analysis.py,data/processed/citizenship_unmet_need.csv; data/processed/country_year_outcome_08b.csv
 appendix/reproducibility artifact,figure,figures/citizenship_unmet_need_heatmap.pdf,src/run_step6_additional_analysis.py,data/processed/citizenship_unmet_need.csv; data/processed/country_year_outcome_08b.csv
 appendix/reproducibility artifact,figure,figures/citizenship_unmet_need_trend.pdf,src/run_step6_additional_analysis.py,data/processed/citizenship_unmet_need.csv; data/processed/country_year_outcome_08b.csv
-chapters/descriptive_evidence.tex,figure,figures/complete_case_attrition_waterfall.pdf,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
+chapters/descriptive_evidence.tex; chapters/introduction.tex; chapters/modeling_strategy_results.tex,figure,figures/complete_case_attrition_waterfall.pdf,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
 chapters/background_literature.tex,figure,figures/conceptual_selection_estimand_diagram.pdf,src/generate_conceptual_selection_diagram.py,chapter text and manually specified conceptual structure
 appendix/reproducibility artifact,figure,figures/convergence_sigma.pdf,src/run_step6_additional_analysis.py,data/processed/citizenship_unmet_need.csv; data/processed/country_year_outcome_08b.csv
-chapters/descriptive_evidence.tex,figure,figures/descriptive_country_rankings.pdf,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
+appendix/reproducibility artifact,figure,figures/descriptive_country_rankings.pdf,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
 appendix/reproducibility artifact,figure,figures/descriptive_country_rankings_latest.pdf,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
-chapters/descriptive_evidence.tex,figure,figures/descriptive_country_year_heatmap.pdf,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
+appendix/reproducibility artifact,figure,figures/descriptive_country_year_heatmap.pdf,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
 chapters/descriptive_evidence.tex,figure,figures/descriptive_estimand_drift_diagnostic.pdf,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
 appendix/reproducibility artifact,figure,figures/descriptive_eu_trend.pdf,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
 appendix/reproducibility artifact,figure,figures/descriptive_trend_europe.pdf,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
@@ -36,12 +36,12 @@ appendix/reproducibility artifact,figure,figures/mi_observed_vs_imputed_country_
 appendix/reproducibility artifact,figure,figures/mi_observed_vs_imputed_lagged_predictors_pmm.pdf,src/run_missingness_robustness.py,data/processed/panel_features_v2-3.csv
 appendix/reproducibility artifact,figure,figures/mi_observed_vs_imputed_no_outcome.pdf,src/run_missingness_robustness.py,data/processed/panel_features_v2-3.csv
 appendix/reproducibility artifact,figure,figures/mi_observed_vs_imputed_no_outcome_pmm.pdf,src/run_missingness_robustness.py,data/processed/panel_features_v2-3.csv
-chapters/data_indicators.tex; chapters/descriptive_evidence.tex,figure,figures/missingness_heatmap.pdf,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
+chapters/descriptive_evidence.tex,figure,figures/missingness_heatmap.pdf,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
 appendix/reproducibility artifact,figure,figures/missingness_heatmap_capacity.pdf,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
-chapters/data_indicators.tex; chapters/descriptive_evidence.tex,figure,figures/missingness_heatmap_financing.pdf,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
+chapters/descriptive_evidence.tex,figure,figures/missingness_heatmap_financing.pdf,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
 appendix/reproducibility artifact,figure,figures/missingness_heatmap_outcome.pdf,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
 appendix/reproducibility artifact,figure,figures/missingness_heatmap_population.pdf,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
-chapters/data_indicators.tex; chapters/descriptive_evidence.tex,figure,figures/missingness_heatmap_socioeconomic.pdf,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
+chapters/descriptive_evidence.tex,figure,figures/missingness_heatmap_socioeconomic.pdf,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
 chapters/modeling_strategy_results.tex,figure,figures/missingness_inclusion_probability.pdf,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
 appendix/reproducibility artifact,figure,figures/ml_actual_vs_predicted_gradient_boosting.pdf,src/run_step5_ml_analysis.py,data/processed/modeling_dataset_5a.csv
 appendix/reproducibility artifact,figure,figures/ml_actual_vs_predicted_random_forest.pdf,src/run_step5_ml_analysis.py,data/processed/modeling_dataset_5a.csv
@@ -63,10 +63,10 @@ appendix/reproducibility artifact,figure,figures/ml_validation_tuning_mae.pdf,sr
 chapters/modeling_strategy_results.tex,figure,figures/mnar_tipping_point_curve.pdf,src/run_missingness_robustness.py,data/processed/panel_features_v2-3.csv
 appendix/reproducibility artifact,figure,figures/model_correlations_heatmap.pdf,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
 chapters/modeling_strategy_results.tex,figure,figures/model_ladder_coefficient_forest.pdf,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
-chapters/descriptive_evidence.tex,figure,figures/multi_outcome_monitoring_benchmark.pdf,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
-chapters/modeling_strategy_results.tex,figure,figures/multi_outcome_primary_attrition_waterfall.pdf,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
-chapters/modeling_strategy_results.tex,figure,figures/multi_outcome_retention_heatmap.pdf,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
-chapters/modeling_strategy_results.tex,figure,figures/outcome_estimand_coefficient_stability.pdf,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
+chapters/appendix.tex; chapters/descriptive_evidence.tex,figure,figures/multi_outcome_monitoring_benchmark.pdf,src/build_multi_outcome_monitoring_benchmark.py,data/processed/multi_outcome_unmet_care.csv; data/processed/multi_outcome_year_normalized_weights.csv
+appendix/reproducibility artifact,figure,figures/multi_outcome_primary_attrition_waterfall.pdf,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
+chapters/modeling_strategy_results.tex,figure,figures/multi_outcome_retention_heatmap.pdf,src/build_multi_outcome_drift_diagnostics.py,data/processed/multi_outcome_unmet_care.csv; data/processed/panel_features_v2-3.csv
+chapters/modeling_strategy_results.tex,figure,figures/outcome_estimand_coefficient_stability.pdf,src/build_outcome_estimand_stability_matrix.py,outputs/multi_outcome_attrition_matrix.csv; data/processed/panel_features_v2-3.csv
 appendix/reproducibility artifact,figure,figures/outcome_missingness_heatmap.pdf,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
 appendix/reproducibility artifact,figure,figures/panel_correlations_heatmap.pdf,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
 appendix/reproducibility artifact,figure,figures/panel_heterogeneity.pdf,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
@@ -86,63 +86,65 @@ appendix/reproducibility artifact,figure,figures/scatter_unmet_vs_oop_health_exp
 appendix/reproducibility artifact,figure,figures/scatter_unmet_vs_physicians_per_100k.pdf,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
 appendix/reproducibility artifact,figure,figures/scatter_unmet_vs_poverty_or_social_exclusion_pc.pdf,src/run_missingness_robustness.py,data/processed/panel_features_v2-3.csv
 appendix/reproducibility artifact,figure,figures/scatter_unmet_vs_unemployment_rate_pc.pdf,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
-chapters/modeling_strategy_results.tex,figure,figures/simulation_bias_by_mechanism.pdf,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
-chapters/modeling_strategy_results.tex,figure,figures/simulation_target_distance_vs_error.pdf,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
+chapters/modeling_strategy_results.tex,figure,figures/simulation_bias_by_mechanism.pdf,src/run_missingness_simulation.py,data/processed/panel_features_v2-3.csv
+appendix/reproducibility artifact,figure,figures/simulation_target_distance_vs_error.pdf,src/run_missingness_simulation.py,data/processed/panel_features_v2-3.csv
+chapters/modeling_strategy_results.tex,figure,figures/simulation_tdi_vs_error.pdf,src/run_missingness_simulation.py,data/processed/panel_features_v2-3.csv
+chapters/modeling_strategy_results.tex,figure,figures/simulation_wrong_conclusion_by_tdi.pdf,src/run_missingness_simulation.py,data/processed/panel_features_v2-3.csv
 appendix/reproducibility artifact,figure,figures/tree_feature_importance.pdf,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
 appendix/reproducibility artifact,figure,figures/unmet_need_trends_all_countries.pdf,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
 appendix/reproducibility artifact,figure,figures/unmet_need_vs_gdp_per_capita_eur_2025.pdf,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
 appendix/reproducibility artifact,figure,figures/unmet_need_vs_poverty_or_social_exclusion_pc_2025.pdf,src/run_missingness_robustness.py,data/processed/panel_features_v2-3.csv
 appendix/reproducibility artifact,figure,figures/unmet_need_vs_unemployment_rate_pc_2025.pdf,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
 chapters/appendix.tex,table,tables/appendix_full_pooled_regression.tex,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
-chapters/descriptive_evidence.tex,table,tables/attrition_by_country_group.tex,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
+appendix/reproducibility artifact,table,tables/attrition_by_country_group.tex,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
 chapters/descriptive_evidence.tex,table,tables/attrition_by_country_top_loss.tex,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
 chapters/descriptive_evidence.tex,table,tables/attrition_by_covariate_block.tex,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
 appendix/reproducibility artifact,table,tables/attrition_by_year.tex,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
 appendix/reproducibility artifact,table,tables/citizenship_gap_clustered.tex,src/run_step6_additional_analysis.py,data/processed/citizenship_unmet_need.csv; data/processed/country_year_outcome_08b.csv
 appendix/reproducibility artifact,table,tables/citizenship_gap_regression.tex,src/run_step6_additional_analysis.py,data/processed/citizenship_unmet_need.csv; data/processed/country_year_outcome_08b.csv
 appendix/reproducibility artifact,table,tables/citizenship_gap_table.tex,src/run_step6_additional_analysis.py,data/processed/citizenship_unmet_need.csv; data/processed/country_year_outcome_08b.csv
-chapters/descriptive_evidence.tex,table,tables/complete_case_attrition_waterfall.tex,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
+chapters/descriptive_evidence.tex; chapters/introduction.tex; chapters/modeling_strategy_results.tex,table,tables/complete_case_attrition_waterfall.tex,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
 chapters/modeling_strategy_results.tex,table,tables/complete_case_selection_model.tex,src/run_missingness_robustness.py,data/processed/panel_features_v2-3.csv
 appendix/reproducibility artifact,table,tables/country_coverage.tex,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
 chapters/data_indicators.tex,table,tables/country_universe.tex,src/run_missingness_robustness.py,data/processed/panel_features_v2-3.csv
 appendix/reproducibility artifact,table,tables/descriptive_statistics.tex,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
 chapters/modeling_strategy_results.tex,table,tables/estimand_framework.tex,src/run_missingness_robustness.py,data/processed/panel_features_v2-3.csv
 chapters/appendix.tex,table,tables/eurostat_sources_appendix.tex,src/run_step7_master_summary.py,generated project files
-chapters/discussion_conclusion.tex,table,tables/failure_modes_public_aggregate_panels.tex,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
+chapters/discussion_conclusion.tex,table,tables/failure_modes_public_aggregate_panels.tex,src/build_reporting_protocol_tables.py,outputs/outcome_estimand_coefficient_matrix.csv; outputs/conclusion_stability.csv
 chapters/modeling_strategy_results.tex,table,tables/fe_fit_diagnostics.tex,src/run_missingness_robustness.py,data/processed/panel_features_v2-3.csv
 chapters/modeling_strategy_results.tex,table,tables/fe_inference_comparison.tex,src/run_missingness_robustness.py,data/processed/panel_features_v2-3.csv
-chapters/discussion_conclusion.tex,table,tables/final_classification_eurostat_findings.tex,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
+chapters/discussion_conclusion.tex,table,tables/final_classification_eurostat_findings.tex,src/build_reporting_protocol_tables.py,outputs/outcome_estimand_coefficient_matrix.csv; outputs/conclusion_stability.csv
 chapters/descriptive_evidence.tex,table,tables/included_vs_excluded_smd.tex,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
 chapters/descriptive_evidence.tex,table,tables/leave_one_variable_out_sample_recovery.tex,src/run_missingness_robustness.py,data/processed/panel_features_v2-3.csv
 chapters/modeling_strategy_results.tex,table,tables/main_sensitivity_ladder.tex,src/run_missingness_robustness.py,data/processed/panel_features_v2-3.csv
 chapters/modeling_strategy_results.tex,table,tables/mi_diagnostics_summary.tex,src/run_missingness_robustness.py,data/processed/panel_features_v2-3.csv
 chapters/modeling_strategy_results.tex,table,tables/mi_pmm_donor_diagnostics.tex,src/run_missingness_robustness.py,data/processed/panel_features_v2-3.csv
-chapters/appendix.tex; chapters/modeling_strategy_results.tex,table,tables/mi_variant_summary.tex,src/run_missingness_robustness.py,data/processed/panel_features_v2-3.csv
-chapters/data_indicators.tex; chapters/descriptive_evidence.tex,table,tables/missingness_comparison.tex,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
+chapters/modeling_strategy_results.tex,table,tables/mi_variant_summary.tex,src/run_missingness_robustness.py,data/processed/panel_features_v2-3.csv
+chapters/descriptive_evidence.tex,table,tables/missingness_comparison.tex,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
 chapters/modeling_strategy_results.tex,table,tables/missingness_robustness_results.tex,src/run_missingness_robustness.py,data/processed/panel_features_v2-3.csv
 chapters/ml_extension.tex,table,tables/ml_country_holdout_summary.tex,src/run_step5_ml_analysis.py,data/processed/modeling_dataset_5a.csv
 appendix/reproducibility artifact,table,tables/ml_hyperparameter_grid.tex,src/run_step5_ml_analysis.py,data/processed/modeling_dataset_5a.csv
 chapters/ml_extension.tex,table,tables/ml_model_performance_full.tex,src/run_step5_ml_analysis.py,data/processed/modeling_dataset_5a.csv
-chapters/appendix.tex; chapters/ml_extension.tex,table,tables/ml_naive_baselines.tex,src/run_step5_ml_analysis.py,data/processed/modeling_dataset_5a.csv
+chapters/ml_extension.tex,table,tables/ml_naive_baselines.tex,src/run_step5_ml_analysis.py,data/processed/modeling_dataset_5a.csv
 appendix/reproducibility artifact,table,tables/ml_paired_tree_mae_differences.tex,src/run_step5_ml_analysis.py,data/processed/modeling_dataset_5a.csv
 appendix/reproducibility artifact,table,tables/ml_test_mae_bootstrap_ci.tex,src/run_step5_ml_analysis.py,data/processed/modeling_dataset_5a.csv
 appendix/reproducibility artifact,table,tables/ml_time_aware_fold_results.tex,src/run_step5_ml_analysis.py,data/processed/modeling_dataset_5a.csv
-chapters/appendix.tex; chapters/modeling_strategy_results.tex,table,tables/mnar_sensitivity_results.tex,src/run_missingness_robustness.py,data/processed/panel_features_v2-3.csv
+chapters/modeling_strategy_results.tex,table,tables/mnar_sensitivity_results.tex,src/run_missingness_robustness.py,data/processed/panel_features_v2-3.csv
 chapters/modeling_strategy_results.tex,table,tables/mnar_tipping_point_results.tex,src/run_missingness_robustness.py,data/processed/panel_features_v2-3.csv
 chapters/modeling_strategy_results.tex,table,tables/model_ladder_results.tex,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
-chapters/modeling_strategy_results.tex,table,tables/multi_outcome_attrition_matrix.tex,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
+chapters/modeling_strategy_results.tex,table,tables/multi_outcome_attrition_matrix.tex,src/build_multi_outcome_drift_diagnostics.py,data/processed/multi_outcome_unmet_care.csv; data/processed/panel_features_v2-3.csv
 appendix/reproducibility artifact,table,tables/multi_outcome_country_group_retention.tex,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
-chapters/descriptive_evidence.tex,table,tables/multi_outcome_coverage_table.tex,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
-chapters/modeling_strategy_results.tex,table,tables/multi_outcome_included_excluded_smd_top.tex,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
-chapters/descriptive_evidence.tex,table,tables/multi_outcome_monitoring_dependence_summary.tex,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
-chapters/modeling_strategy_results.tex,table,tables/multi_outcome_primary_attrition_waterfall.tex,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
+chapters/descriptive_evidence.tex,table,tables/multi_outcome_coverage_table.tex,src/build_multi_outcome_monitoring_benchmark.py,data/processed/multi_outcome_unmet_care.csv; data/processed/multi_outcome_year_normalized_weights.csv
+chapters/modeling_strategy_results.tex,table,tables/multi_outcome_included_excluded_smd_top.tex,src/build_multi_outcome_drift_diagnostics.py,data/processed/multi_outcome_unmet_care.csv; data/processed/panel_features_v2-3.csv
+chapters/descriptive_evidence.tex,table,tables/multi_outcome_monitoring_dependence_summary.tex,src/build_multi_outcome_monitoring_benchmark.py,data/processed/multi_outcome_unmet_care.csv; data/processed/multi_outcome_year_normalized_weights.csv
+appendix/reproducibility artifact,table,tables/multi_outcome_primary_attrition_waterfall.tex,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
 appendix/reproducibility artifact,table,tables/multiple_imputation_sensitivity.tex,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
-chapters/modeling_strategy_results.tex,table,tables/outcome_estimand_coefficient_matrix.tex,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
-chapters/modeling_strategy_results.tex,table,tables/outcome_failure_classification.tex,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
+chapters/modeling_strategy_results.tex,table,tables/outcome_estimand_coefficient_matrix.tex,src/build_outcome_estimand_stability_matrix.py,outputs/multi_outcome_attrition_matrix.csv; data/processed/panel_features_v2-3.csv
+appendix/reproducibility artifact,table,tables/outcome_failure_classification.tex,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
 chapters/appendix.tex,table,tables/output_generation_map.tex,src/run_step7_master_summary.py,generated project files
 appendix/reproducibility artifact,table,tables/poverty_robustness_summary.tex,src/run_missingness_robustness.py,data/processed/panel_features_v2-3.csv
 chapters/appendix.tex,table,tables/processed_data_dictionary_summary.tex,src/run_step7_master_summary.py,generated project files
-chapters/data_indicators.tex; chapters/descriptive_evidence.tex,table,tables/public_data_estimand_registry.tex,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
+chapters/data_indicators.tex; chapters/descriptive_evidence.tex,table,tables/public_data_estimand_registry.tex,src/build_multi_outcome_indicator_registry.py,data/processed/multi_outcome_unmet_care.csv
 appendix/reproducibility artifact,table,tables/reduced_covariate_sensitivity.tex,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
 appendix/reproducibility artifact,table,tables/regression_country_groups.tex,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
 appendix/reproducibility artifact,table,tables/regression_crisis_exclusion.tex,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
@@ -155,10 +157,18 @@ appendix/reproducibility artifact,table,tables/regression_sensitivity_influentia
 chapters/appendix.tex,table,tables/regression_vif.tex,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
 chapters/appendix.tex,table,tables/regression_vif_diagnostics.tex,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
 chapters/data_indicators.tex,table,tables/robustness_08b_results.tex,src/run_step6_additional_analysis.py,data/processed/citizenship_unmet_need.csv; data/processed/country_year_outcome_08b.csv
-appendix/reproducibility artifact,table,tables/simulation_complete_case_bias.tex,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
-chapters/modeling_strategy_results.tex,table,tables/simulation_main_summary.tex,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
+appendix/reproducibility artifact,table,tables/simulation_complete_case_bias.tex,src/run_missingness_simulation.py,data/processed/panel_features_v2-3.csv
+chapters/modeling_strategy_results.tex,table,tables/simulation_main_summary.tex,src/run_missingness_simulation.py,data/processed/panel_features_v2-3.csv
+appendix/reproducibility artifact,table,tables/simulation_validation_summary.tex,src/run_missingness_simulation.py,data/processed/panel_features_v2-3.csv
 chapters/appendix.tex,table,tables/software_versions.tex,src/run_step7_master_summary.py,generated project files
-chapters/discussion_conclusion.tex,table,tables/target_population_drift_reporting_checklist.tex,src/run_missingness_robustness.py,data/processed/panel_features_v2-3.csv
+chapters/discussion_conclusion.tex,table,tables/target_population_drift_reporting_checklist.tex,src/build_reporting_protocol_tables.py,outputs/outcome_estimand_coefficient_matrix.csv; outputs/conclusion_stability.csv
 chapters/modeling_strategy_results.tex,table,tables/target_population_sensitivity_results.tex,src/run_missingness_robustness.py,data/processed/panel_features_v2-3.csv
 chapters/modeling_strategy_results.tex,table,tables/universe_sensitivity_results.tex,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
-chapters/data_indicators.tex,table,tables/variable_summary.tex,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
+chapters/data_indicators.tex; chapters/descriptive_evidence.tex; chapters/modeling_strategy_results.tex,table,tables/variable_summary.tex,src/run_full_thesis_analysis.py,data/processed/panel_features_v2-3.csv
+chapters/framework.tex,table,tables/formal_estimand_components.tex,src/build_drift_stability_framework.py,outputs/outcome_estimand_coefficient_matrix.csv; data/processed/multi_outcome_unmet_care.csv
+chapters/framework.tex,table,tables/target_drift_components.tex,src/build_drift_stability_framework.py,outputs/outcome_estimand_coefficient_matrix.csv; data/processed/multi_outcome_unmet_care.csv
+chapters/framework.tex,table,tables/conclusion_stability.tex,src/build_drift_stability_framework.py,outputs/target_drift_components.csv; outputs/drift_stability_theta.csv
+chapters/modeling_strategy_results.tex,table,tables/drift_stability_summary.tex,src/build_drift_stability_framework.py,outputs/target_drift_components.csv; outputs/drift_stability_theta.csv; outputs/conclusion_stability.csv
+chapters/framework.tex,figure,figures/drift_stability_map.pdf,src/build_drift_stability_framework.py,outputs/target_drift_components.csv; outputs/drift_stability_theta.csv
+chapters/framework.tex,figure,figures/target_drift_components_heatmap.pdf,src/build_drift_stability_framework.py,outputs/target_drift_components.csv
+chapters/framework.tex,figure,figures/conclusion_stability_by_outcome.pdf,src/build_drift_stability_framework.py,outputs/conclusion_stability.csv

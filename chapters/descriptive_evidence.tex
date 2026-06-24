@@ -9,7 +9,13 @@ This chapter establishes whether the monitoring evidence changes before regressi
 
 Figure~\ref{fig:multi_outcome_monitoring_benchmark} summarizes the benchmark. Panel A compares medical and dental unmet-care indicators using the population denominator. Panel B compares population-denominator and need-denominator definitions. Panel C separates medical cost, waiting-list, and distance barriers. Panel D shows how the primary medical indicator changes when the universe is restricted to EU-27 countries and when year-normalized population weights are applied.
 
-\begin{figure}[htbp]
+Figure~\ref{fig:multi_outcome_monitoring_benchmark} shows that the monitoring object is indicator-dependent. Care type changes the service domain; denominator choice changes the population represented; barrier categories separate reported affordability, waiting, and distance constraints; and population weighting changes the summary from an average country to an average resident within year.
+
+Table~\ref{tab:multi_outcome_coverage_table} shows that population-denominator indicators provide long panels, whereas need-denominator indicators begin in 2021. Coverage is therefore part of the comparison rather than a secondary data-quality detail.
+
+The 2025 contrasts in Table~\ref{tab:multi_outcome_monitoring_dependence_summary} quantify the practical consequence: denominator, care type, barrier, universe, and weighting choices alter the reported monitoring level even without regression.
+
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.98\textwidth]{multi_outcome_monitoring_benchmark}
 \caption{Multi-outcome Eurostat unmet-care monitoring benchmark. The sample is national Eurostat country-year observations from the feasible indicators in Table~\ref{tab:public_data_estimand_registry}; population-denominator indicators cover 2008--2025 where available, need-denominator indicators cover 2021--2025, and country coverage varies by indicator and year. Weighted series use \texttt{demo\_pjan} populations normalized within each year and outcome.}
@@ -21,9 +27,7 @@ Figure~\ref{fig:multi_outcome_monitoring_benchmark} summarizes the benchmark. Pa
 \end{minipage}
 \end{figure}
 
-Figure~\ref{fig:multi_outcome_monitoring_benchmark} shows that the monitoring object is indicator-dependent. Care type changes the service domain; denominator choice changes the population represented; barrier categories separate reported affordability, waiting, and distance constraints; and population weighting changes the summary from an average country to an average resident within year.
-
-\begin{table}[htbp]
+\begin{table}[H]
 \centering
 \scriptsize
 \caption{Coverage of feasible multi-outcome Eurostat unmet-care indicators. The table uses the full Eurostat-available national universe after excluding EU and euro-area aggregate codes; population rows count observations with valid \texttt{demo\_pjan} population available for year-normalized weighting.}
@@ -36,9 +40,7 @@ Figure~\ref{fig:multi_outcome_monitoring_benchmark} shows that the monitoring ob
 \end{minipage}
 \end{table}
 
-Table~\ref{tab:multi_outcome_coverage_table} shows that population-denominator indicators provide long panels, whereas need-denominator indicators begin in 2021. Coverage is therefore part of the comparison rather than a secondary data-quality detail.
-
-\begin{table}[htbp]
+\begin{table}[H]
 \centering
 \scriptsize
 \caption{Monitoring-dependence summary for 2025. Values are unweighted country means unless the comparison explicitly uses year-normalized population weighting; the table is descriptive and does not estimate any association model.}
@@ -51,7 +53,7 @@ Table~\ref{tab:multi_outcome_coverage_table} shows that population-denominator i
 \end{minipage}
 \end{table}
 
-The 2025 contrasts in Table~\ref{tab:multi_outcome_monitoring_dependence_summary} quantify the practical consequence: denominator, care type, barrier, universe, and weighting choices alter the reported monitoring level even without regression.
+\FloatBarrier
 
 \section{Primary-Indicator Coverage Audit}
 

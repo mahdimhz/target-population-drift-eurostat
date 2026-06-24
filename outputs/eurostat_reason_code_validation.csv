@@ -1,7 +1,7 @@
 indicator_id,dataset_code,reason_code,reason_label_expected,reason_label_returned,reason_verified,observed_rows,feasibility_status,infeasibility_reason
 medical_population_combined,hlth_silc_08,TXP_TFAR_WLIST,Too expensive or too far or waiting list,Too expensive or too far or waiting list,True,608,feasible,
 medical_need_combined,hlth_silc_08b,TXP_TFAR_WLIST,Too expensive or too far or waiting list,Too expensive or too far or waiting list,True,154,feasible,
-dental_population_combined,hlth_silc_09,TOOEFW,Too expensive or too far to travel or waiting list,Too expensive or too far to travel or waiting list,True,607,feasible,
+dental_population_combined,hlth_silc_09,TXP_TFAR_WLIST,Too expensive or too far or waiting list,Too expensive or too far or waiting list,True,607,feasible,
 dental_need_combined,hlth_silc_09b,TXP_TFAR_WLIST,Too expensive or too far or waiting list,Too expensive or too far or waiting list,True,154,feasible,
 medical_population_cost,hlth_silc_08,TXP,Too expensive,Too expensive,True,608,feasible,
 medical_population_waiting,hlth_silc_08,WAITING,Waiting list,Waiting list,True,608,feasible,

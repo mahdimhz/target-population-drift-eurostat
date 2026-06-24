@@ -35,7 +35,33 @@ def test_failure_modes_include_required_labels() -> None:
 
 
 def test_final_classification_uses_generated_outcome_labels() -> None:
-    source = pd.read_csv(ROOT / "outputs" / "outcome_failure_classification.csv")
+    source = pd.read_csv(ROOT / "outputs" / "drift_stability_summary.csv")
     final = pd.read_csv(ROOT / "outputs" / "final_classification_eurostat_findings.csv")
     assert len(source) == len(final)
-    assert set(source["classification"]) == set(final["final_label"])
+    assert set(source["final_label"]) == set(final["final_label"])
+
+
+def test_final_classification_reports_stability_metrics_not_only_counts() -> None:
+    final = pd.read_csv(ROOT / "outputs" / "final_classification_eurostat_findings.csv")
+    required = {
+        "finding",
+        "denominator",
+        "estimand_families",
+        "theta_IQR",
+        "directional_agreement",
+        "CSI",
+        "final_label",
+        "evidence_basis",
+    }
+    assert required.issubset(final.columns)
+    assert final["CSI"].dropna().between(0, 1).all()
+    assert final["directional_agreement"].dropna().between(0, 1).all()
+    identifiable = final[final["final_label"].ne("non-identifiable")]
+    non_identifiable = final[final["final_label"].eq("non-identifiable")]
+    assert identifiable["evidence_basis"].str.contains("CSI=").all()
+    assert identifiable["evidence_basis"].str.contains("theta IQR=").all()
+    assert non_identifiable["CSI"].isna().all()
+    assert non_identifiable["theta_IQR"].isna().all()
+    assert non_identifiable["directional_agreement"].isna().all()
+    assert non_identifiable["evidence_basis"].eq("not computed; fewer than 2 feasible estimand families").all()
+    assert not non_identifiable["evidence_basis"].str.contains("CSI=1.000", regex=False).any()

@@ -33,6 +33,22 @@ def test_reason_codes_are_programmatically_verified_for_feasible_indicators() ->
     assert (feasible["observed_rows"] > 0).all()
 
 
+def test_dental_population_indicator_uses_verified_combined_barrier_code() -> None:
+    registry = pd.read_csv(ROOT / "outputs" / "multi_outcome_indicator_registry.csv")
+    panel = pd.read_csv(ROOT / "data" / "processed" / "multi_outcome_unmet_care.csv")
+
+    dental = registry.loc[registry["indicator_id"] == "dental_population_combined"].iloc[0]
+    assert dental["dataset_code"] == "hlth_silc_09"
+    assert dental["reason_code"] == "TXP_TFAR_WLIST"
+    assert dental["reason_verified"] == True
+    assert dental["feasibility_status"] == "feasible"
+    assert int(dental["observed_rows"]) > 0
+
+    dental_panel = panel[panel["indicator_id"] == "dental_population_combined"]
+    assert not dental_panel.empty
+    assert set(dental_panel["reason_code"]) == {"TXP_TFAR_WLIST"}
+
+
 def test_multi_outcome_rows_match_registry_counts() -> None:
     registry = pd.read_csv(ROOT / "outputs" / "multi_outcome_indicator_registry.csv")
     panel = pd.read_csv(ROOT / "data" / "processed" / "multi_outcome_unmet_care.csv")

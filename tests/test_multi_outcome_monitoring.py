@@ -46,3 +46,13 @@ def test_monitoring_benchmark_preserves_primary_608_rows() -> None:
     primary = coverage.loc[coverage["indicator_id"] == "medical_population_combined"].iloc[0]
     assert int(primary["observed_rows"]) == 608
     assert int(primary["country_count"]) == 37
+
+
+def test_medical_dental_population_comparison_has_two_values() -> None:
+    summary = pd.read_csv(ROOT / "outputs" / "multi_outcome_monitoring_dependence_summary.csv")
+    row = summary.loc[
+        summary["comparison"] == "Medical versus dental population-denominator combined barriers"
+    ].iloc[0]
+    assert pd.notna(row["first_value_pc"])
+    assert pd.notna(row["second_value_pc"])
+    assert pd.notna(row["difference_pc"])

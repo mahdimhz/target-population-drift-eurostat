@@ -63,6 +63,7 @@ def reproduce_thesis() -> None:
         [sys.executable, str(ROOT / "src" / "build_multi_outcome_monitoring_benchmark.py")],
         [sys.executable, str(ROOT / "src" / "build_multi_outcome_drift_diagnostics.py")],
         [sys.executable, str(ROOT / "src" / "build_outcome_estimand_stability_matrix.py")],
+        [sys.executable, str(ROOT / "src" / "build_drift_stability_framework.py")],
         [sys.executable, str(ROOT / "src" / "build_reporting_protocol_tables.py")],
         [sys.executable, str(ROOT / "src" / "run_step7_master_summary.py")],
     ]

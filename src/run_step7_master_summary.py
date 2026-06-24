@@ -213,6 +213,20 @@ def infer_source(output: Path) -> tuple[str, str]:
     name = output.name.lower()
     if "conceptual_selection" in name:
         return "src/generate_conceptual_selection_diagram.py", "chapter text and manually specified conceptual structure"
+    if any(token in name for token in ["public_data_estimand_registry", "multi_outcome_indicator_registry"]):
+        return "src/build_multi_outcome_indicator_registry.py", "data/processed/multi_outcome_unmet_care.csv"
+    if any(token in name for token in ["multi_outcome_monitoring", "multi_outcome_coverage", "monitoring_dependence"]):
+        return "src/build_multi_outcome_monitoring_benchmark.py", "data/processed/multi_outcome_unmet_care.csv; data/processed/multi_outcome_year_normalized_weights.csv"
+    if any(token in name for token in ["multi_outcome_attrition", "multi_outcome_retention", "multi_outcome_included_excluded"]):
+        return "src/build_multi_outcome_drift_diagnostics.py", "data/processed/multi_outcome_unmet_care.csv; data/processed/panel_features_v2-3.csv"
+    if any(token in name for token in ["outcome_estimand", "coefficient_stability"]):
+        return "src/build_outcome_estimand_stability_matrix.py", "outputs/multi_outcome_attrition_matrix.csv; data/processed/panel_features_v2-3.csv"
+    if any(token in name for token in ["formal_estimand", "target_drift_components", "drift_stability", "conclusion_stability"]):
+        return "src/build_drift_stability_framework.py", "outputs/outcome_estimand_coefficient_matrix.csv; data/processed/multi_outcome_unmet_care.csv"
+    if any(token in name for token in ["simulation_", "simulation_tdi", "wrong_conclusion_by_tdi"]):
+        return "src/run_missingness_simulation.py", "data/processed/panel_features_v2-3.csv"
+    if any(token in name for token in ["target_population_drift_reporting_checklist", "failure_modes_public_aggregate_panels", "final_classification_eurostat_findings"]):
+        return "src/build_reporting_protocol_tables.py", "outputs/outcome_estimand_coefficient_matrix.csv; outputs/conclusion_stability.csv"
     if any(token in name for token in ["mi_", "mnar", "ipw", "poverty", "target_population", "main_sensitivity", "country_universe", "complete_case_selection", "fe_", "leave_one", "estimand_framework", "missingness_robustness"]):
         return "src/run_missingness_robustness.py", "data/processed/panel_features_v2-3.csv"
     if any(token in name for token in ["ml_", "xgboost", "random_forest", "lasso", "ridge"]):
@@ -286,6 +300,13 @@ def output_generation_map(figures: list[Path], tables: list[Path]) -> None:
             "run_full_thesis_analysis.py": "full",
             "generate_conceptual_selection_diagram.py": "diagram",
             "run_missingness_robustness.py": "missing",
+            "build_multi_outcome_indicator_registry.py": "registry",
+            "build_multi_outcome_monitoring_benchmark.py": "benchmark",
+            "build_multi_outcome_drift_diagnostics.py": "drift",
+            "build_outcome_estimand_stability_matrix.py": "matrix",
+            "build_drift_stability_framework.py": "stability",
+            "run_missingness_simulation.py": "sim",
+            "build_reporting_protocol_tables.py": "protocol",
             "run_step5_ml_analysis.py": "ml",
             "run_step6_additional_analysis.py": "extra",
             "run_step7_master_summary.py": "summary",

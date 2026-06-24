@@ -1,28 +1,27 @@
-\begingroup
-\setlength{\tabcolsep}{3pt}
-\renewcommand{\arraystretch}{1.12}
-\begin{tabularx}{\textwidth}{@{}YYrrrrr@{}}
+\begin{tabular}{p{0.19\linewidth}p{0.18\linewidth}rrrrr}
 \toprule
 Mechanism & Estimator & Mean bias & Med. abs. error & Sign rev. & CI cov. & Wrong concl. \\
 \midrule
-Country group & CC FE & 0.0072 & 0.0271 & 0.00 & 1.00 & 0.00 \\
-Country group & MNAR MI & -0.1497 & 0.1476 & 0.15 & 0.01 & 0.15 \\
-Country group & PMM MI & -0.1458 & 0.1466 & 0.12 & 0.02 & 0.12 \\
-Covariate block & CC FE & -0.0048 & 0.0342 & 0.00 & 1.00 & 0.00 \\
-Covariate block & MNAR MI & -0.0028 & 0.0026 & 0.00 & 1.00 & 0.00 \\
-Covariate block & PMM MI & -0.0026 & 0.0025 & 0.00 & 1.00 & 0.00 \\
-Early year & CC FE & -0.0773 & 0.0773 & 0.00 & 1.00 & 0.00 \\
-Early year & MNAR MI & -0.2299 & 0.2303 & 1.00 & 0.00 & 1.00 \\
-Early year & PMM MI & -0.2304 & 0.2316 & 1.00 & 0.00 & 1.00 \\
-Eurostat-realistic & CC FE & -0.0091 & 0.0326 & 0.00 & 0.98 & 0.00 \\
-Eurostat-realistic & MNAR MI & -0.0883 & 0.0920 & 0.00 & 0.33 & 0.00 \\
-Eurostat-realistic & PMM MI & -0.0621 & 0.0598 & 0.00 & 0.80 & 0.00 \\
-MCAR & CC FE & 0.0028 & 0.1212 & 0.15 & 0.89 & 0.15 \\
-MCAR & MNAR MI & -0.1448 & 0.1434 & 0.05 & 0.00 & 0.05 \\
-MCAR & PMM MI & -0.1315 & 0.1337 & 0.00 & 0.01 & 0.00 \\
-High-poverty MNAR & CC FE & -0.0143 & 0.0406 & 0.01 & 0.95 & 0.01 \\
-High-poverty MNAR & MNAR MI & -0.1478 & 0.1460 & 0.09 & 0.00 & 0.09 \\
-High-poverty MNAR & PMM MI & -0.1519 & 0.1513 & 0.15 & 0.00 & 0.15 \\
+country\_group & complete\_case\_fe & 0.0072 & 0.0271 & 0.0 & 1.0 & 0.0 \\
+country\_group & mnar\_shift\_mi\_fe & -0.1497 & 0.1476 & 0.15 & 0.01 & 0.15 \\
+country\_group & pmm\_mi\_fe & -0.1458 & 0.1466 & 0.12 & 0.02 & 0.12 \\
+covariate\_block & complete\_case\_fe & -0.0048 & 0.0342 & 0.0 & 1.0 & 0.0 \\
+covariate\_block & mnar\_shift\_mi\_fe & -0.0028 & 0.0026 & 0.0 & 1.0 & 0.0 \\
+covariate\_block & pmm\_mi\_fe & -0.0026 & 0.0025 & 0.0 & 1.0 & 0.0 \\
+early\_year & complete\_case\_fe & -0.0773 & 0.0773 & 0.0 & 1.0 & 0.0 \\
+early\_year & mnar\_shift\_mi\_fe & -0.2299 & 0.2303 & 1.0 & 0.0 & 1.0 \\
+early\_year & pmm\_mi\_fe & -0.2304 & 0.2316 & 1.0 & 0.0 & 1.0 \\
+eurostat\_realistic & complete\_case\_fe & -0.0156 & 0.0439 & 0.0 & 0.94 & 0.0 \\
+eurostat\_realistic & mnar\_shift\_mi\_fe & -0.0857 & 0.0879 & 0.0 & 0.46 & 0.0 \\
+eurostat\_realistic & pmm\_mi\_fe & -0.0603 & 0.0612 & 0.0 & 0.79 & 0.0 \\
+mar\_observed & complete\_case\_fe & -0.0019 & 0.0274 & 0.0 & 1.0 & 0.0 \\
+mar\_observed & mnar\_shift\_mi\_fe & -0.1471 & 0.1464 & 0.07 & 0.01 & 0.07 \\
+mar\_observed & pmm\_mi\_fe & -0.1419 & 0.1422 & 0.06 & 0.02 & 0.06 \\
+mcar & complete\_case\_fe & 0.0028 & 0.1212 & 0.15 & 0.89 & 0.15 \\
+mcar & mnar\_shift\_mi\_fe & -0.1448 & 0.1434 & 0.05 & 0.0 & 0.05 \\
+mcar & pmm\_mi\_fe & -0.1315 & 0.1337 & 0.0 & 0.01 & 0.0 \\
+mnar\_high\_poverty\_unmet & complete\_case\_fe & -0.0164 & 0.0329 & 0.0 & 0.95 & 0.0 \\
+mnar\_high\_poverty\_unmet & mnar\_shift\_mi\_fe & -0.1427 & 0.14 & 0.07 & 0.0 & 0.07 \\
+mnar\_high\_poverty\_unmet & pmm\_mi\_fe & -0.1483 & 0.1484 & 0.12 & 0.01 & 0.12 \\
 \bottomrule
-\end{tabularx}
-\endgroup
+\end{tabular}

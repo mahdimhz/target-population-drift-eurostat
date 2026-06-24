@@ -7,7 +7,7 @@ The thesis uses published aggregate Eurostat data, with the country-year as the 
 
 The analytical files retain national units and exclude EU and euro-area aggregates. Regional NUTS2 dataflows were audited but are not used because a consistent regional panel was not verified. All outcomes and covariates are merged by country and year using documented dataset codes and filters; the appendix source register records extraction dates and source definitions.
 
-The first author-constructed output is the public-data estimand registry in Table~\ref{tab:public_data_estimand_registry}. It converts official Eurostat fields into explicit analytical objects by recording the care type, barrier, denominator, coverage, and feasibility of each indicator before modelling. Medical and dental outcomes, population- and need-denominator definitions, and medical cost, distance, and waiting-list barriers are included. Reason codes are validated against downloaded JSON-stat metadata; an indicator that fails validation remains registered with an infeasibility reason.
+The first generated output is the public-data estimand registry in Table~\ref{tab:public_data_estimand_registry}. It converts official Eurostat fields into explicit analytical objects by recording the care type, barrier, denominator, coverage, and feasibility of each indicator before modelling. Medical and dental outcomes, population- and need-denominator definitions, and medical cost, distance, and waiting-list barriers are included. Reason codes are validated against downloaded JSON-stat metadata; an indicator that fails validation remains registered with an infeasibility reason.
 
 \begin{table}[H]
 \centering
@@ -24,7 +24,9 @@ The first author-constructed output is the public-data estimand registry in Tabl
 
 The full Eurostat-available universe is operationally defined as all national units present in the selected outcome and covariate tables after aggregate codes are removed. Table~\ref{tab:country_universe} distinguishes EU-27 members, EEA countries, Switzerland, the UK, candidate or potential-candidate countries, and other available national units, then reports their representation in the outcome-observed, complete-case, MI, and prediction samples. The EU-27 restriction is the mandatory institutional sensitivity comparison. The institutional categories are based on official EU country, EEA/Switzerland, enlargement, and UK-relations sources \citep{eu_countries_2026,europarl_eea_switzerland_2025,european_commission_enlargement_2026,european_commission_uk_relations_2026}.
 
-\begin{table}[htbp]
+These samples are not interchangeable: monitoring uses outcome-observed rows, whereas regression and prediction additionally depend on covariate and lag availability. Chapter~\ref{ch:descriptive_evidence} measures the resulting attrition, and Chapter~\ref{ch:modeling_strategy_results} compares the corresponding estimands.
+
+\begin{table}[H]
 \centering
 \scriptsize
 \caption{Country universe and analytical-sample inclusion. Rows report the number of country-years contributed to the outcome-observed panel, baseline complete-case FE sample, MI target, and prediction sample.}
@@ -37,11 +39,11 @@ The full Eurostat-available universe is operationally defined as all national un
 \end{minipage}
 \end{table}
 
-These samples are not interchangeable: monitoring uses outcome-observed rows, whereas regression and prediction additionally depend on covariate and lag availability. Chapter~\ref{ch:descriptive_evidence} measures the resulting attrition, and Chapter~\ref{ch:modeling_strategy_results} compares the corresponding estimands.
+\FloatBarrier
 
 \section{Primary Outcome}
 
-The primary outcome is drawn from \texttt{hlth\_silc\_08}, Eurostat's EU-SILC indicator for self-reported unmet need for medical examination by sex, age, main reason, and income quantile \citep{eurostat_health_variables_metadata,eurostat_unmet_needs_statistics}. The extraction selects total sex, age 16 and over, total income quantile, percentage units, and the combined expense, distance, or waiting-list reason. The author-constructed analytical field is \texttt{unmet\_need\_pc}.
+The primary outcome is drawn from \texttt{hlth\_silc\_08}, Eurostat's EU-SILC indicator for self-reported unmet need for medical examination by sex, age, main reason, and income quantile \citep{eurostat_health_variables_metadata,eurostat_unmet_needs_statistics}. The extraction selects total sex, age 16 and over, total income quantile, percentage units, and the combined expense, distance, or waiting-list reason. The derived analytical field is \texttt{unmet\_need\_pc}.
 
 The indicator measures a reported access barrier, not clinical need or health-system quality. Because it uses the population denominator, its national rate combines the reporting of need with the non-receipt of care; the shorter \texttt{hlth\_silc\_08b} series conditions on persons reporting the same medical needs. This denominator distinction is part of the estimand registry rather than a claim that either measure is universally preferable \citep{guidi_ingleby_2023_valid_data,ingleby_guidi_2025_unmet_needs_methodology}.
 
@@ -49,7 +51,9 @@ The indicator measures a reported access barrier, not clinical need or health-sy
 
 Table~\ref{tab:variable_summary} separates official Eurostat indicators from author-engineered features and groups them into macroeconomic, labour-market, inequality, health-financing, and health-capacity blocks. The blocks operationalise the access concepts reviewed in Chapter~\ref{ch:background_literature}; they do not measure individual mechanisms.
 
-\begin{table}[htbp]
+GDP per capita and unemployment describe macroeconomic and labour-market context. Poverty or social exclusion is the principal social-vulnerability stress-test variable, while the Gini coefficient and long-term unemployment provide supporting distributional context. Government expenditure, compulsory financing, and out-of-pocket spending represent national financing arrangements; physicians and hospital beds are coarse capacity measures. These national indicators cannot resolve local distribution, specialty shortages, prices, or individual resources, so their role is to define comparable country-year adjustment blocks.
+
+\begin{table}[H]
 \centering
 \scriptsize
 \caption{Official Eurostat variables and author-engineered features used in the country-year panel. Coverage varies by dataset and year.}
@@ -62,7 +66,7 @@ Table~\ref{tab:variable_summary} separates official Eurostat indicators from aut
 \end{minipage}
 \end{table}
 
-GDP per capita and unemployment describe macroeconomic and labour-market context. Poverty or social exclusion is the principal social-vulnerability stress-test variable, while the Gini coefficient and long-term unemployment provide supporting distributional context. Government expenditure, compulsory financing, and out-of-pocket spending represent national financing arrangements; physicians and hospital beds are coarse capacity measures. These national indicators cannot resolve local distribution, specialty shortages, prices, or individual resources, so their role is to define comparable country-year adjustment blocks.
+\FloatBarrier
 
 \section{Engineered Features}
 
@@ -102,7 +106,7 @@ where \(\delta\) denotes a documented shift to imputed values for missing povert
 
 Population weighting is not treated as more correct than unweighted analysis. The unweighted panel answers an average-country monitoring question, while the weighted panel answers an average-resident monitoring question. The balanced-outcome panel is also defined at this stage: it includes countries with complete primary-outcome coverage and valid population weights over the main analysis window. It is not automatically balanced for every regression covariate.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.86\textwidth]{population_weighted_trend}
 \caption{Unweighted and year-normalized population-weighted trends in unmet medical care need. The sample contains observed \texttt{hlth\_silc\_08} country-years for 2008--2025; country coverage varies by year. The figure diagnoses how the monitoring estimand changes when countries are weighted by \texttt{demo\_pjan} population.}
@@ -113,6 +117,8 @@ Population weighting is not treated as more correct than unweighted analysis. Th
 \scriptsize \textit{Source:} Author's calculations from Eurostat \texttt{hlth\_silc\_08} and \texttt{demo\_pjan}. Weights are normalized to sum to one among observed countries within each year.
 \end{minipage}
 \end{figure}
+
+\FloatBarrier
 
 \section{Missingness and Sample Construction}
 

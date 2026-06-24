@@ -9,6 +9,7 @@ D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/citizenship_
 D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/citizenship_unmet_need_trend.pdf | OK | caption-ready; nonblank PDF detected
 D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/complete_case_attrition_waterfall.pdf | OK | caption-ready; nonblank PDF detected
 D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/conceptual_selection_estimand_diagram.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/conclusion_stability_by_outcome.pdf | OK | caption-ready; nonblank PDF detected
 D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/convergence_sigma.pdf | OK | caption-ready; nonblank PDF detected
 D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/descriptive_country_rankings.pdf | OK | caption-ready; nonblank PDF detected
 D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/descriptive_country_rankings_latest.pdf | OK | caption-ready; nonblank PDF detected
@@ -17,6 +18,7 @@ D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/descriptive_
 D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/descriptive_eu_trend.pdf | OK | caption-ready; nonblank PDF detected
 D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/descriptive_trend_europe.pdf | OK | caption-ready; nonblank PDF detected
 D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/descriptive_trend_with_bands.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/drift_stability_map.pdf | OK | caption-ready; nonblank PDF detected
 D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/leave_one_country_out_poverty.pdf | OK | caption-ready; nonblank PDF detected
 D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/leave_one_year_out_poverty.pdf | OK | caption-ready; nonblank PDF detected
 D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/mi_coefficient_distribution.pdf | OK | caption-ready; nonblank PDF detected
@@ -90,6 +92,9 @@ D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/scatter_unme
 D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/scatter_unmet_vs_unemployment_rate_pc.pdf | OK | caption-ready; nonblank PDF detected
 D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/simulation_bias_by_mechanism.pdf | OK | caption-ready; nonblank PDF detected
 D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/simulation_target_distance_vs_error.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/simulation_tdi_vs_error.pdf | OK | caption-ready; nonblank PDF detected
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/simulation_wrong_conclusion_by_tdi.pdf | REVIEW | axis/title text not clearly detected as English
+D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/target_drift_components_heatmap.pdf | OK | caption-ready; nonblank PDF detected
 D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/tree_feature_importance.pdf | REVIEW | little/no extractable text
 D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/unmet_need_trends_all_countries.pdf | REVIEW | little/no extractable text
 D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/unmet_need_vs_gdp_per_capita_eur_2025.pdf | REVIEW | little/no extractable text
@@ -97,4 +102,4 @@ D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/unmet_need_v
 D:/Luigi Vanvitelli/Thesis/Pre/thesis-scope-eurostat-health/figures/unmet_need_vs_unemployment_rate_pc_2025.pdf | REVIEW | little/no extractable text
 
 Figures needing manual review:
-08b_minus_08_difference_by_country.pdf, 08b_vs_08_scatter.pdf, citizenship_gap_correlations.pdf, mi_observed_vs_imputed_baseline.pdf, mi_observed_vs_imputed_baseline_m50.pdf, mi_observed_vs_imputed_baseline_pmm.pdf, mi_observed_vs_imputed_baseline_pmm_m50.pdf, mi_observed_vs_imputed_country_dummies.pdf, mi_observed_vs_imputed_country_dummies_pmm.pdf, mi_observed_vs_imputed_lagged_predictors_pmm.pdf, mi_observed_vs_imputed_no_outcome.pdf, mi_observed_vs_imputed_no_outcome_pmm.pdf, missingness_inclusion_probability.pdf, model_correlations_heatmap.pdf, outcome_missingness_heatmap.pdf, tree_feature_importance.pdf, unmet_need_trends_all_countries.pdf, unmet_need_vs_gdp_per_capita_eur_2025.pdf, unmet_need_vs_poverty_or_social_exclusion_pc_2025.pdf, unmet_need_vs_unemployment_rate_pc_2025.pdf
+08b_minus_08_difference_by_country.pdf, 08b_vs_08_scatter.pdf, citizenship_gap_correlations.pdf, mi_observed_vs_imputed_baseline.pdf, mi_observed_vs_imputed_baseline_m50.pdf, mi_observed_vs_imputed_baseline_pmm.pdf, mi_observed_vs_imputed_baseline_pmm_m50.pdf, mi_observed_vs_imputed_country_dummies.pdf, mi_observed_vs_imputed_country_dummies_pmm.pdf, mi_observed_vs_imputed_lagged_predictors_pmm.pdf, mi_observed_vs_imputed_no_outcome.pdf, mi_observed_vs_imputed_no_outcome_pmm.pdf, missingness_inclusion_probability.pdf, model_correlations_heatmap.pdf, outcome_missingness_heatmap.pdf, simulation_wrong_conclusion_by_tdi.pdf, tree_feature_importance.pdf, unmet_need_trends_all_countries.pdf, unmet_need_vs_gdp_per_capita_eur_2025.pdf, unmet_need_vs_poverty_or_social_exclusion_pc_2025.pdf, unmet_need_vs_unemployment_rate_pc_2025.pdf

@@ -38,6 +38,38 @@ def write_tabular(df: pd.DataFrame, columns: list[str], headers: list[str], path
     path.write_text("\n".join(lines), encoding="utf-8")
 
 
+def write_tabularx(df: pd.DataFrame, columns: list[str], headers: list[str], path: Path, colspec: str) -> None:
+    lines = [
+        r"\begingroup",
+        r"\scriptsize",
+        r"\setlength{\tabcolsep}{3pt}",
+        rf"\begin{{tabularx}}{{\linewidth}}{{{colspec}}}",
+        r"\toprule",
+        " & ".join(headers) + r" \\",
+        r"\midrule",
+    ]
+    for _, row in df[columns].iterrows():
+        lines.append(" & ".join(_latex_escape(row[column]) for column in columns) + r" \\")
+    lines.extend([r"\bottomrule", r"\end{tabularx}", r"\endgroup", ""])
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text("\n".join(lines), encoding="utf-8")
+
+
+def _format_float(value: object, digits: int = 3) -> str:
+    return "NA" if pd.isna(value) else f"{float(value):.{digits}f}"
+
+
+def _evidence_basis(row: pd.Series) -> str:
+    if row["final_label"] == "non-identifiable" and pd.isna(row["CSI"]):
+        return "not computed; fewer than 2 feasible estimand families"
+    return (
+        f"CSI={float(row['CSI']):.3f}; "
+        f"theta IQR={float(row['theta_IQR']):.3f}; "
+        f"dir. agreement={float(row['directional_agreement']):.3f}; "
+        f"{row['rule_reason_short']}"
+    )
+
+
 def build_checklist() -> pd.DataFrame:
     rows = [
         {
@@ -134,17 +166,14 @@ def build_failure_modes() -> pd.DataFrame:
 
 
 def build_final_classification() -> pd.DataFrame:
-    classifications = pd.read_csv(OUTPUTS / "outcome_failure_classification.csv")
-    classifications = classifications.rename(
+    stability = pd.read_csv(OUTPUTS / "drift_stability_summary.csv")
+    classifications = stability.rename(
         columns={
-            "indicator_label": "finding",
-            "classification": "final_label",
-            "estimated_estimands": "estimand_families",
+            "outcome": "finding",
+            "feasible_estimand_families": "estimand_families",
         }
-    )
-    classifications["evidence_basis"] = classifications["estimand_families"].map(
-        lambda value: f"{int(value)} estimand families estimated"
-    )
+    ).copy()
+    classifications["evidence_basis"] = classifications.apply(_evidence_basis, axis=1)
     classifications["interpretation"] = classifications["final_label"].map(
         {
             "stable": "Observed estimands are sufficiently aligned for cautious aggregate interpretation.",
@@ -155,14 +184,29 @@ def build_final_classification() -> pd.DataFrame:
             "non-identifiable": "Available public aggregate data do not support a coefficient interpretation.",
         }
     )
-    out = classifications[["finding", "final_label", "evidence_basis", "interpretation"]].copy()
+    out = classifications[
+        [
+            "finding",
+            "denominator",
+            "estimand_families",
+            "theta_IQR",
+            "directional_agreement",
+            "CSI",
+            "final_label",
+            "evidence_basis",
+            "interpretation",
+        ]
+    ].copy()
     out.to_csv(OUTPUTS / "final_classification_eurostat_findings.csv", index=False)
-    write_tabular(
-        out,
-        ["finding", "final_label", "evidence_basis", "interpretation"],
-        ["Finding", "Final label", "Evidence basis", "Interpretation"],
+    display = out.copy()
+    for column in ["theta_IQR", "directional_agreement", "CSI"]:
+        display[column] = display[column].map(_format_float)
+    write_tabularx(
+        display,
+        ["finding", "denominator", "estimand_families", "theta_IQR", "directional_agreement", "CSI", "final_label", "evidence_basis"],
+        ["Finding", "Denom.", "Families", "$\\theta$ IQR", "Dir. agree", "CSI", "Final label", "Evidence basis"],
         TABLES / "final_classification_eurostat_findings.tex",
-        r"p{0.22\linewidth}p{0.18\linewidth}p{0.20\linewidth}p{0.30\linewidth}",
+        r"@{}p{0.14\linewidth}p{0.08\linewidth}rrrrp{0.16\linewidth}Y@{}",
     )
     return out
 

@@ -66,8 +66,8 @@ INDICATOR_SPECS: tuple[IndicatorSpec, ...] = (
         care_type="dental",
         barrier_type="cost_distance_waiting",
         denominator="population",
-        reason_code="TOOEFW",
-        reason_label_expected="Too expensive or too far to travel or waiting list",
+        reason_code="TXP_TFAR_WLIST",
+        reason_label_expected="Too expensive or too far or waiting list",
         params={"unit": "PC", "quantile": "TOTAL", "age": "Y_GE16", "sex": "T"},
         valid_interpretation="Share of the population aged 16+ reporting unmet dental examination need due to cost, distance, or waiting lists.",
         invalid_interpretation="Medical-care access effect or individual-level dental treatment need.",
@@ -254,10 +254,28 @@ def _latex_escape(value: object) -> str:
 
 
 def write_registry_table(registry: pd.DataFrame, path: Path) -> None:
+    indicator_labels = {
+        "medical_population_combined": "Medical population",
+        "medical_need_combined": "Medical need",
+        "dental_population_combined": "Dental population",
+        "dental_need_combined": "Dental need",
+        "medical_population_cost": "Medical cost",
+        "medical_population_waiting": "Medical waiting",
+        "medical_population_distance": "Medical distance",
+    }
+    barrier_labels = {
+        "cost_distance_waiting": "Cost, distance, waiting",
+        "cost": "Cost",
+        "waiting": "Waiting",
+        "distance": "Distance",
+    }
+    denominator_labels = {
+        "population": "Population",
+        "same_needs": "Need",
+    }
     columns = [
         "indicator_id",
         "dataset_code",
-        "care_type",
         "barrier_type",
         "denominator",
         "year_min",
@@ -267,28 +285,43 @@ def write_registry_table(registry: pd.DataFrame, path: Path) -> None:
         "feasibility_status",
     ]
     display = registry[columns].copy()
+    display["indicator_id"] = display["indicator_id"].map(indicator_labels).fillna(display["indicator_id"])
+    display["barrier_type"] = display["barrier_type"].map(barrier_labels).fillna(display["barrier_type"])
+    display["denominator"] = display["denominator"].map(denominator_labels).fillna(display["denominator"])
+    display["years"] = display["year_min"].astype(str) + "--" + display["year_max"].astype(str)
+    table_columns = [
+        "indicator_id",
+        "dataset_code",
+        "barrier_type",
+        "denominator",
+        "years",
+        "country_count",
+        "observed_rows",
+        "feasibility_status",
+    ]
     header = [
         "Indicator",
         "Dataset",
-        "Care",
         "Barrier",
         "Denom.",
-        "First",
-        "Last",
+        "Years",
         "Countries",
         "Rows",
         "Status",
     ]
     lines = [
-        r"\begin{tabular}{p{0.20\linewidth}p{0.12\linewidth}p{0.08\linewidth}p{0.15\linewidth}p{0.10\linewidth}rrrrp{0.09\linewidth}}",
+        r"\begingroup",
+        r"\scriptsize",
+        r"\setlength{\tabcolsep}{3pt}",
+        r"\begin{tabularx}{\linewidth}{@{}p{0.21\linewidth}p{0.13\linewidth}Yp{0.11\linewidth}p{0.12\linewidth}rrp{0.09\linewidth}@{}}",
         r"\toprule",
         " & ".join(header) + r" \\",
         r"\midrule",
     ]
     for _, row in display.iterrows():
-        values = [_latex_escape(row[column]) for column in columns]
+        values = [_latex_escape(row[column]) for column in table_columns]
         lines.append(" & ".join(values) + r" \\")
-    lines.extend([r"\bottomrule", r"\end{tabular}", ""])
+    lines.extend([r"\bottomrule", r"\end{tabularx}", r"\endgroup", ""])
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text("\n".join(lines), encoding="utf-8")
 

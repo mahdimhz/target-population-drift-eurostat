@@ -1,9 +1,9 @@
 \chapter{Target-Population Sensitivity and Regression Results}
 \label{ch:modeling_strategy_results}
 
-\section{Estimand Framework}
+\section{Empirical Estimand Ladder}
 
-This chapter is the empirical core of the thesis. It treats the poverty or social-exclusion coefficient as a stress test for estimand drift: the coefficient is followed as the model moves from the intended outcome-observed monitoring panel to selected complete cases, population-weighted complete cases, universe-restricted panels, IPW diagnostics, MAR imputation, and MNAR stress tests. The question is not whether one selected-panel coefficient is statistically marked. The question is whether the aggregate poverty association is stable when the target population, weighting rule, row-selection process, and missing-data assumption change.
+This chapter is the empirical core of the thesis. It applies the framework defined in Chapter~\ref{ch:framework} to the Eurostat unmet-care panels. The poverty or social-exclusion coefficient is treated as a stress-test coefficient: it is followed as the model moves from the intended outcome-observed monitoring panel to selected complete cases, population-weighted complete cases, universe-restricted panels, IPW diagnostics, MAR imputation, and MNAR stress tests. The question is not whether one selected-panel coefficient is statistically marked. The question is whether the aggregate poverty association is stable when the target population, weighting rule, row-selection process, and missing-data assumption change.
 
 \begin{table}[htbp]
 \centering
@@ -24,7 +24,15 @@ The hierarchy is estimand-first. Complete-case and population-weighted complete-
 
 Before estimating poverty/social-exclusion coefficients, the audit protocol asks how far each feasible outcome can travel from the monitoring target to an analytical sample. Table~\ref{tab:multi_outcome_attrition_matrix} reports this drift across the multi-outcome registry. The columns are sequential requirements: outcome observed, valid population weight, GDP, unemployment, poverty/social exclusion, the baseline financing-complete covariate set, and a stricter capacity-augmented sensitivity set.
 
-\begin{table}[htbp]
+The matrix shows that target-population drift is not a one-off feature of the primary medical indicator. Long population-denominator medical and dental indicators have broad monitoring coverage, but their baseline complete-case analytical samples are much smaller. Need-denominator indicators are shorter by construction and become especially limited once financing and capacity covariates are required. These rows do not estimate any substantive effect; they define which empirical targets are supportable.
+
+Figure~\ref{fig:multi_outcome_retention_heatmap} visualizes the same row-retention problem. The heatmap is useful because it separates denominator limits from covariate-completeness limits. A short need-denominator indicator may be feasible for monitoring but weak for regression once country-year covariates are required.
+
+The detailed 608-to-282 primary-outcome sequence is reported once in Figure~\ref{fig:complete_case_attrition_waterfall} and Table~\ref{tab:complete_case_attrition_waterfall}. The multi-outcome matrix and retention heatmap extend that diagnostic across outcomes without repeating the primary waterfall.
+
+Table~\ref{tab:multi_outcome_included_excluded_smd_top} shows that attrition is not only about row counts. Excluded rows differ from included rows on variables tied to vulnerability and system capacity. The direction and size of these differences vary by indicator length and denominator, which is why the later coefficient matrix labels infeasible or unstable estimands instead of forcing them into one preferred model.
+
+\begin{table}[H]
 \centering
 \scriptsize
 \caption{Multi-outcome attrition matrix. Rows are feasible Eurostat unmet-care indicators; columns report retained country-year rows after sequentially requiring population weights and covariate blocks. Baseline CC is the financing-complete fixed-effects covariate set used for the primary poverty stress test, while capacity is a stricter sensitivity requirement.}
@@ -37,9 +45,7 @@ Before estimating poverty/social-exclusion coefficients, the audit protocol asks
 \end{minipage}
 \end{table}
 
-The matrix shows that target-population drift is not a one-off feature of the primary medical indicator. Long population-denominator medical and dental indicators have broad monitoring coverage, but their baseline complete-case analytical samples are much smaller. Need-denominator indicators are shorter by construction and become especially limited once financing and capacity covariates are required. These rows do not estimate any substantive effect; they define which empirical targets are supportable.
-
-\begin{figure}[htbp]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.95\textwidth]{multi_outcome_retention_heatmap}
 \caption{Multi-outcome retention heatmap. Cells report the percentage of each indicator's outcome-observed country-years retained after sequential population-weight and covariate requirements; no regression is estimated in this diagnostic.}
@@ -51,11 +57,7 @@ The matrix shows that target-population drift is not a one-off feature of the pr
 \end{minipage}
 \end{figure}
 
-Figure~\ref{fig:multi_outcome_retention_heatmap} visualizes the same row-retention problem. The heatmap is useful because it separates denominator limits from covariate-completeness limits. A short need-denominator indicator may be feasible for monitoring but weak for regression once country-year covariates are required.
-
-The detailed 608-to-282 primary-outcome sequence is reported once in Figure~\ref{fig:complete_case_attrition_waterfall} and Table~\ref{tab:complete_case_attrition_waterfall}. The multi-outcome matrix and retention heatmap extend that diagnostic across outcomes without repeating the primary waterfall.
-
-\begin{table}[htbp]
+\begin{table}[H]
 \centering
 \scriptsize
 \caption{Largest included-versus-excluded standardized differences by outcome. Included rows are baseline complete-case rows for each outcome; excluded rows are outcome-observed rows removed by missing baseline covariates. SMDs are descriptive selection diagnostics.}
@@ -68,13 +70,19 @@ The detailed 608-to-282 primary-outcome sequence is reported once in Figure~\ref
 \end{minipage}
 \end{table}
 
-Table~\ref{tab:multi_outcome_included_excluded_smd_top} shows that attrition is not only about row counts. Excluded rows differ from included rows on variables tied to vulnerability and system capacity. The direction and size of these differences vary by indicator length and denominator, which is why the later coefficient matrix labels infeasible or unstable estimands instead of forcing them into one preferred model.
+\FloatBarrier
 
 \section{Outcome-by-Estimand Coefficient Matrix}
 
 Table~\ref{tab:outcome_estimand_coefficient_matrix} replaces a long list of separate robustness rows with a single outcome-by-estimand audit. For each feasible outcome, the table follows the poverty/social-exclusion coefficient across five estimand families: unweighted complete-case FE, population-weighted complete-case FE, balanced-outcome FE, IPW complete-case FE, and MAR MI full-target FE. Rows that do not meet the minimum support rule are reported as infeasible rather than forced.
 
-\begin{table}[htbp]
+The matrix changes the interpretation of the empirical evidence. Long population-denominator indicators can support several observed-data estimands. Need-denominator indicators are useful for monitoring, but their observed complete-case FE rows are too short for the deterministic support rule and are therefore non-identifiable as complete-case regression targets. MAR MI can still be estimated for those shorter targets, but one imputed estimand family is not enough to support a stable coefficient interpretation.
+
+Figure~\ref{fig:outcome_estimand_coefficient_stability} shows the core empirical contribution of the chapter. Observed complete-case estimands often remain positive, while MAR MI full-target estimates can move toward zero or change sign. The result is a coefficient-stability audit: the same poverty/social-exclusion stress-test variable has different interpretations under different target populations and missing-data assumptions.
+
+Table~\ref{tab:drift_stability_summary} translates the coefficient matrix into the framework metrics defined in Chapter~\ref{ch:framework}. The poverty/social-exclusion coefficient remains a stress-test coefficient, not the thesis contribution. The standardized coefficient \(\theta\) puts coefficients on a comparable IQR scale across outcomes; \(\theta\) IQR summarizes dispersion across feasible estimand families; directional agreement records whether signs agree with the observed-data reference direction; and CSI applies the declared \(\delta=0.10\) tolerance rule. The final labels are deterministic diagnostic labels, not causal claims and not evidence of individual-level mechanisms.
+
+\begin{table}[H]
 \centering
 \scriptsize
 \caption{Outcome-by-estimand coefficient matrix for the poverty/social-exclusion coefficient. Each row defines a distinct target population and missing-data assumption; infeasible rows are retained with the reason. MAR MI is interpreted as model-based sensitivity, not as correction.}
@@ -86,8 +94,6 @@ Table~\ref{tab:outcome_estimand_coefficient_matrix} replaces a long list of sepa
 \scriptsize \textit{Source:} Author's estimates from the thesis regression and imputation pipeline. Observed-data cells use country-and-year FE where feasible; MAR MI cells pool imputed outcome-observed panels using Rubin's rules \citep{rubin_1987,little_rubin_2019}.
 \end{minipage}
 \end{table}
-
-The matrix changes the interpretation of the empirical evidence. Long population-denominator indicators can support several observed-data estimands. Need-denominator indicators are useful for monitoring, but their observed complete-case FE rows are too short for the deterministic support rule and are therefore non-identifiable as complete-case regression targets. MAR MI can still be estimated for those shorter targets, but one imputed estimand family is not enough to support a stable coefficient interpretation.
 
 \begin{figure}[H]
 \centering
@@ -101,15 +107,27 @@ The matrix changes the interpretation of the empirical evidence. Long population
 \end{minipage}
 \end{figure}
 
-Figure~\ref{fig:outcome_estimand_coefficient_stability} shows the core empirical contribution of the chapter. Observed complete-case estimands often remain positive, while MAR MI full-target estimates can move toward zero or change sign. The result is a coefficient-stability audit: the same poverty/social-exclusion stress-test variable has different interpretations under different target populations and missing-data assumptions.
+\begin{table}[H]
+\centering
+\caption{Drift-stability summary for the poverty/social-exclusion stress-test coefficient. The table reports framework metrics generated from the outcome-by-estimand matrix; TDI summarizes target movement and CSI summarizes conclusion agreement under the declared tolerance rule.}
+\label{tab:drift_stability_summary}
+\input{tables/drift_stability_summary}
+\vspace{0.25em}
 
-Chapter~\ref{ch:discussion_conclusion} applies the deterministic labels once, after the empirical and simulation evidence has been presented. This avoids repeating the same outcome classifications in both the results and conclusion chapters.
+\begin{minipage}{0.96\textwidth}
+\scriptsize \textit{Source:} Author's calculations from \texttt{target\_drift\_components.csv}, \texttt{drift\_stability\_theta.csv}, and \texttt{conclusion\_stability.csv}. Labels are deterministic diagnostics from the generated framework metrics; they are not causal or policy-effect classifications.
+\end{minipage}
+\end{table}
+
+\FloatBarrier
 
 \section{Semi-Synthetic Missingness Simulation}
 
-The real Eurostat panel cannot identify a single reference coefficient without additional assumptions. To test the audit logic under controlled conditions, the thesis adds a semi-synthetic missingness simulation. The simulation starts from the most complete primary-outcome reference panel: the 282 country-years used in the baseline complete-case FE model. The reference estimand is the poverty/social-exclusion coefficient estimated on this complete artificial panel. Covariate values are then removed under six mechanisms: MCAR row-level missingness, early-year missingness, country-group missingness, financing-block missingness, MNAR high-poverty/high-unmet missingness, and Eurostat-realistic missingness based on observed source coverage.
+The real Eurostat panel cannot identify a single reference coefficient without additional assumptions. To test the audit logic under controlled conditions, the thesis adds a semi-synthetic missingness simulation. The simulation starts from the most complete primary-outcome reference panel: the 282 country-years used in the baseline complete-case FE model. The reference estimand is the poverty/social-exclusion coefficient estimated on this complete artificial panel. Covariate values are then removed under seven mechanisms: MCAR row-level missingness, early-year missingness, country-group missingness, financing-block missingness, MAR-style missingness based on observed variables, MNAR high-poverty/high-unmet missingness, and Eurostat-realistic missingness based on observed source coverage.
 
 The term \emph{reference estimand} is used deliberately. It is not a claim that the 282-row panel reveals a definitive European coefficient. It is a controlled benchmark for measuring how complete-case FE, population-weighted FE, IPW FE, PMM MI, and MNAR-shift MI behave when the complete artificial panel is known before deleting covariates.
+
+The simulation also calculates the target-population drift components defined in Chapter~\ref{ch:framework} for every mechanism--estimator draw. Complete-case, weighted, and IPW estimators are evaluated on their retained analytical rows. PMM and MNAR-shift MI estimators are evaluated as full-row model-based targets; their row drift is therefore zero by construction, but their coefficient errors still diagnose imputation-model dependence. The complete generated validation table reports mean TDI, mean bias, median absolute coefficient error, sign-reversal rate, interval coverage, wrong-conclusion rate, and failed replicates for every estimator.
 
 \begin{table}[H]
 \centering
@@ -120,11 +138,11 @@ The term \emph{reference estimand} is used deliberately. It is not a claim that 
 \vspace{0.25em}
 
 \begin{minipage}{0.96\textwidth}
-\scriptsize \textit{Source:} Author's semi-synthetic simulation based on the complete-case Eurostat primary panel. The reference estimand is defined inside the simulation; it is not a claim about a true European causal coefficient.
+\scriptsize \textit{Source:} Author's semi-synthetic simulation based on the complete-case Eurostat primary panel. The full validation output is generated in \texttt{outputs/simulation\_validation\_summary.csv}; the reference estimand is defined inside the simulation and is not a claim about a true European causal coefficient.
 \end{minipage}
 \end{table}
 
-Table~\ref{tab:simulation_main_summary} shows that the direction of failure depends on the missingness mechanism. Complete-case FE is relatively stable under country-group and covariate-block deletion in this reference panel, but it shows sign reversals under MCAR deletion because the retained rows become small and noisy. PMM MI and MNAR-shift MI are not uniformly better: under early-year and country-group deletion, they can move far from the reference estimand. This is the simulation analogue of the thesis's main empirical caution: missing-data methods change assumptions and target populations; they do not automatically repair public-data non-coverage.
+Table~\ref{tab:simulation_main_summary} shows that the direction of failure depends on the missingness mechanism. Complete-case FE is relatively stable under country-group, covariate-block, MAR-style, and Eurostat-realistic deletion in this reference panel, but it shows sign reversals under MCAR deletion because the retained rows become small and noisy. PMM MI and MNAR-shift MI are not uniformly better: under early-year and country-group deletion, they can move far from the reference estimand. This is the simulation analogue of the thesis's main empirical caution: missing-data methods change assumptions and target populations; they do not automatically repair public-data non-coverage.
 
 \begin{figure}[H]
 \centering
@@ -140,17 +158,29 @@ Table~\ref{tab:simulation_main_summary} shows that the direction of failure depe
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.86\textwidth]{simulation_target_distance_vs_error}
-\caption{Target-distance score versus absolute coefficient error in the semi-synthetic simulation. The target-distance score combines row, country, year, and standardized balance differences between the retained sample and the reference panel.}
-\label{fig:simulation_target_distance_vs_error}
+\includegraphics[width=0.96\textwidth]{simulation_tdi_vs_error}
+\caption{Target-Population Drift Index and absolute coefficient error in the semi-synthetic simulation. TDI summarizes row, country, year, weighting, and standardized balance movement from the reference panel; the figure evaluates whether larger diagnostic drift coincides with larger coefficient error by estimator, not whether TDI proves bias.}
+\label{fig:simulation_tdi_vs_error}
 \vspace{0.25em}
 
 \begin{minipage}{0.94\textwidth}
-\scriptsize \textit{Source:} Author's semi-synthetic missingness simulation. The plot links sample drift to coefficient error as a diagnostic relationship, not as a formal bias theorem.
+\scriptsize \textit{Source:} Author's semi-synthetic missingness simulation. The plot links target drift to coefficient error as a diagnostic relationship, not as a formal bias theorem.
 \end{minipage}
 \end{figure}
 
-Figures~\ref{fig:simulation_bias_by_mechanism} and \ref{fig:simulation_target_distance_vs_error} connect the simulation to the audit protocol. Larger target-distance scores are not a formal theorem of bias, but they make visible when the retained analytical sample has moved away from the reference panel. The simulation contribution is therefore methodological-applied: it shows why public aggregate-panel studies should report target definition, row loss, selection distortion, estimator sensitivity, and non-identifiability before interpreting substantive coefficients.
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.94\textwidth]{simulation_wrong_conclusion_by_tdi}
+\caption{Wrong-conclusion probability by TDI bin in the semi-synthetic simulation. A wrong conclusion is recorded when the estimated sign differs from the reference estimand or when an interval excludes zero in the wrong direction; the figure evaluates whether higher diagnostic drift is associated with more frequent wrong conclusions across estimators.}
+\label{fig:simulation_wrong_conclusion_by_tdi}
+\vspace{0.25em}
+
+\begin{minipage}{0.94\textwidth}
+\scriptsize \textit{Source:} Author's semi-synthetic missingness simulation. Bins summarize the generated simulation draws and are used only as an audit diagnostic.
+\end{minipage}
+\end{figure}
+
+Figures~\ref{fig:simulation_bias_by_mechanism}, \ref{fig:simulation_tdi_vs_error}, and \ref{fig:simulation_wrong_conclusion_by_tdi} connect the simulation to the audit protocol. Larger TDI values are not a formal theorem of bias, but they make visible when the retained analytical sample has moved away from the reference panel. The simulation contribution is therefore methodological-applied: it shows why public aggregate-panel studies should report target definition, row loss, selection distortion, estimator sensitivity, and non-identifiability before interpreting substantive coefficients.
 
 \begin{table}[htbp]
 \centering
@@ -182,7 +212,9 @@ This conceptual table is not a causal identification graph. It clarifies why the
 
 The intended monitoring target contains 608 country-years with observed unmet medical care need. The selected fixed-effects regression sample contains 282 country-years complete for the baseline covariates. Table~\ref{tab:complete_case_selection_model} therefore comes before the baseline regression: it diagnoses how the analytical row set is formed.
 
-\begin{table}[htbp]
+The selection model is not causal. It asks whether inclusion in the complete-case regression is related to observed unmet need and observed macro conditions. Country-group terms are included in the diagnostic model but omitted from the compact displayed table. Predictable inclusion means the complete-case coefficient should be read as a selected-panel estimand, not as the coefficient for the full outcome-observed monitoring target.
+
+\begin{table}[H]
 \centering
 \small
 \caption{Complete-case inclusion model. The diagnostic uses all 608 outcome-observed country-years to model inclusion in the 282-row baseline complete-case regression sample; it is unweighted and country-clustered.}
@@ -195,9 +227,7 @@ The intended monitoring target contains 608 country-years with observed unmet me
 \end{minipage}
 \end{table}
 
-The selection model is not causal. It asks whether inclusion in the complete-case regression is related to observed unmet need and observed macro conditions. Country-group terms are included in the diagnostic model but omitted from the compact displayed table. Predictable inclusion means the complete-case coefficient should be read as a selected-panel estimand, not as the coefficient for the full outcome-observed monitoring target.
-
-\begin{figure}[htbp]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.82\textwidth]{missingness_inclusion_probability}
 \caption{Estimated probability of complete-case inclusion among the 608 outcome-observed country-years. The figure compares rows included in the 282-row baseline complete-case FE model with outcome-observed rows excluded because covariates are missing.}
@@ -208,6 +238,8 @@ The selection model is not causal. It asks whether inclusion in the complete-cas
 \scriptsize \textit{Source:} Author's predictions from the complete-case inclusion model in Table~\ref{tab:complete_case_selection_model}.
 \end{minipage}
 \end{figure}
+
+\FloatBarrier
 
 \section{Selected Complete-Case Baseline}
 
@@ -270,6 +302,10 @@ The model ladder separates three sources of movement. First, adding macroeconomi
 
 Table~\ref{tab:main_sensitivity_ladder} is the main result table. It follows the poverty/social-exclusion coefficient across the model hierarchy, population weighting, balanced-outcome restriction, country-universe restrictions, lagged covariates, measurement-period checks, crisis-period exclusion, conservative country trends, IPW, MAR MI, and MNAR delta-shift sensitivity. Specifications with too few rows, countries, or years are reported as infeasible instead of forced.
 
+The ladder shows the central empirical pattern. Observed covariate-complete specifications often remain positive, especially the country-and-year FE, balanced-outcome, EU-27, and IPW rows. The lagged-covariate, 2015-exclusion, and country-trend rows weaken precision. The MAR and MNAR imputation rows move the estimand to the full outcome-observed target and attenuate the poverty coefficient toward zero. The coefficient is therefore not a property of ``Europe'' in general; it is a property of a defined estimand.
+
+The EU-27 row is close to the full Eurostat-available complete-case estimate, while smaller EEA and candidate-country universes are not large enough for stable fixed-effects inference. This supports the interpretation that the main difference is not EU-27 versus full operational Europe, but selected complete cases versus broader outcome-observed targets.
+
 \begin{table}[H]
 \centering
 \scriptsize
@@ -282,8 +318,6 @@ Table~\ref{tab:main_sensitivity_ladder} is the main result table. It follows the
 \scriptsize \textit{Source:} Author's estimates from the thesis regression, IPW, MAR MI, and MNAR sensitivity pipeline. Observed-data FE rows use country-clustered uncertainty; imputed rows are pooled sensitivity estimands.
 \end{minipage}
 \end{table}
-
-The ladder shows the central empirical pattern. Observed covariate-complete specifications often remain positive, especially the country-and-year FE, balanced-outcome, EU-27, and IPW rows. The lagged-covariate, 2015-exclusion, and country-trend rows weaken precision. The MAR and MNAR imputation rows move the estimand to the full outcome-observed target and attenuate the poverty coefficient toward zero. The coefficient is therefore not a property of ``Europe'' in general; it is a property of a defined estimand.
 
 \begin{table}[H]
 \centering
@@ -298,7 +332,7 @@ The ladder shows the central empirical pattern. Observed covariate-complete spec
 \end{minipage}
 \end{table}
 
-The EU-27 row is close to the full Eurostat-available complete-case estimate, while smaller EEA and candidate-country universes are not large enough for stable fixed-effects inference. This supports the interpretation that the main difference is not EU-27 versus full operational Europe, but selected complete cases versus broader outcome-observed targets.
+\FloatBarrier
 
 \section{Inference Diagnostics}
 
@@ -336,7 +370,7 @@ These diagnostics strengthen the presentation of the selected-panel estimate wit
 
 IPW is retained as a diagnostic, not as a fix for structural Eurostat non-coverage \citep{seaman_white_2013}. The weights are estimated from observed unmet need, year, country group, macro conditions, missingness indicators, and coverage flags, then stabilized and truncated. In this dataset IPW changes little because the complete-case sample is selected mainly through structural covariate availability. Reweighting observed complete cases cannot recover rows where required covariates are absent.
 
-\begin{table}[htbp]
+\begin{table}[H]
 \centering
 \small
 \caption{Missingness-aware comparison of the poverty association. Complete-case and IPW rows use the selected FE sample with country-clustered SE; MI rows pool estimates over imputed outcome-observed panels.}
@@ -349,7 +383,11 @@ IPW is retained as a diagnostic, not as a fix for structural Eurostat non-covera
 \end{minipage}
 \end{table}
 
-\begin{table}[htbp]
+Population-weighted estimates use country-year total population from Eurostat \texttt{demo\_pjan}, normalized within year. They answer a resident-weighted monitoring question, not a universally more correct version of the country-weighted question.
+
+\clearpage
+
+\begin{table}[H]
 \centering
 \scriptsize
 \caption{Target-population sensitivity of the poverty association. Rows compare unweighted, year-normalized population-weighted, balanced-outcome, and MI full-target estimands; complete-case rows use country-clustered FE estimates.}
@@ -362,7 +400,7 @@ IPW is retained as a diagnostic, not as a fix for structural Eurostat non-covera
 \end{minipage}
 \end{table}
 
-Population-weighted estimates use country-year total population from Eurostat \texttt{demo\_pjan}, normalized within year. They answer a resident-weighted monitoring question, not a universally more correct version of the country-weighted question.
+\clearpage
 
 \section{MAR Multiple Imputation}
 
@@ -437,7 +475,9 @@ The PMM variants expose model dependence. Baseline, no-outcome, and lagged-predi
 
 MAR assumptions cannot be verified in Eurostat covariate coverage. Table~\ref{tab:mnar_sensitivity_results} therefore applies MNAR delta shifts only to originally missing values after the baseline PMM imputation. Poverty, GDP, and unemployment shifts are not corrected estimates. They are stress tests for whether the MAR attenuation is mechanically dependent on one favorable imputation model.
 
-\begin{table}[htbp]
+The MI attenuation is interpreted as model-based instability under a broader target population. It may reflect target-population sensitivity, imputation-model dependence, MAR violations, or structural Eurostat non-coverage. The imputation model itself is part of the sensitivity design. The MI estimates are not treated as corrected estimates. They test whether the complete-case poverty coefficient is stable under broader model-based targets; it is not.
+
+\begin{table}[H]
 \centering
 \scriptsize
 \caption{MNAR delta-shift sensitivity for the poverty coefficient. Scenarios shift only originally missing values after PMM imputation and are stress tests for MAR departures, not corrected estimates.}
@@ -450,7 +490,7 @@ MAR assumptions cannot be verified in Eurostat covariate coverage. Table~\ref{ta
 \end{minipage}
 \end{table}
 
-\begin{table}[htbp]
+\begin{table}[H]
 \centering
 \small
 \caption{MNAR tipping-point grid for the poverty/social-exclusion coefficient. Shifts are applied only to originally missing poverty/social-exclusion values after PMM imputation and are compared with the selected complete-case FE coefficient.}
@@ -475,7 +515,7 @@ MAR assumptions cannot be verified in Eurostat covariate coverage. Table~\ref{ta
 \end{minipage}
 \end{figure}
 
-The MI attenuation is interpreted as model-based instability under a broader target population. It may reflect target-population sensitivity, imputation-model dependence, MAR violations, or structural Eurostat non-coverage. The imputation model itself is part of the sensitivity design. The MI estimates are not treated as corrected estimates. They test whether the complete-case poverty coefficient is stable under broader model-based targets; it is not.
+\FloatBarrier
 
 \section{Interpretation}
 

@@ -1,0 +1,96 @@
+\chapter{Target-Population Drift and Conclusion Stability Framework}
+\label{ch:framework}
+
+\section{Purpose}
+
+This chapter defines the drift-stability framework used to interpret the empirical analyses. The framework is diagnostic. It does not introduce a new estimator, identify an individual-level effect, or solve missing data. Its role is to make explicit how far an analytical target moves from a declared monitoring target and whether the substantive conclusion attached to a coefficient remains stable across that movement.
+
+The framework is designed for public aggregate monitoring panels. In this setting, analysts often observe national indicators but not the linked microdata, sampling design details, or individual-level mechanisms that would support causal claims. A transparent diagnostic framework is therefore needed before interpreting coefficients from selected country-year panels.
+
+\section{Estimands as Analytical Objects}
+
+Each analytical estimand is represented as a tuple
+\[
+E_j = (Y_j, D_j, U_j, S_j, W_j, M_j, A_j),
+\]
+where \(Y_j\) is the outcome definition, \(D_j\) is the denominator, \(U_j\) is the country universe, \(S_j\) is the selected country-year row set, \(W_j\) is the weighting rule, \(M_j\) is the missing-data assumption, and \(A_j\) is the analytical model. This notation separates choices that are often collapsed into the phrase ``the regression model''.
+
+The reference monitoring target is denoted by \(E_0\). In the primary empirical application, \(E_0\) is the broad outcome-observed \texttt{hlth\_silc\_08} Eurostat panel, containing the 608 country-years documented in the attrition audit. Alternative estimands may keep the same outcome but change the denominator, restrict the country universe, require complete covariates, add population weights, reweight complete cases, or broaden the row set through model-based imputation.
+
+\section{Target-Drift Vector}
+
+For each alternative estimand \(E_j\), the framework defines a target-drift vector
+\[
+\Delta_j =
+(\Delta_{\mathrm{row},j},
+\Delta_{\mathrm{country},j},
+\Delta_{\mathrm{year},j},
+\Delta_{\mathrm{weight},j},
+\Delta_{\mathrm{balance},j}).
+\]
+The first three components measure support loss relative to the reference target:
+\[
+\Delta_{\mathrm{row},j} = 1 - \frac{|S_j|}{|S_0|},
+\quad
+\Delta_{\mathrm{country},j} = 1 - \frac{|C_j|}{|C_0|},
+\quad
+\Delta_{\mathrm{year},j} = 1 - \frac{|T_j|}{|T_0|}.
+\]
+Here \(S_j\) is the row set, \(C_j\) is the set of countries, and \(T_j\) is the set of years represented by estimand \(j\).
+
+Weighting drift, \(\Delta_{\mathrm{weight},j}\), measures the distance between the reference and analytical weighting schemes. The preferred implementation is Jensen--Shannon divergence when the reference and analytical weights can be placed on a common support. If support differs too heavily, the implementation should use total variation distance as a bounded fallback and report that choice explicitly.
+
+Covariate-balance drift measures displacement in observed covariates:
+\[
+\Delta_{\mathrm{balance},j}
+= \frac{1}{p}\sum_{k=1}^{p}
+\left|
+\frac{\bar{x}_{jk} - \bar{x}_{0k}}{s_{0k}}
+\right|.
+\]
+The calculation uses only variables observed in both the reference target and the analytical sample. Missing covariates are not imputed solely to calculate balance unless a later analysis explicitly justifies that decision.
+
+\section{Target-Population Drift Index}
+
+The scalar Target-Population Drift Index is defined as an equal-weight average of the available drift components:
+\[
+\mathrm{TDI}_j =
+\frac{1}{|\mathcal{D}_j|}
+\sum_{d \in \mathcal{D}_j} \Delta_{d,j},
+\]
+where \(\mathcal{D}_j\) is the set of drift components available for estimand \(j\). Equal weights are the default because the thesis does not claim that one component is universally more important than another. The scalar index is a summary; it must be reported with the component vector so that row loss, country loss, year loss, weighting changes, and covariate-balance displacement remain visible.
+
+\section{Conclusion Stability}
+
+The framework evaluates conclusion stability using the poverty/social-exclusion coefficient as a stress-test coefficient. The standardized coefficient for estimand \(j\) is
+\[
+\theta_j =
+\beta_j \frac{\operatorname{IQR}(X_j)}{\operatorname{IQR}(Y_j)},
+\]
+where \(\beta_j\) is the poverty/social-exclusion coefficient, \(X_j\) is poverty or social exclusion, and \(Y_j\) is the unmet-care outcome in the relevant target. This scaling expresses the coefficient in outcome-IQR units for an IQR change in poverty/social exclusion.
+
+Across feasible estimands, coefficient dispersion is summarized as
+\[
+\theta_{\mathrm{IQR}} =
+\operatorname{IQR}(\theta_1,\ldots,\theta_K).
+\]
+Directional agreement is the proportion of feasible estimands whose coefficient sign agrees with a declared reference sign. In the empirical application, the reference sign should be the sign of the median observed-data estimand unless a different reference is stated before analysis.
+
+The Conclusion Stability Index is defined as
+\[
+\mathrm{CSI} =
+1 - \min\left(1,\frac{\theta_{\mathrm{IQR}}}{\delta}\right),
+\]
+where \(\delta\) is a pre-specified tolerance threshold. The default value is \(\delta=0.10\) outcome-IQR units. This threshold is a transparent reporting rule, not a universal scientific boundary; the implementation treats it as an explicit parameter so that sensitivity checks can vary it.
+
+\section{Rule-Based Classification}
+
+The classification is deterministic. A finding is \emph{non-identifiable} when too few estimand families are feasible or when the rows, countries, years, or within-country variation are insufficient for reliable fixed-effects estimation. A finding is \emph{stable} when enough estimands are feasible, directional agreement is high, CSI is high, and no major separation appears between complete-case, weighted, IPW, MI, and MNAR families.
+
+A finding is \emph{target-dependent} when observed-data estimands change materially as TDI increases, or when weighted, balanced, or universe-restricted estimands produce materially different standardized coefficients. It is \emph{denominator-dependent} when population-denominator and need-denominator indicators produce materially different standardized conclusions. It is \emph{missingness-dependent} when complete-case or IPW estimands disagree materially with MAR or MNAR estimands. It is \emph{imputation-model-dependent} when MI variants disagree materially with each other.
+
+These labels are reporting outputs, not narrative judgments. The implementation encodes thresholds and feasibility rules directly, retains infeasible estimands with reasons, and exports both the final label and the rule that produced it.
+
+\section{Interpretation}
+
+The framework changes the object of interpretation. The poverty/social-exclusion coefficient is not treated as the thesis contribution. It is the stress-test coefficient used to ask whether an aggregate conclusion survives movement across denominators, countries, years, weights, row-selection rules, and missing-data assumptions. The contribution is the explicit measurement of target movement and conclusion stability before substantive interpretation.

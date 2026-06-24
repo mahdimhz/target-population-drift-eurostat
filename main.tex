@@ -20,12 +20,18 @@
 \usepackage{multirow}
 \usepackage{lscape}
 \usepackage{float}
+\usepackage{placeins}
 \usepackage{caption}
 \usepackage{tabularx}
 \usepackage{ragged2e}
 \usepackage{adjustbox}
 \usepackage{silence}
 \usepackage[hypertexnames=false]{hyperref}
+\hypersetup{
+  pdftitle={Target-Population Drift and Conclusion Stability in Eurostat Unmet-Care Panels: A Reproducible Drift-Stability Framework},
+  pdfauthor={Mahdi Mohammadzadeh},
+  pdfsubject={Data Science}
+}
 \WarningFilter{biblatex}{Using fall-back BibTeX}
 \usepackage[style=alphabetic, natbib=true, backend=bibtex]{biblatex}
 \DeclareSourcemap{
@@ -48,8 +54,8 @@
 \Dipartimento{Dipartimento di Matematica e Fisica}
 \CorsoDiLaurea{Master's Degree in Data Science}
 \AnnoAccademico{2025--2026}
-\Titolo{Target-Population Drift in Eurostat Unmet-Care Panels:\\
-A Reproducible Sensitivity Audit}
+\Titolo{Target-Population Drift and Conclusion Stability in Eurostat Unmet-Care Panels:\\
+A Reproducible Drift-Stability Framework}
 \Relatore{Prof.ssa Rosanna Verde}
 \RelatoreLabel{Supervisor}
 \Candidato{Mahdi Mohammadzadeh}
@@ -128,6 +134,7 @@ A Reproducible Sensitivity Audit}
 \input{chapters/introduction}
 \input{chapters/background_literature}
 \input{chapters/data_indicators}
+\input{chapters/framework}
 \input{chapters/descriptive_evidence}
 \input{chapters/modeling_strategy_results}
 \input{chapters/discussion_conclusion}

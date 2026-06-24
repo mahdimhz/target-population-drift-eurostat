@@ -65,7 +65,8 @@ Panel construction, descriptive outputs, baseline regressions, source register &
 Conceptual selection and estimand diagram & Diagram generation & Author-defined conceptual roles documented in Chapter~\ref{ch:background_literature} \\
 Missingness, IPW, MI, MNAR, and robustness diagnostics & Missingness robustness & Processed panel and imputed panel draws \\
 Multi-outcome registry, monitoring benchmark, drift diagnostics, and coefficient matrix & Multi-outcome builders & Multi-outcome Eurostat extracts and processed panel \\
-Semi-synthetic missingness simulation & Simulation & Reference panel and simulation configuration \\
+Formal drift-stability metrics, TDI, and CSI outputs & Drift-stability builder & Outcome-by-estimand matrix and multi-outcome processed panel \\
+Semi-synthetic missingness simulation and TDI validation & Simulation & Reference panel and simulation configuration \\
 Prediction benchmark and supporting descriptive checks & Appendix analyses & Prediction panel, citizenship extract, and \texttt{hlth\_silc\_08b} overlap panel \\
 Manifest, software versions, hashes, and output checks & Master summary & Generated tables, figures, outputs, and scripts \\
 \bottomrule
@@ -81,6 +82,7 @@ python src/build_multi_outcome_indicator_registry.py
 python src/build_multi_outcome_monitoring_benchmark.py
 python src/build_multi_outcome_drift_diagnostics.py
 python src/build_outcome_estimand_stability_matrix.py
+python src/build_drift_stability_framework.py
 python src/run_missingness_simulation.py --replicates 100 --imputations 2 --seed 42
 python src/build_reporting_protocol_tables.py
 python src/run_step5_ml_analysis.py
@@ -92,6 +94,10 @@ The raw-data download workflow is part of the first command: it calls the Eurost
     \item the full-analysis script builds the panel, descriptive figures, baseline regressions, population-weighted trends, and source register;
     \item the diagram script creates the conceptual selection and estimand figure;
     \item the missingness script creates target-population sensitivity, IPW, MI, and poverty-robustness outputs;
+    \item the multi-outcome builders create the public-data estimand registry, monitoring benchmark, drift diagnostics, coefficient matrix, and deterministic classification inputs;
+    \item the drift-stability builder creates formal estimand-component, target-drift, TDI, standardized-coefficient, and CSI outputs;
+    \item the simulation script creates reference-estimand missingness simulations, TDI/error figures, and wrong-conclusion diagnostics;
+    \item the reporting-protocol script creates the reporting checklist, failure-mode table, and final classification table;
     \item the prediction script creates one-year-ahead baselines, benchmark-model comparisons, and country-holdout validation;
     \item the additional-analysis script creates citizenship paired-gap checks and \texttt{hlth\_silc\_08b} denominator robustness;
     \item the summary script creates the manifest, software versions, command order, hashes, and output checks.
