@@ -74,26 +74,17 @@ Table~\ref{tab:multi_outcome_included_excluded_smd_top} shows that attrition is 
 
 \section{Outcome-by-Estimand Coefficient Matrix}
 
-Table~\ref{tab:outcome_estimand_coefficient_matrix} replaces a long list of separate robustness rows with a single outcome-by-estimand audit. For each feasible outcome, the table follows the poverty/social-exclusion coefficient across five estimand families: unweighted complete-case FE, population-weighted complete-case FE, balanced-outcome FE, IPW complete-case FE, and MAR MI full-target FE. Rows that do not meet the minimum support rule are reported as infeasible rather than forced.
+Table~\ref{tab:outcome_estimand_coefficient_matrix} replaces separate robustness rows with one outcome-by-estimand audit. For each feasible outcome, it follows the poverty/social-exclusion coefficient across unweighted complete-case FE, population-weighted FE, balanced-outcome FE, IPW FE, and MAR MI full-target FE; rows below the support rule are reported as infeasible rather than forced.
 
-The matrix changes the interpretation of the empirical evidence. Long population-denominator indicators can support several observed-data estimands. Need-denominator indicators are useful for monitoring, but their observed complete-case FE rows are too short for the deterministic support rule and are therefore non-identifiable as complete-case regression targets. MAR MI can still be estimated for those shorter targets, but one imputed estimand family is not enough to support a stable coefficient interpretation.
+The matrix changes the interpretation of the evidence. Long population-denominator indicators support several observed-data estimands, while need-denominator indicators are useful for monitoring but often too short for stable complete-case regression targets. Figure~\ref{fig:outcome_estimand_coefficient_stability} shows the same point graphically: observed complete-case estimates often remain positive, whereas MAR MI full-target estimates can attenuate or change sign.
 
-Figure~\ref{fig:outcome_estimand_coefficient_stability} shows the core empirical contribution of the chapter. Observed complete-case estimands often remain positive, while MAR MI full-target estimates can move toward zero or change sign. The result is a coefficient-stability audit: the same poverty/social-exclusion stress-test variable has different interpretations under different target populations and missing-data assumptions.
+Table~\ref{tab:drift_stability_summary} translates the matrix into the framework metrics from Chapter~\ref{ch:framework}. The standardized coefficient \(\theta\) puts coefficients on an IQR scale; \(\theta\) IQR summarizes dispersion; directional agreement records sign agreement; and CSI applies the declared \(\delta=0.10\) tolerance rule. The final labels are deterministic diagnostics, not substantive effect claims.
 
-Table~\ref{tab:drift_stability_summary} translates the coefficient matrix into the framework metrics defined in Chapter~\ref{ch:framework}. The poverty/social-exclusion coefficient remains a stress-test coefficient, not the thesis contribution. The standardized coefficient \(\theta\) puts coefficients on a comparable IQR scale across outcomes; \(\theta\) IQR summarizes dispersion across feasible estimand families; directional agreement records whether signs agree with the observed-data reference direction; and CSI applies the declared \(\delta=0.10\) tolerance rule. The final labels are deterministic diagnostic labels, not causal claims and not evidence of individual-level mechanisms.
-
-\begin{table}[H]
-\centering
-\scriptsize
-\caption{Outcome-by-estimand coefficient matrix for the poverty/social-exclusion coefficient. Each row defines a distinct target population and missing-data assumption; infeasible rows are retained with the reason. MAR MI is interpreted as model-based sensitivity, not as correction.}
-\label{tab:outcome_estimand_coefficient_matrix}
 \input{tables/outcome_estimand_coefficient_matrix}
-\vspace{0.25em}
 
-\begin{minipage}{0.96\textwidth}
+\noindent\begin{minipage}{0.96\textwidth}
 \scriptsize \textit{Source:} Author's estimates from the thesis regression and imputation pipeline. Observed-data cells use country-and-year FE where feasible; MAR MI cells pool imputed outcome-observed panels using Rubin's rules \citep{rubin_1987,little_rubin_2019}.
 \end{minipage}
-\end{table}
 
 \begin{figure}[H]
 \centering

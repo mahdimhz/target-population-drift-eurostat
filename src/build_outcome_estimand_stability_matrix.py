@@ -79,6 +79,96 @@ def _write_tabular(df: pd.DataFrame, columns: list[str], headers: list[str], pat
     path.write_text("\n".join(lines), encoding="utf-8")
 
 
+def _write_compact_tabularx(
+    df: pd.DataFrame,
+    columns: list[str],
+    headers: list[str],
+    path: Path,
+    colspec: str,
+) -> None:
+    lines = [
+        r"\begingroup",
+        r"\scriptsize",
+        r"\setlength{\tabcolsep}{2pt}",
+        r"\renewcommand{\arraystretch}{0.92}",
+        rf"\begin{{tabularx}}{{\linewidth}}{{{colspec}}}",
+        r"\toprule",
+        " & ".join(headers) + r" \\",
+        r"\midrule",
+    ]
+    for _, row in df[columns].iterrows():
+        lines.append(" & ".join(_latex_escape(row[column]) for column in columns) + r" \\")
+    lines.extend([r"\bottomrule", r"\end{tabularx}", r"\endgroup", ""])
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text("\n".join(lines), encoding="utf-8")
+
+
+def _write_outcome_estimand_longtable(df: pd.DataFrame, path: Path) -> None:
+    columns = ["indicator_label", "estimand_display", "rows", "countries", "years", "coef", "ci", "p_value", "status_display"]
+    headers = ["Indicator", "Estimand", "Rows", "Ctries", "Years", "Coef.", "95\\% CI", "p", "Status"]
+    colspec = r"@{}p{0.13\linewidth}p{0.16\linewidth}rrrp{0.055\linewidth}p{0.135\linewidth}p{0.055\linewidth}p{0.15\linewidth}@{}"
+    caption = (
+        "Outcome-by-estimand coefficient matrix for the poverty/social-exclusion coefficient. "
+        "Each row defines a distinct target population and missing-data assumption; infeasible rows "
+        "are retained with the reason. MAR MI is interpreted as model-based sensitivity, not as correction."
+    )
+    header = " & ".join(headers) + r" \\"
+    lines = [
+        r"\begingroup",
+        r"\scriptsize",
+        r"\setlength{\tabcolsep}{2pt}",
+        r"\renewcommand{\arraystretch}{0.92}",
+        rf"\begin{{longtable}}{{{colspec}}}",
+        rf"\caption{{{caption}}}\label{{tab:outcome_estimand_coefficient_matrix}}\\",
+        r"\toprule",
+        header,
+        r"\midrule",
+        r"\endfirsthead",
+        rf"\caption[]{{{caption} (continued)}}\\",
+        r"\toprule",
+        header,
+        r"\midrule",
+        r"\endhead",
+        r"\midrule",
+        rf"\multicolumn{{{len(columns)}}}{{r}}{{\scriptsize Continued on next page}}\\",
+        r"\endfoot",
+        r"\bottomrule",
+        r"\endlastfoot",
+    ]
+    for _, row in df[columns].iterrows():
+        lines.append(" & ".join(_latex_escape(row[column]) for column in columns) + r" \\")
+    lines.extend([r"\end{longtable}", r"\endgroup", ""])
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text("\n".join(lines), encoding="utf-8")
+
+
+def _format_p_value(value: object) -> str:
+    if pd.isna(value):
+        return ""
+    value = float(value)
+    return "<.001" if value < 0.001 else f"{value:.3f}"
+
+
+def _display_estimand(value: object) -> str:
+    labels = {
+        "Unweighted complete-case FE": "Unweighted CC FE",
+        "Population-weighted complete-case FE": "Pop.-weighted CC FE",
+        "Balanced-outcome FE": "Balanced FE",
+        "IPW complete-case FE": "IPW CC FE",
+        "MAR MI full-target FE": "MAR MI full target",
+    }
+    return labels.get(str(value), str(value))
+
+
+def _display_status(value: object) -> str:
+    text = "" if pd.isna(value) else str(value)
+    if text == "estimated":
+        return "est."
+    if text == "infeasible: fewer than 100 rows":
+        return "infeas.: rows<100"
+    return text.replace("infeasible:", "infeas.:")
+
+
 def load_panel() -> pd.DataFrame:
     outcomes = pd.read_csv(DATA_PROCESSED / "multi_outcome_unmet_care.csv")
     features = pd.read_csv(DATA_PROCESSED / "panel_features_v2-3.csv").drop(columns=["unmet_need_pc", "status"], errors="ignore")
@@ -334,16 +424,13 @@ def classify_by_indicator(results: pd.DataFrame, panel: pd.DataFrame) -> pd.Data
 
 def write_tables(results: pd.DataFrame, classifications: pd.DataFrame) -> None:
     display = results.copy()
-    for column in ["coef", "ci_low", "ci_high", "p_value"]:
+    for column in ["coef", "ci_low", "ci_high"]:
         display[column] = display[column].map(lambda value: "" if pd.isna(value) else f"{value:.3f}")
+    display["p_value"] = display["p_value"].map(_format_p_value)
     display["ci"] = np.where(display["ci_low"].eq(""), "", "[" + display["ci_low"] + ", " + display["ci_high"] + "]")
-    _write_tabular(
-        display,
-        ["indicator_label", "estimand", "rows", "countries", "years", "coef", "ci", "p_value", "status"],
-        ["Indicator", "Estimand", "Rows", "Countries", "Years", "Coef.", "95\\% CI", "p", "Status"],
-        TABLES / "outcome_estimand_coefficient_matrix.tex",
-        r"p{0.15\linewidth}p{0.23\linewidth}rrrp{0.07\linewidth}p{0.15\linewidth}p{0.06\linewidth}p{0.14\linewidth}",
-    )
+    display["estimand_display"] = display["estimand"].map(_display_estimand)
+    display["status_display"] = display["status"].map(_display_status)
+    _write_outcome_estimand_longtable(display, TABLES / "outcome_estimand_coefficient_matrix.tex")
 
     class_display = classifications.copy()
     for column in ["poverty_iqr", "outcome_sd"]:
